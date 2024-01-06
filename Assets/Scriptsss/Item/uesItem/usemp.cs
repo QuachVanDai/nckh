@@ -12,12 +12,12 @@ public class usemp: NCKHMonoBehaviour
     public bool flat;
     public Image Fill_time;
     private float getTime;
-    public inventoryManager inventory;
+    public inventoryUpdate inventoryUpdate;
  
     void Start()
     {
      //   inventory = FindObjectOfType<inventoryManager>();
-        quanitity = inventory.updateMP(0);
+      //  quanitity = inventoryUpdate.updateMP(0);
         txt_quanitity.text = quanitity.ToString();
         flat = true;
     }
@@ -41,10 +41,9 @@ public class usemp: NCKHMonoBehaviour
             else
             {
                 Player.Instance.update_mp(mpSO.MP);
-                quanitity = inventory.updateMP(-1);
+                quanitity = inventoryUpdate.updateMP(-1);
                 txt_quanitity.text = quanitity.ToString();
-                inventory.RefreshUI();
-                yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(0.5f);
                 flat = true;
             }
         }
@@ -57,7 +56,7 @@ public class usemp: NCKHMonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        quanitity = inventory.updateMP(0);
+        quanitity = inventoryUpdate.updateMP(0);
         txt_quanitity.text = quanitity.ToString();
         if (Input.GetKeyUp(KeyCode.R))
         {
@@ -65,7 +64,7 @@ public class usemp: NCKHMonoBehaviour
         }
         if(!flat)
         {
-            Fill_time.fillAmount = (Time.time - getTime) / 1;
+            Fill_time.fillAmount = (Time.time - getTime) / 0.5f;
         }
     }
 }

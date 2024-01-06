@@ -16,14 +16,14 @@ public class NextMap : NCKHMonoBehaviour
         Camera.setEndTranForm(number);
         this.LoadAnnimation.SetActive(true);
         LoadAnimation.Instance.getLoadmap();
-        Invoke(nameof(callMap), 3.5f);
+        Invoke(nameof(callMap), 2.2f);
     }
     public void setIndexTopMap(int number)
     {
         Camera.setTopTranForm(number);
         this.LoadAnnimation.SetActive(true);
         LoadAnimation.Instance.getLoadmap();
-        Invoke(nameof(callMap), 3.5f);
+        Invoke(nameof(callMap), 2.2f);
 
     }
     public void callMap()

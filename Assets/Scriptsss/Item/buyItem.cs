@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class buyItem : MonoBehaviour
 {
-    public inventoryManager inventoryManager;
+    public inventoryUpdate inventoryUpdate;
     public slotClass item;
 
     private void Update()
     {
-       //  slotClass = inventoryManager.GetClosestSLot();
+       //  slotClass = inventoryUpdate.GetClosestSLot();
     }
   
     public void BuyItem()
@@ -22,18 +22,22 @@ public class buyItem : MonoBehaviour
         if ( item.getItemSO().itemName == "HP")
         {
             if(Player.Instance.UpdateXu(item.getItemSO().cost*-1))
-            inventoryManager.updateHP(1);
+            {
+                inventoryUpdate.updateHP(1);
+            }
         }
 
         else if ( item.getItemSO().itemName == "MP")
         {
             if (Player.Instance.UpdateXu(item.getItemSO().cost*-1))
-                inventoryManager.updateMP(1);
+            {
+                inventoryUpdate.updateMP(1);
+            }   
         }
         else if(item.getItemSO().itemName == "chicken")
         {
             if (Player.Instance.UpdateXu(item.getItemSO().cost*-1))
-                inventoryManager.Add(item.getItemSO(),1);
+                inventoryUpdate.Add(item.getItemSO(),1);
         }
        
     }

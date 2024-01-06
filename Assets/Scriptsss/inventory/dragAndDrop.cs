@@ -7,29 +7,30 @@ using UnityEngine.UI;
 public class dragAndDrop : MonoBehaviour
 {
     public inventoryManager inventoryManager;
+    public inventoryUpdate inventoryUpdate;
     private void Update()
     {
-        inventoryManager.itemCursor.SetActive(inventoryManager.isMovingItem);
+        inventoryManager.itemCursor.SetActive(inventoryUpdate.isMovingItem);
         inventoryManager.itemCursor.transform.position = Input.mousePosition;
-        if (inventoryManager.isMovingItem) { inventoryManager.itemCursor.GetComponent<Image>().
-                sprite = inventoryManager.movingSlot.getItemSO().icon; }
+        if (inventoryUpdate.isMovingItem) { inventoryManager.itemCursor.GetComponent<Image>().
+                sprite = inventoryUpdate.movingSlot.getItemSO().icon; }
 
 
         if (Input.GetMouseButtonDown(1))
         {
-            if (!inventoryManager.isMovingItem)
+            if (!inventoryUpdate.isMovingItem)
             {
-                inventoryManager.BeginItemMove();
+                inventoryUpdate.BeginItemMove();
             }
             else
             {
-                inventoryManager.EndItemMove();
+                inventoryUpdate.EndItemMove();
             }
         }
 
         if (Input.GetMouseButtonDown(0))
         {
-            inventoryManager.showInforItem();
+            inventoryUpdate.showInforItem();
         }
         /*if (Input.GetMouseButtonUp(0))
         {

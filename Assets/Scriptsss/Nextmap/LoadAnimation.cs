@@ -26,7 +26,7 @@ public class LoadAnimation : NCKHMonoBehaviour
     }
     public void getLoadmap()
     {
-        InvokeRepeating(nameof(loadMap), 0, 3 / 100f);
+        InvokeRepeating(nameof(loadMap), 0, 2 / 100f);
 
     }
     public void loadMap()

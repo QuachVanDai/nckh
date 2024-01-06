@@ -36,21 +36,27 @@ public class PlayerAttack:NCKHMonoBehaviour
         if( gameManager.Instance.IsPlaygame == false) return;
         // check to see if player is standing on the ground ?
         if (PlayerController2D.Instance.isGround() == false) return;
-
-        if(PlayerController2D.Instance.getInputSpace())
+        if (monsterAttacted == null)
         {
-            // Check if the target has been selected?
-            if (monsterAttacted == null)
-            {
-                //systemUi.Instance.infoMonster.gameObject.SetActive(false);
-                TextTemplate.Instance.SetText(TagScript.notTarget);
-                return; 
-            }
+            return;
+        }
+        // Calculate the distance from the player to the target
 
-            // Calculate the distance from the player to the target
-            distance = Vector2.Distance(transform.position, monsterAttacted.transform.position);
+        distance = Vector2.Distance(transform.position, monsterAttacted.transform.position);
+        if (distance > 7)
+        {
+            systemUi.Instance.infoMonster.gameObject.SetActive(false);
+            monsterAttacted = null;
+            return;
+        }
+ 
+        if (PlayerController2D.Instance.getInputSpace())
+        {
             // 
-            if ( distance>4) { TextTemplate.Instance.SetText(TagScript.khoangCach); return; }
+            if ( distance>4) {
+               TextTemplate.Instance.SetText(TagScript.khoangCach);
+                return;
+            }
 
             // if player use skilllv5 or skilllv15  , player cannot attack.
             if (useSkill.Instance.getCurrKeySkill() == 1 || useSkill.Instance.getCurrKeySkill() == 3)
@@ -179,7 +185,6 @@ public class PlayerAttack:NCKHMonoBehaviour
 
     public void ManaUseSkill()
     {
-        Debug.Log(useSkill.Instance.getCurrKeySkill());
         if (Player.Instance.Currmp < _frameSkill[useSkill.Instance.getCurrKeySkill()].mp)
         {
             Debug.Log("khong du Mana de su dung  " + Player.Instance.Currmp);

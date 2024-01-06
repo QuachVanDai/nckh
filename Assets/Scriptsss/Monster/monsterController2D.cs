@@ -50,6 +50,7 @@ public class monsterController2D : MonoBehaviour
     }
     public void PlayAnimation(monsterStatus Status)
     {
+        if(gameObject==null) return;
        switch (Status)
         {
             case monsterStatus.idle:

@@ -134,8 +134,13 @@ public class Player : NCKHMonoBehaviour
     {
         if (collision.gameObject.tag == "potion")
         {
-            useItem i = collision.gameObject.GetComponent<useItem>();
-            inventoryManager.Instance.Add(i.item,1);
+            pickUpItems pickUpItems = collision.gameObject.GetComponent<pickUpItems>();
+            inventoryUpdate.Instance.Add(pickUpItems.item,1);
+        }
+       else if (collision.gameObject.tag == "money")
+        {
+            pickUpMoney money = collision.gameObject.GetComponent<pickUpMoney>();
+            UpdateXu(money.xu.Xu);
         }
     }
 

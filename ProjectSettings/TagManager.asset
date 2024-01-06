@@ -9,6 +9,7 @@ TagManager:
   - monster
   - potion
   - npc
+  - money
   layers:
   - Default
   - TransparentFX

@@ -44,10 +44,10 @@ public class monster:NCKHMonoBehaviour
         return this;
     }
 
-    public void update_hp(float currency_blood, float max_blood,string _name)
+    public void update_hp(float currency_blood, float max_blood,string _name,int level)
     {
         fill_bar.fillAmount = (float)currency_blood / (float)max_blood;
-        systemUi.Instance.infoMonster.text = " " + _name + "  " + currency_blood.ToString() +"/"+ max_blood.ToString();
+        systemUi.Instance.infoMonster.text = " " + _name + "  "+"Lv"+level+" " + currency_blood.ToString() +"/"+ max_blood.ToString();
         systemUi.Instance.infoMonster.gameObject.SetActive(true);
     }
 

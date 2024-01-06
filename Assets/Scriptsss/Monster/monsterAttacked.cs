@@ -27,7 +27,6 @@ public class monsterAttacked : NCKHMonoBehaviour
         if (PlayerAttack.monsterAttacted == this) 
         { 
             selected.gameObject.SetActive(true);
-            
         }
         else 
         {
@@ -38,7 +37,7 @@ public class monsterAttacked : NCKHMonoBehaviour
     private void OnMouseDown()
     {
         PlayerAttack.findMonster(this);
-        currMoster.update_hp(currMoster._currhp, currMoster.HP,currMoster._name);
+        currMoster.update_hp(currMoster._currhp, currMoster.HP,currMoster._name, currMoster._level);
     }
     public void Attacked(int damage)
     {
@@ -47,7 +46,7 @@ public class monsterAttacked : NCKHMonoBehaviour
         currMoster.textGUI( damage*(-1), new Color(1,1,1));
         if (currMoster._currhp < 0)
         {
-            currMoster.update_hp(0, currMoster.HP, currMoster._name);
+            currMoster.update_hp(0, currMoster.HP, currMoster._name, currMoster._level);
             itemDropSpawner.Instance.Drop(junkSO.dropRateList, transform.position, Quaternion.identity);
 
             // i.Die(transform.position,Quaternion.identity);
@@ -56,7 +55,7 @@ public class monsterAttacked : NCKHMonoBehaviour
             Destroy(gameObject,0.5f);
             return;
         }
-       currMoster.update_hp(currMoster._currhp, currMoster.HP,currMoster._name);
+       currMoster.update_hp(currMoster._currhp, currMoster.HP,currMoster._name, currMoster._level);
     }
 
     IEnumerator aniAcctacked()

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public  class useItem : NCKHMonoBehaviour
+public  class pickUpItems : NCKHMonoBehaviour
 {
     public ItemSO item;
 }
