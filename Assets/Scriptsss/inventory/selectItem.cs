@@ -5,15 +5,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class selectItem : MonoBehaviour,IPointerDownHandler
+public abstract  class selectItem : NCKHMonoBehaviour, IPointerDownHandler
 {
     public inventoryManager inventoryManager;
-    public buyItem buyItem;
-
-    public void OnPointerDown(PointerEventData eventData)
+    private slotClass _slotClass ;
+    public slotClass SlotClass{ get { return _slotClass; } set { _slotClass = value; } }
+    public virtual void OnPointerDown(PointerEventData eventData)
     {
-        if (inventoryManager == null) { buyItem.item.Clear(); return; }
-        buyItem.item = inventoryManager.GetClosestSLot();
+        _slotClass = inventoryManager.GetClosestSLot();
     }
-
 }

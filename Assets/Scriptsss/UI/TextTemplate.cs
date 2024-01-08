@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using TMPro;
 using UnityEngine;
 using DG.Tweening;
-using UnityEngine.UI;
 
 public class TextTemplate : NCKHMonoBehaviour
 

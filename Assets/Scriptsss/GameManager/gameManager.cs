@@ -13,6 +13,7 @@ public class gameManager : NCKHMonoBehaviour
     protected override void Awake()
     {
         base.Awake();
+        if (gameManager.instance != null) Debug.LogError("Only 1 gameManager allow to exist");
         gameManager.instance = this;
         isPlayGame = true;
     }

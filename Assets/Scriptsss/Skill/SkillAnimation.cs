@@ -3,13 +3,14 @@ using UnityEngine;
 using DG.Tweening;
 using System.Collections;
 
-public class SkillAnimation : MonoBehaviour
+public class SkillAnimation : NCKHMonoBehaviour
 {
     SpriteRenderer skillSprite;
     Vector2 positionStart;
     public Transform target;
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         positionStart = transform.localPosition;
         skillSprite = GetComponent<SpriteRenderer>();
     }

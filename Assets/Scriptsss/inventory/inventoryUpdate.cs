@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class inventoryUpdate : NCKHMonoBehaviour
 {
     [SerializeField]  private inventoryManager inventoryManager;
-    private GameObject[] slots;
+   // private GameObject[] slots;
     private slotClass temSlot;
     private slotClass originalSlot;
 
@@ -48,11 +48,11 @@ public class inventoryUpdate : NCKHMonoBehaviour
         return true;
     }
 
-    public bool Remove(ItemSO item)
+    public bool Remove(ItemSO ItemSO)
     {
 
         int slotToRemoveIndex=0 ;
-        slotClass temp = Contain(item);
+        slotClass temp = Contain(ItemSO);
         if (temp != null)
         {
             if (temp.getQuantity()>1)
@@ -63,7 +63,7 @@ public class inventoryUpdate : NCKHMonoBehaviour
             {
                 for (int i = 0; i < inventoryManager.getItems().Length; i++)
                 {
-                    if (inventoryManager.getItems()[i].getItemSO() == item)
+                    if (inventoryManager.getItems()[i].getItemSO() == ItemSO)
                     {
                         slotToRemoveIndex = i;
                         break;
@@ -80,7 +80,11 @@ public class inventoryUpdate : NCKHMonoBehaviour
         inventoryManager.RefreshUI();
         return true;
     }
- 
+    public ItemSO i;
+    public void conFirmRemove()
+    {
+        Remove(i);
+    }
     public slotClass Contain(ItemSO item)
     {
 
@@ -91,7 +95,7 @@ public class inventoryUpdate : NCKHMonoBehaviour
                 return inventoryManager.getItems()[i];
             }
         }
-return null;
+        return null;
 
     }
     #endregion
@@ -120,33 +124,33 @@ return null;
     {
         int quanitity = 0;
         bool flat = true;
-        for (int i = 0; i < inventoryManager.getstartingItems().Length; i++)
+        for (int i = 0; i < inventoryManager.getItems().Length; i++)
         {
                 try
                 {
-                    if (inventoryManager.getstartingItems()[i].getItemSO().itemName == "HP")
+                    if (inventoryManager.getItems()[i].getItemSO().itemName == "HP")
                     {
                         if (flat)
                         {
                             if (number == 1)
                             {
-                                inventoryManager.getstartingItems()[i].addQuantity(1);
+                                inventoryManager.getItems()[i].addQuantity(1);
                             }
                             else if (number == -1)
                             {
-                            inventoryManager.getstartingItems()[i].SubQuantity(1);
+                            inventoryManager.getItems()[i].SubQuantity(1);
                             }
-                            if (inventoryManager.getstartingItems()[i].getQuantity() <= 0)
+                            if (inventoryManager.getItems()[i].getQuantity() <= 0)
                             {
-                                Remove(inventoryManager.getstartingItems()[i].getItemSO());
+                                Remove(inventoryManager.getItems()[i].getItemSO());
                             }
                             else
-                                quanitity += inventoryManager.getstartingItems()[i].getQuantity();
+                                quanitity += inventoryManager.getItems()[i].getQuantity();
                         flat = false;
                         }
                         else
                         {
-                            quanitity += inventoryManager.getstartingItems()[i].getQuantity();
+                            quanitity += inventoryManager.getItems()[i].getQuantity();
                         }
                     }
                 }
@@ -163,34 +167,33 @@ return null;
     {
         int quanitity = 0;
         bool flat = true;
-        for (int i = 0; i < inventoryManager.getstartingItems().Length; i++)
+        for (int i = 0; i < inventoryManager.getItems().Length; i++)
         {
-
             try
             {
-                if (inventoryManager.getstartingItems()[i].getItemSO().itemName == "MP")
+                if (inventoryManager.getItems()[i].getItemSO().itemName == "MP")
                 {
                     if (flat)
                     {
                         if (number == 1)
                         {
-                            inventoryManager.getstartingItems()[i].addQuantity(1);
+                            inventoryManager.getItems()[i].addQuantity(1);
                         }
                         else if (number == -1)
                         {
-                            inventoryManager.getstartingItems()[i].SubQuantity(1);
+                            inventoryManager.getItems()[i].SubQuantity(1);
                         }
-                        if (inventoryManager.getstartingItems()[i].getQuantity() <= 0)
+                        if (inventoryManager.getItems()[i].getQuantity() <= 0)
                         {
-                            Remove(inventoryManager.getstartingItems()[i].getItemSO());
+                            Remove(inventoryManager.getItems()[i].getItemSO());
                         }
                         else
-                            quanitity += inventoryManager.getstartingItems()[i].getQuantity();
+                            quanitity += inventoryManager.getItems()[i].getQuantity();
                         flat = false;
                     }
                     else
                     {
-                        quanitity += inventoryManager.getstartingItems()[i].getQuantity();
+                        quanitity += inventoryManager.getItems()[i].getQuantity();
                     }
                 }
             }
@@ -202,6 +205,18 @@ return null;
         inventoryManager.RefreshUI();
 
         return quanitity;
+    }
+
+    public bool updateFood()
+    {
+        for (int i = 0; i < inventoryManager.getItems().Length; i++)
+        {
+            if (inventoryManager.getItems()[i].getItemSO().itemName == "chicken")
+            {
+                return true;
+            }
+        }
+            return false;
     }
     #endregion
 

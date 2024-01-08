@@ -8,7 +8,7 @@ public static class Game
     public static void Continue()
     {
         SceneManager.LoadSceneAsync("langtone");
-        gameManager.Instance.IsPlaygame = true;
+        //gameManager.Instance.IsPlaygame = true;
     }
     public static void Quit()
     {

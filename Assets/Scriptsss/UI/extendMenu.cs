@@ -2,7 +2,7 @@
 using UnityEngine;
 using DG.Tweening;
 
-public class extendMenu : MonoBehaviour
+public class extendMenu : NCKHMonoBehaviour
 {
 
     [SerializeField] private RectTransform rectTransform;
@@ -20,7 +20,7 @@ public class extendMenu : MonoBehaviour
     private bool _isNormal = true;
     Tweener _tweener;
 
-    private void Reset()
+    protected override void Reset()
     {
         if (TryGetComponent(out rectTransform))
         {

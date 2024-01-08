@@ -45,6 +45,7 @@ public class Player : NCKHMonoBehaviour
     protected override void Awake()
     {
         base.Awake();
+        if (Player.instance != null) Debug.LogError("Only 1 Player allow to exist");
         Player.instance = this;
     }
     public void textGUI(int damage,Color color)

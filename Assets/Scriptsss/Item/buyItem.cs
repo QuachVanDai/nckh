@@ -1,17 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class buyItem : MonoBehaviour
+public class buyItem : NCKHMonoBehaviour
 {
     public inventoryUpdate inventoryUpdate;
     public slotClass item;
+
 
     private void Update()
     {
        //  slotClass = inventoryUpdate.GetClosestSLot();
     }
-  
+
+   
     public void BuyItem()
     {
         if (item.getItemSO() == null)

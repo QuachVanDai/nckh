@@ -1,7 +1,7 @@
  
 using UnityEngine;
 
-public class toggleSwitch : MonoBehaviour
+public class toggleSwitch : NCKHMonoBehaviour
 {
     public GameObject[] hiddenObject;
     public void Switch()

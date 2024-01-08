@@ -47,24 +47,27 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Layer1 _bg
+  - name: background
     uniqueID: 2425651459
     locked: 0
-  - name: Layer 2_ground
+  - name: GIrd
+    uniqueID: 1386580729
+    locked: 0
+  - name: Ground
     uniqueID: 4250941897
     locked: 0
-  - name: Layer 3_NPC
+  - name: Npc
     uniqueID: 4189426099
     locked: 0
-  - name: Layer 4_monter
+  - name: Monter
     uniqueID: 2612085927
     locked: 0
-  - name: Layer 5_character
+  - name: PlayerUI
     uniqueID: 2015428777
     locked: 0
-  - name: Layer 6
+  - name: Player
     uniqueID: 1535689587
     locked: 0
-  - name: Layer 7
+  - name: SystemUi
     uniqueID: 801346503
     locked: 0

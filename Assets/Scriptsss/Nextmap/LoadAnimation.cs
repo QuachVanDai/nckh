@@ -17,6 +17,8 @@ public class LoadAnimation : NCKHMonoBehaviour
     protected override void Awake()
     {
         base.Awake();
+        if (LoadAnimation._instance != null) Debug.LogError("Only 1 LoadAnimation allow to exist");
+
         LoadAnimation._instance = this;
     }
     // Start is called before the first frame update

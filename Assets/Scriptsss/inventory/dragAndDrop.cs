@@ -4,7 +4,7 @@ using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class dragAndDrop : MonoBehaviour
+public class dragAndDrop : NCKHMonoBehaviour
 {
     public inventoryManager inventoryManager;
     public inventoryUpdate inventoryUpdate;
