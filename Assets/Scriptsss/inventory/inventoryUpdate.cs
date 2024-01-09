@@ -1,8 +1,5 @@
 ﻿
-using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class inventoryUpdate : NCKHMonoBehaviour
 {
@@ -211,7 +208,8 @@ public class inventoryUpdate : NCKHMonoBehaviour
     {
         for (int i = 0; i < inventoryManager.getItems().Length; i++)
         {
-            if (inventoryManager.getItems()[i].getItemSO().itemName == "chicken")
+            if (inventoryManager.getItems()[i].getItemSO() !=null && 
+                inventoryManager.getItems()[i].getItemSO().itemName == "chicken")
             {
                 return true;
             }

@@ -1,8 +1,4 @@
-﻿using DG.Tweening;
-using System;
-using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -58,7 +54,7 @@ public class Player : NCKHMonoBehaviour
     {
         base.loadComponets();
         _setPlayer = new setPlayer();
-        Level = 20;
+        Level = 1;
         MinDamage = _setPlayer.getDamePlayerDictionary(Level).Item1;
         MaxDamage = _setPlayer.getDamePlayerDictionary(Level).Item2;
         Currhp = _setPlayer.getHPPlayerDictionary()[Level];

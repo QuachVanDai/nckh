@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.EventSystems;
+﻿using UnityEngine;
 
 public class buyItem : NCKHMonoBehaviour
 {
@@ -26,7 +23,7 @@ public class buyItem : NCKHMonoBehaviour
         {
             if(Player.Instance.UpdateXu(item.getItemSO().cost*-1))
             {
-                inventoryUpdate.updateHP(1);
+                inventoryUpdate.Add(item.getItemSO(), 1);
             }
         }
 
@@ -34,8 +31,8 @@ public class buyItem : NCKHMonoBehaviour
         {
             if (Player.Instance.UpdateXu(item.getItemSO().cost*-1))
             {
-                inventoryUpdate.updateMP(1);
-            }   
+                inventoryUpdate.Add(item.getItemSO(), 1);
+            }
         }
         else if(item.getItemSO().itemName == "chicken")
         {

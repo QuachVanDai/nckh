@@ -30,7 +30,11 @@ public class usefood: NCKHMonoBehaviour
             TextTemplate.Instance.SetText(TagScript.notFood);
             return; 
         }
-        if(flat) { foodPanel.gameObject.SetActive(true); InvokeRepeating(nameof(setTimeUse), 0, 1); flat = false; }
+        if(flat) {
+            inventoryUpdate.Remove(foodSO);
+            foodPanel.gameObject.SetActive(true); 
+            InvokeRepeating(nameof(setTimeUse), 0, 0.5f); 
+            flat = false; }
         else { TextTemplate.Instance.SetText(TagScript.hoiChieu); }
     }
     public void setTimeUse()

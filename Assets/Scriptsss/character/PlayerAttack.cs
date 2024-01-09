@@ -1,13 +1,10 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Windows;
-
 public class PlayerAttack:NCKHMonoBehaviour
 {
     [SerializeField] private SkillAnimation _skillAnimation;
     [SerializeField] private FrameSkill[] _frameSkill;
+    [SerializeField] private skillRecoveryTime[] skillRecoveryTimes;
     private float distance; 
     public monsterAttacked monsterAttacted;
     private setPlayer _setPlayer = new setPlayer();
@@ -98,9 +95,10 @@ public class PlayerAttack:NCKHMonoBehaviour
 
         yield return new WaitForSeconds(0.23f);
         PlayerController2D.Instance.Animator.SetBool("IsAttack", false);
+        skillRecoveryTimes[useSkill.Instance.getCurrKeySkill()].isTime = true;
         yield return new WaitForSeconds(_frameSkill[useSkill.Instance.getCurrKeySkill()].timeSkill);
         _isActtack = true;
-
+        skillRecoveryTimes[useSkill.Instance.getCurrKeySkill()].isTime = false;
     }
     public void AddExp(float damage)
     {
@@ -141,9 +139,11 @@ public class PlayerAttack:NCKHMonoBehaviour
         _skillAnimation.AnimationSkillLv5_15(_frameSkill[1]);
         _isSkillLv5 = false;
         InvokeRepeating(nameof(inCreaseHPMP), 0, 0.5f);
+        skillRecoveryTimes[1].isTime = true;
         yield return new WaitForSeconds(1.5f);
         CancelInvoke(nameof(inCreaseHPMP));
-        yield return new WaitForSeconds(_frameSkill[1].timeSkill);
+        yield return new WaitForSeconds(_frameSkill[1].timeSkill - 1.5f);
+        skillRecoveryTimes[1].isTime = false;
         _isSkillLv5 = true;
     }
     public void inCreaseHPMP()
@@ -178,9 +178,12 @@ public class PlayerAttack:NCKHMonoBehaviour
         _skillAnimation.AnimationSkillLv5_15(_frameSkill[3]);
         _isSkillLv15 = false;
         _isIncreaseDamage = true;
+        skillRecoveryTimes[3].isTime = true;
         yield return new WaitForSeconds(_frameSkill[3].timeSkill);
         _isSkillLv15 = true;
         _isIncreaseDamage = false;
+        skillRecoveryTimes[3].isTime = false;
+
     }
 
     public void ManaUseSkill()

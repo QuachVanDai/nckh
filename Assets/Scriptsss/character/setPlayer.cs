@@ -45,7 +45,7 @@ public class setPlayer
     {
         for (int i = 1; i <= 20; i++)
         {
-            double v = Math.Round(500 * Math.Pow(i, 0.6f));
+            double v = Math.Round(2000 * Math.Pow(i, 0.6f));
             HpPlayer.Add(i, (int)v);
         }
 
@@ -58,7 +58,7 @@ public class setPlayer
     {
         for (int i = 1; i <= 20; i++)
         {
-            double v = Math.Round(500 * Math.Pow(i, 0.6f));
+            double v = Math.Round(2000 * Math.Pow(i, 0.6f));
             MpPlayer.Add(i, (int)v);
         }
     }

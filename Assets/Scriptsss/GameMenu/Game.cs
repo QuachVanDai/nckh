@@ -17,11 +17,10 @@ public static class Game
     public static void QuitImediately()
     {
         // EventManager.RaiseEvent("OnGameSave");
-#if UNITY_EDITOR
+/*#if UNITY_EDITOR
         EditorApplication.isPlaying = false;
 #else
         Application.Quit();
-        
-#endif
+#endif*/
     }
 }
