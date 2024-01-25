@@ -9,6 +9,7 @@ public abstract class Spawner : NCKHMonoBehaviour
     protected override void loadComponets()
     {
         this.loadPrefabs();
+        Debug.Log("");
     }
     protected virtual void loadPrefabs()
     {
