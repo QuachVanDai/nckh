@@ -1,78 +1,77 @@
 ﻿
 using UnityEngine;
 
-public class PlayerItem : NCKHMonoBehaviour
+public class PlayerItem : MonoBehaviour
 {
-    private static PlayerItem instance;
+    private static PlayerItem _Instance;
 
-    [SerializeField] private Head characterHead;
-    [SerializeField] private Body characterBody;
-    [SerializeField] private Leg characterLeg;
+    [SerializeField] private Head _CharacterHead;
+    [SerializeField] private Body _CharacterBody;
+    [SerializeField] private Leg _CharacterLeg;
     [SerializeField] private Weapon characterWeapon;
 
     [Header("Thay đổi trang phục khi mặc trang bị")]
-    [SerializeField] AvatarSO avatarSO;
-    [SerializeField] ClothSO clothSO;
-    [SerializeField] PantSO pantSO;
+    [SerializeField] AvatarSO AvatarSO;
+    [SerializeField] ClothSO ClothSO;
+    [SerializeField] PantSO PantSO;
     //  [SerializeField] useItem weaponSO;
 
-    public static PlayerItem Instance { get => instance; }
+    public static PlayerItem Instance { get => _Instance; }
 
-    protected override void Awake()
+    protected void Awake()
     {
-        base.Awake();
-        PlayerItem.instance = this;
+        PlayerItem._Instance = this;
     }
     public void setPant(PantSO pant)
     {
-        pantSO = pant;
+        PantSO = pant;
     }
     public void setCloth(ClothSO cloth)
     {
-        clothSO = cloth;
+        ClothSO = cloth;
     }
     public void setPant(AvatarSO avatar)
     {
-        avatarSO = avatar;
+        AvatarSO = avatar;
     }
     // Hàm tự động tìm các đối tượng, chỉ thực thi trong Editor
     private void OnValidate()
     {
-        characterHead = GetComponentInChildren<Head>();
-        characterBody = GetComponentInChildren<Body>();
-        characterLeg = GetComponentInChildren<Leg>();
+        _CharacterHead = GetComponentInChildren<Head>();
+        _CharacterBody = GetComponentInChildren<Body>();
+        _CharacterLeg = GetComponentInChildren<Leg>();
         characterWeapon = GetComponentInChildren<Weapon>();
     }
 
     private void Update()
     {
         // Thay đổi Tóc
-        if (avatarSO != null)
+        if (AvatarSO != null)
         {
-            CharacterCustomization(characterHead.headIdle, avatarSO.GetSpriteIdle);
-            CharacterCustomization(characterHead.headRun, avatarSO.GetSpriteRun);
-            CharacterCustomization(characterHead.headAttack, avatarSO.GetSpriteAttack);
-            CharacterCustomization(characterHead.headDown, avatarSO.GetSpriteDown);
+            CharacterCustomization(_CharacterHead.headIdle, AvatarSO.GetSpriteIdle);
+            CharacterCustomization(_CharacterHead.headRun, AvatarSO.GetSpriteRun);
+            CharacterCustomization(_CharacterHead.headAttack, AvatarSO.GetSpriteAttack);
+            CharacterCustomization(_CharacterHead.headDown, AvatarSO.GetSpriteDown);
         }
 
     
         //// Thay đổi Áo
-        if (clothSO != null)
+        if (ClothSO != null)
         {
-            CharacterCustomization(characterBody.bodyIdle, clothSO.GetSpriteIdle);
-            CharacterCustomization(characterBody.bodyRun, clothSO.GetSpriteRun);
-            CharacterCustomization(characterBody.bodyAttack, clothSO.GetSpriteAttack);
-            CharacterCustomization(characterBody.bodyDown, clothSO.GetSpriteDown);
+            CharacterCustomization(_CharacterBody.bodyIdle, ClothSO.GetSpriteIdle);
+            CharacterCustomization(_CharacterBody.bodyRun, ClothSO.GetSpriteRun);
+            CharacterCustomization(_CharacterBody.bodyAttack, ClothSO.GetSpriteAttack);
+            CharacterCustomization(_CharacterBody.bodyDown, ClothSO.GetSpriteDown);
         }
 
         //// Thay đổi Quần
 
-        if (pantSO != null)
+        if (PantSO != null)
         {
-            CharacterCustomization(characterLeg.legIdle, pantSO.GetSpriteIdle);
-            CharacterCustomization(characterLeg.legRun, pantSO.GetSpriteRun);
-            CharacterCustomization(characterLeg.legAttack, pantSO.GetSpriteAttack);
-            CharacterCustomization(characterLeg.legDown, pantSO.GetSpriteDown);
+            CharacterCustomization(_CharacterLeg.legIdle, PantSO.GetSpriteIdle);
+            CharacterCustomization(_CharacterLeg.legRun, PantSO.GetSpriteRun);
+            CharacterCustomization(_CharacterLeg.legAttack, PantSO.GetSpriteAttack);
+            CharacterCustomization(_CharacterLeg.legDown, PantSO.GetSpriteDown);
         }
         /*if (weaponSO != null)
         {

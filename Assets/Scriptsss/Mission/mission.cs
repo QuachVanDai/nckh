@@ -1,41 +1,73 @@
 
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class mission 
+public class Mission 
 {
-    private ImissionState _State;
-
-    public bool _nhiemvu=false;
-    public bool _IsComplete=false;
-   // private static mission _instance;
-  //  public static mission Instance {  get { return _instance; } }
-    public mission()
-    {
-        setChangeState(new missionNot(this));
-    }
+    private IMissionState _State;
    
-    public void setChangeState(ImissionState State)
+    public bool IsHasMission=false;
+    public bool IsCompleteMission=false;
+    public Monster[] PrefabsMonster;
+    public int MonsterID=-1;
+    public int QuantityMonsterDestroy=0, QuantityMonsterDestroyed=0;
+
+    // private static mission _instance;
+    //  public static mission Instance {  get { return _instance; } }
+
+    public Mission()
+    {
+        setChangeState(new MissionNot(this));
+        QuantityMonsterDestroy = 0;
+        QuantityMonsterDestroyed = 0;
+        IsHasMission = false;
+        IsCompleteMission = false;
+        MonsterID = -1;
+    }
+    public int getIndex()
+    {
+        for (int i = 0; i < PrefabsMonster.Length; i++)
+        {
+            if ((int)PrefabsMonster[i].ID == MonsterID)
+            {
+                MonsterID = i;
+                break;
+            }
+        }
+        return MonsterID;
+    }
+    public Monster getMonster()
+    {
+        if (MonsterID == -1) return null;
+        return PrefabsMonster[MonsterID];
+    }
+
+    public void ThucHienNhiemVu()
+    {
+        if (QuantityMonsterDestroyed + 1 > QuantityMonsterDestroy) return;
+        QuantityMonsterDestroyed++;
+        if (QuantityMonsterDestroy == QuantityMonsterDestroyed)
+        {
+            IsCompleteMission = true;
+            setChangeState(new MissionComplete(this));
+        }
+    }
+
+
+    public void SetUpMisson() //initialization
+    {
+        QuantityMonsterDestroy = Random.Range(5, 10);
+        MonsterID = Random.Range(1, PrefabsMonster.Length);
+        getIndex();
+        IsHasMission = true;
+    }
+
+    public void setChangeState(IMissionState State)
     {
         this._State = State;
     }
-    public ImissionState getChangeState()
+    public IMissionState getChangeState()
     {
        return this._State ;
     }
-    /* public bool CompleteMission() { _State.CompleteMission(); return true;
-     }
-     public bool AgreeMission() { _State.AgreeMission(); return true;// can sua
-     }
-     public bool CancelMission() { _State.CancelMission(); return true;
-     }
-
-     public void setImissionState(ImissionState imissionState)
-     {
-         this._State = imissionState;
-     }*/
-    /* public ImissionState MissionPerform { get {  return this._missionPerform; } set { this._missionPerform = value;     } }
-     public ImissionState MissionComplete { get {  return this._missionComplete; } set { this._missionComplete = value; } }
-     public ImissionState MissionNot { get {  return this._missionNot; } set { this._missionNot = value; } }
-     public ImissionState MissionState { get {  return this._State; } set {  if (this._State != value) { } } }*/
-
 }

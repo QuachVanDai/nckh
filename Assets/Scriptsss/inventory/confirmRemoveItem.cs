@@ -1,9 +1,9 @@
 
 using UnityEngine.EventSystems;
 
-public  class confirmRemoveItem : selectItem
+public  class ConfirmRemoveItem : SelectItem
 {
-    public inventoryUpdate inventoryUpdate;
+    public InventoryUpdate inventoryUpdate;
     public override void OnPointerDown(PointerEventData eventData)
     {
        base.OnPointerDown(eventData);

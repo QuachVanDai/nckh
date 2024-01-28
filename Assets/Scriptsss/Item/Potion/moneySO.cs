@@ -2,7 +2,7 @@ public enum MoneyType
 {
     xu
 }
-public class moneySO : ItemSO
+public class MoneySO : ItemSO
 {
     public MoneyType MoneyType;
 

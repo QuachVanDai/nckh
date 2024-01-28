@@ -2,16 +2,15 @@
 using TMPro;
 using UnityEngine;
 
-public class describeSkill : NCKHMonoBehaviour
+public class DescribeSkill : MonoBehaviour
 {
     
     public Transform[] lstSelect;
     public TextMeshProUGUI txtSkill;
     private int key;
     private string[] desSkill;
-    protected override void loadComponets()
+    private  void Reset()
     {
-        base.loadComponets();
         findSelect();
     }
     private void Start()

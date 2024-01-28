@@ -1,18 +1,17 @@
 using UnityEngine;
 
-public class gameManager : NCKHMonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    private static gameManager instance;
-    public static  gameManager Instance { get { return instance; } }
+    private static GameManager instance;
+    public static  GameManager Instance { get { return instance; } }
 
     [SerializeField]
     private bool isPlayGame;
     public bool IsPlaygame {  get { return isPlayGame; } set { isPlayGame = value; } }
-    protected override void Awake()
+    protected  void Awake()
     {
-        base.Awake();
-        if (gameManager.instance != null) Debug.LogError("Only 1 gameManager allow to exist");
-        gameManager.instance = this;
+        if (GameManager.instance != null) Debug.LogError("Only 1 gameManager allow to exist");
+        GameManager.instance = this;
         isPlayGame = true;
     }
 

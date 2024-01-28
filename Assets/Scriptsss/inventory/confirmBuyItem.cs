@@ -1,8 +1,8 @@
 using UnityEngine.EventSystems;
 
-public  class confirmBuyItem : selectItem
+public  class ConfirmBuyItem : SelectItem
 {
-    public buyItem buyItem;
+    public BuyItem buyItem;
     public override void OnPointerDown(PointerEventData eventData)
     {
         base.OnPointerDown(eventData);

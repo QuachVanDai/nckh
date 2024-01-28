@@ -1,173 +1,166 @@
 ﻿using System.Collections;
 using UnityEngine;
-public class PlayerAttack:NCKHMonoBehaviour
+public class PlayerAttack:MonoBehaviour
 {
-    [SerializeField] private SkillAnimation _skillAnimation;
-    [SerializeField] private FrameSkill[] _frameSkill;
-    [SerializeField] private skillRecoveryTime[] skillRecoveryTimes;
-    private float distance; 
-    public monsterAttacked monsterAttacted;
-    private setPlayer _setPlayer = new setPlayer();
-    private setMonster _setMonste = new setMonster();
-    private setSkillParameters skillParameters = new setSkillParameters();
-    private bool _isActtack, _isSkillLv5, _isSkillLv15, _isIncreaseDamage;
-
-    protected override void loadComponets()
-    {
-     //   frameSkill = new FrameSkill[frameSkill.Length];
-        base.loadComponets();
-        Transform g =  transform.Find("skillAnimation");
-        _skillAnimation = g.GetComponent<SkillAnimation>();
-    }
+    [SerializeField] private SkillAnimation _SkillAnimation;
+    [SerializeField] private FrameSkill[] _FrameSkill;
+    [SerializeField] private SkillRecoveryTime[] _SkillRecoveryTimes;
+    private float _Distance; 
+    public MonsterAttacked MonsterAttacted;
+    public MissionUi MissionUi;
+    private SetPlayer _SetPlayer = new SetPlayer();
+    private SetMonster _SetMonste = new SetMonster();
+    private SetSkillParameters SkillParameters = new SetSkillParameters();
+    private bool _IsActtack, _IsSkillLv5, _IsSkillLv15, _IsIncreaseDamage;
     private void Start()
     {
-        _isActtack = true;
-        _isSkillLv5 = true;
-        _isSkillLv15 = true;
-        _isIncreaseDamage = false;
+        _IsActtack = true;
+        _IsSkillLv5 = true;
+        _IsSkillLv15 = true;
+        _IsIncreaseDamage = false;
     }
 
     private void Update()
     {
         //  
-        if( gameManager.Instance.IsPlaygame == false) return;
+        if( GameManager.Instance.IsPlaygame == false) return;
         // check to see if player is standing on the ground ?
-        if (PlayerController2D.Instance.isGround() == false) return;
-        if (monsterAttacted == null)
+        if (PlayerController2D.Instance.IsGround() == false) return;
+        if (MonsterAttacted == null)
         {
             return;
         }
         // Calculate the distance from the player to the target
 
-        distance = Vector2.Distance(transform.position, monsterAttacted.transform.position);
-        if (distance > 7)
+        _Distance = Vector2.Distance(transform.position, MonsterAttacted.transform.position);
+        if (_Distance > 7)
         {
             systemUi.Instance.infoMonster.gameObject.SetActive(false);
-            monsterAttacted = null;
+            MonsterAttacted = null;
             return;
         }
  
         if (PlayerController2D.Instance.getInputSpace())
         {
             // 
-            if ( distance>4) {
+            if ( _Distance>4) {
                TextTemplate.Instance.SetText(TagScript.khoangCach);
                 return;
             }
 
             // if player use skilllv5 or skilllv15  , player cannot attack.
-            if (useSkill.Instance.getCurrKeySkill() == 1 || useSkill.Instance.getCurrKeySkill() == 3)
+            if (UseSkill.Instance.getCurrKeySkill() == 1 || UseSkill.Instance.getCurrKeySkill() == 3)
             {
                 TextTemplate.Instance.SetText(TagScript.useSkill); return;
             }
             // check mana
             ManaUseSkill();
             // player can attack
-            if (_isActtack)
+            if (_IsActtack)
             {
-                StartCoroutine(playerAttack());
+                StartCoroutine(PlayerAttackMonster());
             }
         }
     }
 
     #region người chơi đánh quái và nhận kinh nghiệm
-    public IEnumerator playerAttack()
+    public IEnumerator PlayerAttackMonster()
     {
         // 
         float damage = Random.Range(
-            Player.Instance._setPlayer.getDamePlayerDictionary(Player.Instance.Level).Item1,
-            Player.Instance._setPlayer.getDamePlayerDictionary(Player.Instance.Level).Item2) *
-            _frameSkill[useSkill.Instance.getCurrKeySkill()].coefficient; //coefficient: hệ số
+            Player.Instance.SetPlayer.getDamePlayerDictionary(Player.Instance.Level).Item1,
+            Player.Instance.SetPlayer.getDamePlayerDictionary(Player.Instance.Level).Item2) *
+            _FrameSkill[UseSkill.Instance.getCurrKeySkill()].coefficient; //coefficient: hệ số
 
         // if player use skillLv15 , player can increase damage
-        if (_isIncreaseDamage)
+        if (_IsIncreaseDamage)
         {
             if (Player.Instance.Level >= 20)
-                damage += skillParameters.getSkillLv15Parameters()[6];
-            else { damage += skillParameters.getSkillLv15Parameters()[Player.Instance.Level - 14]; }
+                damage += SkillParameters.getSkillLv15Parameters()[6];
+            else { damage += SkillParameters.getSkillLv15Parameters()[Player.Instance.Level - 14]; }
         }
         AddExp((int)damage);
-        monsterAttacted.Attacked((int)damage);
-        _skillAnimation.AnimationSkill(_frameSkill[useSkill.Instance.getCurrKeySkill()]);
+        MonsterAttacted.Attacked((int)damage);
+        _SkillAnimation.AnimationSkill(_FrameSkill[UseSkill.Instance.getCurrKeySkill()]);
         PlayerController2D.Instance.Animator.SetBool("IsAttack", true);
-        _isActtack = false;
-        Player.Instance.update_mp(_frameSkill[useSkill.Instance.getCurrKeySkill()].mp*(-1));
+        _IsActtack = false;
+        Player.Instance.PlayerEffect.UpdateMp(_FrameSkill[UseSkill.Instance.getCurrKeySkill()].mp*(-1));
 
         yield return new WaitForSeconds(0.23f);
         PlayerController2D.Instance.Animator.SetBool("IsAttack", false);
-        skillRecoveryTimes[useSkill.Instance.getCurrKeySkill()].isTime = true;
-        yield return new WaitForSeconds(_frameSkill[useSkill.Instance.getCurrKeySkill()].timeSkill);
-        _isActtack = true;
-        skillRecoveryTimes[useSkill.Instance.getCurrKeySkill()].isTime = false;
+        _SkillRecoveryTimes[UseSkill.Instance.getCurrKeySkill()].isTime = true;
+        yield return new WaitForSeconds(_FrameSkill[UseSkill.Instance.getCurrKeySkill()].timeSkill);
+        _IsActtack = true;
+        _SkillRecoveryTimes[UseSkill.Instance.getCurrKeySkill()].isTime = false;
     }
     public void AddExp(float damage)
     {
-        if (monsterAttacted.currMoster._currhp < damage)
+        if (MonsterAttacted.MonCurrent.CurrHp < damage)
         {
-            damage = monsterAttacted.currMoster._currhp;
+            damage = MonsterAttacted.MonCurrent.CurrHp;
         }
-            double exp = (damage * _setMonste.getExpMonsterDictionary()[monsterAttacted.currMoster._level]*100 )
-            / _setPlayer.getExpPlayerDictionary()[Player.Instance.Level];
-        Player.Instance.textGUI((int)damage,Color.blue);
+            double exp = (damage * _SetMonste.getExpMonsterDictionary()[MonsterAttacted.MonCurrent.Level]*100 )
+            / _SetPlayer.getExpPlayerDictionary()[Player.Instance.Level];
+        Player.Instance.PlayerEffect.TextGUI((int)damage,Color.blue);
         if (Player.Instance.PercentExp + exp > 100)
         {
             Player.Instance.PercentExp = 0;
             Player.Instance.Level++;
-            Player.Instance.TxtCurrentLevel.text = Player.Instance.Level.ToString();
+            Player.Instance.PlayerEffect.TxtCurrentLevel.text = Player.Instance.Level.ToString();
         }
         else Player.Instance.PercentExp +=(float) exp;
-        Player.Instance.TxtCurrentPercentExp.text = (Player.Instance.PercentExp).ToString("F2") + "%";
+        Player.Instance.PlayerEffect.TxtCurrentPercentExp.text = (Player.Instance.PercentExp).ToString("F2") + "%";
     }
-    public void findMonster(monsterAttacked m)
+    public void FindMonster(MonsterAttacked m)
     {
-        monsterAttacted = m.GetComponent<monsterAttacked>();
+        MonsterAttacted = m.GetComponent<MonsterAttacked>();
     }
     #endregion 
     #region  người chơi sử dụng kỹ năng lv5 và lv15
-    public void playerUseSkillLv5()
+    public void PlayerUseSkillLv5()
     {
-        if (useSkill.Instance.getIsUseSkill(1) == false) {  return; }
+        if (UseSkill.Instance.getIsUseSkill(1) == false) {  return; }
         ManaUseSkill();
-        if (!_isSkillLv5) { TextTemplate.Instance.SetText(TagScript.hoiChieu); return; }
-        if (_isSkillLv5)
+        if (!_IsSkillLv5) { TextTemplate.Instance.SetText(TagScript.hoiChieu); return; }
+        if (_IsSkillLv5)
         {
             StartCoroutine(UseSkillLv5());
         }
     }
     public IEnumerator UseSkillLv5()
     {
-        _skillAnimation.AnimationSkillLv5_15(_frameSkill[1]);
-        _isSkillLv5 = false;
-        InvokeRepeating(nameof(inCreaseHPMP), 0, 0.5f);
-        skillRecoveryTimes[1].isTime = true;
+        _SkillAnimation.AnimationSkillLv5_15(_FrameSkill[1]);
+        _IsSkillLv5 = false;
+        InvokeRepeating(nameof(InCreaseHPMP), 0, 0.5f);
+        _SkillRecoveryTimes[1].isTime = true;
         yield return new WaitForSeconds(1.5f);
-        CancelInvoke(nameof(inCreaseHPMP));
-        yield return new WaitForSeconds(_frameSkill[1].timeSkill - 1.5f);
-        skillRecoveryTimes[1].isTime = false;
-        _isSkillLv5 = true;
+        CancelInvoke(nameof(InCreaseHPMP));
+        yield return new WaitForSeconds(_FrameSkill[1].timeSkill - 1.5f);
+        _SkillRecoveryTimes[1].isTime = false;
+        _IsSkillLv5 = true;
     }
-    public void inCreaseHPMP()
+    public void InCreaseHPMP()
     {
         float hp, mp;
         if (Player.Instance.Level >= 10)
         {
-            hp = skillParameters.getSkillLv5Parameters()[6];
-            mp = skillParameters.getSkillLv5Parameters()[6];
+            hp = SkillParameters.getSkillLv5Parameters()[6];
+            mp = SkillParameters.getSkillLv5Parameters()[6];
         }
         else
         { 
-            hp = skillParameters.getSkillLv5Parameters()[Player.Instance.Level - 4]; 
-            mp = skillParameters.getSkillLv5Parameters()[Player.Instance.Level - 4]; 
+            hp = SkillParameters.getSkillLv5Parameters()[Player.Instance.Level - 4]; 
+            mp = SkillParameters.getSkillLv5Parameters()[Player.Instance.Level - 4]; 
         }
-        Player.Instance.update_hp(hp);
-        Player.Instance.update_mp(mp);
+        Player.Instance.PlayerEffect.UpdateHp(hp);
+        Player.Instance.PlayerEffect.UpdateMp(mp);
     }
-    public void playerUseSkillLv15()
+    public void PlayerUseSkillLv15()
     {
-        if (useSkill.Instance.getIsUseSkill(3) == false) { return; }
+        if (UseSkill.Instance.getIsUseSkill(3) == false) { return; }
         ManaUseSkill();
-        if (!_isSkillLv15) { TextTemplate.Instance.SetText(TagScript.hoiChieu); return; }
-        if (_isSkillLv15)
+        if (!_IsSkillLv15) { TextTemplate.Instance.SetText(TagScript.hoiChieu); return; }
+        if (_IsSkillLv15)
         {
             StartCoroutine(UseSkillLv15());
         }
@@ -175,22 +168,22 @@ public class PlayerAttack:NCKHMonoBehaviour
 
     public IEnumerator UseSkillLv15()
     {
-        _skillAnimation.AnimationSkillLv5_15(_frameSkill[3]);
-        _isSkillLv15 = false;
-        _isIncreaseDamage = true;
-        skillRecoveryTimes[3].isTime = true;
-        yield return new WaitForSeconds(_frameSkill[3].timeSkill);
-        _isSkillLv15 = true;
-        _isIncreaseDamage = false;
-        skillRecoveryTimes[3].isTime = false;
+        _SkillAnimation.AnimationSkillLv5_15(_FrameSkill[3]);
+        _IsSkillLv15 = false;
+        _IsIncreaseDamage = true;
+        _SkillRecoveryTimes[3].isTime = true;
+        yield return new WaitForSeconds(_FrameSkill[3].timeSkill);
+        _IsSkillLv15 = true;
+        _IsIncreaseDamage = false;
+        _SkillRecoveryTimes[3].isTime = false;
 
     }
 
     public void ManaUseSkill()
     {
-        if (Player.Instance.Currmp < _frameSkill[useSkill.Instance.getCurrKeySkill()].mp)
+        if (Player.Instance.CurrMp < _FrameSkill[UseSkill.Instance.getCurrKeySkill()].mp)
         {
-            Debug.Log("khong du Mana de su dung  " + Player.Instance.Currmp);
+            Debug.Log("khong du Mana de su dung  " + Player.Instance.CurrMp);
             return;
         }
 
@@ -199,8 +192,8 @@ public class PlayerAttack:NCKHMonoBehaviour
  
     void OnDrawGizmos()
     {
-        if (monsterAttacted == null) return;
+        if (MonsterAttacted == null) return;
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, monsterAttacted.transform.position);
+        Gizmos.DrawLine(transform.position, MonsterAttacted.transform.position);
     }
 }

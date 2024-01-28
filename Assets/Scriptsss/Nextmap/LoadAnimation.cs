@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LoadAnimation : NCKHMonoBehaviour
+public class LoadAnimation : MonoBehaviour
 {
     private static LoadAnimation _instance;
     public GameObject sprite_Time1;
@@ -12,9 +12,8 @@ public class LoadAnimation : NCKHMonoBehaviour
 
     public static LoadAnimation Instance {  get { return _instance; } }
 
-    protected override void Awake()
+    protected  void Awake()
     {
-        base.Awake();
         if (LoadAnimation._instance != null) Debug.LogError("Only 1 LoadAnimation allow to exist");
 
         LoadAnimation._instance = this;

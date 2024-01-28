@@ -2,22 +2,22 @@
 using UnityEngine;
 
 [System.Serializable]
-public class slotClass 
+public class SlotClass 
 {
     [SerializeField] private ItemSO _item;
     [SerializeField]  private int _quantity;
 
-    public slotClass()
+    public SlotClass()
     {
         _item = null;
         _quantity = 0;
     }
-    public slotClass(slotClass slot)
+    public SlotClass(SlotClass slot)
     {
         this._item = slot.getItemSO();
         this._quantity = slot.getQuantity();
     }
-    public slotClass (ItemSO item,int quantity)
+    public SlotClass (ItemSO item,int quantity)
     {
         this._item = item;
         this._quantity = quantity;

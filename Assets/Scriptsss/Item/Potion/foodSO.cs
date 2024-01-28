@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 [CreateAssetMenu(fileName = "New food", menuName = "GameData/Items/Potion/Food")]
 
-public class foodSO : potionSO
+public class FoodSO : PotionSO
 {
     [Space]
     [Header("Uses")]

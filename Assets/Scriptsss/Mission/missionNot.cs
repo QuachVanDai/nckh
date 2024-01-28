@@ -1,38 +1,40 @@
 ﻿
-
-//using System.Diagnostics;
-//using UnityEngine;
-
-using System.Diagnostics;
-
-public class missionNot : ImissionState
+using UnityEngine;
+public class MissionNot : IMissionState
 {
 
-    public missionNot(mission mission):base(mission)
+    public MissionNot(Mission mission):base(mission)
     {
-        _mission._nhiemvu = false;
-        _mission._IsComplete = false;
+        _mission.QuantityMonsterDestroy = 0;
+        _mission.QuantityMonsterDestroyed = 0;
+        _mission.IsHasMission = false;
+        _mission.IsCompleteMission = false;
+        _mission.MonsterID = -1;
     }
     public override bool CompleteMission()
     {
-        _mission._IsComplete = false;
-        TextTemplate.Instance.SetText("Chưa có nhiệm vụ MissionNot");
+        TextTemplate.Instance.SetText("Chưa có nhiệm vụ");
         return false;
     }
     public override bool CancelMission()
     {
-        _mission._nhiemvu = false;
-        TextTemplate.Instance.SetText("Chưa có nhiệm vụ để hủy MissionNot");
-        return true;
+        TextTemplate.Instance.SetText("Chưa có nhiệm vụ");
+        return false;
     }
     public override bool AgreeMission()
     {
-        if(_mission._nhiemvu==false)
+        if(_mission.IsHasMission==false)
         {
-            Debug.Write("Đã nhiệm vụ MissionNot");
-            TextTemplate.Instance.SetText("Đã nhiệm vụ MissionNot");
-            _mission.setChangeState(new missionPerform(_mission));
+            TextTemplate.Instance.SetText("Đã nhận nhiệm vụ");
+            _mission.SetUpMisson();
+            _mission.setChangeState(new MissionPerform(_mission));
+            return true;
         }
-        return true;
+        else
+        {
+            TextTemplate.Instance.SetText("Hãy hoàn thành nhiệm vụ trước đó");
+            return false;
+        }
     }
+
 }

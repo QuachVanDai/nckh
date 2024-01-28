@@ -1,6 +1,4 @@
 
-using UnityEditor;
-
 using UnityEngine.SceneManagement;
 
 public static class Game
@@ -12,7 +10,7 @@ public static class Game
     }
     public static void Quit()
     {
-        confirmPanel.Ask("Are you sure you want to quit game?", QuitImediately);
+        ConfirmPanel.Ask("Are you sure you want to quit game?", QuitImediately);
     }
     public static void QuitImediately()
     {

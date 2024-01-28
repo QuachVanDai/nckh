@@ -1,44 +1,46 @@
 ﻿
 using UnityEngine;
 
-public class monsterAttack :NCKHMonoBehaviour
+public class MonsterAttack :MonoBehaviour
 {
-    public float radius = 1.0f;
-    public LayerMask targetPlayer;
-    public Transform firePoint;
-    public GameObject bulletPrefab;
-     monsterWeapons bullet;
-    private monsterAttacked MonAttacked;
-    public monster currMoster;
-    // Khi nhấn nút bắn (ví dụ nút space)
-    private void Start()
+
+    [SerializeField] private float _RadiusAttack = 1.0f;
+    [SerializeField] private LayerMask _Target;
+    [SerializeField] private GameObject _BulletPrefab;
+
+    private MonsterWeapons MonWeapons;
+    public MonsterAttacked MonAttacked;
+    public Monster MonCurrent;
+
+    private void Reset()
     {
-        MonAttacked = GetComponent<monsterAttacked>();
-        currMoster = GetComponent<monster>();
-
+        MonAttacked = GetComponent<MonsterAttacked>();
+        MonCurrent = GetComponent<Monster>();
     }
-
+    // Khi nhấn nút bắn (ví dụ nút space)
+ 
     private void Update()
     {
-        findPlayer();
+        FindPlayer();
     }
     void Shoot()
     {
         // Tạo ra một đạn từ prefab
-       GameObject g = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-       bullet = g.GetComponent<monsterWeapons>();
-       bullet.Damage = Random.Range(currMoster._setMonster.getDameMonsterDictionary(currMoster._level).Item1, currMoster._setMonster.getDameMonsterDictionary(currMoster._level).Item2);
+       GameObject g = Instantiate(_BulletPrefab, transform.localPosition, Quaternion.identity);
+       MonWeapons = g.GetComponent<MonsterWeapons>();
+       MonWeapons.Damage = Random.Range(MonCurrent.SetMonster.getDameMonsterDictionary(MonCurrent.Level).Item1,
+           MonCurrent.SetMonster.getDameMonsterDictionary(MonCurrent.Level).Item2);
         CancelInvoke(nameof(Shoot));
     }
-    public void findPlayer()
+    public void FindPlayer()
     {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, radius, Vector2.zero, 0.0f, targetPlayer);
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, _RadiusAttack, Vector2.zero, 0.0f, _Target);
         foreach (RaycastHit2D hit in hits)
         {
             // Kiểm tra xem đối tượng va chạm có phải là quái vật hay không
             if (hit.collider.CompareTag("player"))
             {
-                if (bullet == null && MonAttacked.currMoster._currhp < MonAttacked.currMoster.HP)
+                if (MonWeapons == null && MonAttacked.MonCurrent.CurrHp < MonAttacked.MonCurrent.MaxHp)
                     Invoke(nameof(Shoot), 1.8f);
                 // Debug.Log("Quái vật đã bị phát hiện!");
             }
@@ -50,6 +52,6 @@ public class monsterAttack :NCKHMonoBehaviour
         Gizmos.color = Color.yellow;
 
         // Vẽ hình tròn tại vị trí của đối tượng với bán kính được thiết lập
-        Gizmos.DrawWireSphere(transform.position, radius);
+        Gizmos.DrawWireSphere(transform.position, _RadiusAttack);
     }
 }

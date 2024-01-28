@@ -1,67 +1,73 @@
 using System.Collections;
 using UnityEngine;
 
-public class monsterAttacked : NCKHMonoBehaviour
+public class MonsterAttacked : MonoBehaviour
 {
-    private monsterController2D monsterController2D;
-    public monster currMoster;
-    public Transform selected;
-    public Transform ani_Attacked;
+
+    [SerializeField] private Transform _PosSelected;
+    [SerializeField] private Transform _PosEffect;
+
     public PlayerAttack PlayerAttack;
-    public junkSO junkSO;
-    void Start()
+    public MonsterController2D _MonsterController2D;
+    public JunkSO JunkSO;
+    public Monster MonCurrent;
+    public MonsterEffect MonEffect;
+    private void Reset()
     {
-        monsterController2D = GetComponent<monsterController2D>();
-        currMoster = GetComponent<monster>();
-    }
-    protected override void loadComponets()
-    {
-        base.loadComponets();
-        selected = transform.Find("selected");
-        ani_Attacked = transform.Find("ani_Attacked");
+        _MonsterController2D = GetComponent<MonsterController2D>();
+        MonCurrent = GetComponent<Monster>();
+        MonEffect = GetComponent<MonsterEffect>();
+        _PosSelected = transform.Find("Selected");
+        _PosEffect = transform.Find("Ani_Attacked");
         GameObject player = GameObject.FindWithTag("player");
         PlayerAttack = player.GetComponent<PlayerAttack>();
     }
+  
+  
     public void Update()
     {
-        if (PlayerAttack.monsterAttacted == this) 
+        if (PlayerAttack.MonsterAttacted == this) 
         { 
-            selected.gameObject.SetActive(true);
+            _PosSelected.gameObject.SetActive(true);
         }
         else 
         {
-            selected.gameObject.SetActive(false);
+            _PosSelected.gameObject.SetActive(false);
         }
     }
    
     private void OnMouseDown()
     {
-        PlayerAttack.findMonster(this);
-        currMoster.update_hp(currMoster._currhp, currMoster.HP,currMoster._name, currMoster._level);
+        PlayerAttack.FindMonster(this);
+        MonEffect.UpdateHp(MonCurrent.CurrHp, MonCurrent.MaxHp,MonCurrent.Name, MonCurrent.Level);
     }
     public void Attacked(int damage)
     {
-        currMoster._currhp -= damage;
-        StartCoroutine(aniAcctacked());
-        currMoster.textGUI( damage*(-1), new Color(1,1,1));
-        if (currMoster._currhp < 0)
+        MonCurrent.CurrHp -= damage;
+        StartCoroutine(EffectAcctacked());
+        MonEffect.TexTGui( damage*(-1), new Color(1,1,1));
+        if (MonCurrent.CurrHp < 0)
         {
-            currMoster.update_hp(0, currMoster.HP, currMoster._name, currMoster._level);
-            itemDropSpawner.Instance.Drop(junkSO.dropRateList, transform.position, Quaternion.identity);
+            MonEffect.UpdateHp(MonCurrent.CurrHp, MonCurrent.MaxHp, MonCurrent.Name, MonCurrent.Level);
+            if(this.PlayerAttack.MissionUi._mission.getMonster().ID==MonCurrent.ID)
+            {
+                this.PlayerAttack.MissionUi.aa90();
+            }
+                // ItemDropSpawner.Instance.Drop(junkSO.dropRateList, transform.position, Quaternion.identity);
 
-            // i.Die(transform.position,Quaternion.identity);
-            systemUi.Instance.infoMonster.gameObject.SetActive(false);
-            monsterController2D.PlayAnimation(monsterStatus.death);
+                // i.Die(transform.position,Quaternion.identity);
+                systemUi.Instance.infoMonster.gameObject.SetActive(false);
+            _MonsterController2D.PlayAnimation(monsterStatus.death);
             Destroy(gameObject,0.5f);
             return;
         }
-       currMoster.update_hp(currMoster._currhp, currMoster.HP,currMoster._name, currMoster._level);
+        MonEffect.UpdateHp(MonCurrent.CurrHp, MonCurrent.MaxHp, MonCurrent.Name, MonCurrent.Level);
     }
 
-    IEnumerator aniAcctacked()
+    public IEnumerator EffectAcctacked()
     {
-        ani_Attacked.gameObject.SetActive(true);
+        _PosEffect.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.4f);
-        ani_Attacked.gameObject.SetActive(false);
+        _PosEffect.gameObject.SetActive(false);
     }
 }

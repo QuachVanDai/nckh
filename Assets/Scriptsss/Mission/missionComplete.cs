@@ -3,18 +3,19 @@
 using System.Diagnostics;
 using TMPro;
 
-public class missionComplete : ImissionState
+public class MissionComplete : IMissionState
 {
-    public missionComplete(mission mission) : base(mission)
+    public MissionComplete(Mission mission) : base(mission)
     {
         
     }
 
     public override bool CompleteMission()
     {
-        if(_mission._IsComplete==true) 
+        if(_mission.IsCompleteMission==true) 
         {
-            TextTemplate.Instance.SetText("Hoàn thanh nhiem vu");
+            TextTemplate.Instance.SetText("Đây là phần thưởng");
+            _mission.setChangeState(new MissionNot(_mission));
             return true;
         }
         return false;
@@ -22,12 +23,18 @@ public class missionComplete : ImissionState
 
     public override bool CancelMission()
     {
-        _mission.setChangeState(new missionNot(_mission));
-        Debug.Write("Hủy nhiệm vụ MissionComplete");
+        TextTemplate.Instance.SetText("Hủy nhiệm vụ thành công");
+        _mission.setChangeState(new MissionNot(_mission));
         return true;
     }
     public override bool AgreeMission()
     {
-        return true;
+        if (_mission.IsCompleteMission == true)
+        {
+            TextTemplate.Instance.SetText("Hoàn thành nhiệm vụ để nhận thưởng");
+            return true;
+        }
+        TextTemplate.Instance.SetText("Hãy hoàn thành nhiệm vụ trước đó");
+        return false;
     }
 }

@@ -2,7 +2,7 @@ public enum PotionType
 {
     mp, hp, food
 }
-public class potionSO : ItemSO
+public class PotionSO : ItemSO
 {
     public PotionType PotionType;
 

@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-public class destroyItemByPlayer : Destroys
+public class DestroyItemByPlayer : Destroys
 {
     bool isDestroy;
     private void OnCollisionEnter2D(Collision2D collision)

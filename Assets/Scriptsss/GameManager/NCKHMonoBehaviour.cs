@@ -7,13 +7,13 @@ public class NCKHMonoBehaviour : MonoBehaviour
     protected virtual void Reset()
     {
 
-        loadComponets();
+        LoadComponent();
     }
     protected virtual void Awake()
     {
-        loadComponets();
+        LoadComponent();
     }
-    protected virtual void loadComponets()
+    protected virtual void LoadComponent()
     {
         //this.loadPrefabs();
     }

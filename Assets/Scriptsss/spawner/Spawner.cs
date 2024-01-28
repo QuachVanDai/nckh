@@ -1,16 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Spawner : NCKHMonoBehaviour
+public abstract class Spawner : MonoBehaviour
 {
     [Header("Spawner")]
     [SerializeField] protected Transform holder;
     [SerializeField] protected List<Transform> lstPrefas;
-    protected override void loadComponets()
+    private void Awake()
     {
         this.loadPrefabs();
-        Debug.Log("");
+
     }
+    
     protected virtual void loadPrefabs()
     {
         if (lstPrefas.Count > 0) { return; }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [SerializeField]
-public class setMonster
+public class SetMonster
 {
     private Dictionary<int, double> ExpMonster
     = new Dictionary<int, double>();
@@ -11,7 +11,7 @@ public class setMonster
     = new Dictionary<int, int>();
     private Dictionary<int, Tuple<int, int>> DameMonster
     = new Dictionary<int, Tuple<int, int>>();
-    public setMonster()
+    public SetMonster()
     {
         setExpMonsterDictionary();
         setHPMonsterDictionary();

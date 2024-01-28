@@ -1,12 +1,11 @@
 ﻿
 using UnityEngine;
 
-public class selectSkill : NCKHMonoBehaviour
+public class SelectSkill : MonoBehaviour
 {
     [SerializeField] protected Transform[] lstSkill;
-    protected override void loadComponets()
+    private void Reset()
     {
-        base.loadComponets();
        // select = transform.Find("select");
        this.loadPrefabs();
     }
@@ -43,7 +42,7 @@ public class selectSkill : NCKHMonoBehaviour
     }
     public void selectUseSkill(int index)
     {
-        if (useSkill.Instance.getIsUseSkill(index)==false) { return; }
+        if (UseSkill.Instance.getIsUseSkill(index)==false) { return; }
         hidePrefabs();
         this.lstSkill[index].gameObject.SetActive(true);
     }

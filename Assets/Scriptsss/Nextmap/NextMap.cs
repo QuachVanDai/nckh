@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-public class NextMap : NCKHMonoBehaviour
+public class NextMap : MonoBehaviour
 {
     private int _index;
     public CAMERAMOVE Camera;

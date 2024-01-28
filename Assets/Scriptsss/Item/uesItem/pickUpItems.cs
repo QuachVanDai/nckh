@@ -1,5 +1,6 @@
+using UnityEngine;
 
-public  class pickUpItems : NCKHMonoBehaviour
+public class PickUpItems : MonoBehaviour
 {
     public ItemSO item;
 }

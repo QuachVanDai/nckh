@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 
-public class setSkillParameters
+public class SetSkillParameters
 {
     private Dictionary<int, int> skilllv5 = new Dictionary<int, int>();
     private Dictionary<int, int> skilllv15 = new Dictionary<int, int>();
 
-    public setSkillParameters() { setParameters(); }
+    public SetSkillParameters() { setParameters(); }
     public void setParameters()
     {
         for (int i = 1; i <= 6; i++)

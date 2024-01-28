@@ -2,22 +2,20 @@ using System;
 
 using UnityEngine;
 
-public class useSkill : NCKHMonoBehaviour
+public class UseSkill : MonoBehaviour
 {
-    private static useSkill instance;
+    private static UseSkill instance;
     private int currKeySkill;
     private int lastKeySkill;
     [SerializeField] protected bool[] isUseSkill;
 
-    public static useSkill Instance {  get { return instance; } }
-    protected override void Awake()
+    public static UseSkill Instance {  get { return instance; } }
+    protected  void Awake()
     {
-        base.Awake();
-        useSkill.instance = this;
+        UseSkill.instance = this;
     }
-    protected override void loadComponets()
+    private void Reset()
     {
-        base.loadComponets();
         isUseSkill =  new bool[5];
         Array.Fill(isUseSkill, false);
         // currLevel = Player.Instance._level;

@@ -1,53 +1,38 @@
 ﻿
 using UnityEngine;
-using UnityEngine.UI;
 
-public class monster:NCKHMonoBehaviour
+
+public class Monster:MonoBehaviour
 {
-    public string _name;
-    public int _level;
-    public float _currhp;
-    public int _minDamage;
-    public int _maxDamage;
-    public RectTransform canvas;
-    public Image fill_bar;
-    public setMonster _setMonster = new setMonster();
-    public GameObject txt_damaged;
+    [SerializeField] private monsterID _ID;
+    [SerializeField] private string _Name;
+    [SerializeField] private int _Level;
 
-    private float _hp;
+    [SerializeField]   private float _MaxHp;
+    [SerializeField]  private float _CurrHp;
+    [SerializeField]  private int _MinDame;
+    [SerializeField] private int _MaxDame;
 
-    public float HP { get { return this._hp; } }
-    protected override void loadComponets()
-    {
-        base.loadComponets();
-        GameObject Object = GameObject.Find("txt_hp");
-    }
-    
-    public void textGUI(int damage, Color color)
-    {
-        
-        GameObject g = Instantiate(txt_damaged);
-        numberTxt numberTxt = g.GetComponent<numberTxt>();
-        numberTxt.aniTextY1(canvas, (int)damage, new Vector3(0, 1.2f, 0), 1, 0.5f, color);
-    }
-
+    public monsterID ID { get { return _ID; } }
+    public int Level { get { return _Level; } set { _Level = value; } }
+    public string Name { get { return _Name; } set { _Name = value; } }
+    public float MaxHp { get { return _MaxHp; } set { _MaxHp = value; } }
+    public float CurrHp { get { return _CurrHp; } set { _CurrHp = value; } }
+    public int MinDame { get { return _MinDame; } set { _MinDame = value; } }
+    public int MaxDame { get { return _MaxDame; } set { _MaxDame = value; } }
+    public SetMonster SetMonster = new SetMonster();
     private void Start()
     {
-        _currhp = _setMonster.getHPMonsterDictionary()[_level];
-        _minDamage = _setMonster.getDameMonsterDictionary(_level).Item1;
-        _minDamage = _setMonster.getDameMonsterDictionary(_level).Item2;
-        this._hp = _currhp;
+        CurrHp = SetMonster.getHPMonsterDictionary()[Level];
+        MaxHp = SetMonster.getHPMonsterDictionary()[Level];
+        MinDame = SetMonster.getDameMonsterDictionary(Level).Item1;
+        MaxDame = SetMonster.getDameMonsterDictionary(Level).Item2;
     }
-    public monster GetMonster()
+    public Monster GetMonster()
     {
         return this;
     }
 
-    public void update_hp(float currency_blood, float max_blood,string _name,int level)
-    {
-        fill_bar.fillAmount = (float)currency_blood / (float)max_blood;
-        systemUi.Instance.infoMonster.text = " " + _name + "  "+"Lv"+level+" " + currency_blood.ToString() +"/"+ max_blood.ToString();
-        systemUi.Instance.infoMonster.gameObject.SetActive(true);
-    }
+ 
 
 }

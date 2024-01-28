@@ -1,15 +1,19 @@
 
 using UnityEngine;
 
-public class mosterMove : MonoBehaviour
+public class MosterMove : MonoBehaviour
 {
-    private monsterController2D monsterController2D;
-    private float getTime;
-    public float t;
+    [SerializeField] private MonsterController2D _MonsterController2D;
+    private float _GetTime;
+    private float HeSO;
+    private void Reset()
+    {
+        _MonsterController2D = GetComponent<MonsterController2D>();
+        HeSO = 2;
+    }
     private void Start()
     {
-        monsterController2D = GetComponent<monsterController2D>();
-        getTime = Time.time;
+        _GetTime = Time.time;
     }
     private void Update()
     {
@@ -17,17 +21,17 @@ public class mosterMove : MonoBehaviour
         {
             return;
         }
-        if (Time.time - getTime <= t)
+        if (Time.time - _GetTime <= HeSO)
         {
-            monsterController2D.PlayAnimation(monsterStatus.idle);
+            _MonsterController2D.PlayAnimation(monsterStatus.idle);
         }
         else
         {
-            monsterController2D.PlayAnimation(monsterStatus.move);
-            if (Time.time - getTime > t * 3)
+            _MonsterController2D.PlayAnimation(monsterStatus.move);
+            if (Time.time - _GetTime > HeSO * 3)
             {
-                getTime = Time.time;
-                t = Random.Range(2, 4);
+                _GetTime = Time.time;
+                HeSO = Random.Range(2, 4);
             }
 
         }

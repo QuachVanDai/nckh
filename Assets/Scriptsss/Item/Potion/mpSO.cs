@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New mp", menuName = "GameData/Items/Potion/Mp")]
-public class mpSO : potionSO
+public class MpSO : PotionSO
 {
     [Space]
     [Header("Uses")]

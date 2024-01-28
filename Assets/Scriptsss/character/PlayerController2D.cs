@@ -1,34 +1,33 @@
 ﻿using UnityEngine;
 
-public  class PlayerController2D:NCKHMonoBehaviour
+public  class PlayerController2D:MonoBehaviour
 {
-    private static PlayerController2D _instance;
+    private static PlayerController2D _Instance;
 
-    [SerializeField] private Transform _groundCheck;
-    [SerializeField] private LayerMask _groundLayer;
-    private Animator _animator;
+    [SerializeField] private Transform _GroundCheck;
+    [SerializeField] private LayerMask _GroundLayer;
+    private Animator _Animator;
 
-    public static PlayerController2D Instance { get => _instance; }
+    public static PlayerController2D Instance { get => _Instance; }
 
     private void Start()
     {
-        _animator = GetComponent<Animator>();
+        _Animator = GetComponent<Animator>();
     }
 
-    protected override void Awake()
+    protected void Awake()
     {
-        base.Awake();
-        if(PlayerController2D._instance != null) { Debug.LogError("chi cho phep 1 PlayerController2D"); }
-        PlayerController2D._instance = this;
+        if(PlayerController2D._Instance != null) { Debug.LogError("chi cho phep 1 PlayerController2D"); }
+        PlayerController2D._Instance = this;
     }
     public Animator Animator
     {
-        get { return this._animator; }
-        set { this._animator = value; }
+        get { return this._Animator; }
+        set { this._Animator = value; }
     }
-    public bool isGround()
+    public bool IsGround()
     {
-        return  Physics2D.Linecast(transform.position, _groundCheck.position, _groundLayer);
+        return  Physics2D.Linecast(transform.position, _GroundCheck.position, _GroundLayer);
     }
     public float getInputHorizontal()
     {

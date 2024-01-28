@@ -1,38 +1,44 @@
 
+using System.Threading;
 using UnityEngine;
 
-public class monsterSpawn : NCKHMonoBehaviour
+public class MonsterSpawn : MonoBehaviour
 {
-    private Transform _tranform;
-    [SerializeField]
-    private monster Monster;
-    [SerializeField]
-    private float SpawnTime;
-    public  GameObject clonedMonster;
-    [SerializeField] protected Transform monsterName;
+    private Transform _Tranform;
 
+    [SerializeField] private float _SpawnTime=5;
+   [SerializeField] private Transform _MonsterName;
+
+    public GameObject HolderMonster;
+    public Monster Monster;
+
+
+    private void Reset()
+    {
+        HolderMonster = GameObject.Find("clonedMonster");
+        _SpawnTime = 5;
+    }
     void Start()
     {
-        clonedMonster = GameObject.Find("clonedMonster");
-        if (_tranform != null) return;
+        if (_Tranform != null) return;
         Monster = Monster.GetMonster();
         if (Monster == null) return;
-        _tranform = lstMonster.Instance.spawn(monsterName.gameObject.name, transform.position, Quaternion.identity);
-        _tranform.parent = clonedMonster.transform;
-        _tranform.gameObject.SetActive(true);
+        _Tranform = lstMonster.Instance.spawn(_MonsterName.gameObject.name, transform.position, Quaternion.identity);
+        _Tranform.parent = HolderMonster.transform;
+        _Tranform.gameObject.SetActive(true);
 
     }
     private void Update()
     {
-        if (_tranform != null) return;
-        InvokeRepeating(nameof(spawnMonster), SpawnTime, 1);
+        if (_Tranform != null) return;
+        InvokeRepeating(nameof(SpawnMonster), _SpawnTime, 1);
     }
-    private void spawnMonster()
+    private void SpawnMonster()
     {
         Monster = Monster.GetMonster();
-        _tranform = lstMonster.Instance.spawn(monsterName.gameObject.name, transform.position, Quaternion.identity);
-        _tranform.gameObject.SetActive(true);
-        _tranform.parent = clonedMonster.transform;
-        CancelInvoke(nameof(spawnMonster));
+        _Tranform = lstMonster.Instance.spawn(_MonsterName.gameObject.name, transform.position, Quaternion.identity);
+        _Tranform.gameObject.SetActive(true);
+        _Tranform.parent = HolderMonster.transform;
+        CancelInvoke(nameof(SpawnMonster));
     }
 }

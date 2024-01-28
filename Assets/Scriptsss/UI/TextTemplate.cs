@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using DG.Tweening;
 
-public class TextTemplate : NCKHMonoBehaviour
+public class TextTemplate : MonoBehaviour
 
 {
     private static TextTemplate instance;
@@ -13,9 +13,8 @@ public class TextTemplate : NCKHMonoBehaviour
     public GameObject panel;
     public static TextTemplate Instance { get { return instance; } }    
     
-    protected override void Awake()
+    protected  void Awake()
     {
-        base.Awake();
         panel.SetActive(true);
         panel.SetActive(false);
         TextTemplate.instance = this;

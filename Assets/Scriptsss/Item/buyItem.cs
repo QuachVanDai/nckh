@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-public class buyItem : NCKHMonoBehaviour
+public class BuyItem : MonoBehaviour
 {
-    public inventoryUpdate inventoryUpdate;
-    public slotClass item;
+    public InventoryUpdate inventoryUpdate;
+    public SlotClass item;
 
 
     private void Update()
@@ -12,7 +12,7 @@ public class buyItem : NCKHMonoBehaviour
     }
 
    
-    public void BuyItem()
+    public void BuyItem1()
     {
         if (item.getItemSO() == null)
         {
@@ -21,7 +21,7 @@ public class buyItem : NCKHMonoBehaviour
         }
         if ( item.getItemSO().itemName == "HP")
         {
-            if(Player.Instance.UpdateXu(item.getItemSO().cost*-1))
+            if(Player.Instance.PlayerEffect.UpdateXu(item.getItemSO().cost*-1))
             {
                 inventoryUpdate.Add(item.getItemSO(), 1);
             }
@@ -29,14 +29,14 @@ public class buyItem : NCKHMonoBehaviour
 
         else if ( item.getItemSO().itemName == "MP")
         {
-            if (Player.Instance.UpdateXu(item.getItemSO().cost*-1))
+            if (Player.Instance.PlayerEffect.UpdateXu(item.getItemSO().cost*-1))
             {
                 inventoryUpdate.Add(item.getItemSO(), 1);
             }
         }
         else if(item.getItemSO().itemName == "chicken")
         {
-            if (Player.Instance.UpdateXu(item.getItemSO().cost*-1))
+            if (Player.Instance.PlayerEffect.UpdateXu(item.getItemSO().cost*-1))
                 inventoryUpdate.Add(item.getItemSO(),1);
         }
        

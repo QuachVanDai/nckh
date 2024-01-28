@@ -2,11 +2,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class usefood: NCKHMonoBehaviour
+public class usefood: MonoBehaviour
 {
     // Start is called before the first frame update
-    public inventoryUpdate inventoryUpdate;
-    public foodSO foodSO;
+    public InventoryUpdate inventoryUpdate;
+    public FoodSO foodSO;
     public TextMeshProUGUI txt_FirstTime;
     public TextMeshProUGUI txt_SecondTime;
     public bool flat;
@@ -40,8 +40,8 @@ public class usefood: NCKHMonoBehaviour
     public void setTimeUse()
     {
         ExpiredTime--;
-        Player.Instance.update_mp(foodSO.MP);
-        Player.Instance.update_hp(foodSO.HP);
+        Player.Instance.PlayerEffect.UpdateMp(foodSO.MP);
+        Player.Instance.PlayerEffect.UpdateHp(foodSO.HP);
         txt_FirstTime.text = (ExpiredTime / 60).ToString()+":";
         txt_SecondTime.text = (ExpiredTime -  ((ExpiredTime / 60) * 60)).ToString();
         if (ExpiredTime <= 0)

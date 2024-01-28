@@ -1,16 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class itemDropSpawner : Spawner
+public class JtemDropSpawner : Spawner
 {
-    private static itemDropSpawner instance;
-    public static itemDropSpawner Instance => instance;
+    private static JtemDropSpawner instance;
+    public static JtemDropSpawner Instance => instance;
 
     protected override void Awake()
     {
         base.Awake();
-        if (itemDropSpawner.instance != null) Debug.LogError("Only 1 itemDropSpawner allow to exist");
-        itemDropSpawner.instance = this;
+        if (JtemDropSpawner.instance != null) Debug.LogError("Only 1 itemDropSpawner allow to exist");
+        JtemDropSpawner.instance = this;
     }
 
     public virtual void Drop(List<DropRate> dropList, Vector3 pos, Quaternion rot)

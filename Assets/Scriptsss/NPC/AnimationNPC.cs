@@ -2,7 +2,7 @@
 using UnityEngine;
 using DG.Tweening;
 
-public class AnimationNPC : NCKHMonoBehaviour
+public class AnimationNPC :MonoBehaviour
 {
     public GameObject head, body;
     public float target_position, time;

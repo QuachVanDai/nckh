@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class skillRecoveryTime: NCKHMonoBehaviour
+public class SkillRecoveryTime: MonoBehaviour
 {
     [SerializeField]
     private FrameSkill FrameSkill;

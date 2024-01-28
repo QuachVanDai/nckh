@@ -1,7 +1,7 @@
 ﻿
 using UnityEngine;
 
-public class gameMenu : MonoBehaviour
+public class GameMenu : MonoBehaviour
 {
     public void quitGame()
     {

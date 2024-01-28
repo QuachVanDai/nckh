@@ -2,10 +2,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class dragAndDrop : NCKHMonoBehaviour
+public class DragAndDrop : MonoBehaviour
 {
-    public inventoryManager inventoryManager;
-    public inventoryUpdate inventoryUpdate;
+    public InventoryManager inventoryManager;
+    public InventoryUpdate inventoryUpdate;
     private void Update()
     {
         inventoryManager.itemCursor.SetActive(inventoryUpdate.isMovingItem);

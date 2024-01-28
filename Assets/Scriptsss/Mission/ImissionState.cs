@@ -1,9 +1,9 @@
 
-public abstract class ImissionState 
+public abstract class IMissionState 
 {
-   public mission _mission;
+   public Mission _mission;
 
-    public ImissionState (mission mission)
+    public IMissionState (Mission mission)
     {
         this._mission = mission;
     }

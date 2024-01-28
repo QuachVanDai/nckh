@@ -3,28 +3,22 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class inventoryManager : NCKHMonoBehaviour
+public class InventoryManager : MonoBehaviour
 {
     
     [SerializeField] private GameObject slotsHolder;
-    [SerializeField] private slotClass[] items ;
-    [SerializeField] private slotClass[] startingItems;
+    [SerializeField] private SlotClass[] items ;
+    [SerializeField] private SlotClass[] startingItems;
     [SerializeField] private TextMeshProUGUI txtShowInfor;
     private GameObject[] slots;
     public GameObject itemCursor;
-
-
-    protected override void Awake()
-    {
-        base.Awake();
-    }
     public virtual void Start()
     {
         slots = new GameObject[slotsHolder.transform.childCount];
 
-        items = new slotClass[slots.Length];
+        items = new SlotClass[slots.Length];
         for (int i = 0; i < items.Length; i++)
-            items[i] = new slotClass();
+            items[i] = new SlotClass();
 
         for (int i = 0; i < startingItems.Length; i++)
         {
@@ -70,7 +64,7 @@ public class inventoryManager : NCKHMonoBehaviour
         }
         slots[index].transform.GetChild(0).gameObject.SetActive(true);
     }
-    public slotClass GetClosestSLot()
+    public SlotClass GetClosestSLot()
     {
         for (int i = 0; i < slots.Length; i++)
         {
@@ -83,8 +77,8 @@ public class inventoryManager : NCKHMonoBehaviour
         return null;
     }
     public GameObject[] getSlots() { return slots; }
-    public slotClass[] getstartingItems() { return startingItems; }
-    public slotClass[] getItems() { return items; }
+    public SlotClass[] getstartingItems() { return startingItems; }
+    public SlotClass[] getItems() { return items; }
 
    public void settxtShowInfor(string text)
     {

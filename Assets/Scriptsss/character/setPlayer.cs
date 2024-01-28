@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [SerializeField]
-public class setPlayer
+public class SetPlayer
 {
   
     private Dictionary<int, int> ExpPlayer
@@ -15,7 +15,7 @@ public class setPlayer
     private Dictionary<int, Tuple<int, int>> DamePlayer
     = new Dictionary<int, Tuple<int, int>>();
   
-    public setPlayer()
+    public SetPlayer()
     {
         setExpPlayerDictionary();
         setHPPlayerDictionary();

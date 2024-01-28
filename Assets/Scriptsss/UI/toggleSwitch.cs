@@ -1,12 +1,12 @@
- 
+
 using UnityEngine;
 
-public class toggleSwitch : NCKHMonoBehaviour
+public class ToggleSwitch : MonoBehaviour
 {
     public GameObject[] hiddenObject;
     public void Switch()
     {
-        if(!gameManager.Instance.IsPlaygame) { return; }
+        if(!GameManager.Instance.IsPlaygame) { return; }
         for(int i = 0; i < hiddenObject.Length; i++)
         {
             hiddenObject[i].SetActive(false);

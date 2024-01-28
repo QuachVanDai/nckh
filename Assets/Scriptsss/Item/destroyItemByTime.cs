@@ -1,6 +1,6 @@
 
 
-public class destroyItemByTime : Destroys
+public class DestroyItemByTime : Destroys
 {
     private bool _CanDestroy;
     private void Start()

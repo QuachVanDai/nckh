@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 [CreateAssetMenu(fileName = "New xu", menuName = "GameData/Items/Potion/Xu")]
-public class xuSO : moneySO
+public class XuSO : MoneySO
 {
     [Space]
     [Header("Uses")]

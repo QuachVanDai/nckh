@@ -1,5 +1,6 @@
+using UnityEngine;
 
-public abstract class Destroys : NCKHMonoBehaviour
+public abstract class Destroys :MonoBehaviour
 {
 
     public virtual void Update()

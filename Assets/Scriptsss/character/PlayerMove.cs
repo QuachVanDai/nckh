@@ -9,10 +9,10 @@ public class PlayerMove : MonoBehaviour
     public float RunSpeed = 0f;
     public bool FacingRight = true;
     private Rigidbody2D Rigidbody2D;
-    private float _moveInput = 0f;
-    private float  _jumpInput=0f;
+    private float _MoveInput = 0f;
+    private float  _JumpInput=0f;
 
-    [SerializeField] private float _jumpForce;
+    [SerializeField] private float _JumpForce;
 
     private void Awake()
     {
@@ -20,28 +20,28 @@ public class PlayerMove : MonoBehaviour
     }
     private void Update()
     {
-        if (gameManager.Instance.IsPlaygame == false) return;
+        if (GameManager.Instance.IsPlaygame == false) return;
 
-        _moveInput = PlayerController2D.Instance.getInputHorizontal();
-        _jumpInput = PlayerController2D.Instance.getInputVertical();
+        _MoveInput = PlayerController2D.Instance.getInputHorizontal();
+        _JumpInput = PlayerController2D.Instance.getInputVertical();
 
-        if (!PlayerController2D.Instance.isGround() && _jumpInput == 0)
+        if (!PlayerController2D.Instance.IsGround() && _JumpInput == 0)
         {
             PlayerController2D.Instance.Animator.SetBool("IsIdleToDown", true);
         }
-        Move(RunSpeed*_moveInput);
-        if (PlayerController2D.Instance.isGround())
+        Move(RunSpeed*_MoveInput);
+        if (PlayerController2D.Instance.IsGround())
         {
             PlayerController2D.Instance.Animator.SetBool("IsIdleToJump", false);
             PlayerController2D.Instance.Animator.SetBool("IsIdleToDown", false);
 
-            if (_jumpInput > 0 && Rigidbody2D.velocity.y == 0)
+            if (_JumpInput > 0 && Rigidbody2D.velocity.y == 0)
             {
-                Rigidbody2D.velocity = new Vector2(Rigidbody2D.velocity.x, _jumpForce);
+                Rigidbody2D.velocity = new Vector2(Rigidbody2D.velocity.x, _JumpForce);
                 PlayerController2D.Instance.Animator.SetBool("IsIdleToJump", true);
                 PlayerController2D.Instance.Animator.SetBool("IsIdleToDown", true);
             }
-            PlayerController2D.Instance.Animator.SetFloat("Speed", Mathf.Abs(_moveInput));
+            PlayerController2D.Instance.Animator.SetFloat("Speed", Mathf.Abs(_MoveInput));
 
         }
         PlayerController2D.Instance.Animator.SetFloat("Jumping", Rigidbody2D.velocity.y);

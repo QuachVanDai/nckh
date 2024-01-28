@@ -1,30 +1,29 @@
-
+﻿
+using System.Reflection;
+using TMPro;
 using UnityEngine;
 
-public class missionUi : MonoBehaviour
+public class MissionUi : MonoBehaviour
 {
-    private mission _mission;
-    public bool iscom, isNhiemVu;
+    public Mission _mission;
+    public Monster[] Monsters;
+    public TextMeshProUGUI textMeshProUGUI;
+
     // Start is called before the first frame update
     void Start()
     {
-        _mission = new mission();
-        iscom = _mission._IsComplete;
-        isNhiemVu = _mission._nhiemvu;
+        _mission = new Mission();
+        _mission.PrefabsMonster = Monsters;
     }
-    public void isComplete()
+    public void Update()
     {
-        _mission._IsComplete = !_mission._IsComplete;
-        iscom = _mission._IsComplete;
-        if(iscom)
-        {
-            _mission.setChangeState(new missionComplete(_mission));
-        }
+        if(!_mission.getMonster()) { textMeshProUGUI.text = "Chưa có nhiệm vụ"; return; }
+
+        textMeshProUGUI.text ="Hạ gục "+ _mission.QuantityMonsterDestroyed+"/ "+_mission.QuantityMonsterDestroy+" " + _mission.getMonster().Name;
     }
-    public void isNhiemvu()
+    public void aa90()
     {
-        _mission._nhiemvu = !_mission._nhiemvu;
-        isNhiemVu = _mission._nhiemvu;
+        _mission.ThucHienNhiemVu();
     }
     public void AgreeMission()
     {

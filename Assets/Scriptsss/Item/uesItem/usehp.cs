@@ -3,16 +3,16 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class usehp: NCKHMonoBehaviour
+public class usehp: MonoBehaviour
 {
     // Start is called before the first frame update
-    public hpSO hpSO;
+    public HpSO hpSO;
     public int quanitity = 0;
     public TextMeshProUGUI txt_quanitity;
     public bool flat;
     public Image Fill_time;
     private float getTime;
-    public inventoryUpdate inventoryUpdate;
+    public InventoryUpdate inventoryUpdate;
 
     void Start()
     {
@@ -32,7 +32,7 @@ public class usehp: NCKHMonoBehaviour
         {
             getTime = Time.time;
             flat = false;
-            if(Player.Instance.Currhp== Player.Instance.HP)
+            if(Player.Instance.CurrHp== Player.Instance.MaxHp)
             {
                 TextTemplate.Instance.SetText(TagScript.fullHP);
                 yield return null;
@@ -40,7 +40,7 @@ public class usehp: NCKHMonoBehaviour
             }
             else
             {
-                Player.Instance.update_hp(hpSO.hP);
+                Player.Instance.PlayerEffect.UpdateHp(hpSO.hP);
                 quanitity = inventoryUpdate.updateHP(-1);
                 txt_quanitity.text = quanitity.ToString();
                // inventoryUpdate.RefreshUI();

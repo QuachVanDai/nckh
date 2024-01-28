@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class confirmPanel : MonoBehaviour
+public class ConfirmPanel : MonoBehaviour
 {
     private static Action<string, Action, Action> _instanceCallback;
 

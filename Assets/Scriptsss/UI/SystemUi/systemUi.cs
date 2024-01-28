@@ -13,9 +13,9 @@ public class systemUi : NCKHMonoBehaviour
         systemUi.instance = this;
     }
 
-    protected override void loadComponets()
+    protected override void LoadComponent()
     {
-        base.loadComponets();
+        base.LoadComponent();
         GameObject Object = GameObject.Find("inforMonster");
         infoMonster = Object.GetComponent<TextMeshProUGUI>();
        infoMonster.gameObject.SetActive(false);

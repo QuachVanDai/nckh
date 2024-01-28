@@ -1,31 +1,30 @@
 ﻿
 using UnityEngine;
 
-public class inventoryUpdate : NCKHMonoBehaviour
+public class InventoryUpdate : MonoBehaviour
 {
-    [SerializeField]  private inventoryManager inventoryManager;
+    [SerializeField]  private InventoryManager inventoryManager;
    // private GameObject[] slots;
-    private slotClass temSlot;
-    private slotClass originalSlot;
+    private SlotClass temSlot;
+    private SlotClass originalSlot;
 
     public bool isMovingItem;
-    public slotClass movingSlot;
+    public SlotClass movingSlot;
 
 
-     private static inventoryUpdate instance;
-    public static inventoryUpdate Instance { get => instance; }
+     private static InventoryUpdate instance;
+    public static InventoryUpdate Instance { get => instance; }
 
-    protected override void Awake()
+    protected void Awake()
     {
-        base.Awake();
-        if (inventoryUpdate.instance != null) Debug.LogError("Only 1 inventoryUpdate allow to exist");
-        inventoryUpdate.instance = this;
+        if (InventoryUpdate.instance != null) Debug.LogError("Only 1 inventoryUpdate allow to exist");
+        InventoryUpdate.instance = this;
     }
   
     #region units
     public bool Add(ItemSO item,int quantity)
     {
-        slotClass sl = Contain(item);
+        SlotClass sl = Contain(item);
         if (sl != null && sl.getItemSO().isStackable)
         {
             sl.addQuantity(quantity);
@@ -49,7 +48,7 @@ public class inventoryUpdate : NCKHMonoBehaviour
     {
 
         int slotToRemoveIndex=0 ;
-        slotClass temp = Contain(ItemSO);
+        SlotClass temp = Contain(ItemSO);
         if (temp != null)
         {
             if (temp.getQuantity()>1)
@@ -82,7 +81,7 @@ public class inventoryUpdate : NCKHMonoBehaviour
     {
         Remove(i);
     }
-    public slotClass Contain(ItemSO item)
+    public SlotClass Contain(ItemSO item)
     {
 
         for (int i = 0; i < inventoryManager.getItems().Length; i++)
@@ -227,7 +226,7 @@ public class inventoryUpdate : NCKHMonoBehaviour
         {
             return false;
         }
-        movingSlot = new slotClass(originalSlot);
+        movingSlot = new SlotClass(originalSlot);
         isMovingItem = true;
         originalSlot.Clear();
         inventoryManager.RefreshUI();
@@ -260,7 +259,7 @@ public class inventoryUpdate : NCKHMonoBehaviour
                     }
                     else
                     {
-                        temSlot = new slotClass(originalSlot);
+                        temSlot = new SlotClass(originalSlot);
                         originalSlot.addItemSO(movingSlot.getItemSO(), movingSlot.getQuantity());
                         movingSlot.addItemSO(temSlot.getItemSO(), temSlot.getQuantity());
                     inventoryManager.RefreshUI();

@@ -1,5 +1,6 @@
+using UnityEngine;
 
-public  class pickUpMoney : NCKHMonoBehaviour
+public class PickUpMoney : MonoBehaviour
 {
-    public xuSO xu;
+    public XuSO xu;
 }
