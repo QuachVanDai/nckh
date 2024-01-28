@@ -1,11 +1,10 @@
 
-using Unity.VisualScripting;
 using UnityEngine;
 public enum monsterStatus { idle, move, attack, death }
 public class MonsterController2D : MonoBehaviour
 {
 
-    [SerializeField] private  monsterStatus _Status;
+    public  monsterStatus _Status;
     [SerializeField] private Animator _Animator;
     [Range(1,3)]
     [SerializeField] private float _Speed=1;

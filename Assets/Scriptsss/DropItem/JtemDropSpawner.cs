@@ -6,9 +6,8 @@ public class JtemDropSpawner : Spawner
     private static JtemDropSpawner instance;
     public static JtemDropSpawner Instance => instance;
 
-    protected override void Awake()
+    protected  void Awake()
     {
-        base.Awake();
         if (JtemDropSpawner.instance != null) Debug.LogError("Only 1 itemDropSpawner allow to exist");
         JtemDropSpawner.instance = this;
     }

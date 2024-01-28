@@ -7,9 +7,8 @@ public class lstMonster : Spawner
     public static string MonsterName;
     protected int Index=0;
     public static lstMonster Instance { get => _Instance; }
-    protected override void Awake()
+    protected  void Awake()
     {
-        base.Awake(); 
         lstMonster._Instance = this;
     }
 
