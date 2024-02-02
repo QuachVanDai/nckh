@@ -29,7 +29,8 @@ public class TextTemplate : MonoBehaviour
     {
         if (Flat)
         {
-            textMeshPro.text = text;
+                
+                textMeshPro.text = text;
             panel.SetActive(true);
             // Lấy chiều dài của văn bản
             float textWidth = textMeshPro.preferredWidth;

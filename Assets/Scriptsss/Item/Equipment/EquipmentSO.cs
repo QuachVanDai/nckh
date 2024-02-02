@@ -3,18 +3,22 @@ using UnityEngine;
 
 public enum EquipmentType
 {
-    Cloth, Pant, Glove, Shoe, Rada, Avatar
+    Cloth, Pant, Glove, Shoe, Avatar
 }
 
 public class EquipmentSO : ItemSO
 {
     public EquipmentType equipmentType;
+    public int Level;
+    public int Buy;
+    public int Price;
+    public string Description;
 
     public override void Update()
     {
         base.Update();
 
-        this.itemType = ItemType.Equipment;
+        this.ItemType = ItemType.Equipment;
     }
     private Sprite[] spriteIdle;
     public Sprite[] GetSpriteIdle

@@ -5,12 +5,14 @@ public class PlayerAttack:MonoBehaviour
     [SerializeField] private SkillAnimation _SkillAnimation;
     [SerializeField] private FrameSkill[] _FrameSkill;
     [SerializeField] private SkillRecoveryTime[] _SkillRecoveryTimes;
-    private float _Distance; 
+
     public MonsterAttacked MonsterAttacted;
     public MissionUi MissionUi;
+
+    private float _Distance; 
     private SetPlayer _SetPlayer = new SetPlayer();
     private SetMonster _SetMonste = new SetMonster();
-    private SetSkillParameters SkillParameters = new SetSkillParameters();
+    private SetSkillParameters _SkillParameters = new SetSkillParameters();
     private bool _IsActtack, _IsSkillLv5, _IsSkillLv15, _IsIncreaseDamage;
     private void Start()
     {
@@ -22,20 +24,16 @@ public class PlayerAttack:MonoBehaviour
 
     private void Update()
     {
-        //  
         if( GameManager.Instance.IsPlaygame == false) return;
-        // check to see if player is standing on the ground ?
         if (PlayerController2D.Instance.IsGround() == false) return;
         if (MonsterAttacted == null)
         {
             return;
         }
-        // Calculate the distance from the player to the target
-
         _Distance = Vector2.Distance(transform.position, MonsterAttacted.transform.position);
         if (_Distance > 7)
         {
-            systemUi.Instance.infoMonster.gameObject.SetActive(false);
+            SystemUi.Instance.InfoMonster.gameObject.SetActive(false);
             MonsterAttacted = null;
             return;
         }
@@ -76,8 +74,8 @@ public class PlayerAttack:MonoBehaviour
         if (_IsIncreaseDamage)
         {
             if (Player.Instance.Level >= 20)
-                damage += SkillParameters.getSkillLv15Parameters()[6];
-            else { damage += SkillParameters.getSkillLv15Parameters()[Player.Instance.Level - 14]; }
+                damage += _SkillParameters.getSkillLv15Parameters()[6];
+            else { damage += _SkillParameters.getSkillLv15Parameters()[Player.Instance.Level - 14]; }
         }
         AddExp((int)damage);
         MonsterAttacted.Attacked((int)damage);
@@ -85,7 +83,6 @@ public class PlayerAttack:MonoBehaviour
         PlayerController2D.Instance.Animator.SetBool("IsAttack", true);
         _IsActtack = false;
         Player.Instance.PlayerEffect.UpdateMp(_FrameSkill[UseSkill.Instance.getCurrKeySkill()].mp*(-1));
-
         yield return new WaitForSeconds(0.23f);
         PlayerController2D.Instance.Animator.SetBool("IsAttack", false);
         _SkillRecoveryTimes[UseSkill.Instance.getCurrKeySkill()].isTime = true;
@@ -101,8 +98,8 @@ public class PlayerAttack:MonoBehaviour
         }
             double exp = (damage * _SetMonste.getExpMonsterDictionary()[MonsterAttacted.MonCurrent.Level]*100 )
             / _SetPlayer.getExpPlayerDictionary()[Player.Instance.Level];
-        Player.Instance.PlayerEffect.TextGUI((int)damage,Color.blue);
-        if (Player.Instance.PercentExp + exp > 100)
+        Player.Instance.PlayerEffect.TextGUI((int)damage,new Color(0,1, 0.753031f,1));
+        if (Player.Instance.PercentExp + exp >= 100)
         {
             Player.Instance.PercentExp = 0;
             Player.Instance.Level++;
@@ -144,13 +141,13 @@ public class PlayerAttack:MonoBehaviour
         float hp, mp;
         if (Player.Instance.Level >= 10)
         {
-            hp = SkillParameters.getSkillLv5Parameters()[6];
-            mp = SkillParameters.getSkillLv5Parameters()[6];
+            hp = _SkillParameters.getSkillLv5Parameters()[6];
+            mp = _SkillParameters.getSkillLv5Parameters()[6];
         }
         else
         { 
-            hp = SkillParameters.getSkillLv5Parameters()[Player.Instance.Level - 4]; 
-            mp = SkillParameters.getSkillLv5Parameters()[Player.Instance.Level - 4]; 
+            hp = _SkillParameters.getSkillLv5Parameters()[Player.Instance.Level - 4]; 
+            mp = _SkillParameters.getSkillLv5Parameters()[Player.Instance.Level - 4]; 
         }
         Player.Instance.PlayerEffect.UpdateHp(hp);
         Player.Instance.PlayerEffect.UpdateMp(mp);

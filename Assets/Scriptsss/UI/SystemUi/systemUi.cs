@@ -1,34 +1,25 @@
 using TMPro;
 using UnityEngine;
 
-public class systemUi : NCKHMonoBehaviour
+public class SystemUi : MonoBehaviour
 {
-    private static systemUi instance;
+    private static SystemUi _Instance;
 
-    public TextMeshProUGUI infoMonster;
-    public static systemUi Instance { get => instance; }
-    protected override void Awake()
+    public TextMeshProUGUI InfoMonster;
+    public static SystemUi Instance { get => _Instance; }
+    protected void Awake()
     {
-        base.Awake();
-        systemUi.instance = this;
-    }
-
-    protected override void LoadComponent()
-    {
-        base.LoadComponent();
-        GameObject Object = GameObject.Find("inforMonster");
-        infoMonster = Object.GetComponent<TextMeshProUGUI>();
-       infoMonster.gameObject.SetActive(false);
+        SystemUi._Instance = this;
     }
     // Start is called before the first frame update
     void Start()
     {
-        
+        InfoMonster.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

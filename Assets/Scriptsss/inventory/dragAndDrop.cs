@@ -11,7 +11,7 @@ public class DragAndDrop : MonoBehaviour
         inventoryManager.itemCursor.SetActive(inventoryUpdate.isMovingItem);
         inventoryManager.itemCursor.transform.position = Input.mousePosition;
         if (inventoryUpdate.isMovingItem) { inventoryManager.itemCursor.GetComponent<Image>().
-                sprite = inventoryUpdate.movingSlot.getItemSO().icon; }
+                sprite = inventoryUpdate.movingSlot.getItemSO().Icon; }
 
 
         if (Input.GetMouseButtonDown(1))

@@ -45,18 +45,21 @@ public class MonsterAttacked : MonoBehaviour
     {
         MonCurrent.CurrHp -= damage;
         StartCoroutine(EffectAcctacked());
-        MonEffect.TexTGui( damage*(-1), new Color(1,1,1));
+        MonEffect.TexTGui( damage*(-1), Color.red);
         if (MonCurrent.CurrHp < 0)
         {
             MonEffect.UpdateHp(MonCurrent.CurrHp, MonCurrent.MaxHp, MonCurrent.Name, MonCurrent.Level);
-            if(this.PlayerAttack.MissionUi._mission.getMonster().ID==MonCurrent.ID)
+            if (this.PlayerAttack.MissionUi._mission.getMonster())
             {
-                this.PlayerAttack.MissionUi.aa90();
+                if (this.PlayerAttack.MissionUi._mission.getMonster().ID == MonCurrent.ID)
+                {
+                    this.PlayerAttack.MissionUi.aa90();
+                }
             }
                 // ItemDropSpawner.Instance.Drop(junkSO.dropRateList, transform.position, Quaternion.identity);
 
                 // i.Die(transform.position,Quaternion.identity);
-                systemUi.Instance.infoMonster.gameObject.SetActive(false);
+                SystemUi.Instance.InfoMonster.gameObject.SetActive(false);
             _MonsterController2D.PlayAnimation(monsterStatus.death);
             Destroy(gameObject,0.5f);
             return;

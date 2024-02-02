@@ -17,7 +17,7 @@ public class MonsterEffect : MonoBehaviour
     public void UpdateHp(float CurrentHp, float MaxHp, string Name, int Level)
     {
         _HpBar.fillAmount = (float)CurrentHp / (float)MaxHp;
-        systemUi.Instance.infoMonster.text = " " + Name + "  " + "Lv" + Level + " " + CurrentHp.ToString() + "/" + MaxHp.ToString();
-        systemUi.Instance.infoMonster.gameObject.SetActive(true);
+        SystemUi.Instance.InfoMonster.text = " " + Name + "  " + "Lv" + Level + " " + CurrentHp.ToString() + "/" + MaxHp.ToString();
+        SystemUi.Instance.InfoMonster.gameObject.SetActive(true);
     }
 }

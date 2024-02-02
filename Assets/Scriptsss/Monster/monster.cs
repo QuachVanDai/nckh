@@ -1,7 +1,5 @@
 ﻿
 using UnityEngine;
-
-
 public class Monster:MonoBehaviour
 {
     [SerializeField] private monsterID _ID;

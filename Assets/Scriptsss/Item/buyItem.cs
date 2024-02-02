@@ -19,25 +19,25 @@ public class BuyItem : MonoBehaviour
             Debug.Log("NUll");
             return;
         }
-        if ( item.getItemSO().itemName == "HP")
+        if ( item.getItemSO().ItemName == "HP")
         {
-            if(Player.Instance.PlayerEffect.UpdateXu(item.getItemSO().cost*-1))
+            /*if(Player.Instance.PlayerEffect.UpdateXu(item.getItemSO().Buy*-1))
             {
                 inventoryUpdate.Add(item.getItemSO(), 1);
-            }
+            }*/
         }
 
-        else if ( item.getItemSO().itemName == "MP")
+        else if ( item.getItemSO().ItemName == "MP")
         {
-            if (Player.Instance.PlayerEffect.UpdateXu(item.getItemSO().cost*-1))
+            /*if (Player.Instance.PlayerEffect.UpdateXu(item.getItemSO().Buy * -1))
             {
                 inventoryUpdate.Add(item.getItemSO(), 1);
-            }
+            }*/
         }
-        else if(item.getItemSO().itemName == "chicken")
+        else if(item.getItemSO().ItemName == "chicken")
         {
-            if (Player.Instance.PlayerEffect.UpdateXu(item.getItemSO().cost*-1))
-                inventoryUpdate.Add(item.getItemSO(),1);
+           /* if (Player.Instance.PlayerEffect.UpdateXu(item.getItemSO().Buy * -1))
+                inventoryUpdate.Add(item.getItemSO(),1);*/
         }
        
     }

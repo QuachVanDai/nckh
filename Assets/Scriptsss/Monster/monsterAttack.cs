@@ -4,7 +4,7 @@ using UnityEngine;
 public class MonsterAttack :MonoBehaviour
 {
 
-    [SerializeField] private float _RadiusAttack = 1.0f;
+     private const float _RadiusAttack = 4f;
     [SerializeField] private LayerMask _Target;
     [SerializeField] private GameObject _BulletPrefab;
 

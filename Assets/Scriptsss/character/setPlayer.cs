@@ -32,7 +32,7 @@ public class SetPlayer
     {
         for (int i = 1; i <= 20; i++)
         {
-            double v = Math.Round(1500 * Math.Pow(i, 1.5f));
+            double v = Math.Round(1500 * Math.Pow(i, 1.2f));
             ExpPlayer.Add(i, (int)v);
         }
 

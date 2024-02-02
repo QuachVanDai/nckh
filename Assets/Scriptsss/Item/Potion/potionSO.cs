@@ -5,11 +5,14 @@ public enum PotionType
 public class PotionSO : ItemSO
 {
     public PotionType PotionType;
-
+    public int Level;
+    public int Buy;
+    public int Price;
+    public string Description;
     public override void Update()
     {
         base.Update();
-        this.itemType = ItemType.Potion;
+        this.ItemType = ItemType.Potion;
     }
     private int _hP;
     public int HP

@@ -1,4 +1,5 @@
 ﻿using TMPro;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +8,7 @@ public class Player : MonoBehaviour
     private static Player _Instance;
     public string Name;
     public int Level;
-    public float MaxHp;
+    [ReadOnly]public float MaxHp;
     public float CurrHp;
     public float MaxMp;
     public float CurrMp;
@@ -33,7 +34,7 @@ public class Player : MonoBehaviour
     protected void LoadComponent()
     {
         SetPlayer = new SetPlayer();
-        Level = 20;
+        Level = 1;
         MinDamage = SetPlayer.getDamePlayerDictionary(Level).Item1;
         MaxDamage = SetPlayer.getDamePlayerDictionary(Level).Item2;
         MaxHp = SetPlayer.getHPPlayerDictionary()[Level];

@@ -25,7 +25,7 @@ public class SetMonster
     {
         for (int i = 1; i <= 20; i++)
         {
-            ExpMonster.Add(i, 0.5f * Math.Pow(i, 0.8f));
+            ExpMonster.Add(i, 1.32324f * Math.Pow(i, 0.8f));
         }
     }
 

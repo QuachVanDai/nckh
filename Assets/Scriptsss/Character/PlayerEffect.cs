@@ -7,9 +7,8 @@ public class PlayerEffect : MonoBehaviour
     public TextMeshProUGUI TxtCurrentName;
     public TextMeshProUGUI TxtCurrentHP;
     public TextMeshProUGUI TxtCurrentMP;
-    public TextMeshProUGUI TxtCurrentClassName;
-    public TextMeshProUGUI TxtCurrentMinDamage;
-    public TextMeshProUGUI TxtCurrentMaxDamage;
+/*    public TextMeshProUGUI TxtCurrentMinDamage;
+    public TextMeshProUGUI TxtCurrentMaxDamage;*/
     public TextMeshProUGUI TxtCurrentLevel;
     public TextMeshProUGUI TxtCurrentPercentExp;
     public TextMeshProUGUI TxtCurrentGold;
@@ -30,22 +29,25 @@ public class PlayerEffect : MonoBehaviour
     }
     protected void LoadComponent()
     {
-        GameObject Object = GameObject.Find("txt_hp");
+        GameObject Object = GameObject.Find("TxtHp");
         TxtCurrentHP = Object.GetComponent<TextMeshProUGUI>();
 
-        Object = GameObject.Find("txt_mp");
+        Object = GameObject.Find("TxtMp");
         TxtCurrentMP = Object.GetComponent<TextMeshProUGUI>();
 
-        Object = GameObject.Find("percentage");
+        Object = GameObject.Find("Percentage");
         TxtCurrentPercentExp = Object.GetComponent<TextMeshProUGUI>();
 
-        Object = GameObject.Find("level");
+        Object = GameObject.Find("TextGold");
+        TxtCurrentGold = Object.GetComponent<TextMeshProUGUI>();
+
+        Object = GameObject.Find("Level");
         TxtCurrentLevel = Object.GetComponent<TextMeshProUGUI>();
 
-        Object = GameObject.Find("full_hp");
+        Object = GameObject.Find("FullHp");
         FillBarHP = Object.GetComponent<Image>();
 
-        Object = GameObject.Find("full_mp");
+        Object = GameObject.Find("FullMp");
         FillBarMP = Object.GetComponent<Image>();
 
         Object = GameObject.Find("PlayerCanvas");
@@ -55,6 +57,14 @@ public class PlayerEffect : MonoBehaviour
         TxtCurrentName = Object.GetComponent<TextMeshProUGUI>();
 
      
+    }
+    private void Start()
+    {
+        UpdateHp(0);
+        UpdateMp(0);
+        UpdateXu(0);
+        TxtCurrentLevel.text = Player.Instance.Level.ToString();
+        TxtCurrentPercentExp.text = (Player.Instance.PercentExp).ToString("F2") + "%";
     }
     public void UpdateHp(float hp)
     {

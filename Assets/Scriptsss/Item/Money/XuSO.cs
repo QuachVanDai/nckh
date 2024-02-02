@@ -5,12 +5,13 @@ public class XuSO : MoneySO
     [Space]
     [Header("Uses")]
     public int xu;
+    public string Description;
     public override void Update()
     {
         base.Update();
 
         this.MoneyType = MoneyType.xu;
-        this.Description = "Dùng xu để mua các vật phẩm";
+        Description = "Dùng xu để mua các vật phẩm";
 
         this.Xu = xu;
     }

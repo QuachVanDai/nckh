@@ -6,15 +6,9 @@ public  class PlayerController2D:MonoBehaviour
 
     [SerializeField] private Transform _GroundCheck;
     [SerializeField] private LayerMask _GroundLayer;
-    private Animator _Animator;
+    [SerializeField]  private Animator _Animator;
 
     public static PlayerController2D Instance { get => _Instance; }
-
-    private void Start()
-    {
-        _Animator = GetComponent<Animator>();
-    }
-
     protected void Awake()
     {
         if(PlayerController2D._Instance != null) { Debug.LogError("chi cho phep 1 PlayerController2D"); }

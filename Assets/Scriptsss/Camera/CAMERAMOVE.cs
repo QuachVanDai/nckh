@@ -2,7 +2,7 @@
 using Unity.Mathematics;
 using UnityEngine;
 
-public class CAMERAMOVE : MonoBehaviour
+public class CameraMove : MonoBehaviour
 {
     public Transform player;
     public float[] xMax, yMax, xMin, yMin;
@@ -10,32 +10,14 @@ public class CAMERAMOVE : MonoBehaviour
     public Vector2[] EndTranForm;
     public int index=0;
     public bool flat = true;
-    private string _playerTag = "player";
     private float _getX, _x;
     private float _getY, _y;
     public GameObject playerObject;
     // Update is called once per frame
-    private void Start()
-    {
-        playerObject = GameObject.FindGameObjectWithTag(_playerTag);
-        if (playerObject != null)
-        {
-            player = playerObject.transform;
-        }
-        else
-        {
-            Debug.LogError("Không tìm thấy đối tượng có tag là Player.");
-        }
-    }
+ 
     private void Update()
     {
         if (!flat) return;
-            playerObject = GameObject.FindGameObjectWithTag(_playerTag);
-            if (playerObject != null)
-            {
-                player = playerObject.transform;
-            }
-
             _x = math.max(xMin[index], player.position.x);
             _getX = math.min(xMax[index], _x);
             /*  TH1:       Nếu player ơ vị trí nhỏ hơn -6;

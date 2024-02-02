@@ -38,8 +38,8 @@ public class InventoryManager : MonoBehaviour
             try
             {
                 slots[i].transform.GetChild(1).GetComponent<Image>().enabled = true;
-                slots[i].transform.GetChild(1).GetComponent<Image>().sprite = items[i].getItemSO().icon;
-                if (items[i].getItemSO().isStackable)
+                slots[i].transform.GetChild(1).GetComponent<Image>().sprite = items[i].getItemSO().Icon;
+                if (items[i].getItemSO().IsStackable)
                 {
                     slots[i].transform.GetChild(2).GetComponent<Text>().text = items[i].getQuantity().ToString();
                 }

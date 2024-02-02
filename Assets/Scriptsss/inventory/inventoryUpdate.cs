@@ -25,7 +25,7 @@ public class InventoryUpdate : MonoBehaviour
     public bool Add(ItemSO item,int quantity)
     {
         SlotClass sl = Contain(item);
-        if (sl != null && sl.getItemSO().isStackable)
+        if (sl != null && sl.getItemSO().IsStackable)
         {
             sl.addQuantity(quantity);
             
@@ -108,8 +108,8 @@ public class InventoryUpdate : MonoBehaviour
         }
     //    < color = "red" > Game </ color >< color = "orange" > Thu </ color >< color = "green" > Thach </ color >
 
-        str += originalSlot.getItemSO().itemName+ "\n";
-        str += "Cấp độ "+originalSlot.getItemSO().level+ "\n";
+        str += originalSlot.getItemSO().ItemName+ "\n";
+      //  str += "Cấp độ "+originalSlot.getItemSO().Level+ "\n";
         str += originalSlot.getItemSO().Description + "\n";
         inventoryManager.settxtShowInfor(str);
         inventoryManager.RefreshUI();
@@ -124,7 +124,7 @@ public class InventoryUpdate : MonoBehaviour
         {
                 try
                 {
-                    if (inventoryManager.getItems()[i].getItemSO().itemName == "HP")
+                    if (inventoryManager.getItems()[i].getItemSO().ItemName == "HP")
                     {
                         if (flat)
                         {
@@ -167,7 +167,7 @@ public class InventoryUpdate : MonoBehaviour
         {
             try
             {
-                if (inventoryManager.getItems()[i].getItemSO().itemName == "MP")
+                if (inventoryManager.getItems()[i].getItemSO().ItemName == "MP")
                 {
                     if (flat)
                     {
@@ -208,7 +208,7 @@ public class InventoryUpdate : MonoBehaviour
         for (int i = 0; i < inventoryManager.getItems().Length; i++)
         {
             if (inventoryManager.getItems()[i].getItemSO() !=null && 
-                inventoryManager.getItems()[i].getItemSO().itemName == "chicken")
+                inventoryManager.getItems()[i].getItemSO().ItemName == "chicken")
             {
                 return true;
             }
@@ -247,7 +247,7 @@ public class InventoryUpdate : MonoBehaviour
                 {
                     if (originalSlot.getItemSO() == movingSlot.getItemSO())
                     {
-                        if (originalSlot.getItemSO().isStackable)
+                        if (originalSlot.getItemSO().IsStackable)
                         {
                             originalSlot.addQuantity(movingSlot.getQuantity());
                             movingSlot.Clear();

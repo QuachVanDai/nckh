@@ -5,11 +5,12 @@ public enum MoneyType
 public class MoneySO : ItemSO
 {
     public MoneyType MoneyType;
+    public string Description;
 
     public override void Update()
     {
         base.Update();
-        this.itemType = ItemType.Money;
+        this.ItemType = ItemType.Money;
     }
     private int _xu;
     public int Xu
