@@ -110,7 +110,7 @@ public class InventoryUpdate : MonoBehaviour
 
         str += originalSlot.getItemSO().ItemName+ "\n";
       //  str += "Cấp độ "+originalSlot.getItemSO().Level+ "\n";
-        str += originalSlot.getItemSO().Description + "\n";
+      //  str += originalSlot.getItemSO().Description + "\n";
         inventoryManager.settxtShowInfor(str);
         inventoryManager.RefreshUI();
     }
