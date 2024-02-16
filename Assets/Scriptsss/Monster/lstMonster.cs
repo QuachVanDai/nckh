@@ -1,15 +1,15 @@
 
 
-public class lstMonster : Spawner
+public class LstMonster : Spawner
 {
-    private static lstMonster _Instance;
+    private static LstMonster _Instance;
 
     public static string MonsterName;
     protected int Index=0;
-    public static lstMonster Instance { get => _Instance; }
+    public static LstMonster Instance { get => _Instance; }
     protected  void Awake()
     {
-        lstMonster._Instance = this;
+        LstMonster._Instance = this;
     }
 
 }

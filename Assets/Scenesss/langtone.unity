@@ -19090,7 +19090,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1466160850
 RectTransform:
   m_ObjectHideFlags: 0
@@ -35481,7 +35481,7 @@ MonoBehaviour:
   _PosEffect: {fileID: 6934830964629969208}
   PlayerAttack: {fileID: 9160984522533479190}
   _MonsterController2D: {fileID: 9185262221549867692}
-  JunkSO: {fileID: 0}
+  JunkSO: {fileID: 11400000, guid: e0bea908de4f840488ebbba73b94b05a, type: 2}
   MonCurrent: {fileID: 5243534454878883550}
   MonEffect: {fileID: 9185262221549867693}
 --- !u!114 &583045398755028477
@@ -51526,7 +51526,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!70 &4022656205778509953
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -57602,7 +57602,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &4634106795410030019
 GameObject:
   m_ObjectHideFlags: 0

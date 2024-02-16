@@ -56,7 +56,7 @@ public class MonsterAttacked : MonoBehaviour
                     this.PlayerAttack.MissionUi.aa90();
                 }
             }
-                // ItemDropSpawner.Instance.Drop(junkSO.dropRateList, transform.position, Quaternion.identity);
+                 ItemDropSpawner.Instance.Drop(JunkSO.dropRateList, transform.position, Quaternion.identity);
 
                 // i.Die(transform.position,Quaternion.identity);
                 SystemUi.Instance.InfoMonster.gameObject.SetActive(false);
