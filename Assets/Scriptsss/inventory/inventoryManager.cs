@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,31 +7,21 @@ using UnityEngine.UI;
 public class InventoryManager : MonoBehaviour
 {
     
-    [SerializeField] private GameObject slotsHolder;
-    [SerializeField] private SlotClass[] items ;
-    [SerializeField] private SlotClass[] startingItems;
-    [SerializeField] private TextMeshProUGUI txtShowInfor;
+    [SerializeField] private GameObject SlotsHolder;
+    [SerializeField] private List<SlotClass> Items ;
+    [SerializeField] private TextMeshProUGUI TxtShowInfor;
     private GameObject[] slots;
     public GameObject itemCursor;
-    public virtual void Start()
+    public  void Start()
     {
-        slots = new GameObject[slotsHolder.transform.childCount];
-
-        items = new SlotClass[slots.Length];
-        for (int i = 0; i < items.Length; i++)
-            items[i] = new SlotClass();
-
-        for (int i = 0; i < startingItems.Length; i++)
+        slots = new GameObject[SlotsHolder.transform.childCount];
+        for (int i = 0; i < SlotsHolder.transform.childCount; i++)
         {
-            items[i] = startingItems[i];
+            slots[i] = SlotsHolder.transform.GetChild(i).gameObject;
         }
-
-        for (int i = 0; i < slotsHolder.transform.childCount; i++)
-        {
-            slots[i] = slotsHolder.transform.GetChild(i).gameObject;
-        }
-        RefreshUI();
+      //  RefreshUI();
     }
+
     public void RefreshUI()
     {
         for (int i = 0; i < slots.Length; i++)
@@ -38,10 +29,10 @@ public class InventoryManager : MonoBehaviour
             try
             {
                 slots[i].transform.GetChild(1).GetComponent<Image>().enabled = true;
-                slots[i].transform.GetChild(1).GetComponent<Image>().sprite = items[i].getItemSO().Icon;
-                if (items[i].getItemSO().IsStackable)
+                slots[i].transform.GetChild(1).GetComponent<Image>().sprite = Items[i].getItemSO().Icon;
+                if (Items[i].getItemSO().IsStackable)
                 {
-                    slots[i].transform.GetChild(2).GetComponent<Text>().text = items[i].getQuantity().ToString();
+                    slots[i].transform.GetChild(2).GetComponent<Text>().text = Items[i].getQuantity().ToString();
                 }
                 else
                 {
@@ -71,18 +62,17 @@ public class InventoryManager : MonoBehaviour
             if (Vector2.Distance(slots[i].transform.position, Input.mousePosition) <= 64)
             {
                 setSelect(i);
-                return items[i];
+                return Items[i];
             }
         }
         return null;
     }
     public GameObject[] getSlots() { return slots; }
-    public SlotClass[] getstartingItems() { return startingItems; }
-    public SlotClass[] getItems() { return items; }
+    public List<SlotClass> getItems() { return Items; }
 
    public void settxtShowInfor(string text)
     {
-        txtShowInfor.text = text;
+        TxtShowInfor.text = text;
     }
 
 }

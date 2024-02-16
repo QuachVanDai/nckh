@@ -1,11 +1,14 @@
 
+
+//[System.Serializable]
 using UnityEngine;
 
-[System.Serializable]
-public class SlotClass 
+public class SlotClass :MonoBehaviour
 {
-    [SerializeField] private ItemSO _item;
-    [SerializeField]  private int _quantity;
+    [SerializeField]
+    private ItemSO _item;
+    [SerializeField]
+    private int _quantity;
 
     public SlotClass()
     {

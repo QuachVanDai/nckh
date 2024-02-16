@@ -32,7 +32,7 @@ public class InventoryUpdate : MonoBehaviour
         }
         else
         {
-            for(int i = 0;i < inventoryManager.getItems().Length;i++) 
+            for(int i = 0;i < inventoryManager.getItems().Count;i++) 
             {
                 if (inventoryManager.getItems()[i].getItemSO()==null)
                 {
@@ -57,7 +57,7 @@ public class InventoryUpdate : MonoBehaviour
             }
             else
             {
-                for (int i = 0; i < inventoryManager.getItems().Length; i++)
+                for (int i = 0; i < inventoryManager.getItems().Count; i++)
                 {
                     if (inventoryManager.getItems()[i].getItemSO() == ItemSO)
                     {
@@ -84,7 +84,7 @@ public class InventoryUpdate : MonoBehaviour
     public SlotClass Contain(ItemSO item)
     {
 
-        for (int i = 0; i < inventoryManager.getItems().Length; i++)
+        for (int i = 0; i < inventoryManager.getItems().Count; i++)
         {
             if (inventoryManager.getItems()[i].getItemSO() == item)
             {
@@ -120,7 +120,7 @@ public class InventoryUpdate : MonoBehaviour
     {
         int quanitity = 0;
         bool flat = true;
-        for (int i = 0; i < inventoryManager.getItems().Length; i++)
+        for (int i = 0; i < inventoryManager.getItems().Count; i++)
         {
                 try
                 {
@@ -163,7 +163,7 @@ public class InventoryUpdate : MonoBehaviour
     {
         int quanitity = 0;
         bool flat = true;
-        for (int i = 0; i < inventoryManager.getItems().Length; i++)
+        for (int i = 0; i < inventoryManager.getItems().Count; i++)
         {
             try
             {
@@ -205,7 +205,7 @@ public class InventoryUpdate : MonoBehaviour
 
     public bool updateFood()
     {
-        for (int i = 0; i < inventoryManager.getItems().Length; i++)
+        for (int i = 0; i < inventoryManager.getItems().Count; i++)
         {
             if (inventoryManager.getItems()[i].getItemSO() !=null && 
                 inventoryManager.getItems()[i].getItemSO().ItemName == "chicken")
