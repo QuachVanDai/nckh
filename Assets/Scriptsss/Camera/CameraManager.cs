@@ -2,7 +2,7 @@
 using Unity.Mathematics;
 using UnityEngine;
 
-public class CameraMove : MonoBehaviour
+public class CameraManager : MonoBehaviour
 {
     public Transform player;
     public float[] xMax, yMax, xMin, yMin;

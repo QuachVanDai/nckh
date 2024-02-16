@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c647a5f36bae584db02bb6da7d2ef21, type: 3}
-  m_Name: skillLv20
+  m_Name: SkillLv20
   m_EditorClassIdentifier: 
   skillFrames:
   - {fileID: 21300000, guid: 5f16ceb2a3c6056408112f8694ed679b, type: 3}

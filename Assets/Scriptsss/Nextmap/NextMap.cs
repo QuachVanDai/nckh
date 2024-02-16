@@ -4,7 +4,7 @@ using UnityEngine;
 public class NextMap : MonoBehaviour
 {
     private int _index;
-    public CameraMove Camera;
+    public CameraManager Camera;
     public GameObject LoadAnnimation;
     public GameObject[] quanitityMap;
     public void setIndexEndMap(int number)
