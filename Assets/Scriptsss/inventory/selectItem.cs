@@ -1,13 +1,33 @@
-using UnityEngine.EventSystems;
+﻿using UnityEngine.EventSystems;
 using UnityEngine;
-
-public abstract  class SelectItem :MonoBehaviour, IPointerDownHandler
+public abstract class SelectItem : MonoBehaviour, IPointerClickHandler
 {
-    public InventoryManager inventoryManager;
-    private SlotClass _slotClass ;
-    public SlotClass SlotClass{ get { return _slotClass; } set { _slotClass = value; } }
-    public virtual void OnPointerDown(PointerEventData eventData)
+    public InventoryManager InventoryManager;
+    public Transform HolderSlots;
+
+    public virtual void OnPointerClick(PointerEventData eventData)
     {
-        _slotClass = inventoryManager.GetClosestSLot();
+        SetSelect();
+    }
+    public void SetSelect()
+    {
+        foreach (Transform t in HolderSlots)
+        {
+            if(t.GetChild(0).gameObject.activeSelf ==true)
+            t.GetChild(0).gameObject.SetActive(false);
+        }
+        transform.GetChild(0).gameObject.SetActive(true);
+
+    }
+    public int  PosItem()
+    {
+        for (int i = 0; i < InventoryManager.getItems().Count; i++)
+        {
+            if (gameObject.name == InventoryManager.getSlots()[i].name)
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 }

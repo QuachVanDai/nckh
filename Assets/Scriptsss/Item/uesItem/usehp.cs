@@ -41,7 +41,7 @@ public class usehp: MonoBehaviour
             else
             {
                 Player.Instance.PlayerEffect.UpdateHp(hpSO.hP);
-                quanitity = inventoryUpdate.updateHP(-1);
+              //  quanitity = inventoryUpdate.updateHP(-1);
                 txt_quanitity.text = quanitity.ToString();
                // inventoryUpdate.RefreshUI();
                 yield return new WaitForSeconds(0.5f);
@@ -54,7 +54,7 @@ public class usehp: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        quanitity = inventoryUpdate.updateHP(0);
+       // quanitity = inventoryUpdate.updateHP(0);
         txt_quanitity.text = quanitity.ToString();
         if (Input.GetKeyUp(KeyCode.E))
         {

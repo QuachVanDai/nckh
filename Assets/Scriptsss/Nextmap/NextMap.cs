@@ -9,14 +9,14 @@ public class NextMap : MonoBehaviour
     public GameObject[] quanitityMap;
     public void setIndexEndMap(int number)
     {
-        Camera.setEndTranForm(number);
+        Camera.SetEndTranForm(number);
         this.LoadAnnimation.SetActive(true);
         LoadAnimation.Instance.getLoadmap();
         Invoke(nameof(callMap), 2.2f);
     }
     public void setIndexTopMap(int number)
     {
-        Camera.setTopTranForm(number);
+        Camera.SetTopTranForm(number);
         this.LoadAnnimation.SetActive(true);
         LoadAnimation.Instance.getLoadmap();
         Invoke(nameof(callMap), 2.2f);

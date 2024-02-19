@@ -1,26 +1,25 @@
 
-
-//[System.Serializable]
+using System;
 using UnityEngine;
 
-public class SlotClass :MonoBehaviour
-{
-    [SerializeField]
-    private ItemSO _item;
-    [SerializeField]
-    private int _quantity;
+[Serializable]
+public class Slot
 
-    public SlotClass()
+{
+    public ItemSO _item;
+    public int _quantity;
+
+    public Slot()
     {
         _item = null;
         _quantity = 0;
     }
-    public SlotClass(SlotClass slot)
+    public Slot(Slot slot)
     {
         this._item = slot.getItemSO();
         this._quantity = slot.getQuantity();
     }
-    public SlotClass (ItemSO item,int quantity)
+    public Slot (ItemSO item,int quantity)
     {
         this._item = item;
         this._quantity = quantity;
@@ -31,4 +30,5 @@ public class SlotClass :MonoBehaviour
     public void SubQuantity(int quantity) { _quantity -= quantity; }
     public void addItemSO(ItemSO item, int quantity) { _item = item; _quantity = quantity; }
     public void Clear() { _item = null; _quantity = 0; }
+
 }

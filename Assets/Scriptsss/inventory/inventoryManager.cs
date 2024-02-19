@@ -7,72 +7,59 @@ using UnityEngine.UI;
 public class InventoryManager : MonoBehaviour
 {
     
-    [SerializeField] private GameObject SlotsHolder;
-    [SerializeField] private List<SlotClass> Items ;
+    [SerializeField] private List<Slot> Items = new List<Slot>(15);
+    [SerializeField] private GameObject[] Slots;
     [SerializeField] private TextMeshProUGUI TxtShowInfor;
-    private GameObject[] slots;
-    public GameObject itemCursor;
     public  void Start()
     {
-        slots = new GameObject[SlotsHolder.transform.childCount];
-        for (int i = 0; i < SlotsHolder.transform.childCount; i++)
-        {
-            slots[i] = SlotsHolder.transform.GetChild(i).gameObject;
-        }
-      //  RefreshUI();
+        RefreshUI();
     }
 
     public void RefreshUI()
     {
-        for (int i = 0; i < slots.Length; i++)
+        for (int i = 0; i < Slots.Length; i++)
         {
             try
             {
-                slots[i].transform.GetChild(1).GetComponent<Image>().enabled = true;
-                slots[i].transform.GetChild(1).GetComponent<Image>().sprite = Items[i].getItemSO().Icon;
+                Slots[i].transform.GetChild(1).GetComponent<Image>().enabled = true;
+                Slots[i].transform.GetChild(1).GetComponent<Image>().sprite = Items[i].getItemSO().Icon;
                 if (Items[i].getItemSO().IsStackable)
                 {
-                    slots[i].transform.GetChild(2).GetComponent<Text>().text = Items[i].getQuantity().ToString();
+                    Slots[i].transform.GetChild(1).GetChild(0).GetComponent<Text>().text = Items[i].getQuantity().ToString();
                 }
                 else
                 {
-                    slots[i].transform.GetChild(2).GetComponent<Text>().text = "";
+                    Slots[i].transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "";
                 }
             }
             catch
             {
-                slots[i].transform.GetChild(1).GetComponent<Image>().sprite = null;
-                slots[i].transform.GetChild(1).GetComponent<Image>().enabled = false;
-                slots[i].transform.GetChild(2).GetComponent<Text>().text = "";
+                Slots[i].transform.GetChild(1).GetComponent<Image>().sprite = null;
+                Slots[i].transform.GetChild(1).GetComponent<Image>().enabled = false;
+                Slots[i].transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "";
             }
         }
     }
-    public void setSelect(int index)
+  
+    public Slot GetClosestSLot()
     {
-        for (int i = 0; i < slots.Length; i++)
+        for (int i = 0; i < Slots.Length; i++)
         {
-            slots[i].transform.GetChild(0).gameObject.SetActive(false);
-        }
-        slots[index].transform.GetChild(0).gameObject.SetActive(true);
-    }
-    public SlotClass GetClosestSLot()
-    {
-        for (int i = 0; i < slots.Length; i++)
-        {
-            if (Vector2.Distance(slots[i].transform.position, Input.mousePosition) <= 64)
+            if (Vector2.Distance(Slots[i].transform.position, Input.mousePosition) <= 64)
             {
-                setSelect(i);
                 return Items[i];
             }
         }
         return null;
     }
-    public GameObject[] getSlots() { return slots; }
-    public List<SlotClass> getItems() { return Items; }
-
+    public GameObject[] getSlots() { return Slots; }
+    public List<Slot> getItems() { return Items; }
+    public void setItem(Slot slot,int i) {  Items[i]=slot; }
+    
    public void settxtShowInfor(string text)
     {
         TxtShowInfor.text = text;
     }
 
+   
 }

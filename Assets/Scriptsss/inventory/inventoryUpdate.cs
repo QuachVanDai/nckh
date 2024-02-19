@@ -5,11 +5,11 @@ public class InventoryUpdate : MonoBehaviour
 {
     [SerializeField]  private InventoryManager inventoryManager;
    // private GameObject[] slots;
-    private SlotClass temSlot;
-    private SlotClass originalSlot;
+    private Slot temSlot;
+    private Slot originalSlot;
 
     public bool isMovingItem;
-    public SlotClass movingSlot;
+    public Slot movingSlot;
 
 
      private static InventoryUpdate instance;
@@ -21,10 +21,10 @@ public class InventoryUpdate : MonoBehaviour
         InventoryUpdate.instance = this;
     }
   
-    #region units
+   /* #region units
     public bool Add(ItemSO item,int quantity)
     {
-        SlotClass sl = Contain(item);
+        Slot sl = Contain(item);
         if (sl != null && sl.getItemSO().IsStackable)
         {
             sl.addQuantity(quantity);
@@ -48,7 +48,7 @@ public class InventoryUpdate : MonoBehaviour
     {
 
         int slotToRemoveIndex=0 ;
-        SlotClass temp = Contain(ItemSO);
+        Slot temp = Contain(ItemSO);
         if (temp != null)
         {
             if (temp.getQuantity()>1)
@@ -81,7 +81,7 @@ public class InventoryUpdate : MonoBehaviour
     {
         Remove(i);
     }
-    public SlotClass Contain(ItemSO item)
+    public Slot Contain(ItemSO item)
     {
 
         for (int i = 0; i < inventoryManager.getItems().Count; i++)
@@ -94,28 +94,10 @@ public class InventoryUpdate : MonoBehaviour
         return null;
 
     }
-    #endregion
+    #endregion*/
 
-    #region show Information
-    public void showInforItem()
-    {
-        string str = "";
-        originalSlot = inventoryManager.GetClosestSLot();
-        if (originalSlot == null || originalSlot.getItemSO() == null)
-        {
-            inventoryManager.settxtShowInfor("Chọn vật phẩm");
-            return ;
-        }
-    //    < color = "red" > Game </ color >< color = "orange" > Thu </ color >< color = "green" > Thach </ color >
 
-        str += originalSlot.getItemSO().ItemName+ "\n";
-      //  str += "Cấp độ "+originalSlot.getItemSO().Level+ "\n";
-      //  str += originalSlot.getItemSO().Description + "\n";
-        inventoryManager.settxtShowInfor(str);
-        inventoryManager.RefreshUI();
-    }
-    #endregion
-    #region update
+   /* #region update
     public int updateHP(int number)
     {
         int quanitity = 0;
@@ -215,69 +197,6 @@ public class InventoryUpdate : MonoBehaviour
         }
             return false;
     }
-    #endregion
+    #endregion*/
 
-
-    #region 
-    public bool BeginItemMove()
-    {
-        originalSlot = inventoryManager.GetClosestSLot();
-        if (originalSlot == null || originalSlot.getItemSO() == null)
-        {
-            return false;
-        }
-        movingSlot = new SlotClass(originalSlot);
-        isMovingItem = true;
-        originalSlot.Clear();
-        inventoryManager.RefreshUI();
-        return true;
-    }
-
-    public bool EndItemMove()
-    {
-        originalSlot = inventoryManager.GetClosestSLot();
-            if (originalSlot == null)
-            {
-                Add(movingSlot.getItemSO(), movingSlot.getQuantity());
-                movingSlot.Clear();
-            }
-            else
-            {
-                if (originalSlot.getItemSO() != null)
-                {
-                    if (originalSlot.getItemSO() == movingSlot.getItemSO())
-                    {
-                        if (originalSlot.getItemSO().IsStackable)
-                        {
-                            originalSlot.addQuantity(movingSlot.getQuantity());
-                            movingSlot.Clear();
-                        }
-                        else
-                        {
-                            return false;
-                        }
-                    }
-                    else
-                    {
-                        temSlot = new SlotClass(originalSlot);
-                        originalSlot.addItemSO(movingSlot.getItemSO(), movingSlot.getQuantity());
-                        movingSlot.addItemSO(temSlot.getItemSO(), temSlot.getQuantity());
-                    inventoryManager.RefreshUI();
-                        return true;
-                    }
-                }
-                else
-                {
-                    originalSlot.addItemSO(movingSlot.getItemSO(), movingSlot.getQuantity());
-                    movingSlot.Clear();
-                }
-            }
-        isMovingItem = false;
-        inventoryManager.RefreshUI();
-        return true;
-    }
-  
-
-   
-    #endregion
 }

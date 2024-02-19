@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "potion")
         {
             PickUpItems pickUpItems = collision.gameObject.GetComponent<PickUpItems>();
-            InventoryUpdate.Instance.Add(pickUpItems.item,1);
+           // InventoryUpdate.Instance.Add(pickUpItems.item,1);
         }
        else if (collision.gameObject.tag == "money")
         {

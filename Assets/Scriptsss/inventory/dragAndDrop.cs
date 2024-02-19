@@ -2,15 +2,15 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DragAndDrop : MonoBehaviour
+public class DragAndDrop : SelectItem
 {
     public InventoryManager inventoryManager;
     public InventoryUpdate inventoryUpdate;
-    private void Update()
+    /*private void Update()
     {
-        inventoryManager.itemCursor.SetActive(inventoryUpdate.isMovingItem);
-        inventoryManager.itemCursor.transform.position = Input.mousePosition;
-        if (inventoryUpdate.isMovingItem) { inventoryManager.itemCursor.GetComponent<Image>().
+        inventoryManager.ItemCursor.SetActive(inventoryUpdate.isMovingItem);
+        inventoryManager.ItemCursor.transform.position = Input.mousePosition;
+        if (inventoryUpdate.isMovingItem) { inventoryManager.ItemCursor.GetComponent<Image>().
                 sprite = inventoryUpdate.movingSlot.getItemSO().Icon; }
 
 
@@ -30,13 +30,13 @@ public class DragAndDrop : MonoBehaviour
         {
             inventoryUpdate.showInforItem();
         }
-        /*if (Input.GetMouseButtonUp(0))
+        *//*if (Input.GetMouseButtonUp(0))
         {
             if (isMovingItem)
             {
                 EndItemMove();
             }
-        }*/
-    }
+        }*//*
+    }*/
  
 }

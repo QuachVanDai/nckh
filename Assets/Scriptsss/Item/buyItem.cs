@@ -3,7 +3,7 @@
 public class BuyItem : MonoBehaviour
 {
     public InventoryUpdate inventoryUpdate;
-    public SlotClass item;
+    public Slot item;
 
 
     private void Update()

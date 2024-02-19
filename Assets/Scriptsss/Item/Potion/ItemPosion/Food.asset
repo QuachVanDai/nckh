@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: "G\xE0 T\xE2y"
   ItemType: 1
-  Icon: {fileID: 0}
-  IsStackable: 1
+  Icon: {fileID: 21300000, guid: 05504ecd8f461d341ab1dff5d8d694f1, type: 3}
+  IsStackable: 0
   PotionType: 2
   Level: 1
   Buy: 10

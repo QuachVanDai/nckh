@@ -32,7 +32,7 @@ public class CameraManager : MonoBehaviour
             _getY = math.min(yMax[index], _y);
             transform.position = new Vector3(_getX, _getY, transform.position.z);
     }
-    public void setTopTranForm(int number)
+    public void SetTopTranForm(int number)
     {
         flat = false;
         index = number;
@@ -40,7 +40,7 @@ public class CameraManager : MonoBehaviour
         playerObject.GetComponent<Rigidbody2D>().gravityScale =0;
         
     }
-    public void setEndTranForm(int number)
+    public void SetEndTranForm(int number)
     {
         flat = false;
         index = number;

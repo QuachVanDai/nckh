@@ -23,10 +23,10 @@ public class usemp: MonoBehaviour
     }
     public void useItemmp()
     {
-        if(flat) { StartCoroutine(setTimeUse()); }
-        else { TextTemplate.Instance.SetText(TagScript.hoiChieu); }
+        //if(flat) { StartCoroutine(setTimeUse()); }
+      //  else { TextTemplate.Instance.SetText(TagScript.hoiChieu); }
     }
-    public IEnumerator setTimeUse()
+  /*  public IEnumerator setTimeUse()
     {
         if(quanitity>0)
         {
@@ -52,11 +52,11 @@ public class usemp: MonoBehaviour
             TextTemplate.Instance.SetText(TagScript.notMp);
         }
 
-    }
+    }*/
     // Update is called once per frame
     void Update()
     {
-        quanitity = inventoryUpdate.updateMP(0);
+     //   quanitity = inventoryUpdate.updateMP(0);
         txt_quanitity.text = quanitity.ToString();
         if (Input.GetKeyUp(KeyCode.R))
         {

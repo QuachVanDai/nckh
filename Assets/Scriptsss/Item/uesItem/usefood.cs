@@ -23,7 +23,7 @@ public class usefood: MonoBehaviour
         flat = true;
         getTime = 0;
     }
-    public void useItemFood()
+  /*  public void useItemFood()
     {
         if(!inventoryUpdate.updateFood()) 
         { 
@@ -36,7 +36,7 @@ public class usefood: MonoBehaviour
             InvokeRepeating(nameof(setTimeUse), 0, 0.5f); 
             flat = false; }
         else { TextTemplate.Instance.SetText(TagScript.hoiChieu); }
-    }
+    }*/
     public void setTimeUse()
     {
         ExpiredTime--;
@@ -58,7 +58,7 @@ public class usefood: MonoBehaviour
  
         if (Input.GetKeyUp(KeyCode.T))
         {
-            useItemFood();
+          //  useItemFood();
            // 
         }
         if (!flat)
