@@ -12,7 +12,6 @@ public class EquipmentSO : ItemSO
     public int Level;
     public int Buy;
     public int Price;
-    public string Description;
 
     public override void Update()
     {

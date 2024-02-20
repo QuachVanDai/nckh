@@ -5,7 +5,6 @@ public enum MoneyType
 public class MoneySO : ItemSO
 {
     public MoneyType MoneyType;
-    public string Description;
 
     public override void Update()
     {

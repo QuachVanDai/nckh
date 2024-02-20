@@ -61,11 +61,11 @@ public class DescribeSkill : MonoBehaviour
     public void setDesSkill()
     {
          desSkill = new string[5];
-        desSkill[0] = "Chiêu Cơ bản\nĐao pháp nhập môn dùng đao chém mạnh vào mục tiêu gây sát thương lên mục tiêu đó.";
-        desSkill[1] = "Chiêu Hồi phục\nNhẫn thật tâm pháp giúp bản thân tăng hp mp. ";
-        desSkill[2] = "Chieu Trung cap \nPhóng ra nhưng tia lôi điện giáng những đòn chí mạng vào kẻ địch.";
-        desSkill[3] = "Chiêu Tăng sức mạnh \nNhẫn thật tâm pháp giúp bản thân tăng lượng sát thương vào kẻ địch.  ";
-        desSkill[4] = "Chiêu Cao cấp \nChiêu thức kêu gọi Lôi Mã Phong Vân tấn công mạnh mẽ vào kẻ địch.";
+        desSkill[0] = "Chiêu cơ bản\nĐao pháp nhập môn dùng đao chém mạnh vào mục tiêu gây sát thương lên mục tiêu đó.";
+        desSkill[1] = "Chiêu hồi phục\nNhẫn thật tâm pháp giúp bản thân tăng hp mp. ";
+        desSkill[2] = "Chieu trung cấp \nPhóng ra nhưng tia lôi điện giáng những đòn chí mạng vào kẻ địch.";
+        desSkill[3] = "Chiêu tăng sức mạnh \nNhẫn thật tâm pháp giúp bản thân tăng lượng sát thương vào kẻ địch.  ";
+        desSkill[4] = "Chiêu cao cấp \nChiêu thức kêu gọi Lôi Mã Phong Vân tấn công mạnh mẽ vào kẻ địch.";
     }
     public void hideSelect()
     {

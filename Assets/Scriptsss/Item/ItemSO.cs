@@ -7,6 +7,9 @@ public class ItemSO: ScriptableObject
     public ItemType ItemType;
     public Sprite Icon;
     public bool IsStackable = true;
+    public int Cost;
+    public string Description;
+
     public void OnEnable()
     {
         this.Update();

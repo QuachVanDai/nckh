@@ -1,44 +1,37 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class BuyItem : MonoBehaviour
 {
-    public InventoryUpdate inventoryUpdate;
-    public Slot item;
-
-
-    private void Update()
+    public Slot Slot;
+    public Player Player;
+    public int SumMoney;
+    public int Cost;
+    private void Start()
     {
-       //  slotClass = inventoryUpdate.GetClosestSLot();
+        SumMoney = Player.Instance.Gold;
     }
-
-   
-    public void BuyItem1()
+    public void ConfirmBuy()
     {
-        if (item.getItemSO() == null)
+        if (Slot == null || Slot.getItemSO()==null) return;
+        Cost = Slot.getItemSO().Cost;
+        if (Player.Instance.Gold<100) return;
+        if (Slot.getItemSO().ItemName == "HP" && SumMoney>= Cost)
         {
-            Debug.Log("NUll");
-            return;
+            InventoryUpdate.Instance.UpdateHP(Slot, 1);
+            Player.Instance.Gold -= Cost;
         }
-        if ( item.getItemSO().ItemName == "HP")
+        else if (Slot.getItemSO().ItemName == "MP" && SumMoney >= Cost)
         {
-            /*if(Player.Instance.PlayerEffect.UpdateXu(item.getItemSO().Buy*-1))
-            {
-                inventoryUpdate.Add(item.getItemSO(), 1);
-            }*/
+            InventoryUpdate.Instance.UpdateMP(Slot, 1);
+            Player.Instance.Gold -= Cost;
         }
-
-        else if ( item.getItemSO().ItemName == "MP")
+        else if( SumMoney >= Cost)
         {
-            /*if (Player.Instance.PlayerEffect.UpdateXu(item.getItemSO().Buy * -1))
-            {
-                inventoryUpdate.Add(item.getItemSO(), 1);
-            }*/
+            InventoryUpdate.Instance.AddItem(Slot);
+            Player.Instance.Gold -= Cost;
         }
-        else if(item.getItemSO().ItemName == "chicken")
-        {
-           /* if (Player.Instance.PlayerEffect.UpdateXu(item.getItemSO().Buy * -1))
-                inventoryUpdate.Add(item.getItemSO(),1);*/
-        }
-       
+        SumMoney = Player.Instance.Gold;
+        InventoryUpdate.Instance.UpdateGold(SumMoney);
     }
 }

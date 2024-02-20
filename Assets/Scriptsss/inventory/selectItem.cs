@@ -1,33 +1,17 @@
-﻿using UnityEngine.EventSystems;
-using UnityEngine;
-public abstract class SelectItem : MonoBehaviour, IPointerClickHandler
+using UnityEngine.EventSystems;
+
+public class SelectItem : Select
 {
-    public InventoryManager InventoryManager;
-    public Transform HolderSlots;
+    public BuyItem BuyItem;
+    public RemoveItem RemoveItem;
+    public int number;
+    public override void OnPointerClick(PointerEventData eventData)
+    {
+        base.OnPointerClick(eventData);
+        if(number == 0)
+            BuyItem.Slot = this.GetSlotItem();
+        else if (number == 1)
+            RemoveItem.index = this.PosItem();
 
-    public virtual void OnPointerClick(PointerEventData eventData)
-    {
-        SetSelect();
-    }
-    public void SetSelect()
-    {
-        foreach (Transform t in HolderSlots)
-        {
-            if(t.GetChild(0).gameObject.activeSelf ==true)
-            t.GetChild(0).gameObject.SetActive(false);
-        }
-        transform.GetChild(0).gameObject.SetActive(true);
-
-    }
-    public int  PosItem()
-    {
-        for (int i = 0; i < InventoryManager.getItems().Count; i++)
-        {
-            if (gameObject.name == InventoryManager.getSlots()[i].name)
-            {
-                return i;
-            }
-        }
-        return -1;
     }
 }

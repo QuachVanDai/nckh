@@ -1,202 +1,128 @@
 ﻿
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InventoryUpdate : MonoBehaviour
 {
     [SerializeField]  private InventoryManager inventoryManager;
-   // private GameObject[] slots;
-    private Slot temSlot;
-    private Slot originalSlot;
-
-    public bool isMovingItem;
-    public Slot movingSlot;
-
-
      private static InventoryUpdate instance;
     public static InventoryUpdate Instance { get => instance; }
-
+    public TextMeshProUGUI[] TextGold;
     protected void Awake()
     {
         if (InventoryUpdate.instance != null) Debug.LogError("Only 1 inventoryUpdate allow to exist");
         InventoryUpdate.instance = this;
     }
-  
-   /* #region units
-    public bool Add(ItemSO item,int quantity)
+
+    private void Start()
     {
-        Slot sl = Contain(item);
-        if (sl != null && sl.getItemSO().IsStackable)
+        UpdateGold(Player.Instance.Gold);
+    }
+    #region update
+    public void UpdateHP(int number)
+    {
+        for (int i = 0; i < inventoryManager.getSlotItems().Count; i++)
         {
-            sl.addQuantity(quantity);
-            
-        }
-        else
-        {
-            for(int i = 0;i < inventoryManager.getItems().Count;i++) 
+            if(inventoryManager.getSlotItems()[i].getItemSO() && inventoryManager.getSlotItems()[i].getItemSO().ItemName == "HP")
             {
-                if (inventoryManager.getItems()[i].getItemSO()==null)
-                {
-                    inventoryManager.getItems()[i].addItemSO(item, quantity);
-                    break;
-                }
+                inventoryManager.getSlotItems()[i].UpdateQuantity(number);
+                inventoryManager.RefreshUI();
+                return;
             }
         }
-        return true;
     }
-
-    public bool Remove(ItemSO ItemSO)
+    public void UpdateHP(Slot slot, int number)
     {
-
-        int slotToRemoveIndex=0 ;
-        Slot temp = Contain(ItemSO);
-        if (temp != null)
+        for (int i = 0; i < inventoryManager.getSlotItems().Count; i++)
         {
-            if (temp.getQuantity()>1)
+            if (inventoryManager.getSlotItems()[i].getItemSO() && inventoryManager.getSlotItems()[i].getItemSO().ItemName == "HP")
             {
-                temp.SubQuantity(1);
-            }
-            else
-            {
-                for (int i = 0; i < inventoryManager.getItems().Count; i++)
-                {
-                    if (inventoryManager.getItems()[i].getItemSO() == ItemSO)
-                    {
-                        slotToRemoveIndex = i;
-                        break;
-                    }
-                }
-                inventoryManager.getItems()[slotToRemoveIndex].Clear();
+                inventoryManager.getSlotItems()[i].UpdateQuantity(number);
+                inventoryManager.RefreshUI();
+                return;
             }
         }
-        else
-        {
-            return false;
-        }
-
-        inventoryManager.RefreshUI();
-        return true;
+        AddItem(slot);
     }
-    public ItemSO i;
-    public void conFirmRemove()
+    public void UpdateMP(int number)
     {
-        Remove(i);
-    }
-    public Slot Contain(ItemSO item)
-    {
-
-        for (int i = 0; i < inventoryManager.getItems().Count; i++)
+        for (int i = 0; i < inventoryManager.getSlotItems().Count; i++)
         {
-            if (inventoryManager.getItems()[i].getItemSO() == item)
+            if (inventoryManager.getSlotItems()[i].getItemSO() && inventoryManager.getSlotItems()[i].getItemSO().ItemName == "MP")
             {
-                return inventoryManager.getItems()[i];
+                inventoryManager.getSlotItems()[i].UpdateQuantity(number);
+                inventoryManager.RefreshUI();
+                return;
             }
         }
-        return null;
-
     }
-    #endregion*/
-
-
-   /* #region update
-    public int updateHP(int number)
+    public void UpdateMP(Slot slot, int number)
     {
-        int quanitity = 0;
-        bool flat = true;
-        for (int i = 0; i < inventoryManager.getItems().Count; i++)
+        for (int i = 0; i < inventoryManager.getSlotItems().Count; i++)
         {
-                try
-                {
-                    if (inventoryManager.getItems()[i].getItemSO().ItemName == "HP")
-                    {
-                        if (flat)
-                        {
-                            if (number == 1)
-                            {
-                                inventoryManager.getItems()[i].addQuantity(1);
-                            }
-                            else if (number == -1)
-                            {
-                            inventoryManager.getItems()[i].SubQuantity(1);
-                            }
-                            if (inventoryManager.getItems()[i].getQuantity() <= 0)
-                            {
-                                Remove(inventoryManager.getItems()[i].getItemSO());
-                            }
-                            else
-                                quanitity += inventoryManager.getItems()[i].getQuantity();
-                        flat = false;
-                        }
-                        else
-                        {
-                            quanitity += inventoryManager.getItems()[i].getQuantity();
-                        }
-                    }
-                }
-                catch
-                {
-
-                }
-        }
-        inventoryManager.RefreshUI();
-
-        return quanitity;
-    }
-    public int updateMP(int number)
-    {
-        int quanitity = 0;
-        bool flat = true;
-        for (int i = 0; i < inventoryManager.getItems().Count; i++)
-        {
-            try
+            if (inventoryManager.getSlotItems()[i].getItemSO() && inventoryManager.getSlotItems()[i].getItemSO().ItemName == "MP")
             {
-                if (inventoryManager.getItems()[i].getItemSO().ItemName == "MP")
-                {
-                    if (flat)
-                    {
-                        if (number == 1)
-                        {
-                            inventoryManager.getItems()[i].addQuantity(1);
-                        }
-                        else if (number == -1)
-                        {
-                            inventoryManager.getItems()[i].SubQuantity(1);
-                        }
-                        if (inventoryManager.getItems()[i].getQuantity() <= 0)
-                        {
-                            Remove(inventoryManager.getItems()[i].getItemSO());
-                        }
-                        else
-                            quanitity += inventoryManager.getItems()[i].getQuantity();
-                        flat = false;
-                    }
-                    else
-                    {
-                        quanitity += inventoryManager.getItems()[i].getQuantity();
-                    }
-                }
-            }
-            catch
-            {
-
+                inventoryManager.getSlotItems()[i].UpdateQuantity(number);
+                inventoryManager.RefreshUI();
+                return;
             }
         }
-        inventoryManager.RefreshUI();
-
-        return quanitity;
+        AddItem(slot);
     }
-
-    public bool updateFood()
+    public bool AddItem(Slot slot)
     {
-        for (int i = 0; i < inventoryManager.getItems().Count; i++)
+        for (int i = 0; i < inventoryManager.getSlotItems().Count; i++)
         {
-            if (inventoryManager.getItems()[i].getItemSO() !=null && 
-                inventoryManager.getItems()[i].getItemSO().ItemName == "chicken")
+            if (inventoryManager.getSlotItems()[i].getItemSO() == null)
             {
+                inventoryManager.getSlotItems()[i].addItemSO(slot.getItemSO(),1);
+                inventoryManager.RefreshUI();
                 return true;
             }
         }
             return false;
     }
-    #endregion*/
+    public void UpdateGold(int Gold)
+    {
+        foreach (TextMeshProUGUI t in TextGold)
+        {
+            t.text = Gold.ToString();
+        }
+    }
+    public bool RemoveItem(int index)
+    {
+        Slot slot = inventoryManager.getSlotItems()[index];
+        try
+        {
+            if (slot.getItemSO().ItemName == "HP")
+            {
+                if (slot.getQuantity() == 0)
+                    inventoryManager.getSlotItems()[index].Clear();
+                else
+                    UpdateHP(-1);
+            }
+            else if (slot.getItemSO().ItemName == "MP")
+            {
+                if (slot.getQuantity() == 0)
+                    inventoryManager.getSlotItems()[index].Clear();
+                else
+                    UpdateMP(-1);
+            }
+            else
+            {
+                inventoryManager.getSlotItems()[index].Clear();
+            }
+            inventoryManager.RefreshUI();
+            return true;
+        }
+        catch
+        {
+            return false;
+
+        }
+
+    }
+    #endregion
 
 }

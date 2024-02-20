@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
-public class MoveItem : SelectItem, IDragHandler, IBeginDragHandler, IEndDragHandler
+public class MoveItem : Select, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     public Slot movingSlot;
     public Slot originalSlot;
@@ -21,14 +21,13 @@ public class MoveItem : SelectItem, IDragHandler, IBeginDragHandler, IEndDragHan
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (this.InventoryManager.getItems()[this.PosItem()].getItemSO()){
-            originalSlot = this.InventoryManager.getItems()[this.PosItem()];
+        if (this.GetSlotItem().getItemSO()){
+            originalSlot = this.GetSlotItem();
             movingSlot = new Slot(originalSlot);
             IsMoveItem = true;
             originalSlot.Clear();
             this.InventoryManager.RefreshUI();
         }
-       // HideImage();
     }
     public void OnEndDrag(PointerEventData eventData)
     {
@@ -36,29 +35,28 @@ public class MoveItem : SelectItem, IDragHandler, IBeginDragHandler, IEndDragHan
         ItemCursor.SetActive(false);
         if (GetClosestSlot()==-1)
         {
-            this.InventoryManager.setItem(movingSlot,this.PosItem());
+            this.InventoryManager.setSlotItem(movingSlot,this.PosItem());
             this.InventoryManager.RefreshUI();
         }
         else
         {
-            if (this.InventoryManager.getItems()[PosSlot].getItemSO() != null)
+            if (this.GetSlotItem(PosSlot).getItemSO() != null)
             {
-                if (this.InventoryManager.getItems()[PosSlot].getItemSO().ItemName == movingSlot.getItemSO().ItemName)
+                if (this.GetSlotItem(PosSlot).getItemSO().ItemName == movingSlot.getItemSO().ItemName)
                 {
 
-                    movingSlot.addQuantity(this.InventoryManager.getItems()[PosSlot].getQuantity());
-                    this.InventoryManager.setItem(movingSlot, PosSlot);
+                    movingSlot.UpdateQuantity(this.GetSlotItem(PosSlot).getQuantity());
+                    this.InventoryManager.setSlotItem(movingSlot, PosSlot);
                 }
                 else
                 {
-                    this.InventoryManager.setItem(this.InventoryManager.getItems()[PosSlot], this.PosItem());
-                    this.InventoryManager.setItem(movingSlot, PosSlot);
+                    this.InventoryManager.setSlotItem(this.GetSlotItem(PosSlot), this.PosItem());
+                    this.InventoryManager.setSlotItem(movingSlot, PosSlot);
                 }
             }
-
             else
             {
-                this.InventoryManager.setItem(movingSlot, PosSlot);
+                this.InventoryManager.setSlotItem(movingSlot, PosSlot);
             }
             this.InventoryManager.RefreshUI();
         }
@@ -66,9 +64,9 @@ public class MoveItem : SelectItem, IDragHandler, IBeginDragHandler, IEndDragHan
     public int GetClosestSlot()
     {
         PosSlot = -1;
-        for (int i = 0; i < this.InventoryManager.getSlots().Length; i++)
+        for (int i = 0; i < this.InventoryManager.getSlotGameObject().Length; i++)
         {
-            if (Vector2.Distance(this.InventoryManager.getSlots()[i].transform.position, Input.mousePosition) <= 29)
+            if (Vector2.Distance(this.InventoryManager.getSlotGameObject()[i].transform.position, Input.mousePosition) <= 29)
             {
                 PosSlot = i;
                 return PosSlot;

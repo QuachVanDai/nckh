@@ -1,8 +1,9 @@
 ﻿using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ShowItem : SelectItem
+public class ShowItem : Select
 {
     [SerializeField]
     private TextMeshProUGUI TxtInformation;
@@ -15,7 +16,9 @@ public class ShowItem : SelectItem
     {
         try
         {
-            TxtInformation.text = this.InventoryManager.getItems()[this.PosItem()].getItemSO().ItemName + "\n";
+            TxtInformation.text = this.GetSlotItem().getItemSO().ItemName + "\n";
+            TxtInformation.text += this.GetSlotItem().getItemSO().Description + "\n";
+
         }
         catch 
         {
