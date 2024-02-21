@@ -2694,8 +2694,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 223498632}
-        m_TargetAssemblyTypeName: usehp, Assembly-CSharp
-        m_MethodName: useItemhp
+        m_TargetAssemblyTypeName: Usehp, Assembly-CSharp
+        m_MethodName: UseItemHp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3193,12 +3193,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5af45d4a0ed776642a350bb98ca9628e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mpSO: {fileID: 11400000, guid: 45a8c7b5f7ba2e140be938b1155728cc, type: 2}
-  quanitity: 0
-  txt_quanitity: {fileID: 763499940}
-  flat: 0
-  Fill_time: {fileID: 339009072}
-  inventoryUpdate: {fileID: 1328572519}
+  SlotFoodSO:
+    _item: {fileID: 11400000, guid: 45a8c7b5f7ba2e140be938b1155728cc, type: 2}
+    _quantity: 1
+  Quanitity: 0
+  TxtQuanitity: {fileID: 763499940}
+  IsUse: 0
+  ImgFillTime: {fileID: 339009072}
 --- !u!1 &204451226
 GameObject:
   m_ObjectHideFlags: 0
@@ -3725,12 +3726,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14b182465a648364da6898dfcbeff07f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpSO: {fileID: 11400000, guid: 9bbf73c1e54f7494a86ec14c3f9c4f5e, type: 2}
-  quanitity: 0
-  txt_quanitity: {fileID: 311173692}
-  flat: 0
-  Fill_time: {fileID: 1591104280}
-  inventoryUpdate: {fileID: 1328572519}
+  SlotFoodSO:
+    _item: {fileID: 11400000, guid: 9bbf73c1e54f7494a86ec14c3f9c4f5e, type: 2}
+    _quantity: 1
+  Quanitity: 0
+  TxtQuanitity: {fileID: 311173692}
+  IsUes: 0
+  ImgFillTime: {fileID: 1591104280}
 --- !u!1 &228622779
 GameObject:
   m_ObjectHideFlags: 0
@@ -13481,13 +13483,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19bf3ebf23d2cf34aa3002eaee4e86cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryUpdate: {fileID: 1328572519}
-  foodSO: {fileID: 11400000, guid: b7bf063f3a365ed45bead951b3eda6b7, type: 2}
-  txt_FirstTime: {fileID: 357850966}
-  txt_SecondTime: {fileID: 390183234}
-  flat: 0
-  Fill_time: {fileID: 1485851308}
-  foodPanel: {fileID: 1022607554}
+  SlotFoodSO:
+    _item: {fileID: 11400000, guid: b7bf063f3a365ed45bead951b3eda6b7, type: 2}
+    _quantity: 1
+  TxtFirstTime: {fileID: 357850966}
+  TxtSecondTime: {fileID: 390183234}
+  IsUse: 0
+  ImgFullTime: {fileID: 1485851308}
+  FoodPanel: {fileID: 1022607554}
   ExpiredTime: 20
 --- !u!1 &915174896
 GameObject:
@@ -22215,10 +22218,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SlotItems:
   - _item: {fileID: 11400000, guid: 45a8c7b5f7ba2e140be938b1155728cc, type: 2}
-    _quantity: 0
+    _quantity: 1
   - _item: {fileID: 11400000, guid: 9bbf73c1e54f7494a86ec14c3f9c4f5e, type: 2}
-    _quantity: 0
-  - _item: {fileID: 0}
+    _quantity: 2
+  - _item: {fileID: 11400000, guid: b7bf063f3a365ed45bead951b3eda6b7, type: 2}
     _quantity: 0
   - _item: {fileID: 0}
     _quantity: 0
@@ -22282,12 +22285,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1328572515}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7828f27fffee90949a547dd4c5406d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryManager: {fileID: 1328572516}
+  InventoryManager: {fileID: 1328572516}
   TextGold:
   - {fileID: 1388395277}
   - {fileID: 1285440748}
@@ -23070,8 +23073,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 204062556}
-        m_TargetAssemblyTypeName: usemp, Assembly-CSharp
-        m_MethodName: useItemmp
+        m_TargetAssemblyTypeName: Usemp, Assembly-CSharp
+        m_MethodName: UseItemMp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -47787,7 +47790,7 @@ Transform:
   m_GameObject: {fileID: 9160984522533479182}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -61.8, y: 5.2, z: 0}
+  m_LocalPosition: {x: -5.9, y: 8.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -57835,7 +57838,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!70 &4022656205778509953
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -63789,7 +63792,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &4634106795410030019
 GameObject:
   m_ObjectHideFlags: 0

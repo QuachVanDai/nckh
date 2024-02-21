@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.EventSystems;
-
 public class BuyItem : MonoBehaviour
 {
     public Slot Slot;
@@ -13,20 +11,21 @@ public class BuyItem : MonoBehaviour
     }
     public void ConfirmBuy()
     {
-        if (Slot == null || Slot.getItemSO()==null) return;
+        if (Slot == null || Slot.getItemSO() == null) return;
         Cost = Slot.getItemSO().Cost;
-        if (Player.Instance.Gold<100) return;
-        if (Slot.getItemSO().ItemName == "HP" && SumMoney>= Cost)
+        if (SumMoney < Cost) { TextTemplate.Instance.SetText(TagScript.notMoney); return;  }
+      
+        if (Slot.getItemSO().ItemName == "HP" )
         {
             InventoryUpdate.Instance.UpdateHP(Slot, 1);
             Player.Instance.Gold -= Cost;
         }
-        else if (Slot.getItemSO().ItemName == "MP" && SumMoney >= Cost)
+        else if (Slot.getItemSO().ItemName == "MP")
         {
             InventoryUpdate.Instance.UpdateMP(Slot, 1);
             Player.Instance.Gold -= Cost;
         }
-        else if( SumMoney >= Cost)
+        else 
         {
             InventoryUpdate.Instance.AddItem(Slot);
             Player.Instance.Gold -= Cost;

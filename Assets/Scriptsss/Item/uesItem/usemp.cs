@@ -3,68 +3,58 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class usemp: MonoBehaviour
+public class Usemp : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public MpSO mpSO;
-    public int quanitity = 0;
-    public TextMeshProUGUI txt_quanitity;
-    public bool flat;
-    public Image Fill_time;
+    public Slot SlotFoodSO;
+    private MpSO MpSO;
+    public int Quanitity = 0;
+    public TextMeshProUGUI TxtQuanitity;
+    public bool IsUse;
+    public Image ImgFillTime;
     private float getTime;
-    public InventoryUpdate inventoryUpdate;
- 
+
     void Start()
     {
-     //   inventory = FindObjectOfType<inventoryManager>();
-      //  quanitity = inventoryUpdate.updateMP(0);
-        txt_quanitity.text = quanitity.ToString();
-        flat = true;
+        Quanitity = InventoryUpdate.Instance.UpdateMP(0);
+        TxtQuanitity.text = Quanitity.ToString();
+        IsUse = true;
     }
-    public void useItemmp()
+    public void UseItemMp()
     {
-        //if(flat) { StartCoroutine(setTimeUse()); }
-      //  else { TextTemplate.Instance.SetText(TagScript.hoiChieu); }
+        if (IsUse) { StartCoroutine(SetTimeUse()); }
+        else { TextTemplate.Instance.SetText(TagScript.hoiChieu); }
     }
-  /*  public IEnumerator setTimeUse()
+    public IEnumerator SetTimeUse()
     {
-        if(quanitity>0)
+        if (Player.Instance.CurrMp == Player.Instance.MaxMp)
         {
+            TextTemplate.Instance.SetText(TagScript.fullMP);
+            yield return new WaitForSeconds(0.5f);
+        }
+        else if (Quanitity > 0)
+        {
+            MpSO = (MpSO)SlotFoodSO.getItemSO();
             getTime = Time.time;
-            flat = false;
-            if (Player.Instance.CurrMp == Player.Instance.MaxMp)
-            {
-                TextTemplate.Instance.SetText(TagScript.fullMP);
-                yield return null;
-                flat = true;
-            }
-            else
-            {
-                Player.Instance.PlayerEffect.UpdateMp(mpSO.MP);
-                quanitity = inventoryUpdate.updateMP(-1);
-                txt_quanitity.text = quanitity.ToString();
-                yield return new WaitForSeconds(0.5f);
-                flat = true;
-            }
+            IsUse = false;
+            Player.Instance.PlayerEffect.UpdateMp(MpSO.mP);
+            Quanitity = InventoryUpdate.Instance.UpdateMP(1);
+            TxtQuanitity.text = Quanitity.ToString();
+            yield return new WaitForSeconds(0.5f);
+            IsUse = true;
         }
-        else
-        {
-            TextTemplate.Instance.SetText(TagScript.notMp);
-        }
-
-    }*/
-    // Update is called once per frame
+        else { TextTemplate.Instance.SetText(TagScript.notHp); }
+    }
     void Update()
     {
-     //   quanitity = inventoryUpdate.updateMP(0);
-        txt_quanitity.text = quanitity.ToString();
+        Quanitity = InventoryUpdate.Instance.UpdateMP(0);
+        TxtQuanitity.text = Quanitity.ToString();
         if (Input.GetKeyUp(KeyCode.R))
         {
-            useItemmp();
+            UseItemMp();
         }
-        if(!flat)
+        if (!IsUse)
         {
-            Fill_time.fillAmount = (Time.time - getTime) / 0.5f;
+            ImgFillTime.fillAmount = (Time.time - getTime) / 0.5f;
         }
     }
 }

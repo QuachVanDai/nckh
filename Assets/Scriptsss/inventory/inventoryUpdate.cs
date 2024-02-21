@@ -1,18 +1,19 @@
 ﻿
+using System;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class InventoryUpdate : MonoBehaviour
 {
-    [SerializeField]  private InventoryManager inventoryManager;
-     private static InventoryUpdate instance;
-    public static InventoryUpdate Instance { get => instance; }
+    public InventoryManager InventoryManager;
+    private static InventoryUpdate _Instance;
+    public static InventoryUpdate Instance { get => _Instance; }
     public TextMeshProUGUI[] TextGold;
     protected void Awake()
     {
-        if (InventoryUpdate.instance != null) Debug.LogError("Only 1 inventoryUpdate allow to exist");
-        InventoryUpdate.instance = this;
+        if (InventoryUpdate._Instance != null) Debug.LogError("Only 1 inventoryUpdate allow to exist");
+        InventoryUpdate._Instance = this;
     }
 
     private void Start()
@@ -20,68 +21,125 @@ public class InventoryUpdate : MonoBehaviour
         UpdateGold(Player.Instance.Gold);
     }
     #region update
-    public void UpdateHP(int number)
+    public int UpdateHP(int number)
     {
-        for (int i = 0; i < inventoryManager.getSlotItems().Count; i++)
+        int sumHP = 0;
+        bool flat = false;
+        PotionSO hp;
+        for (int i = 0; i < InventoryManager.getSlotItems().Count; i++)
         {
-            if(inventoryManager.getSlotItems()[i].getItemSO() && inventoryManager.getSlotItems()[i].getItemSO().ItemName == "HP")
+            hp = (PotionSO)InventoryManager.getSlotItems()[i].getItemSO();
+            if (hp && hp.PotionType == PotionType.hp)
             {
-                inventoryManager.getSlotItems()[i].UpdateQuantity(number);
-                inventoryManager.RefreshUI();
-                return;
+                if (!flat)
+                {
+                    InventoryManager.getSlotItems()[i].SubQuantity(number);
+                    sumHP += InventoryManager.getSlotItems()[i].getQuantity();
+                    if (InventoryManager.getSlotItems()[i].getQuantity() == 0)
+                    {
+                        RemoveItem(i);
+                    }
+                    flat = true;
+                }
+                else
+                {
+                    sumHP += InventoryManager.getSlotItems()[i].getQuantity();
+                }
             }
         }
+        InventoryManager.RefreshUI();
+
+        return sumHP;
     }
     public void UpdateHP(Slot slot, int number)
     {
-        for (int i = 0; i < inventoryManager.getSlotItems().Count; i++)
+        for (int i = 0; i < InventoryManager.getSlotItems().Count; i++)
         {
-            if (inventoryManager.getSlotItems()[i].getItemSO() && inventoryManager.getSlotItems()[i].getItemSO().ItemName == "HP")
+            if (InventoryManager.getSlotItems()[i].getItemSO() && InventoryManager.getSlotItems()[i].getItemSO().ItemName == "HP")
             {
-                inventoryManager.getSlotItems()[i].UpdateQuantity(number);
-                inventoryManager.RefreshUI();
+                InventoryManager.getSlotItems()[i].UpdateQuantity(number);
+                InventoryManager.RefreshUI();
                 return;
             }
         }
         AddItem(slot);
     }
-    public void UpdateMP(int number)
+    public int UpdateMP(int number)
     {
-        for (int i = 0; i < inventoryManager.getSlotItems().Count; i++)
+        int sumMP = 0;
+        bool flat = false;
+        PotionSO mp;
+        for (int i = 0; i < InventoryManager.getSlotItems().Count; i++)
         {
-            if (inventoryManager.getSlotItems()[i].getItemSO() && inventoryManager.getSlotItems()[i].getItemSO().ItemName == "MP")
+            mp = (PotionSO)InventoryManager.getSlotItems()[i].getItemSO();
+            if (mp && mp.PotionType == PotionType.mp)
             {
-                inventoryManager.getSlotItems()[i].UpdateQuantity(number);
-                inventoryManager.RefreshUI();
-                return;
+                if (!flat)
+                {
+                    InventoryManager.getSlotItems()[i].SubQuantity(number);
+                    sumMP += InventoryManager.getSlotItems()[i].getQuantity();
+                    if (InventoryManager.getSlotItems()[i].getQuantity() == 0)
+                    {
+                        RemoveItem(i);
+                    }
+                    flat = true;
+                }
+                else
+                {
+                    sumMP += InventoryManager.getSlotItems()[i].getQuantity();
+                }
             }
         }
+        InventoryManager.RefreshUI();
+
+        return sumMP;
     }
     public void UpdateMP(Slot slot, int number)
     {
-        for (int i = 0; i < inventoryManager.getSlotItems().Count; i++)
+        for (int i = 0; i < InventoryManager.getSlotItems().Count; i++)
         {
-            if (inventoryManager.getSlotItems()[i].getItemSO() && inventoryManager.getSlotItems()[i].getItemSO().ItemName == "MP")
+            if (InventoryManager.getSlotItems()[i].getItemSO() && InventoryManager.getSlotItems()[i].getItemSO().ItemName == "MP")
             {
-                inventoryManager.getSlotItems()[i].UpdateQuantity(number);
-                inventoryManager.RefreshUI();
+                InventoryManager.getSlotItems()[i].UpdateQuantity(number);
+                InventoryManager.RefreshUI();
                 return;
             }
         }
         AddItem(slot);
     }
+    public bool IsHaveFood()
+    {
+        PotionSO food;
+        for (int i = 0; i < InventoryManager.getSlotItems().Count; i++)
+        {
+            food = (PotionSO)InventoryManager.getSlotItems()[i].getItemSO();
+            try
+            {
+                if (food.PotionType == PotionType.food)
+                {
+                    return true;
+                }
+            }
+            catch
+            {
+
+            }
+
+        }
+        return false;
+    }
     public bool AddItem(Slot slot)
     {
-        for (int i = 0; i < inventoryManager.getSlotItems().Count; i++)
+        for (int i = 0; i < InventoryManager.getSlotItems().Count; i++)
         {
-            if (inventoryManager.getSlotItems()[i].getItemSO() == null)
+            if (InventoryManager.getSlotItems()[i].getItemSO() == null)
             {
-                inventoryManager.getSlotItems()[i].addItemSO(slot.getItemSO(),1);
-                inventoryManager.RefreshUI();
+                InventoryManager.getSlotItems()[i].addItemSO(slot.getItemSO(), 1);
+                InventoryManager.RefreshUI();
                 return true;
             }
         }
-            return false;
+        return false;
     }
     public void UpdateGold(int Gold)
     {
@@ -92,28 +150,29 @@ public class InventoryUpdate : MonoBehaviour
     }
     public bool RemoveItem(int index)
     {
-        Slot slot = inventoryManager.getSlotItems()[index];
+        Slot slot = InventoryManager.getSlotItems()[index];
+        PotionSO potion = (PotionSO)slot.getItemSO();
         try
         {
-            if (slot.getItemSO().ItemName == "HP")
+            if (potion.PotionType == PotionType.hp)
             {
                 if (slot.getQuantity() == 0)
-                    inventoryManager.getSlotItems()[index].Clear();
+                    InventoryManager.getSlotItems()[index].Clear();
                 else
-                    UpdateHP(-1);
+                    UpdateHP(1);
             }
-            else if (slot.getItemSO().ItemName == "MP")
+            else if (potion.PotionType == PotionType.hp)
             {
                 if (slot.getQuantity() == 0)
-                    inventoryManager.getSlotItems()[index].Clear();
+                    InventoryManager.getSlotItems()[index].Clear();
                 else
-                    UpdateMP(-1);
+                    UpdateMP(1);
             }
             else
             {
-                inventoryManager.getSlotItems()[index].Clear();
+                InventoryManager.getSlotItems()[index].Clear();
             }
-            inventoryManager.RefreshUI();
+            InventoryManager.RefreshUI();
             return true;
         }
         catch
@@ -123,6 +182,28 @@ public class InventoryUpdate : MonoBehaviour
         }
 
     }
-    #endregion
+    public bool RemoveItem(Slot slot)
+    {
+        Slot s;
+        for (int i = 0; i < InventoryManager.getSlotItems().Count; i++)
+        {
+            s = InventoryManager.getSlotItems()[i];
+            try
+            {
+                if (slot.getItemSO().ItemName == s.getItemSO().ItemName)
+                {
+                    InventoryManager.getSlotItems()[i].Clear();
+                    InventoryManager.RefreshUI();
+                    return true;
+                }
+            }
+            catch
+            {
 
+            }
+        }
+        return false;
+
+    }
+    #endregion
 }

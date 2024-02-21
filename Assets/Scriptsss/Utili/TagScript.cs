@@ -12,5 +12,6 @@
     public const string fullMP="MP đầy";
     public const string useSkill = "Chiêu thức không phù hợp";
     public const string notFood = "Đã hết thức ăn trong hành trang";
+    public const string notMoney = "Không đủ xu";
 }
 
