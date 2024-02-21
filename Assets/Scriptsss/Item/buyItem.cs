@@ -12,6 +12,11 @@ public class BuyItem : MonoBehaviour
     public void ConfirmBuy()
     {
         if (Slot == null || Slot.getItemSO() == null) return;
+        if (InventoryUpdate.Instance.IsHaveBox() == false)
+        {
+            TextTemplate.Instance.SetText(TagScript.fullBox);
+            return;
+        }
         Cost = Slot.getItemSO().Cost;
         if (SumMoney < Cost) { TextTemplate.Instance.SetText(TagScript.notMoney); return;  }
       

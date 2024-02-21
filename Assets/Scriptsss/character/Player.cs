@@ -52,12 +52,24 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "potion")
         {
             PickUpItems pickUpItems = collision.gameObject.GetComponent<PickUpItems>();
-           // InventoryUpdate.Instance.Add(pickUpItems.item,1);
+            try
+            {
+                MpSO MpSO = (MpSO)pickUpItems.slot.getItemSO();
+                InventoryUpdate.Instance.UpdateMP(pickUpItems.slot, 1);
+            }
+            catch
+            {
+                HpSO HpSO = (HpSO)pickUpItems.slot.getItemSO();
+                InventoryUpdate.Instance.UpdateHP(pickUpItems.slot, 1);
+            }
+            
         }
        else if (collision.gameObject.tag == "money")
         {
-            PickUpMoney money = collision.gameObject.GetComponent<PickUpMoney>();
-          //  UpdateXu(money.xu.Xu);
+            PickUpItems pickUpItems = collision.gameObject.GetComponent<PickUpItems>();
+            MoneySO money = (MoneySO)pickUpItems.slot.getItemSO();
+            Gold += money.Xu;
+            InventoryUpdate.Instance.UpdateGold(Gold);
         }
     }
 

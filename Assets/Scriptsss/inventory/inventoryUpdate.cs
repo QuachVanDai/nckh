@@ -21,6 +21,34 @@ public class InventoryUpdate : MonoBehaviour
         UpdateGold(Player.Instance.Gold);
     }
     #region update
+   
+    public void UpdateHP(Slot slot, int number)
+    {
+        for (int i = 0; i < InventoryManager.getSlotItems().Count; i++)
+        {
+            if (InventoryManager.getSlotItems()[i].getItemSO() && InventoryManager.getSlotItems()[i].getItemSO().ItemName == "HP")
+            {
+                InventoryManager.getSlotItems()[i].UpdateQuantity(number);
+                InventoryManager.RefreshUI();
+                return;
+            }
+        }
+        AddItem(slot);
+    }
+    public void UpdateMP(Slot slot, int number)
+    {
+        for (int i = 0; i < InventoryManager.getSlotItems().Count; i++)
+        {
+            if (InventoryManager.getSlotItems()[i].getItemSO()
+                && InventoryManager.getSlotItems()[i].getItemSO().ItemName == "MP")
+            {
+                InventoryManager.getSlotItems()[i].UpdateQuantity(number);
+                InventoryManager.RefreshUI();
+                return;
+            }
+        }
+        AddItem(slot);
+    }
     public int UpdateHP(int number)
     {
         int sumHP = 0;
@@ -50,19 +78,6 @@ public class InventoryUpdate : MonoBehaviour
         InventoryManager.RefreshUI();
 
         return sumHP;
-    }
-    public void UpdateHP(Slot slot, int number)
-    {
-        for (int i = 0; i < InventoryManager.getSlotItems().Count; i++)
-        {
-            if (InventoryManager.getSlotItems()[i].getItemSO() && InventoryManager.getSlotItems()[i].getItemSO().ItemName == "HP")
-            {
-                InventoryManager.getSlotItems()[i].UpdateQuantity(number);
-                InventoryManager.RefreshUI();
-                return;
-            }
-        }
-        AddItem(slot);
     }
     public int UpdateMP(int number)
     {
@@ -94,19 +109,7 @@ public class InventoryUpdate : MonoBehaviour
 
         return sumMP;
     }
-    public void UpdateMP(Slot slot, int number)
-    {
-        for (int i = 0; i < InventoryManager.getSlotItems().Count; i++)
-        {
-            if (InventoryManager.getSlotItems()[i].getItemSO() && InventoryManager.getSlotItems()[i].getItemSO().ItemName == "MP")
-            {
-                InventoryManager.getSlotItems()[i].UpdateQuantity(number);
-                InventoryManager.RefreshUI();
-                return;
-            }
-        }
-        AddItem(slot);
-    }
+   
     public bool IsHaveFood()
     {
         PotionSO food;
@@ -128,14 +131,24 @@ public class InventoryUpdate : MonoBehaviour
         }
         return false;
     }
-    public bool AddItem(Slot slot)
+    public void AddItem(Slot slot)
+    {
+        for (int i = 0; i < InventoryManager.getSlotItems().Count; i++)
+        {
+             if (InventoryManager.getSlotItems()[i].getItemSO() == null)
+            {
+                InventoryManager.getSlotItems()[i].addItemSO(slot.getItemSO(), 1);
+                InventoryManager.RefreshUI();
+                return ;
+            }
+        }
+    }
+    public bool IsHaveBox()
     {
         for (int i = 0; i < InventoryManager.getSlotItems().Count; i++)
         {
             if (InventoryManager.getSlotItems()[i].getItemSO() == null)
             {
-                InventoryManager.getSlotItems()[i].addItemSO(slot.getItemSO(), 1);
-                InventoryManager.RefreshUI();
                 return true;
             }
         }
@@ -161,7 +174,7 @@ public class InventoryUpdate : MonoBehaviour
                 else
                     UpdateHP(1);
             }
-            else if (potion.PotionType == PotionType.hp)
+            else if (potion.PotionType == PotionType.mp)
             {
                 if (slot.getQuantity() == 0)
                     InventoryManager.getSlotItems()[index].Clear();
