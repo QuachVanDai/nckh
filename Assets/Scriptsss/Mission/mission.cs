@@ -53,7 +53,26 @@ public class Mission
         }
     }
 
+    public void GiaoPhanThuong()
+    {
+        int index = Random.Range(0,3);
+        switch (index)
+        {
+            case 0:
+                InventoryUpdate.Instance.UpdateHP(10);
+                break;
 
+            case 1:
+                InventoryUpdate.Instance.UpdateMP(10);
+                break;
+            case 2:
+                InventoryUpdate.Instance.UpdateMP(10);
+                break;
+            case 3:
+                InventoryUpdate.Instance.UpdateHP(10);
+                break;
+        }
+    }
     public void SetUpMisson() //initialization
     {
         QuantityMonsterDestroy = Random.Range(5, 10);

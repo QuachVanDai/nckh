@@ -21,7 +21,7 @@ public class MissionUi : MonoBehaviour
 
         textMeshProUGUI.text ="Hạ gục "+ _mission.QuantityMonsterDestroyed+"/ "+_mission.QuantityMonsterDestroy+" " + _mission.getMonster().Name;
     }
-    public void aa90()
+    public void GiaoNhiemVu()
     {
         _mission.ThucHienNhiemVu();
     }

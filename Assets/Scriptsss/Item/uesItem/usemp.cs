@@ -37,7 +37,7 @@ public class Usemp : MonoBehaviour
             getTime = Time.time;
             IsUse = false;
             Player.Instance.PlayerEffect.UpdateMp(MpSO.mP);
-            Quanitity = InventoryUpdate.Instance.UpdateMP(1);
+            Quanitity = InventoryUpdate.Instance.UpdateMP(-1);
             TxtQuanitity.text = Quanitity.ToString();
             yield return new WaitForSeconds(0.5f);
             IsUse = true;

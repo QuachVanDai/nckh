@@ -53,7 +53,7 @@ public class MonsterAttacked : MonoBehaviour
             {
                 if (this.PlayerAttack.MissionUi._mission.getMonster().ID == MonCurrent.ID)
                 {
-                    this.PlayerAttack.MissionUi.aa90();
+                    this.PlayerAttack.MissionUi.GiaoNhiemVu();
                 }
             }
                  ItemDropSpawner.Instance.Drop(JunkSO.dropRateList, transform.position, Quaternion.identity);

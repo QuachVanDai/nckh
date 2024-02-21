@@ -37,7 +37,7 @@ public class Usehp: MonoBehaviour
             _GetTime = Time.time;
             IsUes = false;
             Player.Instance.PlayerEffect.UpdateHp(HpSO.hP);
-            Quanitity = InventoryUpdate.Instance.UpdateHP(1);
+            Quanitity = InventoryUpdate.Instance.UpdateHP(-1);
             TxtQuanitity.text = Quanitity.ToString();
             yield return new WaitForSeconds(0.5f);
             IsUes = true;

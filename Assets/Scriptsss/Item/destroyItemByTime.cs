@@ -6,9 +6,9 @@ public class DestroyItemByTime : Destroys
     private void Start()
     {
         _CanDestroy = false;
-        Invoke(nameof(isCanDestroy), 6f);
+        Invoke(nameof(IsCanDestroy), 6f);
     }
-    public bool isCanDestroy()
+    public bool IsCanDestroy()
     {
         _CanDestroy = true;
         return _CanDestroy;

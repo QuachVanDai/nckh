@@ -61,7 +61,7 @@ public class InventoryUpdate : MonoBehaviour
             {
                 if (!flat)
                 {
-                    InventoryManager.getSlotItems()[i].SubQuantity(number);
+                    InventoryManager.getSlotItems()[i].UpdateQuantity(number);
                     sumHP += InventoryManager.getSlotItems()[i].getQuantity();
                     if (InventoryManager.getSlotItems()[i].getQuantity() == 0)
                     {
@@ -91,7 +91,7 @@ public class InventoryUpdate : MonoBehaviour
             {
                 if (!flat)
                 {
-                    InventoryManager.getSlotItems()[i].SubQuantity(number);
+                    InventoryManager.getSlotItems()[i].UpdateQuantity(number);
                     sumMP += InventoryManager.getSlotItems()[i].getQuantity();
                     if (InventoryManager.getSlotItems()[i].getQuantity() == 0)
                     {

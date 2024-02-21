@@ -10264,7 +10264,7 @@ GameObject:
   m_Component:
   - component: {fileID: 739614817}
   m_Layer: 0
-  m_Name: holder
+  m_Name: Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16208,7 +16208,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1022607555
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29867,7 +29867,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1803351808}
   m_Layer: 0
-  m_Name: prefabs
+  m_Name: Prefabs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46554,7 +46554,7 @@ MonoBehaviour:
   _PosEffect: {fileID: 6316916881564751979}
   PlayerAttack: {fileID: 9160984522533479190}
   _MonsterController2D: {fileID: 2115454598909146819}
-  JunkSO: {fileID: 0}
+  JunkSO: {fileID: 11400000, guid: e0bea908de4f840488ebbba73b94b05a, type: 2}
   MonCurrent: {fileID: 1000388856719164597}
   MonEffect: {fileID: 8500827568663696307}
 --- !u!1 &1909578673721961154
@@ -47821,7 +47821,7 @@ MonoBehaviour:
   _PosEffect: {fileID: 4802605941871401157}
   PlayerAttack: {fileID: 9160984522533479190}
   _MonsterController2D: {fileID: 2777863040206650493}
-  JunkSO: {fileID: 0}
+  JunkSO: {fileID: 11400000, guid: e0bea908de4f840488ebbba73b94b05a, type: 2}
   MonCurrent: {fileID: 3963385410293363960}
   MonEffect: {fileID: 5234407716590546364}
 --- !u!4 &2422817247090112114
@@ -65460,7 +65460,7 @@ MonoBehaviour:
   _PosEffect: {fileID: 4177155554491782192}
   PlayerAttack: {fileID: 9160984522533479190}
   _MonsterController2D: {fileID: 1702809707731363128}
-  JunkSO: {fileID: 0}
+  JunkSO: {fileID: 11400000, guid: e0bea908de4f840488ebbba73b94b05a, type: 2}
   MonCurrent: {fileID: 6390907193292622409}
   MonEffect: {fileID: 7342796444857425981}
 --- !u!224 &5230126901082454833
@@ -91235,7 +91235,7 @@ MonoBehaviour:
   _PosEffect: {fileID: 3234797459045480397}
   PlayerAttack: {fileID: 9160984522533479190}
   _MonsterController2D: {fileID: 1764750532805441485}
-  JunkSO: {fileID: 0}
+  JunkSO: {fileID: 11400000, guid: e0bea908de4f840488ebbba73b94b05a, type: 2}
   MonCurrent: {fileID: 3082543697434622682}
   MonEffect: {fileID: 9129724069948739771}
 --- !u!114 &9129724069948739771
@@ -91286,13 +91286,13 @@ GameObject:
   - component: {fileID: 9160984522533479190}
   - component: {fileID: 9160984522533479189}
   - component: {fileID: 9160984522533479192}
+  - component: {fileID: 9160984522533479194}
   - component: {fileID: 9160984522533479191}
+  - component: {fileID: 9160984522533479193}
   - component: {fileID: 4853964171103497911}
   - component: {fileID: 4611247620821908803}
   - component: {fileID: 4022656205778509953}
   - component: {fileID: 9160984522533479195}
-  - component: {fileID: 9160984522533479194}
-  - component: {fileID: 9160984522533479193}
   m_Layer: 7
   m_Name: =====Character=====
   m_TagString: player

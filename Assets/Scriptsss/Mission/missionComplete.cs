@@ -15,6 +15,7 @@ public class MissionComplete : IMissionState
         if(_mission.IsCompleteMission==true) 
         {
             TextTemplate.Instance.SetText("Đây là phần thưởng");
+            _mission.GiaoPhanThuong();
             _mission.setChangeState(new MissionNot(_mission));
             return true;
         }
