@@ -1,23 +1,25 @@
 
+using System.Collections;
+using System.ComponentModel;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
     [Header("Character")]
     [Space]
-    //[Range(0, .3f)][SerializeField] private float m_MovementSmoothing = .05f;
     public float RunSpeed = 0f;
     public bool FacingRight = true;
     private Rigidbody2D Rigidbody2D;
-    private float _MoveInput = 0f;
-    private float  _JumpInput=0f;
-
+    [SerializeField]  private float _MoveInput = 0f;
+    [SerializeField]  private float  _JumpInput=0f;
+    [Range(0, .3f)] [SerializeField] private float _MovementSmoothing = .05f;
+    private Vector3 velocity = Vector3.zero;
     [SerializeField] private float _JumpForce;
-
     private void Awake()
     {
         Rigidbody2D = GetComponent<Rigidbody2D>();
     }
+    public bool IsJump;
     private void Update()
     {
         if (GameManager.Instance.IsPlaygame == false) return;
@@ -25,7 +27,7 @@ public class PlayerMove : MonoBehaviour
         _MoveInput = PlayerController2D.Instance.getInputHorizontal();
         _JumpInput = PlayerController2D.Instance.getInputVertical();
 
-        if (!PlayerController2D.Instance.IsGround() && _JumpInput == 0)
+        if (!PlayerController2D.Instance.IsGround() && _JumpInput == 0|| Rigidbody2D.velocity.y<0 )
         {
             PlayerController2D.Instance.Animator.SetBool("IsIdleToDown", true);
         }
@@ -34,22 +36,28 @@ public class PlayerMove : MonoBehaviour
         {
             PlayerController2D.Instance.Animator.SetBool("IsIdleToJump", false);
             PlayerController2D.Instance.Animator.SetBool("IsIdleToDown", false);
-
-            if (_JumpInput > 0 && Rigidbody2D.velocity.y == 0)
+            if(_JumpInput > 0)
             {
-                Rigidbody2D.velocity = new Vector2(Rigidbody2D.velocity.x, _JumpForce);
-                PlayerController2D.Instance.Animator.SetBool("IsIdleToJump", true);
-                PlayerController2D.Instance.Animator.SetBool("IsIdleToDown", true);
+                if(IsJump) 
+                    StartCoroutine(nameof(Jump));
             }
             PlayerController2D.Instance.Animator.SetFloat("Speed", Mathf.Abs(_MoveInput));
-
         }
         PlayerController2D.Instance.Animator.SetFloat("Jumping", Rigidbody2D.velocity.y);
     }
-
+    public IEnumerator Jump()
+    {
+        IsJump = false;
+        Rigidbody2D.velocity = new Vector2(Rigidbody2D.velocity.x, _JumpForce);
+        PlayerController2D.Instance.Animator.SetBool("IsIdleToJump", true);
+        yield return new WaitForSeconds(0.6f);
+        IsJump = true;
+    }
     public void Move(float move)
     {
-        Rigidbody2D.velocity = new Vector2(move, Rigidbody2D.velocity.y);
+        Vector3 targetVelocity = new Vector2(move, Rigidbody2D.velocity.y);
+        Rigidbody2D.velocity = Vector3.SmoothDamp(Rigidbody2D.velocity, targetVelocity,ref velocity, _MovementSmoothing);
+        //Rigidbody2D.velocity = new Vector2(move, Rigidbody2D.velocity.y);
         if (move > 0 && !FacingRight)
         {
             Flip();

@@ -1,6 +1,6 @@
 
-
-public class PlayerUi : NCKHMonoBehaviour
+using UnityEngine;
+public class PlayerUi :MonoBehaviour
 {
     // Update is called once per frame
     void Update()

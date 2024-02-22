@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-public class Head : NCKHMonoBehaviour
+public class Head : MonoBehaviour
 {
     public GameObject[] headIdle;
     public GameObject[] headRun;

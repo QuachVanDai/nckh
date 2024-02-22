@@ -1,19 +1,12 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 
-public  class PlayerController2D:MonoBehaviour
+public  class PlayerController2D: Singleton<PlayerController2D>
 {
-    private static PlayerController2D _Instance;
-
     [SerializeField] private Transform _GroundCheck;
     [SerializeField] private LayerMask _GroundLayer;
     [SerializeField]  private Animator _Animator;
-
-    public static PlayerController2D Instance { get => _Instance; }
-    protected void Awake()
-    {
-        if(PlayerController2D._Instance != null) { Debug.LogError("chi cho phep 1 PlayerController2D"); }
-        PlayerController2D._Instance = this;
-    }
+  
     public Animator Animator
     {
         get { return this._Animator; }

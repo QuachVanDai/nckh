@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-public class Body : NCKHMonoBehaviour
+public class Body : MonoBehaviour
 {
     public GameObject[] bodyIdle;
     public GameObject[] bodyRun;

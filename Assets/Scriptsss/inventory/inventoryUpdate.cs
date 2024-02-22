@@ -4,17 +4,11 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class InventoryUpdate : MonoBehaviour
+public class InventoryUpdate : Singleton<InventoryUpdate>
 {
     public InventoryManager InventoryManager;
     private static InventoryUpdate _Instance;
-    public static InventoryUpdate Instance { get => _Instance; }
     public TextMeshProUGUI[] TextGold;
-    protected void Awake()
-    {
-        if (InventoryUpdate._Instance != null) Debug.LogError("Only 1 inventoryUpdate allow to exist");
-        InventoryUpdate._Instance = this;
-    }
 
     private void Start()
     {
@@ -172,14 +166,14 @@ public class InventoryUpdate : MonoBehaviour
                 if (slot.getQuantity() == 0)
                     InventoryManager.getSlotItems()[index].Clear();
                 else
-                    UpdateHP(1);
+                    UpdateHP(-1);
             }
             else if (potion.PotionType == PotionType.mp)
             {
                 if (slot.getQuantity() == 0)
                     InventoryManager.getSlotItems()[index].Clear();
                 else
-                    UpdateMP(1);
+                    UpdateMP(-1);
             }
             else
             {
