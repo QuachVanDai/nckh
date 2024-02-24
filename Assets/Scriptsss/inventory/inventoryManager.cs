@@ -1,5 +1,6 @@
 ﻿
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,11 +9,16 @@ public class InventoryManager : MonoBehaviour
     
     [SerializeField] private List<Slot> SlotItems = new List<Slot>(15);
     [SerializeField] private GameObject[] SlotsGameObject;
-    public  void Start()
+    public TextMeshProUGUI TextGold;
+
+    public void Start()
     {
         RefreshUI();
     }
-
+    private void Update()
+    {
+        TextGold.text = Player.Instance.Gold.ToString();
+    }
     public void RefreshUI()
     {
         for (int i = 0; i < SlotsGameObject.Length; i++)

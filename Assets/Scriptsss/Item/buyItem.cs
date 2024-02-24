@@ -2,7 +2,6 @@
 public class BuyItem : MonoBehaviour
 {
     public Slot Slot;
-    public Player Player;
     public int SumMoney;
     public int Cost;
     private void Start()
@@ -36,6 +35,5 @@ public class BuyItem : MonoBehaviour
             Player.Instance.Gold -= Cost;
         }
         SumMoney = Player.Instance.Gold;
-        InventoryUpdate.Instance.UpdateGold(SumMoney);
     }
 }

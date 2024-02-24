@@ -69,7 +69,6 @@ public class Player : MonoBehaviour
             PickUpItems pickUpItems = collision.gameObject.GetComponent<PickUpItems>();
             MoneySO money = (MoneySO)pickUpItems.slot.getItemSO();
             Gold += money.Xu;
-            InventoryUpdate.Instance.UpdateGold(Gold);
         }
     }
 

@@ -1,19 +1,9 @@
 ﻿
-using System;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEngine;
 
 public class InventoryUpdate : Singleton<InventoryUpdate>
 {
     public InventoryManager InventoryManager;
-    private static InventoryUpdate _Instance;
-    public TextMeshProUGUI[] TextGold;
-
-    private void Start()
-    {
-        UpdateGold(Player.Instance.Gold);
-    }
     #region update
    
     public void UpdateHP(Slot slot, int number)
@@ -148,13 +138,7 @@ public class InventoryUpdate : Singleton<InventoryUpdate>
         }
         return false;
     }
-    public void UpdateGold(int Gold)
-    {
-        foreach (TextMeshProUGUI t in TextGold)
-        {
-            t.text = Gold.ToString();
-        }
-    }
+ 
     public bool RemoveItem(int index)
     {
         Slot slot = InventoryManager.getSlotItems()[index];

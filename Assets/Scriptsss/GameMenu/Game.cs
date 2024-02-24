@@ -3,9 +3,10 @@ using UnityEngine.SceneManagement;
 
 public static class Game
 {
+    
     public static void Continue()
     {
-        SceneManager.LoadSceneAsync("langtone");
+        SceneManager.LoadSceneAsync("Player");
         //gameManager.Instance.IsPlaygame = true;
     }
     public static void Quit()

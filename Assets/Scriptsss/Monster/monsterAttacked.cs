@@ -19,11 +19,13 @@ public class MonsterAttacked : MonoBehaviour
         MonEffect = GetComponent<MonsterEffect>();
         _PosSelected = transform.Find("Selected");
         _PosEffect = transform.Find("Ani_Attacked");
-        GameObject player = GameObject.FindWithTag("player");
-        PlayerAttack = player.GetComponent<PlayerAttack>();
     }
-  
-  
+    private void Start()
+    {
+        GameObject player = GameObject.FindWithTag("player");
+        PlayerAttack = FindAnyObjectByType<PlayerAttack>();
+    }
+
     public void Update()
     {
         if (PlayerAttack.MonsterAttacted == this) 

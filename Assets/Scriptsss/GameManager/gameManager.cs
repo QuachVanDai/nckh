@@ -1,18 +1,16 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    private static GameManager instance;
-    public static  GameManager Instance { get { return instance; } }
-
     [SerializeField]
     private bool isPlayGame;
     public bool IsPlaygame {  get { return isPlayGame; } set { isPlayGame = value; } }
-    protected  void Awake()
+
+    public string scenes;
+    private void Start()
     {
-        if (GameManager.instance != null) Debug.LogError("Only 1 gameManager allow to exist");
-        GameManager.instance = this;
-        isPlayGame = true;
+        SceneManager.LoadScene(scenes, LoadSceneMode.Additive);
     }
 
 }
