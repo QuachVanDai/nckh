@@ -1,23 +1,15 @@
 
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LoadAnimation : MonoBehaviour
+public class LoadAnimation : Singleton<LoadAnimation>
 {
-    private static LoadAnimation _instance;
     public GameObject sprite_Time1;
     public GameObject sprite_Time2;
     public Sprite[] img;
     public int number=0;
 
-    public static LoadAnimation Instance {  get { return _instance; } }
-
-    protected  void Awake()
-    {
-        if (LoadAnimation._instance != null) Debug.LogError("Only 1 LoadAnimation allow to exist");
-
-        LoadAnimation._instance = this;
-    }
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +18,6 @@ public class LoadAnimation : MonoBehaviour
     public void getLoadmap()
     {
         InvokeRepeating(nameof(loadMap), 0, 2 / 100f);
-
     }
     public void loadMap()
     {
@@ -38,10 +29,5 @@ public class LoadAnimation : MonoBehaviour
         }
         sprite_Time1.GetComponent<Image>().sprite = img[number/10];
         sprite_Time2.GetComponent<Image>().sprite = img[number%10];
-    }
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
