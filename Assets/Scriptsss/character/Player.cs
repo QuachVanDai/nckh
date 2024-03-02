@@ -3,12 +3,12 @@ using Unity.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Player : MonoBehaviour
+public class Player : Singleton<Player>
 {
     private static Player _Instance;
     public string Name;
     public int Level;
-    [ReadOnly]public float MaxHp;
+    public float MaxHp;
     public float CurrHp;
     public float MaxMp;
     public float CurrMp;
@@ -20,13 +20,7 @@ public class Player : MonoBehaviour
     public SetPlayer SetPlayer;
 
     public PlayerEffect PlayerEffect;
-    public static Player Instance { get => _Instance; }
-
-    protected  void Awake()
-    {
-        if (Player._Instance != null) Debug.LogError("Only 1 Player allow to exist");
-        Player._Instance = this;
-    }
+ 
     public void Start()
     {
         LoadComponent();
@@ -34,7 +28,7 @@ public class Player : MonoBehaviour
     protected void LoadComponent()
     {
         SetPlayer = new SetPlayer();
-        Level = 1;
+        Level = 20;
         MinDamage = SetPlayer.getDamePlayerDictionary(Level).Item1;
         MaxDamage = SetPlayer.getDamePlayerDictionary(Level).Item2;
         MaxHp = SetPlayer.getHPPlayerDictionary()[Level];

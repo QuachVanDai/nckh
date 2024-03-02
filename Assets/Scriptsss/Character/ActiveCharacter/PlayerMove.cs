@@ -22,7 +22,7 @@ public class PlayerMove : MonoBehaviour
     public bool IsJump;
     private void Update()
     {
-        if (GameManager.Instance.IsPlaygame == false) return;
+        //if (GameManager.Instance.IsPlaygame == false) return;
 
         _MoveInput = PlayerController2D.Instance.getInputHorizontal();
         _JumpInput = PlayerController2D.Instance.getInputVertical();

@@ -10,7 +10,6 @@ public class LoadAnimation : Singleton<LoadAnimation>
     public Sprite[] img;
     public int number=0;
 
-    // Start is called before the first frame update
     void Start()
     {
         number = 0;

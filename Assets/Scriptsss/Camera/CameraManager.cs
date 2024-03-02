@@ -30,7 +30,7 @@ public class CameraManager : MonoBehaviour
             */
             _y = math.max(yMin[index], player.position.y);
             _getY = math.min(yMax[index], _y);
-            transform.position = new Vector3(_getX, _getY, transform.position.z);
+            transform.position = player;
     }
     public void SetTopTranForm(int number)
     {
