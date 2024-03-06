@@ -18,8 +18,8 @@ public class CameraManager : MonoBehaviour
     private void Update()
     {
         if (!flat) return;
-            _x = math.max(xMin[index], player.position.x);
-            _getX = math.min(xMax[index], _x);
+            //_x = math.max(xMin[index], player.position.x);
+          //  _getX = math.min(xMax[index], _x);
             /*  TH1:       Nếu player ơ vị trí nhỏ hơn -6;
                     vd player.positon.x =-7 ==> X_min=-6; ==> getX = -6 
 
@@ -28,9 +28,9 @@ public class CameraManager : MonoBehaviour
 
             Muc dich cho toa do X cua Camera  nằm trong khoảng (-6, 6)
             */
-            _y = math.max(yMin[index], player.position.y);
-            _getY = math.min(yMax[index], _y);
-            transform.position = player;
+            //_y = math.max(yMin[index], player.position.y);
+           // _getY = math.min(yMax[index], _y);
+            transform.position = new Vector3( player.position.x,player.position.y,-10);
     }
     public void SetTopTranForm(int number)
     {
