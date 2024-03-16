@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using QuachDai.NinjaSchool.Character;
 
 public class ButtonNextMap : MonoBehaviour
 {

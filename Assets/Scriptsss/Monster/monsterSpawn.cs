@@ -23,7 +23,7 @@ public class MonsterSpawn : MonoBehaviour
         if (_Tranform != null) return;
         Monster = Monster.GetMonster();
         if (Monster == null) return;
-        _Tranform = LstMonster.Instance.spawn(_MonsterName.gameObject.name, transform.position, Quaternion.identity);
+      //  _Tranform = LstMonster.Instance.spawn(_MonsterName.gameObject.name, transform.position, Quaternion.identity);
         _Tranform.parent = HolderMonster.transform;
         _Tranform.gameObject.SetActive(true);
 
@@ -36,7 +36,7 @@ public class MonsterSpawn : MonoBehaviour
     private void SpawnMonster()
     {
         Monster = Monster.GetMonster();
-        _Tranform = LstMonster.Instance.spawn(_MonsterName.gameObject.name, transform.position, Quaternion.identity);
+      //  _Tranform = LstMonster.Instance.spawn(_MonsterName.gameObject.name, transform.position, Quaternion.identity);
         _Tranform.gameObject.SetActive(true);
         _Tranform.parent = HolderMonster.transform;
         CancelInvoke(nameof(SpawnMonster));

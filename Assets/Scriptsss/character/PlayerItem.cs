@@ -1,98 +1,100 @@
 ﻿
 using UnityEngine;
-
-public class PlayerItem : MonoBehaviour
+namespace QuachDai.NinjaSchool.Character
 {
-    private static PlayerItem _Instance;
+    public class PlayerItem : MonoBehaviour
+    {
+        private static PlayerItem _Instance;
 
-    [SerializeField] private Head _CharacterHead;
-    [SerializeField] private Body _CharacterBody;
-    [SerializeField] private Leg _CharacterLeg;
-    [SerializeField] private Weapon characterWeapon;
+        [SerializeField] private Head _CharacterHead;
+        [SerializeField] private Body _CharacterBody;
+        [SerializeField] private Leg _CharacterLeg;
+        [SerializeField] private Weapon characterWeapon;
 
-    [Header("Thay đổi trang phục khi mặc trang bị")]
-    [SerializeField] AvatarSO AvatarSO;
-    [SerializeField] ClothSO ClothSO;
-    [SerializeField] PantSO PantSO;
-    //  [SerializeField] useItem weaponSO;
+        [Header("Thay đổi trang phục khi mặc trang bị")]
+        [SerializeField] AvatarSO AvatarSO;
+        [SerializeField] ClothSO ClothSO;
+        [SerializeField] PantSO PantSO;
+        //  [SerializeField] useItem weaponSO;
 
-    public static PlayerItem Instance { get => _Instance; }
+        public static PlayerItem Instance { get => _Instance; }
 
-    protected void Awake()
-    {
-        PlayerItem._Instance = this;
-    }
-    public void setPant(PantSO pant)
-    {
-        PantSO = pant;
-    }
-    public void setCloth(ClothSO cloth)
-    {
-        ClothSO = cloth;
-    }
-    public void setPant(AvatarSO avatar)
-    {
-        AvatarSO = avatar;
-    }
-    // Hàm tự động tìm các đối tượng, chỉ thực thi trong Editor
-    private void OnValidate()
-    {
-        _CharacterHead = GetComponentInChildren<Head>();
-        _CharacterBody = GetComponentInChildren<Body>();
-        _CharacterLeg = GetComponentInChildren<Leg>();
-        characterWeapon = GetComponentInChildren<Weapon>();
-    }
-
-    private void Update()
-    {
-        // Thay đổi Tóc
-        if (AvatarSO != null)
+        protected void Awake()
         {
-            CharacterCustomization(_CharacterHead.headIdle, AvatarSO.GetSpriteIdle);
-            CharacterCustomization(_CharacterHead.headRun, AvatarSO.GetSpriteRun);
-            CharacterCustomization(_CharacterHead.headAttack, AvatarSO.GetSpriteAttack);
-            CharacterCustomization(_CharacterHead.headDown, AvatarSO.GetSpriteDown);
+            PlayerItem._Instance = this;
+        }
+        public void setPant(PantSO pant)
+        {
+            PantSO = pant;
+        }
+        public void setCloth(ClothSO cloth)
+        {
+            ClothSO = cloth;
+        }
+        public void setPant(AvatarSO avatar)
+        {
+            AvatarSO = avatar;
+        }
+        // Hàm tự động tìm các đối tượng, chỉ thực thi trong Editor
+        private void OnValidate()
+        {
+            _CharacterHead = GetComponentInChildren<Head>();
+            _CharacterBody = GetComponentInChildren<Body>();
+            _CharacterLeg = GetComponentInChildren<Leg>();
+            characterWeapon = GetComponentInChildren<Weapon>();
         }
 
-    
-        //// Thay đổi Áo
-        if (ClothSO != null)
+        private void Update()
         {
-            CharacterCustomization(_CharacterBody.bodyIdle, ClothSO.GetSpriteIdle);
-            CharacterCustomization(_CharacterBody.bodyRun, ClothSO.GetSpriteRun);
-            CharacterCustomization(_CharacterBody.bodyAttack, ClothSO.GetSpriteAttack);
-            CharacterCustomization(_CharacterBody.bodyDown, ClothSO.GetSpriteDown);
-        }
-
-        //// Thay đổi Quần
-
-        if (PantSO != null)
-        {
-            CharacterCustomization(_CharacterLeg.legIdle, PantSO.GetSpriteIdle);
-            CharacterCustomization(_CharacterLeg.legRun, PantSO.GetSpriteRun);
-            CharacterCustomization(_CharacterLeg.legAttack, PantSO.GetSpriteAttack);
-            CharacterCustomization(_CharacterLeg.legDown, PantSO.GetSpriteDown);
-        }
-        /*if (weaponSO != null)
-        {
-            CharacterCustomization(characterWeapon.weapon, weaponSO.GetSpriteDown);
-        }*/
-    }
-
-    // Hàm thay đổi trang phục
-    private void CharacterCustomization(GameObject[] outfits, Sprite[] sprites)
-    {
-
-        if (outfits.Length > 0)
-        {
-            if (sprites != null && sprites.Length > 0)
+            // Thay đổi Tóc
+            if (AvatarSO != null)
             {
-                for (int i = 0; i < outfits.Length; i++)
-                {
-                    outfits[i].GetComponent<SpriteRenderer>().sprite = sprites[i];
-                }
+                CharacterCustomization(_CharacterHead.headIdle, AvatarSO.GetSpriteIdle);
+                CharacterCustomization(_CharacterHead.headRun, AvatarSO.GetSpriteRun);
+                CharacterCustomization(_CharacterHead.headAttack, AvatarSO.GetSpriteAttack);
+                CharacterCustomization(_CharacterHead.headDown, AvatarSO.GetSpriteDown);
             }
 
+
+            //// Thay đổi Áo
+            if (ClothSO != null)
+            {
+                CharacterCustomization(_CharacterBody.bodyIdle, ClothSO.GetSpriteIdle);
+                CharacterCustomization(_CharacterBody.bodyRun, ClothSO.GetSpriteRun);
+                CharacterCustomization(_CharacterBody.bodyAttack, ClothSO.GetSpriteAttack);
+                CharacterCustomization(_CharacterBody.bodyDown, ClothSO.GetSpriteDown);
+            }
+
+            //// Thay đổi Quần
+
+            if (PantSO != null)
+            {
+                CharacterCustomization(_CharacterLeg.legIdle, PantSO.GetSpriteIdle);
+                CharacterCustomization(_CharacterLeg.legRun, PantSO.GetSpriteRun);
+                CharacterCustomization(_CharacterLeg.legAttack, PantSO.GetSpriteAttack);
+                CharacterCustomization(_CharacterLeg.legDown, PantSO.GetSpriteDown);
+            }
+            /*if (weaponSO != null)
+            {
+                CharacterCustomization(characterWeapon.weapon, weaponSO.GetSpriteDown);
+            }*/
+        }
+
+        // Hàm thay đổi trang phục
+        private void CharacterCustomization(GameObject[] outfits, Sprite[] sprites)
+        {
+
+            if (outfits.Length > 0)
+            {
+                if (sprites != null && sprites.Length > 0)
+                {
+                    for (int i = 0; i < outfits.Length; i++)
+                    {
+                        outfits[i].GetComponent<SpriteRenderer>().sprite = sprites[i];
+                    }
+                }
+
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 
 using UnityEngine;
+using QuachDai.NinjaSchool.Character;
 
 public class UseSkill : MonoBehaviour
 {

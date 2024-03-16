@@ -1,6 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using QuachDai.NinjaSchool.Character;
 
 public class usefood: MonoBehaviour
 {

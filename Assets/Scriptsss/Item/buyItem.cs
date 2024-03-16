@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using QuachDai.NinjaSchool.Character;
+using UnityEngine;
 public class BuyItem : MonoBehaviour
 {
     public Slot Slot;

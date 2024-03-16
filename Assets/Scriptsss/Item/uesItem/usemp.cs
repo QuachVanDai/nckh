@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using QuachDai.NinjaSchool.Character;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
