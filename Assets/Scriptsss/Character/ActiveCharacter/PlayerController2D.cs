@@ -7,9 +7,6 @@ namespace QuachDai.NinjaSchool.Character
     {
         [SerializeField] private Transform groundCheck;
         [SerializeField] private LayerMask groundLayer;
-
-        public Animator animator;
-
         public bool IsGround()
         {
             return Physics2D.Linecast(transform.position, groundCheck.position, groundLayer);

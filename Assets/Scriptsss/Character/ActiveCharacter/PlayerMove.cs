@@ -1,4 +1,5 @@
 
+using QuachDai.NinjaSchool.Animations;
 using System.Collections;
 using System.ComponentModel;
 using UnityEngine;
@@ -13,6 +14,10 @@ namespace QuachDai.NinjaSchool.Character
         [SerializeField] private float jumpInput = 0f;
         [SerializeField] private bool facingRight = true;
         [SerializeField] Rigidbody2D myRigidbidy2D;
+        [SerializeField] private PlayerController2D playerController2D;
+        [SerializeField] Smoke smoke;
+        AnimatorSystem animatorSystem => AnimatorSystem.Instance;
+        Player player => Player.Instance;
         [Range(0, .3f)][SerializeField] private float movementSmoothing = .05f;
         private Vector3 velocity = Vector3.zero;
 
@@ -20,32 +25,33 @@ namespace QuachDai.NinjaSchool.Character
         {
             //if (GameManager.Instance.IsPlaygame == false) return;
 
-            moveInput = PlayerController2D.Instance.getInputHorizontal();
-            jumpInput = PlayerController2D.Instance.getInputVertical();
+            moveInput = playerController2D.getInputHorizontal();
+            jumpInput = playerController2D.getInputVertical();
 
-            if (!PlayerController2D.Instance.IsGround() && jumpInput == 0 || myRigidbidy2D.velocity.y < 0)
-            {
-                PlayerController2D.Instance.animator.SetBool("IsIdleToDown", true);
-            }
+            if (!playerController2D.IsGround() && jumpInput == 0 || myRigidbidy2D.velocity.y < 0)
+                animatorSystem.SetBool(player.animatorPlayer, "IsIdleToDown", true);
+
             Move(runSpeed * moveInput);
-            if (PlayerController2D.Instance.IsGround())
+            if (playerController2D.IsGround())
             {
-                PlayerController2D.Instance.animator.SetBool("IsIdleToJump", false);
-                PlayerController2D.Instance.animator.SetBool("IsIdleToDown", false);
+                animatorSystem.SetBool(player.animatorPlayer, "IsIdleToJump", false);
+                animatorSystem.SetBool(player.animatorPlayer, "IsIdleToDown", false);
                 if (jumpInput > 0)
-                {
                     if (isJump)
                         StartCoroutine(nameof(Jump));
-                }
-                PlayerController2D.Instance.animator.SetFloat("Speed", Mathf.Abs(moveInput));
+                animatorSystem.SetFloat(player.animatorPlayer, "Speed", Mathf.Abs(moveInput));
+
+                if (moveInput!=0)
+                   smoke.SetActive(true);
+                else smoke.SetActive(false);
             }
-            PlayerController2D.Instance.animator.SetFloat("Jumping", myRigidbidy2D.velocity.y);
+            animatorSystem.SetFloat(player.animatorPlayer, "Jumping", myRigidbidy2D.velocity.y);
         }
         public IEnumerator Jump()
         {
             isJump = false;
             myRigidbidy2D.velocity = new Vector2(myRigidbidy2D.velocity.x, jumpForce);
-            PlayerController2D.Instance.animator.SetBool("IsIdleToJump", true);
+            animatorSystem.SetBool(player.animatorPlayer, "IsIdleToJump", true);
             yield return new WaitForSeconds(0.6f);
             isJump = true;
         }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using QuachDai.NinjaSchool.Animations;
+using System.Collections;
 using UnityEngine;
 namespace QuachDai.NinjaSchool.Character
 {
@@ -7,7 +8,7 @@ namespace QuachDai.NinjaSchool.Character
         [SerializeField] private SkillAnimation _SkillAnimation;
         [SerializeField] private FrameSkill[] _FrameSkill;
         [SerializeField] private SkillRecoveryTime[] _SkillRecoveryTimes;
-
+       
         public MonsterAttacked MonsterAttacted;
         public MissionUi MissionUi;
 
@@ -16,6 +17,8 @@ namespace QuachDai.NinjaSchool.Character
         private SetMonster _SetMonste = new SetMonster();
         private SetSkillParameters _SkillParameters = new SetSkillParameters();
         private bool _IsActtack, _IsSkillLv5, _IsSkillLv15, _IsIncreaseDamage;
+        AnimatorSystem animatorSystem => AnimatorSystem.Instance;
+        Player player => Player.Instance;
         private void Start()
         {
             _IsActtack = true;
@@ -69,25 +72,25 @@ namespace QuachDai.NinjaSchool.Character
         {
             // 
             //  float damage = Random.Range(
-            // Player.Instance.SetPlayer.getDamePlayerDictionary(Player.Instance.Level).Item1,
-            // Player.Instance.SetPlayer.getDamePlayerDictionary(Player.Instance.Level).Item2) *
+            // player.SetPlayer.getDamePlayerDictionary(player.Level).Item1,
+            // player.SetPlayer.getDamePlayerDictionary(player.Level).Item2) *
             // _FrameSkill[UseSkill.Instance.getCurrKeySkill()].coefficient; //coefficient: hệ số
 
             // if player use skillLv15 , player can increase damage
             /* if (_IsIncreaseDamage)
              {
-                 if (Player.Instance.Level >= 20)
+                 if (player.Level >= 20)
                      damage += _SkillParameters.getSkillLv15Parameters()[6];
-                 else { damage += _SkillParameters.getSkillLv15Parameters()[Player.Instance.Level - 14]; }
+                 else { damage += _SkillParameters.getSkillLv15Parameters()[player.Level - 14]; }
              }*/
             //AddExp((int)damage);
             //   MonsterAttacted.Attacked((int)damage);
             _SkillAnimation.AnimationSkill(_FrameSkill[UseSkill.Instance.getCurrKeySkill()]);
-            PlayerController2D.Instance.animator.SetBool("IsAttack", true);
+            animatorSystem.SetBool(player.animatorPlayer,"IsAttack", true);
             _IsActtack = false;
-            Player.Instance.PlayerEffect.UpdateMp(_FrameSkill[UseSkill.Instance.getCurrKeySkill()].mp * (-1));
+            player.PlayerEffect.UpdateMp(_FrameSkill[UseSkill.Instance.getCurrKeySkill()].mp * (-1));
             yield return new WaitForSeconds(0.23f);
-            PlayerController2D.Instance.animator.SetBool("IsAttack", false);
+            animatorSystem.SetBool(player.animatorPlayer,"IsAttack", false);
             _SkillRecoveryTimes[UseSkill.Instance.getCurrKeySkill()].isTime = true;
             yield return new WaitForSeconds(_FrameSkill[UseSkill.Instance.getCurrKeySkill()].timeSkill);
             _IsActtack = true;
@@ -100,16 +103,16 @@ namespace QuachDai.NinjaSchool.Character
                 damage = MonsterAttacted.MonCurrent.CurrHp;
             }
             double exp = (damage * _SetMonste.getExpMonsterDictionary()[MonsterAttacted.MonCurrent.Level] * 100)
-            / _SetPlayer.getExpPlayerDictionary()[Player.Instance.Level];
-            Player.Instance.PlayerEffect.TextGUI((int)damage, new Color(0, 1, 0.753031f, 1));
-            if (Player.Instance.PercentExp + exp >= 100)
+            / _SetPlayer.getExpPlayerDictionary()[player.Level];
+            player.PlayerEffect.TextGUI((int)damage, new Color(0, 1, 0.753031f, 1));
+            if (player.PercentExp + exp >= 100)
             {
-                Player.Instance.PercentExp = 0;
-                Player.Instance.Level++;
-                Player.Instance.PlayerEffect.TxtCurrentLevel.text = Player.Instance.Level.ToString();
+                player.PercentExp = 0;
+                player.Level++;
+                player.PlayerEffect.TxtCurrentLevel.text = player.Level.ToString();
             }
-            else Player.Instance.PercentExp += (float)exp;
-            Player.Instance.PlayerEffect.TxtCurrentPercentExp.text = (Player.Instance.PercentExp).ToString("F2") + "%";
+            else player.PercentExp += (float)exp;
+            player.PlayerEffect.TxtCurrentPercentExp.text = (player.PercentExp).ToString("F2") + "%";
         }
         public void FindMonster(MonsterAttacked m)
         {
@@ -142,18 +145,18 @@ namespace QuachDai.NinjaSchool.Character
         public void InCreaseHPMP()
         {
             float hp, mp;
-            if (Player.Instance.Level >= 10)
+            if (player.Level >= 10)
             {
                 hp = _SkillParameters.getSkillLv5Parameters()[6];
                 mp = _SkillParameters.getSkillLv5Parameters()[6];
             }
             else
             {
-                hp = _SkillParameters.getSkillLv5Parameters()[Player.Instance.Level - 4];
-                mp = _SkillParameters.getSkillLv5Parameters()[Player.Instance.Level - 4];
+                hp = _SkillParameters.getSkillLv5Parameters()[player.Level - 4];
+                mp = _SkillParameters.getSkillLv5Parameters()[player.Level - 4];
             }
-            Player.Instance.PlayerEffect.UpdateHp(hp);
-            Player.Instance.PlayerEffect.UpdateMp(mp);
+            player.PlayerEffect.UpdateHp(hp);
+            player.PlayerEffect.UpdateMp(mp);
         }
         public void PlayerUseSkillLv15()
         {
@@ -181,9 +184,9 @@ namespace QuachDai.NinjaSchool.Character
 
         public void ManaUseSkill()
         {
-            if (Player.Instance.CurrMp < _FrameSkill[UseSkill.Instance.getCurrKeySkill()].mp)
+            if (player.CurrMp < _FrameSkill[UseSkill.Instance.getCurrKeySkill()].mp)
             {
-                Debug.Log("khong du Mana de su dung  " + Player.Instance.CurrMp);
+                Debug.Log("khong du Mana de su dung  " + player.CurrMp);
                 return;
             }
 

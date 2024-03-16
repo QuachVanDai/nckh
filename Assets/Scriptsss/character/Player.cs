@@ -14,7 +14,7 @@ namespace QuachDai.NinjaSchool.Character
         public int Gold;
         public int MinDamage;
         public int MaxDamage;
-
+        public Animator animatorPlayer;
         public SetPlayer SetPlayer;
 
         public PlayerEffect PlayerEffect;

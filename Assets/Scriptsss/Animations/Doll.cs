@@ -1,22 +1,25 @@
 using UnityEngine;
 using DG.Tweening;
 using Unity.Collections;
-public class Doll : MonoBehaviour
+namespace QuachDai.NinjaSchool.Animations
 {
-    [SerializeField] private int angle;
-    [SerializeField,ReadOnly] private Vector3 newRotation=Vector3.zero;
-    void Start()
+    public class Doll : MonoBehaviour
     {
-        DoShaking();
-    }
-
-    void DoShaking()
-    {
-        newRotation.z = angle;
-        transform.DORotate(newRotation, 2).OnComplete(()=>
+        [SerializeField] private int angle;
+        [SerializeField, ReadOnly] private Vector3 newRotation = Vector3.zero;
+        void Start()
         {
-            angle *= -1;
             DoShaking();
-        });
+        }
+
+        void DoShaking()
+        {
+            newRotation.z = angle;
+            transform.DORotate(newRotation, 2).OnComplete(() =>
+            {
+                angle *= -1;
+                DoShaking();
+            });
+        }
     }
 }
