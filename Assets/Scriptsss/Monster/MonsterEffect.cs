@@ -1,23 +1,25 @@
+using QuachDai.NinjaSchool.Spawn;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
-
-public class MonsterEffect : MonoBehaviour
+namespace QuachDai.NinjaSchool.Monsters
 {
-    [SerializeField] private Image _HpBar;
-    [SerializeField] private RectTransform _CanvasUi;
-    [SerializeField] private GameObject _TxtDamaged;
-
-    public void TexTGui(int Damge, Color Color)
+    public class MonsterEffect : MonoBehaviour
     {
+        [SerializeField] private Image hpBar;
+        [SerializeField] private RectTransform canvasUi;
+        [SerializeField] private NumberTxt textDamaged;
 
-        GameObject g = Instantiate(_TxtDamaged);
-        NumberTxt numberTxt = g.GetComponent<NumberTxt>();
-        numberTxt.aniTextY1(_CanvasUi, (int)Damge, new Vector3(0, 1.2f, 0), 1, 0.5f, Color);
-    }
-    public void UpdateHp(float CurrentHp, float MaxHp, string Name, int Level)
-    {
-        _HpBar.fillAmount = (float)CurrentHp / (float)MaxHp;
-        SystemUi.Instance.InfoMonster.text = " " + Name + "  " + "Lv" + Level + " " + CurrentHp.ToString() + "/" + MaxHp.ToString();
-        SystemUi.Instance.InfoMonster.gameObject.SetActive(true);
+        public void TexTGui(int Damge, Color Color)
+        {
+            Spawner.Instance.Spawn(textDamaged.transform, transform.position, Quaternion.identity, null);
+            textDamaged.aniTextY1(canvasUi, (int)Damge, new Vector3(0, 1.2f, 0), 1, 0.5f, Color);
+        }
+        public void UpdateHp(float CurrentHp, float MaxHp, string Name, int Level)
+        {
+            hpBar.fillAmount = (float)CurrentHp / (float)MaxHp;
+            SystemUi.Instance.InfoMonster.text = " " + Name + "  " + "Lv" + Level + " " + CurrentHp.ToString() + "/" + MaxHp.ToString();
+            SystemUi.Instance.InfoMonster.gameObject.SetActive(true);
+        }
     }
 }

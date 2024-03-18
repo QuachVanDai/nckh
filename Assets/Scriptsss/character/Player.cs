@@ -3,7 +3,6 @@ namespace QuachDai.NinjaSchool.Character
 {
     public class Player : Singleton<Player>
     {
-        private static Player _Instance;
         public string Name;
         public int Level;
         public float MaxHp;
@@ -19,6 +18,10 @@ namespace QuachDai.NinjaSchool.Character
 
         public PlayerEffect PlayerEffect;
 
+        public Transform GetTransform()
+        {
+            return transform;
+        }
         public void Start()
         {
             LoadComponent();

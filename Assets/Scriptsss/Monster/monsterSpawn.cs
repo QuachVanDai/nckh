@@ -1,44 +1,32 @@
 
-using System.Threading;
+using QuachDai.NinjaSchool.Spawn;
 using UnityEngine;
-
-public class MonsterSpawn : MonoBehaviour
+namespace QuachDai.NinjaSchool.Monsters
 {
-    private Transform _Tranform;
-
-    [SerializeField] private float _SpawnTime=5;
-   [SerializeField] private Transform _MonsterName;
-
-    public GameObject HolderMonster;
-    public Monster Monster;
-
-
-    private void Reset()
+    public class MonsterSpawn : MonoBehaviour
     {
-        HolderMonster = GameObject.Find("clonedMonster");
-        _SpawnTime = 5;
-    }
-    void Start()
-    {
-        if (_Tranform != null) return;
-        Monster = Monster.GetMonster();
-        if (Monster == null) return;
-      //  _Tranform = LstMonster.Instance.spawn(_MonsterName.gameObject.name, transform.position, Quaternion.identity);
-        _Tranform.parent = HolderMonster.transform;
-        _Tranform.gameObject.SetActive(true);
-
-    }
-    private void Update()
-    {
-        if (_Tranform != null) return;
-        InvokeRepeating(nameof(SpawnMonster), _SpawnTime, 1);
-    }
-    private void SpawnMonster()
-    {
-        Monster = Monster.GetMonster();
-      //  _Tranform = LstMonster.Instance.spawn(_MonsterName.gameObject.name, transform.position, Quaternion.identity);
-        _Tranform.gameObject.SetActive(true);
-        _Tranform.parent = HolderMonster.transform;
-        CancelInvoke(nameof(SpawnMonster));
+        private Transform thisTranform;
+        [SerializeField] Holder cloneHolder;
+        [SerializeField]  float spawnTime = 5;
+        [SerializeField] Monster monster;
+    
+        Spawner spawner=>Spawner.Instance;
+        void Start()
+        {
+            if (thisTranform != null) return;
+            monster = monster.GetMonster();
+            if (monster == null) return;
+            thisTranform = spawner.Spawn(monster.transform, transform.position, Quaternion.identity,cloneHolder);
+        }
+        private void Update()
+        {
+            if (thisTranform != null) return;
+            InvokeRepeating(nameof(SpawnMonster), spawnTime, 1);
+        }
+        private void SpawnMonster()
+        {
+            thisTranform = spawner.Spawn(monster.transform, transform.position, Quaternion.identity, cloneHolder);
+            CancelInvoke(nameof(SpawnMonster));
+        }
     }
 }

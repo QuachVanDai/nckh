@@ -1,39 +1,40 @@
 
 using UnityEngine;
-
-public class MosterMove : MonoBehaviour
+namespace QuachDai.NinjaSchool.Monsters
 {
-    [SerializeField] private MonsterController2D _MonsterController2D;
-    private float _GetTime;
-    private float HeSO;
+    public class MosterMove : MonoBehaviour
+{
+    [SerializeField] private MonsterController2D monsterController2D;
+    private float getTime;
+    private float heSO;
     private void Reset()
     {
-        _MonsterController2D = GetComponent<MonsterController2D>();
-        HeSO = 2;
+        monsterController2D = GetComponent<MonsterController2D>();
+        heSO = 2;
     }
     private void Start()
     {
-        _GetTime = Time.time;
+        getTime = Time.time;
     }
-    private void Update()
-    {
-        if (gameObject==null)
+        private void Update()
         {
-            return;
-        }
-        if (Time.time - _GetTime <= HeSO)
-        {
-            _MonsterController2D.PlayAnimation(monsterStatus.idle);
-        }
-        else
-        {
-            _MonsterController2D.PlayAnimation(monsterStatus.move);
-            if (Time.time - _GetTime > HeSO * 3)
+            if (gameObject == null)
             {
-                _GetTime = Time.time;
-                HeSO = Random.Range(2, 4);
+                return;
             }
-
+            if (Time.time - getTime <= heSO)
+            {
+                monsterController2D.PlayAnimation(monsterStatus.idle);
+            }
+            else
+            {
+                monsterController2D.PlayAnimation(monsterStatus.move);
+                if (Time.time - getTime > heSO * 3)
+                {
+                    getTime = Time.time;
+                    heSO = Random.Range(2, 4);
+                }
+            }
         }
     }
    

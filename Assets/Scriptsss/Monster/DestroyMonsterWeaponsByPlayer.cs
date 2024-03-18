@@ -1,19 +1,21 @@
 
 
 using UnityEngine;
-
-public class DestroyMonsterWeaponsByPlayer : Destroys
+namespace QuachDai.NinjaSchool.Monsters
 {
-    bool isDestroy;
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class DestroyMonsterWeaponsByPlayer : Destroys
     {
-        if (collision.gameObject.tag == "player")
+        bool isDestroy;
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            isDestroy = true;
+            if (collision.gameObject.tag == "player")
+            {
+                isDestroy = true;
+            }
         }
-    }
-    public override bool CanDestroy()
-    {
-        return isDestroy;
+        public override bool CanDestroy()
+        {
+            return isDestroy;
+        }
     }
 }

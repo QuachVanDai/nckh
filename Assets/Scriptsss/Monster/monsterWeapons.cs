@@ -1,31 +1,28 @@
 ﻿using QuachDai.NinjaSchool.Character;
 using UnityEngine;
-public class MonsterWeapons : MonoBehaviour
+namespace QuachDai.NinjaSchool.Monsters
 {
-    [SerializeField] private GameObject _PlayerObject;
-    [SerializeField] private float _Speed = 7f;
-    [SerializeField] private float _Damage;
-
-    public PlayerAttacked Player;
-
-    public float Damage { get { return _Damage; } set { _Damage = value; } }
-    private void Start()
+    public class MonsterWeapons : MonoBehaviour
     {
-        _PlayerObject = GameObject.FindWithTag("player");
-        Player = FindAnyObjectByType<PlayerAttacked>();
-    }
-    private void FixedUpdate()
-    {
-        //if (bullet != null) return;
-        Vector2 direction = (_PlayerObject.transform.position - transform.position).normalized;
-        GetComponent<Rigidbody2D>().velocity = direction * _Speed;
+        [SerializeField] private float speed = 7f;
+        [SerializeField] private float damage;
 
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "player")
+        public Player player=>Player.Instance;
+        public PlayerAttacked playerAttacked;
+
+        public float Damage { get { return damage; } set { damage = value; } }
+        private void FixedUpdate()
         {
-            Player.Attacked((int)_Damage);
+            //if (bullet != null) return;
+            Vector2 direction = (player.transform.position - transform.position).normalized;
+            GetComponent<Rigidbody2D>().velocity = direction * speed;
+        }
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.tag == "player")
+            {
+                playerAttacked.Attacked((int)damage);
+            }
         }
     }
 }

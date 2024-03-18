@@ -2,40 +2,42 @@
 
 using System.Diagnostics;
 using TMPro;
-
-public class MissionComplete : IMissionState
+namespace QuachDai.NinjaSchool.Mission
 {
-    public MissionComplete(Mission mission) : base(mission)
+    public class MissionComplete : IMissionState
     {
-        
-    }
-
-    public override bool CompleteMission()
-    {
-        if(_mission.IsCompleteMission==true) 
+        public MissionComplete(Mission mission) : base(mission)
         {
-            TextTemplate.Instance.SetText("Đây là phần thưởng");
-            _mission.GiaoPhanThuong();
+
+        }
+
+        public override bool CompleteMission()
+        {
+            if (_mission.IsCompleteMission == true)
+            {
+                TextTemplate.Instance.SetText("Đây là phần thưởng");
+                _mission.GiaoPhanThuong();
+                _mission.setChangeState(new MissionNot(_mission));
+                return true;
+            }
+            return false;
+        }
+
+        public override bool CancelMission()
+        {
+            TextTemplate.Instance.SetText("Hủy nhiệm vụ thành công");
             _mission.setChangeState(new MissionNot(_mission));
             return true;
         }
-        return false;
-    }
-
-    public override bool CancelMission()
-    {
-        TextTemplate.Instance.SetText("Hủy nhiệm vụ thành công");
-        _mission.setChangeState(new MissionNot(_mission));
-        return true;
-    }
-    public override bool AgreeMission()
-    {
-        if (_mission.IsCompleteMission == true)
+        public override bool AgreeMission()
         {
-            TextTemplate.Instance.SetText("Hoàn thành nhiệm vụ để nhận thưởng");
-            return true;
+            if (_mission.IsCompleteMission == true)
+            {
+                TextTemplate.Instance.SetText("Hoàn thành nhiệm vụ để nhận thưởng");
+                return true;
+            }
+            TextTemplate.Instance.SetText("Hãy hoàn thành nhiệm vụ trước đó");
+            return false;
         }
-        TextTemplate.Instance.SetText("Hãy hoàn thành nhiệm vụ trước đó");
-        return false;
     }
 }

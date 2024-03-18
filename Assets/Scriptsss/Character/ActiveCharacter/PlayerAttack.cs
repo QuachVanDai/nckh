@@ -1,30 +1,32 @@
 ﻿using QuachDai.NinjaSchool.Animations;
+using QuachDai.NinjaSchool.Mission;
+using QuachDai.NinjaSchool.Monsters;
 using System.Collections;
 using UnityEngine;
 namespace QuachDai.NinjaSchool.Character
 {
     public class PlayerAttack : MonoBehaviour
     {
-        [SerializeField] private SkillAnimation _SkillAnimation;
-        [SerializeField] private FrameSkill[] _FrameSkill;
-        [SerializeField] private SkillRecoveryTime[] _SkillRecoveryTimes;
+        [SerializeField] private SkillAnimation skillAnimation;
+        [SerializeField] private FrameSkill[] frameSkill;
+        [SerializeField] private SkillRecoveryTime[] skillRecoveryTimes;
        
-        public MonsterAttacked MonsterAttacted;
-        public MissionUi MissionUi;
+        public MonsterAttacked monsterAttacted;
+        public MissionUi missionUi;
 
-        private float _Distance;
-        private SetPlayer _SetPlayer = new SetPlayer();
-        private SetMonster _SetMonste = new SetMonster();
-        private SetSkillParameters _SkillParameters = new SetSkillParameters();
-        private bool _IsActtack, _IsSkillLv5, _IsSkillLv15, _IsIncreaseDamage;
+        private float distance;
+        private SetPlayer setPlayer = new SetPlayer();
+        private SetMonster setMonste = new SetMonster();
+        private SetSkillParameters skillParameters = new SetSkillParameters();
+        private bool isActtack, isSkillLv5, isSkillLv15, isIncreaseDamage;
         AnimatorSystem animatorSystem => AnimatorSystem.Instance;
         Player player => Player.Instance;
         private void Start()
         {
-            _IsActtack = true;
-            _IsSkillLv5 = true;
-            _IsSkillLv15 = true;
-            _IsIncreaseDamage = false;
+            isActtack = true;
+            isSkillLv5 = true;
+            isSkillLv15 = true;
+            isIncreaseDamage = false;
         }
 
         private void Update()
@@ -85,25 +87,25 @@ namespace QuachDai.NinjaSchool.Character
              }*/
             //AddExp((int)damage);
             //   MonsterAttacted.Attacked((int)damage);
-            _SkillAnimation.AnimationSkill(_FrameSkill[UseSkill.Instance.getCurrKeySkill()]);
+            skillAnimation.AnimationSkill(frameSkill[UseSkill.Instance.getCurrKeySkill()]);
             animatorSystem.SetBool(player.animatorPlayer,"IsAttack", true);
-            _IsActtack = false;
-            player.PlayerEffect.UpdateMp(_FrameSkill[UseSkill.Instance.getCurrKeySkill()].mp * (-1));
+            isActtack = false;
+            player.PlayerEffect.UpdateMp(frameSkill[UseSkill.Instance.getCurrKeySkill()].mp * (-1));
             yield return new WaitForSeconds(0.23f);
             animatorSystem.SetBool(player.animatorPlayer,"IsAttack", false);
-            _SkillRecoveryTimes[UseSkill.Instance.getCurrKeySkill()].isTime = true;
-            yield return new WaitForSeconds(_FrameSkill[UseSkill.Instance.getCurrKeySkill()].timeSkill);
-            _IsActtack = true;
-            _SkillRecoveryTimes[UseSkill.Instance.getCurrKeySkill()].isTime = false;
+            skillRecoveryTimes[UseSkill.Instance.getCurrKeySkill()].isTime = true;
+            yield return new WaitForSeconds(frameSkill[UseSkill.Instance.getCurrKeySkill()].timeSkill);
+            isActtack = true;
+            skillRecoveryTimes[UseSkill.Instance.getCurrKeySkill()].isTime = false;
         }
         public void AddExp(float damage)
         {
-            if (MonsterAttacted.MonCurrent.CurrHp < damage)
+            if (monsterAttacted.monCurrent.currHp < damage)
             {
-                damage = MonsterAttacted.MonCurrent.CurrHp;
+                damage = monsterAttacted.monCurrent.currHp;
             }
-            double exp = (damage * _SetMonste.getExpMonsterDictionary()[MonsterAttacted.MonCurrent.Level] * 100)
-            / _SetPlayer.getExpPlayerDictionary()[player.Level];
+            double exp = (damage * setMonste.getExpMonsterDictionary()[monsterAttacted.monCurrent.level] * 100)
+            / setPlayer.getExpPlayerDictionary()[player.Level];
             player.PlayerEffect.TextGUI((int)damage, new Color(0, 1, 0.753031f, 1));
             if (player.PercentExp + exp >= 100)
             {
@@ -116,7 +118,7 @@ namespace QuachDai.NinjaSchool.Character
         }
         public void FindMonster(MonsterAttacked m)
         {
-            MonsterAttacted = m.GetComponent<MonsterAttacked>();
+            monsterAttacted = m.GetComponent<MonsterAttacked>();
         }
         #endregion
         #region  người chơi sử dụng kỹ năng lv5 và lv15
@@ -124,36 +126,36 @@ namespace QuachDai.NinjaSchool.Character
         {
             if (UseSkill.Instance.getIsUseSkill(1) == false) { return; }
             ManaUseSkill();
-            if (!_IsSkillLv5) { TextTemplate.Instance.SetText(TagScript.hoiChieu); return; }
-            if (_IsSkillLv5)
+            if (!isSkillLv5) { TextTemplate.Instance.SetText(TagScript.hoiChieu); return; }
+            if (isSkillLv5)
             {
                 StartCoroutine(UseSkillLv5());
             }
         }
         public IEnumerator UseSkillLv5()
         {
-            _SkillAnimation.AnimationSkillLv5_15(_FrameSkill[1]);
-            _IsSkillLv5 = false;
+            skillAnimation.AnimationSkillLv5_15(frameSkill[1]);
+            isSkillLv5 = false;
             InvokeRepeating(nameof(InCreaseHPMP), 0, 0.5f);
-            _SkillRecoveryTimes[1].isTime = true;
+            skillRecoveryTimes[1].isTime = true;
             yield return new WaitForSeconds(1.5f);
             CancelInvoke(nameof(InCreaseHPMP));
-            yield return new WaitForSeconds(_FrameSkill[1].timeSkill - 1.5f);
-            _SkillRecoveryTimes[1].isTime = false;
-            _IsSkillLv5 = true;
+            yield return new WaitForSeconds(frameSkill[1].timeSkill - 1.5f);
+            skillRecoveryTimes[1].isTime = false;
+            isSkillLv5 = true;
         }
         public void InCreaseHPMP()
         {
             float hp, mp;
             if (player.Level >= 10)
             {
-                hp = _SkillParameters.getSkillLv5Parameters()[6];
-                mp = _SkillParameters.getSkillLv5Parameters()[6];
+                hp = skillParameters.getSkillLv5Parameters()[6];
+                mp = skillParameters.getSkillLv5Parameters()[6];
             }
             else
             {
-                hp = _SkillParameters.getSkillLv5Parameters()[player.Level - 4];
-                mp = _SkillParameters.getSkillLv5Parameters()[player.Level - 4];
+                hp = skillParameters.getSkillLv5Parameters()[player.Level - 4];
+                mp = skillParameters.getSkillLv5Parameters()[player.Level - 4];
             }
             player.PlayerEffect.UpdateHp(hp);
             player.PlayerEffect.UpdateMp(mp);
@@ -162,8 +164,8 @@ namespace QuachDai.NinjaSchool.Character
         {
             if (UseSkill.Instance.getIsUseSkill(3) == false) { return; }
             ManaUseSkill();
-            if (!_IsSkillLv15) { TextTemplate.Instance.SetText(TagScript.hoiChieu); return; }
-            if (_IsSkillLv15)
+            if (!isSkillLv15) { TextTemplate.Instance.SetText(TagScript.hoiChieu); return; }
+            if (isSkillLv15)
             {
                 StartCoroutine(UseSkillLv15());
             }
@@ -171,20 +173,20 @@ namespace QuachDai.NinjaSchool.Character
 
         public IEnumerator UseSkillLv15()
         {
-            _SkillAnimation.AnimationSkillLv5_15(_FrameSkill[3]);
-            _IsSkillLv15 = false;
-            _IsIncreaseDamage = true;
-            _SkillRecoveryTimes[3].isTime = true;
-            yield return new WaitForSeconds(_FrameSkill[3].timeSkill);
-            _IsSkillLv15 = true;
-            _IsIncreaseDamage = false;
-            _SkillRecoveryTimes[3].isTime = false;
+            skillAnimation.AnimationSkillLv5_15(frameSkill[3]);
+            isSkillLv15 = false;
+            isIncreaseDamage = true;
+            skillRecoveryTimes[3].isTime = true;
+            yield return new WaitForSeconds(frameSkill[3].timeSkill);
+            isSkillLv15 = true;
+            isIncreaseDamage = false;
+            skillRecoveryTimes[3].isTime = false;
 
         }
 
         public void ManaUseSkill()
         {
-            if (player.CurrMp < _FrameSkill[UseSkill.Instance.getCurrKeySkill()].mp)
+            if (player.CurrMp < frameSkill[UseSkill.Instance.getCurrKeySkill()].mp)
             {
                 Debug.Log("khong du Mana de su dung  " + player.CurrMp);
                 return;
@@ -195,9 +197,9 @@ namespace QuachDai.NinjaSchool.Character
 
         void OnDrawGizmos()
         {
-            if (MonsterAttacted == null) return;
+            if (monsterAttacted == null) return;
             Gizmos.color = Color.red;
-            Gizmos.DrawLine(transform.position, MonsterAttacted.transform.position);
+            Gizmos.DrawLine(transform.position, monsterAttacted.transform.position);
         }
     }
 }

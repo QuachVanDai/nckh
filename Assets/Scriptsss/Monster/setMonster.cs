@@ -1,63 +1,62 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-
-[SerializeField]
-public class SetMonster
+namespace QuachDai.NinjaSchool.Monsters
 {
-    private Dictionary<int, double> ExpMonster
-    = new Dictionary<int, double>();
-    private Dictionary<int, int> HPMonster
-    = new Dictionary<int, int>();
-    private Dictionary<int, Tuple<int, int>> DameMonster
-    = new Dictionary<int, Tuple<int, int>>();
-    public SetMonster()
+    [SerializeField]
+    public class SetMonster
     {
-        setExpMonsterDictionary();
-        setHPMonsterDictionary();
-        setDameMonsterDictionary();
-    }
-    public Dictionary<int, double> getExpMonsterDictionary()
-    {
-        return ExpMonster;
-    }
-    public void setExpMonsterDictionary()
-    {
-        for (int i = 1; i <= 20; i++)
+        private Dictionary<int, double> expMonster
+        = new Dictionary<int, double>();
+        private Dictionary<int, int> hPMonster
+        = new Dictionary<int, int>();
+        private Dictionary<int, Tuple<int, int>> dameMonster
+        = new Dictionary<int, Tuple<int, int>>();
+        public SetMonster()
         {
-            ExpMonster.Add(i, 1.32324f * Math.Pow(i, 0.8f));
+            setExpMonsterDictionary();
+            setHPMonsterDictionary();
+            setDameMonsterDictionary();
         }
-    }
-
-    public Dictionary<int, int> getHPMonsterDictionary()
-    {
-        return HPMonster;
-    }
-    public void setHPMonsterDictionary()
-    {
-        for (int i = 1; i <= 20; i++)
+        public Dictionary<int, double> getExpMonsterDictionary()
         {
-            double v = Math.Round(500 * Math.Pow(i, 0.6f));
-            HPMonster.Add(i, (int)v);
+            return expMonster;
+        }
+        public void setExpMonsterDictionary()
+        {
+            for (int i = 1; i <= 20; i++)
+            {
+                expMonster.Add(i, 1.32324f * Math.Pow(i, 0.8f));
+            }
         }
 
-    }
-    public Tuple<int, int> getDameMonsterDictionary(int index)
-    {
-        Tuple<int, int> g = DameMonster[index];
-        return g;
-    }
-    public void setDameMonsterDictionary()
-    {
-        int min_d = 40, max_d = 50;
-        for (int i = 1; i <= 20; i++)
+        public Dictionary<int, int> getHPMonsterDictionary()
         {
-            DameMonster.Add(i, new Tuple<int, int>(min_d, max_d));
-            min_d += 20;
-            max_d += 20;
+            return hPMonster;
+        }
+        public void setHPMonsterDictionary()
+        {
+            for (int i = 1; i <= 20; i++)
+            {
+                double v = Math.Round(500 * Math.Pow(i, 0.6f));
+                hPMonster.Add(i, (int)v);
+            }
+
+        }
+        public Tuple<int, int> getDameMonsterDictionary(int index)
+        {
+            Tuple<int, int> g = dameMonster[index];
+            return g;
+        }
+        public void setDameMonsterDictionary()
+        {
+            int min_d = 40, max_d = 50;
+            for (int i = 1; i <= 20; i++)
+            {
+                dameMonster.Add(i, new Tuple<int, int>(min_d, max_d));
+                min_d += 20;
+                max_d += 20;
+            }
         }
     }
-
-
-  
 }

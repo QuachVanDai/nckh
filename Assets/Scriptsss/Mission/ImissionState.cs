@@ -1,14 +1,15 @@
-
-public abstract class IMissionState 
+namespace QuachDai.NinjaSchool.Mission
 {
-   public Mission _mission;
-
-    public IMissionState (Mission mission)
+    public abstract class IMissionState
     {
-        this._mission = mission;
-    }
-    public virtual bool CompleteMission() { return true; }
-    public virtual bool CancelMission() { return true; }
-    public virtual bool AgreeMission() { return true; }
+        public Mission _mission;
 
+        public IMissionState(Mission mission)
+        {
+            this._mission = mission;
+        }
+        public virtual bool CompleteMission() { return true; }
+        public virtual bool CancelMission() { return true; }
+        public virtual bool AgreeMission() { return true; }
+    }
 }
