@@ -19,7 +19,6 @@ namespace QuachDai.NinjaSchool.Monsters
             maxHp = SetMonster.getHPMonsterDictionary()[level];
             minDame = SetMonster.getDameMonsterDictionary(level).Item1;
             maxDame = SetMonster.getDameMonsterDictionary(level).Item2;
-            Destroy(gameObject, 1f);
         }
         public Monster GetMonster()
         {

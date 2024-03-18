@@ -28,7 +28,7 @@ namespace QuachDai.NinjaSchool.Monsters
             playerAttack = FindAnyObjectByType<PlayerAttack>();
         }
 
-        public void Update()
+       /* public void Update()
         {
             if (playerAttack.monsterAttacted == this)
             {
@@ -38,7 +38,7 @@ namespace QuachDai.NinjaSchool.Monsters
             {
                 posSelected.gameObject.SetActive(false);
             }
-        }
+        }*/
 
         private void OnMouseDown()
         {

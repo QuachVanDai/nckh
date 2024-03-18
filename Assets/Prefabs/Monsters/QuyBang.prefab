@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6098646494813348771}
   - component: {fileID: 3690466356075797421}
   - component: {fileID: 5799247579448408997}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ani_Attacked
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,12 +118,13 @@ GameObject:
   - component: {fileID: 6494392617258564524}
   - component: {fileID: 2478231443401306759}
   - component: {fileID: 1372690691002939717}
+  - component: {fileID: 2576017812218389575}
   - component: {fileID: 5251533691544117370}
   - component: {fileID: 6811678047099482818}
   - component: {fileID: 7277330548797023576}
   - component: {fileID: 2543129941654623100}
-  - component: {fileID: 2576017812218389575}
-  m_Layer: 0
+  - component: {fileID: 8528529054873587120}
+  m_Layer: 10
   m_Name: QuyBang
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,8 +139,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 962981992162150290}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.82, y: -0.70000005, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -248,79 +249,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5251533691544117370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 962981992162150290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27f1cb23ccc24fb4d8bfc50664ffd6a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Status: 0
-  _Animator: {fileID: 2478231443401306759}
-  _Speed: 1
-  _FacingRight: 1
---- !u!114 &6811678047099482818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 962981992162150290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cb7a77bf25fa6f43818208ec7de47c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _ID: 6
-  _Name: "Qu\u1EF7 B\u0103ng"
-  _Level: 1
-  _MaxHp: 0
-  _CurrHp: 0
-  _MinDame: 0
-  _MaxDame: 0
---- !u!114 &7277330548797023576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 962981992162150290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05e60f47702ecad43a1551bcfea70867, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _PosSelected: {fileID: 7270539012765177393}
-  _PosEffect: {fileID: 0}
-  PlayerAttack: {fileID: 0}
-  _MonsterController2D: {fileID: 0}
-  JunkSO: {fileID: 0}
-  MonCurrent: {fileID: 0}
-  MonEffect: {fileID: 0}
---- !u!114 &2543129941654623100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 962981992162150290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c53b15f90cdccc64a98cd9cfd71a9e28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Target:
-    serializedVersion: 2
-    m_Bits: 128
-  _BulletPrefab: {fileID: 3498865048540634120, guid: 0355c84687c99ac49a97f5867ee1de51,
-    type: 3}
-  MonAttacked: {fileID: 7277330548797023576}
-  MonCurrent: {fileID: 0}
 --- !u!70 &2576017812218389575
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -350,12 +278,101 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.011625558, y: 0.008719206}
   m_Size: {x: 0.52724177, y: 1.0625618}
   m_Direction: 0
+--- !u!114 &5251533691544117370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962981992162150290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27f1cb23ccc24fb4d8bfc50664ffd6a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monStatus: 0
+  animator: {fileID: 2478231443401306759}
+  monSpeed: 1
+  facingRight: 1
+--- !u!114 &6811678047099482818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962981992162150290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cb7a77bf25fa6f43818208ec7de47c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 6
+  nameMonster: "Qu\u1EF7 B\u0103ng"
+  level: 1
+  maxHp: 0
+  currHp: 0
+  minDame: 0
+  maxDame: 0
+--- !u!114 &7277330548797023576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962981992162150290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05e60f47702ecad43a1551bcfea70867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posSelected: {fileID: 7270539012765177393}
+  posEffect: {fileID: 6098646494813348771}
+  playerAttack: {fileID: 0}
+  monsterController2D: {fileID: 5251533691544117370}
+  JunkSO: {fileID: 0}
+  monCurrent: {fileID: 6811678047099482818}
+  monEffect: {fileID: 8528529054873587120}
+--- !u!114 &2543129941654623100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962981992162150290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c53b15f90cdccc64a98cd9cfd71a9e28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target:
+    serializedVersion: 2
+    m_Bits: 128
+  monWeapons: {fileID: 6172721648724404090, guid: 0355c84687c99ac49a97f5867ee1de51,
+    type: 3}
+  monAttacked: {fileID: 7277330548797023576}
+  monCurrent: {fileID: 6811678047099482818}
+--- !u!114 &8528529054873587120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962981992162150290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeebe8a0880710944bd1ce1b14f10d2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpBar: {fileID: 2447309750559753292}
+  canvasUi: {fileID: 382599069360924193}
+  textDamaged: {fileID: 571870591912402077, guid: 796e611b6e6eac24ca455821a7744d2d,
+    type: 3}
 --- !u!1 &1087976217240152453
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,7 +384,7 @@ GameObject:
   - component: {fileID: 6171941051438808869}
   - component: {fileID: 6652244491939901200}
   - component: {fileID: 2447309750559753292}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: full
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -443,7 +460,7 @@ GameObject:
   - component: {fileID: 3885349222920136222}
   - component: {fileID: 1850653592394725082}
   - component: {fileID: 8158994778636518634}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -518,7 +535,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7270539012765177393}
   - component: {fileID: 799249572331843827}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Selected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -604,7 +621,7 @@ GameObject:
   - component: {fileID: 8795727931692502105}
   - component: {fileID: 7076063686979243240}
   - component: {fileID: 4107547836529676803}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -680,7 +697,7 @@ GameObject:
   - component: {fileID: 3591097486249577843}
   - component: {fileID: 6528745899217219729}
   - component: {fileID: 8599242483795145014}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Canvas (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -779,7 +796,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4818951297264964807}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
