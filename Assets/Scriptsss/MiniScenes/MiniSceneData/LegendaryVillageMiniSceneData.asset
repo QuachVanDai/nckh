@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d707295742d39c4da92c69e9ceb10c9, type: 3}
-  m_Name: TempleAMiniScene
+  m_Name: LegendaryVillageMiniSceneData
   m_EditorClassIdentifier: 
-  Id: 1
-  SceneName: Temple A
-  Scene: {fileID: 102900000, guid: 448702b9f9a47454d8c7992811532132, type: 3}
+  Id: 4
+  SceneName: LegendaryVillageScene
+  Scene: {fileID: 102900000, guid: 2d533cf1e1438214bad7d1917ea9cfcd, type: 3}
   PosPlayer:
-  - {x: -61, y: -6, z: 0}
-  - {x: 13, y: 5, z: 0}
+  - {x: 34, y: 3, z: 0}
+  - {x: -10, y: 3, z: 0}

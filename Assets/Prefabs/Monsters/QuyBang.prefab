@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 7277330548797023576}
   - component: {fileID: 2543129941654623100}
   - component: {fileID: 8528529054873587120}
+  - component: {fileID: -4976567034430362903}
   m_Layer: 10
   m_Name: QuyBang
   m_TagString: Untagged
@@ -248,7 +249,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &2576017812218389575
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -373,6 +374,19 @@ MonoBehaviour:
   canvasUi: {fileID: 382599069360924193}
   textDamaged: {fileID: 571870591912402077, guid: 796e611b6e6eac24ca455821a7744d2d,
     type: 3}
+--- !u!114 &-4976567034430362903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962981992162150290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4dcfc895fdedd4409a7eced9929d349, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterController2D: {fileID: 5251533691544117370}
 --- !u!1 &1087976217240152453
 GameObject:
   m_ObjectHideFlags: 0

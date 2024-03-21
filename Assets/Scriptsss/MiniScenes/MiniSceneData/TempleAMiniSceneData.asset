@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d707295742d39c4da92c69e9ceb10c9, type: 3}
+  m_Name: TempleAMiniSceneData
+  m_EditorClassIdentifier: 
+  Id: 1
+  SceneName: Temple A
+  Scene: {fileID: 102900000, guid: 448702b9f9a47454d8c7992811532132, type: 3}
+  PosPlayer:
+  - {x: 13, y: 6, z: 0}
+  - {x: -60, y: -5, z: 0}

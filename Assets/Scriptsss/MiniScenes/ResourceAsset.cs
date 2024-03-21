@@ -1,27 +1,30 @@
 using UnityEngine;
-
-public class ResourceAsset<T> where T : Object
+namespace QuachDai.NinjaSchool.Scenes
 {
-    public ResourceAsset(string path)
+    public class ResourceAsset<T> where T : Object
     {
-        this.path = path;
-    }
-
-    public T Value
-    {
-        get
+        public ResourceAsset(string path)
         {
-            T t;
-            if ((t = this.asset) == null)
-            {
-                t = Resources.Load<T>(this.path);
-            }
-            this.asset = t;
-            return this.asset;
+            this.path = path;
         }
+
+        public T Value
+        {
+            get
+            {
+                T t;
+                if ((t = this.asset) == null)
+                {
+                    t = Resources.Load<T>(this.path);
+                }
+                this.asset = t;
+                return this.asset;
+            }
+        }
+
+        private readonly string path;
+
+        private T asset;
     }
 
-    private readonly string path;
-
-    private T asset;
 }

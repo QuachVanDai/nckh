@@ -1,18 +1,24 @@
 using UnityEngine;
-
-[CreateAssetMenu(fileName = "MiniScene", menuName = "ScriptableObjects/MiniSceneData")]
-public class MiniSceneData : ScriptableObject
+namespace QuachDai.NinjaSchool.Scenes
 {
-    public MiniSceneId Id;
-    public string SceneName;
-    public Object Scene;
-    public Vector3[] PosPlayer;
-}
+    [CreateAssetMenu(fileName = "MiniScene", menuName = "ScriptableObjects/MiniSceneData")]
+    public class MiniSceneData : ScriptableObject
+    {
+        public MiniSceneId Id;
+        public string SceneName;
+        public Object Scene;
+        public Vector3[] PosPlayer;
+    }
 
-public enum MiniSceneId {
-    School = 0,
-    TempleA = 1,
-    IceMountain = 2,
+    public enum MiniSceneId
+    {
+        None = 0,
+        School = 1,
+        TempleA = 2,
+        IceMountain = 3,
+        LegendaryVillageScene = 4,
+        MysteriousCave = 5,
+    }
 }
 /*PosPlayer[0] = new Vector3(-13, -2, 0);
 PosPlayer[1] = new Vector3(13, 5, 0);
