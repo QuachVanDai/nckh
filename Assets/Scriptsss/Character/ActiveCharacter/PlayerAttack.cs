@@ -90,7 +90,7 @@ namespace QuachDai.NinjaSchool.Character
             skillAnimation.AnimationSkill(frameSkill[UseSkill.Instance.getCurrKeySkill()]);
             animatorSystem.SetBool(player.animatorPlayer,"IsAttack", true);
             isActtack = false;
-            player.PlayerEffect.UpdateMp(frameSkill[UseSkill.Instance.getCurrKeySkill()].mp * (-1));
+          //  player.PlayerEffect.UpdateMp(frameSkill[UseSkill.Instance.getCurrKeySkill()].mp * (-1));
             yield return new WaitForSeconds(0.23f);
             animatorSystem.SetBool(player.animatorPlayer,"IsAttack", false);
             skillRecoveryTimes[UseSkill.Instance.getCurrKeySkill()].isTime = true;

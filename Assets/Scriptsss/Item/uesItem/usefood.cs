@@ -1,28 +1,27 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using QuachDai.NinjaSchool.Character;
 
 public class usefood: MonoBehaviour
 {
     // Start is called before the first frame update
-    public Slot SlotFoodSO;
-    public TextMeshProUGUI TxtFirstTime;
-    public TextMeshProUGUI TxtSecondTime;
-    public bool IsUse;
-    public Image ImgFullTime;
-    public GameObject FoodPanel;
+    [SerializeField] Slot slotFoodSO;
+    [SerializeField] Text timeUseText;
+    [SerializeField] bool isUse;
+    [SerializeField] Image imgFullTime;
+    [SerializeField] GameObject foodPanel;
     [Header("Đơn vị S")]
-    public int ExpiredTime = 0; // thời gian hết hạn sử dụng thức ăn
-    private float _GetTime;
-    private FoodSO FoodSO;
-    private int _ExpiredTimetmp ; // thời gian hết hạn sử dụng thức ăn
+    [SerializeField] int maxExpiredTime = 0; // thời gian hết hạn sử dụng thức ăn
+    int expiredTime; // thời gian hết hạn sử dụng thức ăn
+    float getTime;
+    FoodSO foodSO;
+   
 
     void Start()
     {
-        _ExpiredTimetmp = ExpiredTime;
-        IsUse = true;
-        _GetTime = 0;
+        expiredTime = maxExpiredTime;
+        isUse = true;
+        getTime = 0;
     }
     public void useItemFood()
     {
@@ -31,30 +30,30 @@ public class usefood: MonoBehaviour
             TextTemplate.Instance.SetText(TagScript.notFood);
             return;
         }
-        if (IsUse)
+        if (isUse)
         {
-            InventoryUpdate.Instance.RemoveItem(SlotFoodSO);
-            FoodPanel.gameObject.SetActive(true);
+            InventoryUpdate.Instance.RemoveItem(slotFoodSO);
+            foodPanel.gameObject.SetActive(true);
             InvokeRepeating(nameof(setTimeUse), 0, 0.5f);
-            IsUse = false;
+            isUse = false;
         }
        
        
     }
     public void setTimeUse()
     {
-        FoodSO = (FoodSO)SlotFoodSO.getItemSO();
-        ExpiredTime--;
-        Player.Instance.PlayerEffect.UpdateMp(FoodSO.MP);
-        Player.Instance.PlayerEffect.UpdateHp(FoodSO.HP);
-        TxtFirstTime.text = (ExpiredTime / 60).ToString()+":";
-        TxtSecondTime.text = (ExpiredTime -  ((ExpiredTime / 60) * 60)).ToString();
-        if (ExpiredTime <= 0)
+        foodSO = (FoodSO)slotFoodSO.getItemSO();
+        expiredTime--;
+        Player.Instance.PlayerEffect.UpdateMp(foodSO.MP);
+        Player.Instance.PlayerEffect.UpdateHp(foodSO.HP);
+        timeUseText.text = (expiredTime / 60).ToString()+":";
+        timeUseText.text += (expiredTime -  ((expiredTime / 60) * 60)).ToString();
+        if (expiredTime <= 0)
         {
-            IsUse = true;
-            ExpiredTime = _ExpiredTimetmp;
+            isUse = true;
+            maxExpiredTime = expiredTime;
             CancelInvoke(nameof(setTimeUse));
-            FoodPanel.gameObject.SetActive(false);
+            foodPanel.gameObject.SetActive(false);
         }
     }
     // Update is called once per frame
@@ -65,9 +64,9 @@ public class usefood: MonoBehaviour
         {
             useItemFood();
         }
-        if (!IsUse)
+        if (!isUse)
         {
-            ImgFullTime.fillAmount = (Time.time - _GetTime) / (ExpiredTime);
+            imgFullTime.fillAmount = (Time.time - getTime) / (expiredTime);
         }
     }
 }

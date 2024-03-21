@@ -14,7 +14,7 @@ public class SystemUi : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InfoMonster.gameObject.SetActive(false);
+        //InfoMonster.gameObject.SetActive(false);
     }
 
     // Update is called once per frame

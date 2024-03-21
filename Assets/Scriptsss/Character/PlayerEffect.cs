@@ -61,11 +61,11 @@ namespace QuachDai.NinjaSchool.Character
         }
         private void Start()
         {
-            UpdateHp(0);
+           /* UpdateHp(0);
             UpdateMp(0);
             UpdateXu(0);
             TxtCurrentLevel.text = Player.Instance.Level.ToString();
-            TxtCurrentPercentExp.text = (Player.Instance.PercentExp).ToString("F2") + "%";
+            TxtCurrentPercentExp.text = (Player.Instance.PercentExp).ToString("F2") + "%";*/
         }
         public void UpdateHp(float hp)
         {

@@ -50,14 +50,8 @@ public class SelectSkill : MonoBehaviour
     {
         hidePrefabs();
         GameObject skillDefaul = FindAnyObjectByType<GameObject>();
-        foreach (Transform g in lstSkill)
-        {
-            if (g.name == "select1")
-            {
-                g.gameObject.SetActive(true);
-                break;
-            }
-        }
+        lstSkill[0].gameObject.SetActive(true);
+ 
     }
     public void hidePrefabs()
     {
