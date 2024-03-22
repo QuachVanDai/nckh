@@ -24,9 +24,9 @@ namespace QuachDai.NinjaSchool.Character
             setDamePlayerDictionary();
         }
 
-        public Dictionary<int, int> getExpPlayerDictionary()
+        public float getExpPlayerDictionary(int i)
         {
-            return ExpPlayer;
+            return ExpPlayer[i];
         }
 
         public void setExpPlayerDictionary()

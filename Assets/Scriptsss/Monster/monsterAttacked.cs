@@ -14,14 +14,6 @@ namespace QuachDai.NinjaSchool.Monsters
         public JunkSO JunkSO;
         public Monster monCurrent;
         public MonsterEffect monEffect;
-        private void Reset()
-        {
-            monsterController2D = GetComponent<MonsterController2D>();
-            monCurrent = GetComponent<Monster>();
-            monEffect = GetComponent<MonsterEffect>();
-            posSelected = transform.Find("Selected");
-            posEffect = transform.Find("Ani_Attacked");
-        }
         private void Start()
         {
             GameObject player = GameObject.FindWithTag("player");
@@ -42,7 +34,7 @@ namespace QuachDai.NinjaSchool.Monsters
 
         private void OnMouseDown()
         {
-            playerAttack.FindMonster(this);
+            playerAttack.FindMonster(monCurrent);
             monEffect.UpdateHp(monCurrent.currHp, monCurrent.maxHp, monCurrent.nameMonster, monCurrent.level);
         }
         public void Attacked(int damage)

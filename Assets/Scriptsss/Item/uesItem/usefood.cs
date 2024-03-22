@@ -44,8 +44,8 @@ public class usefood: MonoBehaviour
     {
         foodSO = (FoodSO)slotFoodSO.getItemSO();
         expiredTime--;
-        Player.Instance.PlayerEffect.UpdateMp(foodSO.MP);
-        Player.Instance.PlayerEffect.UpdateHp(foodSO.HP);
+        /*Player.Instance.PlayerEffect.UpdateMp(foodSO.MP);
+        Player.Instance.PlayerEffect.UpdateHp(foodSO.HP);*/
         timeUseText.text = (expiredTime / 60).ToString()+":";
         timeUseText.text += (expiredTime -  ((expiredTime / 60) * 60)).ToString();
         if (expiredTime <= 0)

@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7887361721637160935}
   - component: {fileID: 409931457144851871}
-  - component: {fileID: 4943171835780384403}
+  - component: {fileID: 8943316145550256220}
   m_Layer: 5
   m_Name: NamePlayer
   m_TagString: Untagged
@@ -151,7 +151,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 53070468467047255}
   m_CullTransparentMesh: 1
---- !u!114 &4943171835780384403
+--- !u!114 &8943316145550256220
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -160,86 +160,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 53070468467047255}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.6777429, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: admin
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4278250234
-  m_fontColor: {r: 0.9811321, g: 0.9169411, b: 0, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 1
-  m_fontSizeBase: 1
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 17
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 20
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 0
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 20
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: quach dai
 --- !u!1 &197307424235498511
 GameObject:
   m_ObjectHideFlags: 0
@@ -3263,11 +3208,11 @@ GameObject:
   - component: {fileID: 6575420341195130185}
   - component: {fileID: 5224120069123522929}
   - component: {fileID: 7433205071409964800}
-  - component: {fileID: 441369788611908999}
   - component: {fileID: 6856452510706946616}
   - component: {fileID: 5068896577828639413}
   - component: {fileID: 3743245284151934356}
   - component: {fileID: 6440213815120425780}
+  - component: {fileID: 557610514846781118}
   m_Layer: 7
   m_Name: =====Character=====
   m_TagString: player
@@ -3354,21 +3299,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87b62c9807ee2e548b82f538e599d815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _SkillAnimation: {fileID: 2189703313464193815}
-  _FrameSkill:
-  - {fileID: 11400000, guid: 03655bbf946861e4595fc3260e2b3c16, type: 2}
-  - {fileID: 11400000, guid: 8d608065d88cf774b81321b7785a7d7f, type: 2}
-  - {fileID: 11400000, guid: 4d68d2927121c0141a9bbbcc25794000, type: 2}
-  - {fileID: 11400000, guid: e80c4b0b91bf51842874c10ff8418fa0, type: 2}
-  - {fileID: 11400000, guid: 79205733a7c05d4469c5587c3f0e7148, type: 2}
-  _SkillRecoveryTimes:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  MonsterAttacted: {fileID: 0}
-  MissionUi: {fileID: 0}
+  playerSkill: {fileID: 0}
+  monster: {fileID: 0}
+  monsterAttacked: {fileID: 0}
+  missionUi: {fileID: 0}
 --- !u!114 &7433205071409964800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3382,29 +3316,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AniAttacked: {fileID: 0}
---- !u!114 &441369788611908999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5406951064818249303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4afaad368abdbf42b12a74f658566a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TxtCurrentName: {fileID: 4943171835780384403}
-  TxtCurrentHP: {fileID: 0}
-  TxtCurrentMP: {fileID: 0}
-  TxtCurrentLevel: {fileID: 0}
-  TxtCurrentPercentExp: {fileID: 0}
-  TxtCurrentGold: {fileID: 0}
-  TxtDamaged: {fileID: 2659219805037688058, guid: 796e611b6e6eac24ca455821a7744d2d,
-    type: 3}
-  FillBarHP: {fileID: 0}
-  FillBarMP: {fileID: 0}
-  canvas: {fileID: 4434754404370888073}
 --- !u!114 &6856452510706946616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3418,18 +3329,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDontDestroyOnLoad: 0
-  Name: admin
-  Level: 20
-  MaxHp: 0
-  CurrHp: 0
-  MaxMp: 0
-  CurrMp: 0
-  PercentExp: 0
-  Gold: 1000
-  MinDamage: 680
-  MaxDamage: 690
+  namePlayer: 
+  level: 0
+  maxHp: 0
+  hp: 0
+  maxMp: 0
+  mp: 0
+  percentExp: 0
+  gold: 0
+  minDamage: 0
+  maxDamage: 0
+  fillBarHP: {fileID: 0}
+  fillBarMP: {fileID: 0}
+  nameText: {fileID: 0}
+  hpText: {fileID: 0}
+  mpText: {fileID: 0}
+  levelText: {fileID: 0}
+  percentExpText: {fileID: 0}
+  goldText: {fileID: 0}
+  damagedText: {fileID: 0}
+  canvas: {fileID: 0}
   animatorPlayer: {fileID: 3743245284151934356}
-  PlayerEffect: {fileID: 441369788611908999}
 --- !u!50 &5068896577828639413
 Rigidbody2D:
   serializedVersion: 4
@@ -3513,6 +3433,27 @@ CapsuleCollider2D:
   m_Offset: {x: -0.025339127, y: 0.28876668}
   m_Size: {x: 0.4629631, y: 1.0839366}
   m_Direction: 0
+--- !u!114 &557610514846781118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5406951064818249303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdad95c827de3ed428b86b82fc6664f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillAnimation: {fileID: 2189703313464193815}
+  frameSkill:
+  - {fileID: 11400000, guid: 03655bbf946861e4595fc3260e2b3c16, type: 2}
+  - {fileID: 11400000, guid: 8d608065d88cf774b81321b7785a7d7f, type: 2}
+  - {fileID: 11400000, guid: 4d68d2927121c0141a9bbbcc25794000, type: 2}
+  - {fileID: 11400000, guid: e80c4b0b91bf51842874c10ff8418fa0, type: 2}
+  - {fileID: 11400000, guid: 79205733a7c05d4469c5587c3f0e7148, type: 2}
+  skillRecoveryTimes:
+  - {fileID: 0}
 --- !u!1 &5461534399045575435
 GameObject:
   m_ObjectHideFlags: 0

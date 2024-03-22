@@ -18,9 +18,9 @@ namespace QuachDai.NinjaSchool.Monsters
             setHPMonsterDictionary();
             setDameMonsterDictionary();
         }
-        public Dictionary<int, double> getExpMonsterDictionary()
+        public double getExpMonsterDictionary(int i)
         {
-            return expMonster;
+            return expMonster[i];
         }
         public void setExpMonsterDictionary()
         {

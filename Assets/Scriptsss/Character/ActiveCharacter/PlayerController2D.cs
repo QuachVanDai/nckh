@@ -2,7 +2,6 @@
 
 namespace QuachDai.NinjaSchool.Character
 {
-
     public class PlayerController2D : Singleton<PlayerController2D>
     {
         [SerializeField] private Transform groundCheck;

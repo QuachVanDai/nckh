@@ -11,6 +11,7 @@ public class UseSkill : MonoBehaviour
     [SerializeField] protected bool[] isUseSkill;
 
     public static UseSkill Instance {  get { return instance; } }
+    Player player => Player.Instance;
     protected  void Awake()
     {
         UseSkill.instance = this;
@@ -24,11 +25,11 @@ public class UseSkill : MonoBehaviour
 
     public void use()
     {
-        if (Player.Instance.Level < 5) { setIsUseSkill(0);  return; }
-        if (Player.Instance.Level < 10) { setIsUseSkill(1);  return; }
-        if (Player.Instance.Level < 15) { setIsUseSkill(2);  return; }
-        if (Player.Instance.Level < 20) { setIsUseSkill(3);  return; }
-        if (Player.Instance.Level < 25) { setIsUseSkill(4);  return; }
+        if (player.GetLevel() < 5) { setIsUseSkill(0);  return; }
+        if (player.GetLevel() < 10) { setIsUseSkill(1);  return; }
+        if (player.GetLevel() < 15) { setIsUseSkill(2);  return; }
+        if (player.GetLevel() < 20) { setIsUseSkill(3);  return; }
+        if (player.GetLevel() < 25) { setIsUseSkill(4);  return; }
     }
     public bool getIsUseSkill(int index)
     {

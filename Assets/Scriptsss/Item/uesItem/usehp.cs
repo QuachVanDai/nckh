@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using QuachDai.NinjaSchool.Character;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Usehp: MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class Usehp: MonoBehaviour
     public bool IsUes;
     public Image ImgFillTime;
     private float _GetTime;
-
+    Player player => Player.Instance;
     void Start()
     {
         Quanitity = InventoryUpdate.Instance.UpdateHP(0);
@@ -27,7 +28,7 @@ public class Usehp: MonoBehaviour
     }
     public IEnumerator SetTimeUse()
     {
-        if (Player.Instance.CurrHp == Player.Instance.MaxHp)
+        if (player.GetHp() == player.GetMaxHp())
         {
             TextTemplate.Instance.SetText(TagScript.fullHP);
             yield return new WaitForSeconds(0.5f);
@@ -37,7 +38,7 @@ public class Usehp: MonoBehaviour
             HpSO = (HpSO)SlotFoodSO.getItemSO();
             _GetTime = Time.time;
             IsUes = false;
-            Player.Instance.PlayerEffect.UpdateHp(HpSO.hP);
+           // Player.Instance.PlayerEffect.UpdateHp(HpSO.hP);
             Quanitity = InventoryUpdate.Instance.UpdateHP(-1);
             TxtQuanitity.text = Quanitity.ToString();
             yield return new WaitForSeconds(0.5f);

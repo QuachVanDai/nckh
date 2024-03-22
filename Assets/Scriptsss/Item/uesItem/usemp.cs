@@ -13,7 +13,7 @@ public class Usemp : MonoBehaviour
     public bool IsUse;
     public Image ImgFillTime;
     private float getTime;
-
+    Player player => Player.Instance;
     void Start()
     {
         Quanitity = InventoryUpdate.Instance.UpdateMP(0);
@@ -27,7 +27,7 @@ public class Usemp : MonoBehaviour
     }
     public IEnumerator SetTimeUse()
     {
-        if (Player.Instance.CurrMp == Player.Instance.MaxMp)
+         if (player.GetMp() == player.GetMaxMp())
         {
             TextTemplate.Instance.SetText(TagScript.fullMP);
             yield return new WaitForSeconds(0.5f);
@@ -37,7 +37,7 @@ public class Usemp : MonoBehaviour
             MpSO = (MpSO)SlotFoodSO.getItemSO();
             getTime = Time.time;
             IsUse = false;
-            Player.Instance.PlayerEffect.UpdateMp(MpSO.mP);
+            //Player.Instance.PlayerEffect.UpdateMp(MpSO.mP);
             Quanitity = InventoryUpdate.Instance.UpdateMP(-1);
             TxtQuanitity.text = Quanitity.ToString();
             yield return new WaitForSeconds(0.5f);
