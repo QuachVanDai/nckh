@@ -16,13 +16,6 @@ public class UseSkill : MonoBehaviour
     {
         UseSkill.instance = this;
     }
-    private void Reset()
-    {
-        isUseSkill =  new bool[5];
-        Array.Fill(isUseSkill, false);
-        // currLevel = Player.Instance._level;
-    }
-
     public void use()
     {
         if (player.GetLevel() < 5) { setIsUseSkill(0);  return; }

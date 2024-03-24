@@ -21,7 +21,7 @@ namespace QuachDai.NinjaSchool.Scenes {
         public static string GetMiniscene(MiniSceneId _id)
         {
             var _data = asset.Value.listMiniScene.Find(x => x.Id.Equals(_id));
-            return _data.SceneName;
+            return _data.sceneName;
         }
     }
 }

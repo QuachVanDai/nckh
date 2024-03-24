@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: LegendaryVillageMiniSceneData
   m_EditorClassIdentifier: 
   Id: 4
-  SceneName: LegendaryVillageScene
-  Scene: {fileID: 102900000, guid: 2d533cf1e1438214bad7d1917ea9cfcd, type: 3}
+  sceneName: LegendaryVillageScene
+  scene: {fileID: 102900000, guid: 2d533cf1e1438214bad7d1917ea9cfcd, type: 3}
   PosPlayer:
   - {x: 34, y: 3, z: 0}
   - {x: -10, y: 3, z: 0}
+  yMax: 1.2
+  yMin: -6
+  xMax: 24.7
+  xMin: 0

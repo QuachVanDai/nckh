@@ -74,6 +74,10 @@ namespace QuachDai.NinjaSchool.Character
         {
             return animatorPlayer;
         }
+        public void SetPositon(Vector3 _vector3)
+        {
+            transform.position = _vector3;
+        }
         public void SetHp(float hp)
         {
             this.hp += hp;

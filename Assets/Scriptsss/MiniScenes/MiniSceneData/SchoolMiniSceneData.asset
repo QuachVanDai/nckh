@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d707295742d39c4da92c69e9ceb10c9, type: 3}
   m_Name: SchoolMiniSceneData
   m_EditorClassIdentifier: 
-  Id: 0
-  SceneName: School
-  Scene: {fileID: 102900000, guid: e89e2df9ed9be814697bf79e2facfea4, type: 3}
+  Id: 1
+  sceneName: SchoolScene
+  scene: {fileID: 102900000, guid: e89e2df9ed9be814697bf79e2facfea4, type: 3}
   PosPlayer:
   - {x: -10, y: 5, z: 0}
   - {x: -65, y: 1, z: 0}
+  yMax: 6
+  yMin: -2.5
+  xMax: -19.2
+  xMin: -54.3

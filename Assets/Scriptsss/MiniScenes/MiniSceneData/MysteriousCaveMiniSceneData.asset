@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: MysteriousCaveMiniSceneData
   m_EditorClassIdentifier: 
   Id: 5
-  SceneName: MysteriousCaveScene
-  Scene: {fileID: 102900000, guid: ad43da7da8cd0624b9d6b69b33f346c0, type: 3}
+  sceneName: MysteriousCaveScene
+  scene: {fileID: 102900000, guid: ad43da7da8cd0624b9d6b69b33f346c0, type: 3}
   PosPlayer:
   - {x: -10, y: 5, z: 0}
   - {x: 19, y: 5, z: 0}
+  yMax: 3.3
+  yMin: -23.6
+  xMax: 9.7
+  xMin: -1.6

@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d707295742d39c4da92c69e9ceb10c9, type: 3}
   m_Name: IceMountainMiniSceneData
   m_EditorClassIdentifier: 
-  Id: 2
-  SceneName: Ice Mountain
-  Scene: {fileID: 102900000, guid: dae560625ddaf594c93cf98d173f61e8, type: 3}
+  Id: 3
+  sceneName: IceMountainScene
+  scene: {fileID: 102900000, guid: dae560625ddaf594c93cf98d173f61e8, type: 3}
   PosPlayer:
   - {x: -13, y: -2, z: 0}
   - {x: 14, y: -5, z: 0}
+  yMax: 4.3
+  yMin: -1.7
+  xMax: 3.3
+  xMin: -3.3

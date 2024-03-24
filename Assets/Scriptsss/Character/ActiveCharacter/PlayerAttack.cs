@@ -16,12 +16,12 @@ namespace QuachDai.NinjaSchool.Character
         private SetPlayer setPlayer = new SetPlayer();
         private SetMonster setMonster = new SetMonster();
         Player player => Player.Instance;
-
-
+        PlayerController2D playerController2D => PlayerController2D.Instance;
+        UseSkill useSkill => UseSkill.Instance;
         private void Update()
         {
              if (GameManager.Instance.IsPlaygame == false) return;
-             if (PlayerController2D.Instance.IsGround() == false) return;
+             if (playerController2D.IsGround() == false) return;
              //if (monsterAttacked == null)  return;
              //distance = Vector2.Distance(transform.position, monsterAttacked.transform.position);
             /* if (distance > 7)
@@ -31,7 +31,7 @@ namespace QuachDai.NinjaSchool.Character
                  return;
              }*/
 
-            if (PlayerController2D.Instance.getInputSpace())
+            if (playerController2D.getInputSpace())
             {
                 // 
                 /*  if (_Distance > 4)
@@ -41,27 +41,26 @@ namespace QuachDai.NinjaSchool.Character
                   }*/
 
                 // if player use skilllv5 or skilllv15  , player cannot attack.
-                 if (UseSkill.Instance.getCurrKeySkill() == 1 || UseSkill.Instance.getCurrKeySkill() == 3)
+                 if (useSkill.getCurrKeySkill() == 1 || useSkill.getCurrKeySkill() == 3)
                 {
-                   TextTemplate.Instance.SetText(TagScript.useSkill); return;
+                   TextTemplate.Instance.SetText(TagScript.useSkill);
+                    return;
                  }
-                playerSkill.ManaUseSkill();
                 if (playerSkill.isActtack)
-                {
-                    StartCoroutine(PlayerAttackMonster());
-                }
+                    PlayerAttackMonster(useSkill.getCurrKeySkill());
             }
         }
 
         float damage;
-        public IEnumerator PlayerAttackMonster()
+        public void PlayerAttackMonster(int number)
         {
-          //  damage  = Random.Range(player.GetMinDamage(), player.GetMaxDamage() * playerSkill.GetCoefficient());
-          //  playerSkill.InCreaseDamage(ref damage);
-         //   AddExp((int)damage);
-            yield return new WaitForSeconds(0.23f);
-           // monsterAttacked.Attacked((int)damage);
-            playerSkill.SkillAttack();
+            playerSkill.ManaUseSkill();
+            playerSkill.SkillAttack(number);
+            //  damage  = Random.Range(player.GetMinDamage(), player.GetMaxDamage() * playerSkill.GetCoefficient());
+            //  playerSkill.InCreaseDamage(ref damage);
+            //   AddExp((int)damage);
+            // monsterAttacked.Attacked((int)damage);
+
         }
         double exp;
         public void AddExp(float damage)

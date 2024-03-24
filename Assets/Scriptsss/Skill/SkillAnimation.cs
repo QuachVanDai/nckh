@@ -2,6 +2,7 @@
 using UnityEngine;
 using DG.Tweening;
 using System.Collections;
+using static UnityEngine.Rendering.DebugUI;
 
 public class SkillAnimation : MonoBehaviour
 {
@@ -23,18 +24,16 @@ public class SkillAnimation : MonoBehaviour
     {
         gameObject.SetActive(true);
         transform.localPosition = positionStart;
-        StartCoroutine(AnimatorFrame.FrameGame(skillSprite, _frameSkill.skillFrames, true, null, 0.05f));
-        StartCoroutine(SkillLv5_15());
+        StartCoroutine(AnimatorFrame.FrameGame(skillSprite, _frameSkill.skillFrames, true, DisActive, 0.05f));
     }
     void MoveSkill()
     {
         transform.DOKill();
         transform.localPosition = positionStart;
-        var t = transform.DOMoveX(target.position.x, 0.5f).OnComplete(()=> gameObject.SetActive(false));
+        var t = transform.DOMoveX(target.position.x, 0.5f).OnComplete(()=> DisActive());
     }
-    IEnumerator SkillLv5_15()
+    void DisActive()
     {
-        yield return new WaitForSeconds(1.25f);
         gameObject.SetActive(false);
     }
   

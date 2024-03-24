@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d707295742d39c4da92c69e9ceb10c9, type: 3}
   m_Name: TempleAMiniSceneData
   m_EditorClassIdentifier: 
-  Id: 1
-  SceneName: Temple A
-  Scene: {fileID: 102900000, guid: 448702b9f9a47454d8c7992811532132, type: 3}
+  Id: 2
+  sceneName: TempleAScene
+  scene: {fileID: 102900000, guid: 448702b9f9a47454d8c7992811532132, type: 3}
   PosPlayer:
   - {x: 13, y: 6, z: 0}
   - {x: -60, y: -5, z: 0}
+  yMax: 1.8
+  yMin: -4.8
+  xMax: 3.8
+  xMin: -50

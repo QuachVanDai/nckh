@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.SceneManagement;
 using QuachDai.NinjaSchool.Character;
 namespace QuachDai.NinjaSchool.Scenes
@@ -8,37 +7,21 @@ namespace QuachDai.NinjaSchool.Scenes
     {
         public MiniSceneData screenActive;
         public MiniSceneData screenDisActive;
-        public GameObject loadScenePanel;
-        const float  fakeLoadTime=1;
-        float currentFakeLoadTime;
-        float progess = 0;
         int index;
         public void OnClick(int i)
         {
             index = i;
             Application.targetFrameRate = 60;
-            Debug.Log("click");
-           StartCoroutine( CallMap());
+            LoadingPanel.Instance.SetActive(true);
+            LoadingPanel.Instance.StartCoroutine(LoadingPanel.Instance.LoadingPopUp(LoadScene));
         }
 
-        public IEnumerator CallMap()
+        public void LoadScene()
         {
-            this.loadScenePanel.SetActive(true);
-            progess = 0;
-            currentFakeLoadTime = fakeLoadTime;
-            while (progess <= 1)
-            {
-                currentFakeLoadTime -= Time.deltaTime;
-                progess = 1 - (currentFakeLoadTime / fakeLoadTime);
-                LoadingSlider.Instance.SetProgress(progess);
-                yield return null;
-            }
-            yield return new WaitForSeconds(0.1f);
-            if (SceneManager.GetSceneByName(screenDisActive.Scene.name).isLoaded)
-                SceneManager.UnloadSceneAsync(screenDisActive.Scene.name);
-            SceneManager.LoadScene(screenActive.Scene.name, LoadSceneMode.Additive);
-            this.loadScenePanel.SetActive(false);
-           // Player.Instance.transform.position = screenActive.PosPlayer[index];
+            if (SceneManager.GetSceneByName(screenDisActive.scene.name).isLoaded)
+                SceneManager.UnloadSceneAsync(screenDisActive.scene.name);
+            SceneManager.LoadScene(screenActive.scene.name, LoadSceneMode.Additive);
+            Player.Instance.SetPositon(screenActive.PosPlayer[index]);
         }
     }
 }
