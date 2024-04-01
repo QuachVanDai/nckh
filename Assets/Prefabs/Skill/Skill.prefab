@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 177376554379075779}
   - component: {fileID: 6262264247352667849}
   - component: {fileID: 4794342943422526571}
+  - component: {fileID: 2480275057381278535}
   m_Layer: 5
   m_Name: SelectSkill1
   m_TagString: Untagged
@@ -76,6 +77,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2480275057381278535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059033655844036165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c8ce22baeaf3894ab3af602b5a685a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5059214127520895389
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,6 +102,7 @@ GameObject:
   - component: {fileID: 2416140613027029177}
   - component: {fileID: 3902792166169919427}
   - component: {fileID: 539315579036036055}
+  - component: {fileID: 8146426400691552739}
   m_Layer: 5
   m_Name: Skill
   m_TagString: Untagged
@@ -251,6 +265,20 @@ MonoBehaviour:
   FrameSkill: {fileID: 11400000, guid: 03655bbf946861e4595fc3260e2b3c16, type: 2}
   Fill_time: {fileID: 2550067652203330605}
   isTime: 0
+--- !u!114 &8146426400691552739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5059214127520895389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5933ca4f164da048abbe54b655ab320, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IDSkill: 0
+  selectSkillList: []
 --- !u!1 &6647838232238242069
 GameObject:
   m_ObjectHideFlags: 0

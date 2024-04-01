@@ -3,10 +3,24 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Animations/Frame Skill")]
 public class FrameSkill : ScriptableObject
 {
-    public Sprite[] skillFrames;
+    public IDSkill IDSkill;
+    public string skillName;
+    public int level;
+    public Sprite[] framesMove;
+    public Sprite[] framesFont;
+    public Sprite[] framesStart;
     public int mp;
     public float timeSkill;
     public float coefficient;
-
-
+    public bool isBlock=false;
+    public string description;
+}
+public enum IDSkill
+{
+    none =0,
+    SkillLv1 =1,
+    SkillLv5 =2,
+    SkillLv10 =3,
+    SkillLv15 =4,
+    SkillLv20 =5,
 }

@@ -27,14 +27,13 @@ namespace QuachDai.NinjaSchool.Character
          [SerializeField] RectTransform canvas;
          [SerializeField] Animator animatorPlayer;
          [SerializeField] SetPlayer setPlayer;
-        public void Start()
+      void Start()
         {
-            LoadComponent();
+            Init();
         }
-        protected void LoadComponent()
+        protected void Init()
         {
             setPlayer = new SetPlayer();
-            level = 20;
             maxHp = setPlayer.getHPPlayerDictionary()[level];
             hp = setPlayer.getHPPlayerDictionary()[level];
             maxMp = setPlayer.getHPPlayerDictionary()[level];

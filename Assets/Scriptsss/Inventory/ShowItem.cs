@@ -1,12 +1,11 @@
-﻿using TMPro;
-using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class ShowItem : Select
 {
     [SerializeField]
-    private TextMeshProUGUI TxtInformation;
+    private Text inforItemText;
     public override void OnPointerClick(PointerEventData eventData)
     {
         base.OnPointerClick(eventData);
@@ -16,13 +15,13 @@ public class ShowItem : Select
     {
         try
         {
-            TxtInformation.text = this.GetSlotItem().getItemSO().ItemName + "\n";
-            TxtInformation.text += this.GetSlotItem().getItemSO().Description + "\n";
+            inforItemText.text = this.GetSlotItem().getItemSO().ItemName + "\n";
+            inforItemText.text += this.GetSlotItem().getItemSO().Description + "\n";
 
         }
         catch 
         {
-            TxtInformation.text = "Chọn vật phẩm";
+            inforItemText.text = "Chọn vật phẩm";
         }
   
     }

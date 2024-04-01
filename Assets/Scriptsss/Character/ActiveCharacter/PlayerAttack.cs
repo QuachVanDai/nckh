@@ -1,7 +1,5 @@
-﻿using QuachDai.NinjaSchool.Animations;
-using QuachDai.NinjaSchool.Mission;
+﻿using QuachDai.NinjaSchool.Mission;
 using QuachDai.NinjaSchool.Monsters;
-using System.Collections;
 using UnityEngine;
 namespace QuachDai.NinjaSchool.Character
 {

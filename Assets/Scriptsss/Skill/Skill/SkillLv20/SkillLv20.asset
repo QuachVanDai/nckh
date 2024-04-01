@@ -12,11 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c647a5f36bae584db02bb6da7d2ef21, type: 3}
   m_Name: SkillLv20
   m_EditorClassIdentifier: 
-  skillFrames:
-  - {fileID: 21300000, guid: 5f16ceb2a3c6056408112f8694ed679b, type: 3}
-  - {fileID: 21300000, guid: 4568dfeec2b796042ac38f1637fe669e, type: 3}
-  - {fileID: 21300000, guid: b124c772fb070094895e51ebaf95e74a, type: 3}
-  - {fileID: 21300000, guid: 89ecacfb0c4a8fd41bf180cadbe31da4, type: 3}
+  IDSkill: 5
+  skillName: "Chi\xEAu cao c\u1EA5p"
+  level: 20
+  framesMove:
+  - {fileID: 21300000, guid: 503d37c4bcd7e98408e6c416a7967861, type: 3}
+  - {fileID: 21300000, guid: e62d6553b968f2e4c81927aed41383bf, type: 3}
+  - {fileID: 21300000, guid: bd9d2092cbb87a7448cd10fed6c11a37, type: 3}
+  - {fileID: 21300000, guid: 27095ab311f5dc445b7649ee598a8dae, type: 3}
+  framesFont:
+  - {fileID: 21300000, guid: 05a9f9558a60f264c829e31e15138f71, type: 3}
+  - {fileID: 21300000, guid: 88be229564c259c45944c896743c6e07, type: 3}
+  framesStart:
+  - {fileID: 21300000, guid: 9723cb4fba4eda24c94580b5492d5790, type: 3}
+  - {fileID: 21300000, guid: e36de5b993f340c4a9a501b334d77a6e, type: 3}
+  - {fileID: 21300000, guid: 05a9f9558a60f264c829e31e15138f71, type: 3}
+  - {fileID: 21300000, guid: 88be229564c259c45944c896743c6e07, type: 3}
   mp: 55
   timeSkill: 0.3
   coefficient: 1.5
+  isBlock: 1
+  description: "Chi\xEAu th\u1EE9c k\xEAu g\u1ECDi L\xF4i M\xE3 Phong V\xE2n t\u1EA5n
+    c\xF4ng m\u1EA1nh m\u1EBD v\xE0o k\u1EBB \u0111\u1ECBch."

@@ -12,23 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c647a5f36bae584db02bb6da7d2ef21, type: 3}
   m_Name: SkillLv5
   m_EditorClassIdentifier: 
-  skillFrames:
-  - {fileID: 21300000, guid: 2b74d23bd52fd30448b66fcfe5e20189, type: 3}
-  - {fileID: 21300000, guid: 98c329fdd24b59742ae1ba13d82c31e4, type: 3}
-  - {fileID: 21300000, guid: d78a1aaf737e71f47a3e8601037f8614, type: 3}
-  - {fileID: 21300000, guid: b7907abbd5ea0e240a0c572ca439005b, type: 3}
-  - {fileID: 21300000, guid: 2b74d23bd52fd30448b66fcfe5e20189, type: 3}
-  - {fileID: 21300000, guid: 98c329fdd24b59742ae1ba13d82c31e4, type: 3}
-  - {fileID: 21300000, guid: d78a1aaf737e71f47a3e8601037f8614, type: 3}
-  - {fileID: 21300000, guid: b7907abbd5ea0e240a0c572ca439005b, type: 3}
-  - {fileID: 21300000, guid: 2b74d23bd52fd30448b66fcfe5e20189, type: 3}
-  - {fileID: 21300000, guid: 98c329fdd24b59742ae1ba13d82c31e4, type: 3}
-  - {fileID: 21300000, guid: d78a1aaf737e71f47a3e8601037f8614, type: 3}
-  - {fileID: 21300000, guid: b7907abbd5ea0e240a0c572ca439005b, type: 3}
-  - {fileID: 21300000, guid: 2b74d23bd52fd30448b66fcfe5e20189, type: 3}
-  - {fileID: 21300000, guid: 98c329fdd24b59742ae1ba13d82c31e4, type: 3}
-  - {fileID: 21300000, guid: d78a1aaf737e71f47a3e8601037f8614, type: 3}
-  - {fileID: 21300000, guid: b7907abbd5ea0e240a0c572ca439005b, type: 3}
+  IDSkill: 2
+  skillName: "Chi\xEAu h\u1ED3i ph\u1EE5c"
+  level: 5
+  framesMove: []
+  framesFont: []
+  framesStart:
   - {fileID: 21300000, guid: 2b74d23bd52fd30448b66fcfe5e20189, type: 3}
   - {fileID: 21300000, guid: 98c329fdd24b59742ae1ba13d82c31e4, type: 3}
   - {fileID: 21300000, guid: d78a1aaf737e71f47a3e8601037f8614, type: 3}
@@ -40,3 +29,6 @@ MonoBehaviour:
   mp: 30
   timeSkill: 1
   coefficient: 0
+  isBlock: 1
+  description: "Nh\u1EABn th\u1EADt t\xE2m ph\xE1p gi\xFAp b\u1EA3n th\xE2n t\u0103ng
+    hp mp."

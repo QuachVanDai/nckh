@@ -1,4 +1,5 @@
 ﻿using QuachDai.NinjaSchool.Animations;
+using QuachDai.NinjaSchool.Skill;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -27,13 +28,14 @@ namespace QuachDai.NinjaSchool.Character
             StartCoroutine(_SkillAttack());
             IEnumerator _SkillAttack()
             {
-                skillAnimation.AnimationSkill(frameSkill[index]);
+               
                 animatorSystem.SetBool(player.GetAnimator(), "IsAttack", true);
                 isActtack = false;
                 player.SetMp(frameSkill[index].mp * (-1));
                 yield return new WaitForSeconds(0.23f);
                 skillRecoveryTimes[index].isTime = true;
                 animatorSystem.SetBool(player.GetAnimator(), "IsAttack", false);
+                skillAnimation.AnimationSkill(frameSkill[index]);
                 yield return new WaitForSeconds(frameSkill[index].timeSkill);
                 isActtack = true;
                 skillRecoveryTimes[index].isTime = false;

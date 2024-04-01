@@ -3,19 +3,14 @@ using System;
 using UnityEngine;
 using QuachDai.NinjaSchool.Character;
 
-public class UseSkill : MonoBehaviour
+public class UseSkill : Singleton<UseSkill>
 {
-    private static UseSkill instance;
     private int currKeySkill;
     private int lastKeySkill;
     [SerializeField] protected bool[] isUseSkill;
-
-    public static UseSkill Instance {  get { return instance; } }
     Player player => Player.Instance;
-    protected  void Awake()
-    {
-        UseSkill.instance = this;
-    }
+ 
+
     public void use()
     {
         if (player.GetLevel() < 5) { setIsUseSkill(0);  return; }

@@ -15950,7 +15950,7 @@ GameObject:
   - component: {fileID: 4149099051747129739}
   - component: {fileID: 8265522473420716641}
   m_Layer: 0
-  m_Name: IceMountain
+  m_Name: BtnIceMountain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17068,7 +17068,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screenActive: {fileID: 11400000, guid: 23907dd8ea019934eb60590bd6b66c2e, type: 2}
   screenDisActive: {fileID: 11400000, guid: 4594ac5f8f92b79479a009c52e17fabb, type: 2}
-  loadScenePanel: {fileID: 1534268467}
 --- !u!95 &6846995809280940642
 Animator:
   serializedVersion: 5
@@ -18383,7 +18382,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screenActive: {fileID: 11400000, guid: f6f110255a9b22b4cabfa6db0521c729, type: 2}
   screenDisActive: {fileID: 11400000, guid: 4594ac5f8f92b79479a009c52e17fabb, type: 2}
-  loadScenePanel: {fileID: 1534268467}
 --- !u!114 &8268973508035057119
 MonoBehaviour:
   m_ObjectHideFlags: 0

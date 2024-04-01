@@ -12,19 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c647a5f36bae584db02bb6da7d2ef21, type: 3}
   m_Name: SkillLv15
   m_EditorClassIdentifier: 
-  skillFrames:
-  - {fileID: 21300000, guid: b7d64b7e4dbc6ca409a90e58cd20b101, type: 3}
-  - {fileID: 21300000, guid: 727591df6b02b774b8307f73ed71150b, type: 3}
-  - {fileID: 21300000, guid: d682f498e776ad645974a27b220376a9, type: 3}
-  - {fileID: 21300000, guid: ca1241ee7ddb04e4eaad40c58b4e678a, type: 3}
-  - {fileID: 21300000, guid: 40c7b3725319f1349834d3569b6afffd, type: 3}
-  - {fileID: 21300000, guid: 3e3073b8fc31f774784f46fc548cede0, type: 3}
-  - {fileID: 21300000, guid: b7d64b7e4dbc6ca409a90e58cd20b101, type: 3}
-  - {fileID: 21300000, guid: 727591df6b02b774b8307f73ed71150b, type: 3}
-  - {fileID: 21300000, guid: d682f498e776ad645974a27b220376a9, type: 3}
-  - {fileID: 21300000, guid: ca1241ee7ddb04e4eaad40c58b4e678a, type: 3}
-  - {fileID: 21300000, guid: 40c7b3725319f1349834d3569b6afffd, type: 3}
-  - {fileID: 21300000, guid: 3e3073b8fc31f774784f46fc548cede0, type: 3}
+  IDSkill: 4
+  skillName: "Chi\xEAu t\u0103ng s\u1EE9c m\u1EA1nh"
+  level: 15
+  framesMove: []
+  framesFont: []
+  framesStart:
+  - {fileID: 21300000, guid: f494d1a8fbbe28d4cb1cfcc470430e24, type: 3}
+  - {fileID: 21300000, guid: 00f62c4f22af5284aa62948f16064637, type: 3}
+  - {fileID: 21300000, guid: 976d54d63dbd70147b618aaac430ca20, type: 3}
+  - {fileID: 21300000, guid: 7a4ac4009acb31a429c9944b5700fa9d, type: 3}
+  - {fileID: 21300000, guid: 8ac7872be2cb90f4d902d6bd92eb11ea, type: 3}
+  - {fileID: 21300000, guid: 00f62c4f22af5284aa62948f16064637, type: 3}
+  - {fileID: 21300000, guid: 976d54d63dbd70147b618aaac430ca20, type: 3}
+  - {fileID: 21300000, guid: 7a4ac4009acb31a429c9944b5700fa9d, type: 3}
+  - {fileID: 21300000, guid: 00f62c4f22af5284aa62948f16064637, type: 3}
+  - {fileID: 21300000, guid: 976d54d63dbd70147b618aaac430ca20, type: 3}
+  - {fileID: 21300000, guid: 7a4ac4009acb31a429c9944b5700fa9d, type: 3}
   mp: 40
   timeSkill: 1
   coefficient: 0
+  isBlock: 1
+  description: "Nh\u1EABn th\u1EADt t\xE2m ph\xE1p gi\xFAp b\u1EA3n th\xE2n t\u0103ng
+    l\u01B0\u1EE3ng s\xE1t th\u01B0\u01A1ng v\xE0o k\u1EBB \u0111\u1ECBch."

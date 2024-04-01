@@ -1,6 +1,5 @@
 ﻿
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using QuachDai.NinjaSchool.Character;
@@ -10,7 +9,7 @@ public class InventoryManager : MonoBehaviour
     
     [SerializeField] private List<Slot> SlotItems = new List<Slot>(15);
     [SerializeField] private GameObject[] SlotsGameObject;
-    public TextMeshProUGUI TextGold;
+    public Text TextGold;
 
     public void Start()
     {

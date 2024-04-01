@@ -4790,7 +4790,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "l\xE0ng Tone"
+  m_Text: "Tr\u01B0\u1EDDng"
 --- !u!212 &1792117317325490273
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5523,7 +5523,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.64, y: 0}
+  m_AnchoredPosition: {x: -0.37, y: 0}
   m_SizeDelta: {x: 270.28, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5302228019669960320
@@ -5565,7 +5565,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screenActive: {fileID: 11400000, guid: 5537947af8b60104b99d1bc5aa394c53, type: 2}
   screenDisActive: {fileID: 11400000, guid: f6f110255a9b22b4cabfa6db0521c729, type: 2}
-  loadScenePanel: {fileID: 1773040215}
 --- !u!114 &5392969535122851012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8468,7 +8467,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screenActive: {fileID: 11400000, guid: 4594ac5f8f92b79479a009c52e17fabb, type: 2}
   screenDisActive: {fileID: 11400000, guid: f6f110255a9b22b4cabfa6db0521c729, type: 2}
-  loadScenePanel: {fileID: 1773040215}
 --- !u!4 &8832158304381455305
 Transform:
   m_ObjectHideFlags: 0
