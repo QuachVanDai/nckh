@@ -26,6 +26,8 @@ public class SkillAnimation : MonoBehaviour
         gameObject.SetActive(true);
         transform.localPosition = positionStart;
         StartCoroutine(AnimatorFrame.FrameGame(spriteStart, _frameSkill.framesStart, true, DisActive, 0.1f));
+        StartCoroutine(AnimatorFrame.FrameGame(skillFont, _frameSkill.framesFont, true, null, 0.05f));
+        StartCoroutine(AnimatorFrame.FrameGame(spriteMove, _frameSkill.framesMove, true, null, 0.05f));
     }
     void MoveSkill()
     {

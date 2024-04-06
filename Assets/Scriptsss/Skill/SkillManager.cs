@@ -20,17 +20,10 @@ namespace QuachDai.NinjaSchool.Skill
             for(int i = 0; i < frameSkill.Length; i++)
             {
                 if (player.GetLevel() >= frameSkill[i].level)
-                {
                     frameSkill[i].isBlock = true;
-                }
                 else frameSkill[i].isBlock = false;
-                Debug.Log(frameSkill[i].IDSkill+" "+ frameSkill[i].isBlock);
             }
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-        }
     }
 }

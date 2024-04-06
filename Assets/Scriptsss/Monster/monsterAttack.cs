@@ -4,18 +4,11 @@ namespace QuachDai.NinjaSchool.Monsters
 {
     public class MonsterAttack : MonoBehaviour
     {
-
         private const float radiusAttack = 4f;
         [SerializeField] private LayerMask target;
         [SerializeField] MonsterWeapons monWeapons;
-        public MonsterAttacked monAttacked;
         public Monster monCurrent;
 
-        private void Reset()
-        {
-            monAttacked = GetComponent<MonsterAttacked>();
-            monCurrent = GetComponent<Monster>();
-        }
         private void Update()
         {
             FindPlayer();
@@ -24,19 +17,20 @@ namespace QuachDai.NinjaSchool.Monsters
         {
             // Tạo ra một đạn từ prefab
             Instantiate(monWeapons, transform.localPosition, Quaternion.identity);
-            monWeapons.Damage = Random.Range(monCurrent.SetMonster.getDameMonsterDictionary(monCurrent.level).Item1,
-                monCurrent.SetMonster.getDameMonsterDictionary(monCurrent.level).Item2);
+            monWeapons.Damage = Random.Range(monCurrent.GetMinDamage(), monCurrent.GetMaxDamage());
             CancelInvoke(nameof(Shoot));
         }
+
+        RaycastHit2D[] hits;
         public void FindPlayer()
         {
-            RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, radiusAttack, Vector2.zero, 0.0f, target);
+            hits = Physics2D.CircleCastAll(transform.position, radiusAttack, Vector2.zero, 0.0f, target);
             foreach (RaycastHit2D hit in hits)
             {
                 // Kiểm tra xem đối tượng va chạm có phải là quái vật hay không
                 if (hit.collider.CompareTag("player"))
                 {
-                    if (monWeapons == null && monAttacked.monCurrent.currHp < monAttacked.monCurrent.maxHp)
+                    if (monWeapons == null && monCurrent.currHp < monCurrent.maxHp)
                         Invoke(nameof(Shoot), 1.8f);
                     // Debug.Log("Quái vật đã bị phát hiện!");
                 }

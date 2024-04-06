@@ -1,25 +1,16 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class SystemUi : MonoBehaviour
+public class SystemUi : Singleton<SystemUi>
 {
-    private static SystemUi _Instance;
-
-    public TextMeshProUGUI InfoMonster;
-    public static SystemUi Instance { get => _Instance; }
-    protected void Awake()
+    public Text InfoMonster;
+    public void SetInfoMonsterText(string text)
     {
-        SystemUi._Instance = this;
+        InfoMonster.text = text;
     }
-    // Start is called before the first frame update
-    void Start()
+    public void SetActive(bool values)
     {
-        //InfoMonster.gameObject.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        gameObject.SetActive(values);   
     }
 }

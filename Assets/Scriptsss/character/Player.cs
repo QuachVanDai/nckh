@@ -4,7 +4,6 @@ namespace QuachDai.NinjaSchool.Character
 {
     public class Player : Singleton<Player>
     {
-
          [SerializeField] string namePlayer;
          [SerializeField] int level;
          [SerializeField] float maxHp;
@@ -27,6 +26,9 @@ namespace QuachDai.NinjaSchool.Character
          [SerializeField] RectTransform canvas;
          [SerializeField] Animator animatorPlayer;
          [SerializeField] SetPlayer setPlayer;
+
+        public PlayerAttack playerAttack;
+        public PlayerAttacked playerAttacked;
       void Start()
         {
             Init();
@@ -38,6 +40,14 @@ namespace QuachDai.NinjaSchool.Character
             hp = setPlayer.getHPPlayerDictionary()[level];
             maxMp = setPlayer.getHPPlayerDictionary()[level];
             mp = setPlayer.getMPPlayerDictionary()[level];
+        }
+        public void IgnorePlayer()
+        {
+            Physics2D.IgnoreLayerCollision(7,10);
+        }
+        public void Update()
+        {
+            IgnorePlayer();
         }
         private void OnCollisionEnter2D(Collision2D collision)
         {
@@ -67,11 +77,15 @@ namespace QuachDai.NinjaSchool.Character
         {
             GameObject g = Instantiate(damagedText);
             NumberTxt numberTxt = g.GetComponent<NumberTxt>();
-            numberTxt.aniTextY1(canvas, (int)damage, new Vector3(0, 1.2f, 0), 1, 0.5f, color);
+            numberTxt.TextMove(canvas, (int)damage, new Vector3(0, 1.2f, 0), 1, 0.5f, color);
         }
         public Animator GetAnimator()
         {
             return animatorPlayer;
+        }
+        public Vector3 GetPosition()
+        {
+            return transform.position;
         }
         public void SetPositon(Vector3 _vector3)
         {
@@ -148,7 +162,7 @@ namespace QuachDai.NinjaSchool.Character
         }
         public void SetMinDamage()
         {
-            minDamage = setPlayer.getDamePlayerDictionary(level).Item1;
+            minDamage = setPlayer.getDamePlayerDictionary(level).Item2;
         }
         public int GetMaxDamage()
         {

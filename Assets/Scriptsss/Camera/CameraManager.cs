@@ -15,6 +15,7 @@ namespace QuachDai.NinjaSchool.Camera
      
         private void Update()
         {
+
             _x = math.max(miniSceneData.xMin, player.transform.position.x);
             _getX = math.min(miniSceneData.xMax, _x);
             /*  TH1:       Nếu player ơ vị trí nhỏ hơn -6;

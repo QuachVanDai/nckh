@@ -1,11 +1,12 @@
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NumberTxt:MonoBehaviour
 {
-    public TextMeshProUGUI text;
-    public void aniTextY1(RectTransform parent, int number, Vector3 start, float target, float time, Color color)
+    public Text text;
+    public void TextMove(RectTransform parent, int number, Vector3 start, float target, float time, Color color)
     {
 
         text.rectTransform.SetParent(parent.transform,false);

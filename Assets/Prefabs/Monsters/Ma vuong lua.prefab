@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5712665322849756952}
   - component: {fileID: 8518925865762922377}
   - component: {fileID: 7253833291816173400}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1492988293620476990}
   - component: {fileID: 1211041320548600916}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Selected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1752482110013146903}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 3884947648744306475}
   - component: {fileID: 8862889949973679749}
   - component: {fileID: 5393861317976978389}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,7 +281,7 @@ GameObject:
   - component: {fileID: 4509363003855996830}
   - component: {fileID: 2080177328138343158}
   - component: {fileID: 2614029989778168204}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ani_Attacked
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -389,7 +389,7 @@ GameObject:
   - component: {fileID: 3342044818501741503}
   - component: {fileID: 390075024705392284}
   - component: {fileID: 4014090302623930950}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MonsterCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -502,7 +502,7 @@ GameObject:
   - component: {fileID: 2918424192560732448}
   - component: {fileID: 4616571578715891335}
   - component: {fileID: 1096225785903001428}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: full
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -585,7 +585,7 @@ GameObject:
   - component: {fileID: 3463293032761397145}
   - component: {fileID: 6840209146615766790}
   - component: {fileID: 7312981977061039533}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ma vuong lua
   m_TagString: monster
   m_Icon: {fileID: 0}
@@ -730,13 +730,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cb7a77bf25fa6f43818208ec7de47c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ID: 1
-  _Name: "Ma V\u01B0\u01A1ng L\u1EEDa"
-  _Level: 1
-  _MaxHp: 0
-  _CurrHp: 0
-  _MinDame: 0
-  _MaxDame: 0
+  ID: 0
+  nameMonster: 
+  level: 0
+  maxHp: 0
+  currHp: 0
+  minDame: 0
+  maxDame: 0
 --- !u!114 &4006498536048232739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -749,10 +749,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27f1cb23ccc24fb4d8bfc50664ffd6a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Status: 0
-  _Animator: {fileID: 6692215334122014509}
-  _Speed: 1.97
-  _FacingRight: 1
+  monStatus: 0
+  monsterMove: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!114 &8420052322234167031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -765,13 +764,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05e60f47702ecad43a1551bcfea70867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _PosSelected: {fileID: 1492988293620476990}
-  _PosEffect: {fileID: 4509363003855996830}
-  PlayerAttack: {fileID: 0}
-  _MonsterController2D: {fileID: 4006498536048232739}
+  posSelected: {fileID: 0}
+  posEffect: {fileID: 0}
+  playerAttack: {fileID: 0}
+  monsterController2D: {fileID: 0}
   JunkSO: {fileID: 11400000, guid: e0bea908de4f840488ebbba73b94b05a, type: 2}
-  MonCurrent: {fileID: 8917044347110551139}
-  MonEffect: {fileID: 7312981977061039533}
+  monCurrent: {fileID: 0}
+  monEffect: {fileID: 0}
 --- !u!114 &3463293032761397145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -784,13 +783,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53b15f90cdccc64a98cd9cfd71a9e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Target:
+  target:
     serializedVersion: 2
-    m_Bits: 128
-  _BulletPrefab: {fileID: 3498865048540634120, guid: 0355c84687c99ac49a97f5867ee1de51,
-    type: 3}
-  MonAttacked: {fileID: 8420052322234167031}
-  MonCurrent: {fileID: 8917044347110551139}
+    m_Bits: 0
+  monWeapons: {fileID: 0}
+  monAttacked: {fileID: 0}
+  monCurrent: {fileID: 0}
 --- !u!114 &6840209146615766790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -803,7 +801,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4dcfc895fdedd4409a7eced9929d349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _MonsterController2D: {fileID: 4006498536048232739}
+  monsterController2D: {fileID: 0}
+  facingRight: 1
+  monSpeed: 1
 --- !u!114 &7312981977061039533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -816,7 +816,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeebe8a0880710944bd1ce1b14f10d2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _HpBar: {fileID: 1096225785903001428}
-  _CanvasUi: {fileID: 5471830941594816581}
-  _TxtDamaged: {fileID: 2659219805037688058, guid: 796e611b6e6eac24ca455821a7744d2d,
-    type: 3}
+  hpBar: {fileID: 0}
+  canvasUi: {fileID: 0}
+  textDamaged: {fileID: 0}

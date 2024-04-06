@@ -15,8 +15,10 @@ MonoBehaviour:
   IDSkill: 4
   skillName: "Chi\xEAu t\u0103ng s\u1EE9c m\u1EA1nh"
   level: 15
-  framesMove: []
-  framesFont: []
+  framesMove:
+  - {fileID: 0}
+  framesFont:
+  - {fileID: 0}
   framesStart:
   - {fileID: 21300000, guid: f494d1a8fbbe28d4cb1cfcc470430e24, type: 3}
   - {fileID: 21300000, guid: 00f62c4f22af5284aa62948f16064637, type: 3}

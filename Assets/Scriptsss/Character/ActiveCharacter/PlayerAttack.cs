@@ -7,7 +7,6 @@ namespace QuachDai.NinjaSchool.Character
     {
         [SerializeField] PlayerSkill playerSkill;
         public Monster monster;
-        public MonsterAttacked monsterAttacked;
         public MissionUi missionUi;
 
         private float distance;
@@ -54,10 +53,10 @@ namespace QuachDai.NinjaSchool.Character
         {
             playerSkill.ManaUseSkill();
             playerSkill.SkillAttack(number);
-            //  damage  = Random.Range(player.GetMinDamage(), player.GetMaxDamage() * playerSkill.GetCoefficient());
-            //  playerSkill.InCreaseDamage(ref damage);
-            //   AddExp((int)damage);
-            // monsterAttacked.Attacked((int)damage);
+             damage  = Random.Range(player.GetMinDamage(), player.GetMaxDamage() * playerSkill.GetCoefficient());
+             playerSkill.InCreaseDamage(ref damage);
+               AddExp((int)damage);
+            monster.monsterAttacked.Attacked((int)damage);
 
         }
         double exp;
@@ -69,7 +68,9 @@ namespace QuachDai.NinjaSchool.Character
             }
             exp = (damage * setMonster.getExpMonsterDictionary(monster.level) * 100) /
                 setPlayer.getExpPlayerDictionary(player.GetLevel());
+
             player.TextGUI((int)damage, new Color(0, 1, 0.753031f, 1));
+
             if (player.GetPercentExp() + exp >= 100)
             {
                 player.SetPercentExp(0);

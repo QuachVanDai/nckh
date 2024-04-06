@@ -1,6 +1,8 @@
+using DG.Tweening;
 using QuachDai.NinjaSchool.Character;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 namespace QuachDai.NinjaSchool.Monsters
 {
     public class MonsterAttacked : MonoBehaviour
@@ -13,38 +15,53 @@ namespace QuachDai.NinjaSchool.Monsters
         public MonsterController2D monsterController2D;
         public JunkSO JunkSO;
         public Monster monCurrent;
-        public MonsterEffect monEffect;
+
+        public Text[] textDamaged;
+        Player player => Player.Instance;
         private void Start()
         {
-            GameObject player = GameObject.FindWithTag("player");
-            playerAttack = FindAnyObjectByType<PlayerAttack>();
+            playerAttack = player.playerAttack;
+            posStartText = textDamaged[0].rectTransform.anchoredPosition;
         }
 
-       /* public void Update()
+        public void Update()
         {
-            if (playerAttack.monsterAttacted == this)
+            posSelected.gameObject.SetActive(IsSelectMonter());
+        }
+       public Vector3 posStartText;
+        public void TextMove()
+        {
+            for(int i=0; i<textDamaged.Length; i++)
             {
-                posSelected.gameObject.SetActive(true);
+                if (!textDamaged[i].gameObject.activeSelf)
+                {
+                    textDamaged[i].gameObject.SetActive(true);
+                    textDamaged[i].rectTransform.anchoredPosition = posStartText;
+                    textDamaged[i].rectTransform.localScale = Vector3.one;
+                    var t = textDamaged[i].rectTransform.DOAnchorPosY(textDamaged[i].rectTransform.localPosition.y + 50, 0.8f)
+               .OnComplete(() => { textDamaged[i].gameObject.SetActive(false); });
+                    return;
+                }
             }
-            else
-            {
-                posSelected.gameObject.SetActive(false);
-            }
-        }*/
-
+            
+        }
+        public bool IsSelectMonter()
+        {
+            return playerAttack.monster == monCurrent;
+        }
         private void OnMouseDown()
         {
             playerAttack.FindMonster(monCurrent);
-            monEffect.UpdateHp(monCurrent.currHp, monCurrent.maxHp, monCurrent.nameMonster, monCurrent.level);
+            monCurrent.UpdateHp(monCurrent.currHp, monCurrent.maxHp, monCurrent.nameMonster, monCurrent.level);
         }
         public void Attacked(int damage)
         {
             monCurrent.currHp -= damage;
             StartCoroutine(EffectAcctacked());
-            monEffect.TexTGui(damage * (-1), Color.red);
+            TextMove();
             if (monCurrent.currHp < 0)
             {
-                monEffect.UpdateHp(monCurrent.currHp, monCurrent.maxHp, monCurrent.nameMonster, monCurrent.level);
+                monCurrent.UpdateHp(monCurrent.currHp, monCurrent.maxHp, monCurrent.nameMonster, monCurrent.level);
                 if (this.playerAttack.missionUi._mission.getMonster())
                 {
                     if (this.playerAttack.missionUi._mission.getMonster().ID == monCurrent.ID)
@@ -60,7 +77,7 @@ namespace QuachDai.NinjaSchool.Monsters
                 Destroy(gameObject, 0.5f);
                 return;
             }
-            monEffect.UpdateHp(monCurrent.currHp, monCurrent.maxHp, monCurrent.nameMonster, monCurrent.level);
+            monCurrent.UpdateHp(monCurrent.currHp, monCurrent.maxHp, monCurrent.nameMonster, monCurrent.level);
         }
 
         public IEnumerator EffectAcctacked()
