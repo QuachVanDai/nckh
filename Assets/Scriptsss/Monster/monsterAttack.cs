@@ -1,4 +1,7 @@
 ﻿
+using QuachDai.NinjaSchool.ObjectPooling;
+using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 namespace QuachDai.NinjaSchool.Monsters
 {
@@ -6,18 +9,30 @@ namespace QuachDai.NinjaSchool.Monsters
     {
         private const float radiusAttack = 4f;
         [SerializeField] private LayerMask target;
-        [SerializeField] MonsterWeapons monWeapons;
         public Monster monCurrent;
-
+       ObjectPool objectPool=>ObjectPool.Instance;
+        [SerializeField] KeyOjectPool keyPool;
+        [SerializeField] List<GameObject> objectsList;
+        private void Start()
+        {
+            objectsList = new List<GameObject>();
+            objectsList = objectPool.GetObjectList(keyPool);
+        }
         private void Update()
         {
             FindPlayer();
         }
         void Shoot()
         {
-            // Tạo ra một đạn từ prefab
-            Instantiate(monWeapons, transform.localPosition, Quaternion.identity);
-            monWeapons.Damage = Random.Range(monCurrent.GetMinDamage(), monCurrent.GetMaxDamage());
+            foreach (GameObject obj in objectsList)
+            {
+                if (!obj.gameObject.activeSelf)
+                {
+                    obj.gameObject.SetActive(true);
+                    break;
+                }
+            }
+           // monWeapons.Damage = Random.Range(monCurrent.GetMinDamage(), monCurrent.GetMaxDamage());
             CancelInvoke(nameof(Shoot));
         }
 
@@ -30,8 +45,9 @@ namespace QuachDai.NinjaSchool.Monsters
                 // Kiểm tra xem đối tượng va chạm có phải là quái vật hay không
                 if (hit.collider.CompareTag("player"))
                 {
-                    if (monWeapons == null && monCurrent.currHp < monCurrent.maxHp)
-                        Invoke(nameof(Shoot), 1.8f);
+                    Shoot();
+                    //  if (monWeapons == null && monCurrent.currHp < monCurrent.maxHp)
+                  //  Invoke(nameof(Shoot), 1.8f);
                     // Debug.Log("Quái vật đã bị phát hiện!");
                 }
             }

@@ -4,46 +4,48 @@ namespace QuachDai.NinjaSchool.Character
 {
     public class Player : Singleton<Player>
     {
-         [SerializeField] string namePlayer;
-         [SerializeField] int level;
-         [SerializeField] float maxHp;
-         [SerializeField] float hp;
-         [SerializeField] float maxMp;
-         [SerializeField] float mp;
-         [SerializeField] float percentExp;
-         [SerializeField] int gold;
-         [SerializeField] int minDamage;
-         [SerializeField] int maxDamage;
-         [SerializeField] Image fillBarHP;
-         [SerializeField] Image fillBarMP;
-         [SerializeField] Text nameText;
-         [SerializeField] Text hpText;
-         [SerializeField] Text mpText;
-         [SerializeField] Text levelText;
-         [SerializeField] Text percentExpText;
-         [SerializeField] Text goldText;
-         [SerializeField] GameObject damagedText;
-         [SerializeField] RectTransform canvas;
-         [SerializeField] Animator animatorPlayer;
-         [SerializeField] SetPlayer setPlayer;
+        [SerializeField] string namePlayer;
+        [SerializeField] int level;
+        [SerializeField] float maxHp;
+        [SerializeField] float hp;
+        [SerializeField] float maxMp;
+        [SerializeField] float mp;
+        [SerializeField] float percentExp;
+        [SerializeField] int gold;
+        [SerializeField] int minDamage;
+        [SerializeField] int maxDamage;
+        [SerializeField] Image fillBarHP;
+        [SerializeField] Image fillBarMP;
+        [SerializeField] Text nameText;
+        [SerializeField] Text hpText;
+        [SerializeField] Text mpText;
+        [SerializeField] Text levelText;
+        [SerializeField] Text percentExpText;
+        [SerializeField] Text goldText;
+        [SerializeField] GameObject damagedText;
+        [SerializeField] RectTransform canvas;
+        [SerializeField] Animator animatorPlayer;
+        [SerializeField] SetPlayer setPlayer;
 
         public PlayerAttack playerAttack;
         public PlayerAttacked playerAttacked;
-      void Start()
+        void Start()
         {
             Init();
         }
         protected void Init()
         {
             setPlayer = new SetPlayer();
-            maxHp = setPlayer.getHPPlayerDictionary()[level];
-            hp = setPlayer.getHPPlayerDictionary()[level];
-            maxMp = setPlayer.getHPPlayerDictionary()[level];
-            mp = setPlayer.getMPPlayerDictionary()[level];
+            GetMaxDamage();
+            GetMinDamage();
+            GetMaxHp();
+            GetMaxMp();
+            GetMp();
+            GetHp();
         }
         public void IgnorePlayer()
         {
-            Physics2D.IgnoreLayerCollision(7,10);
+            Physics2D.IgnoreLayerCollision(7, 10);
         }
         public void Update()
         {
@@ -91,20 +93,7 @@ namespace QuachDai.NinjaSchool.Character
         {
             transform.position = _vector3;
         }
-        public void SetHp(float hp)
-        {
-            this.hp += hp;
-            this.hp = this.hp >= maxHp ? maxHp : this.hp;
-            fillBarHP.fillAmount = this.hp / maxHp;
-            hpText.text = this.hp.ToString();
-        }
-        public void SetMp(float mp)
-        {
-            this.mp += mp;
-            this.mp = this.mp >= maxMp ? maxMp : this.mp;
-            fillBarMP.fillAmount = this.mp / maxMp;
-            mpText.text = this.mp.ToString();
-        }
+
         public bool SetGold(int number)
         {
             gold += number;
@@ -118,8 +107,8 @@ namespace QuachDai.NinjaSchool.Character
             return true;
         }
 
-  
- 
+
+
         public void SetLevelText(int level)
         {
             levelText.text = level.ToString();
@@ -134,38 +123,57 @@ namespace QuachDai.NinjaSchool.Character
         }
         public void IncreaseLevel()
         {
-            level+=1;
+            level += 1;
+            if(level > 20)  level = 20; 
         }
-        public float GetPercentExp() {  return percentExp; }
-        public void SetPercentExp(float exp) {  percentExp=exp; }
+        public float GetPercentExp() { return percentExp; }
+        public void SetPercentExp(float exp) { percentExp = exp; }
         public void IncreasePercentExp(float exp)
-        { 
-            percentExp += exp; 
+        {
+            percentExp += exp;
         }
-        public float GetMp() { return mp; }
-        public float GetHp() { return hp; }
+        public void SetHp(float hp)
+        {
+            this.hp += hp;
+            this.hp = this.hp >= maxHp ? maxHp : this.hp;
+            fillBarHP.fillAmount = this.hp / maxHp;
+            hpText.text = this.hp.ToString();
+        }
+        public void SetMp(float mp)
+        {
+            this.mp += mp;
+            this.mp = this.mp >= maxMp ? maxMp : this.mp;
+            fillBarMP.fillAmount = this.mp / maxMp;
+            mpText.text = this.mp.ToString();
+        }
+        public float GetMp()
+        {
+            mp = setPlayer.getMPPlayerDictionary()[level];
+            return mp;
+        }
+        public float GetHp()
+        {
+            hp = setPlayer.getHPPlayerDictionary()[level];
+            return hp;
+        }
         public float GetMaxHp()
         {
+            maxHp = setPlayer.getHPPlayerDictionary()[level];
             return maxHp;
         }
         public float GetMaxMp()
         {
+            maxMp = setPlayer.getMPPlayerDictionary()[level];
             return maxMp;
         }
         public int GetMinDamage()
         {
-            return minDamage;
-        }
-        public void SetMaxDamage()
-        {
-            maxDamage = setPlayer.getDamePlayerDictionary(level).Item1;
-        }
-        public void SetMinDamage()
-        {
             minDamage = setPlayer.getDamePlayerDictionary(level).Item2;
+            return minDamage;
         }
         public int GetMaxDamage()
         {
+            maxDamage = setPlayer.getDamePlayerDictionary(level).Item1;
             return maxDamage;
         }
         public int GetGold()

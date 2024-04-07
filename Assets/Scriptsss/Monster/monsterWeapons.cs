@@ -1,26 +1,29 @@
 ﻿using QuachDai.NinjaSchool.Character;
+using QuachDai.NinjaSchool.ObjectPooling;
+using System.Collections.Generic;
 using UnityEngine;
 namespace QuachDai.NinjaSchool.Monsters
 {
     public class MonsterWeapons : MonoBehaviour
     {
-        [SerializeField]  float speed = 7f;
-        [SerializeField] Rigidbody2D rb;
+        public Monster monster; 
         public Player player=>Player.Instance;
 
-        public float Damage;
-        Vector2 direction;
-        private void FixedUpdate()
+        [SerializeField] ObjectPool objectPool;
+        [SerializeField] KeyOjectPool keyPool;
+        [SerializeField] List<GameObject> objectsList;
+       
+     
+        void SnowSpawm()
         {
-            //if (bullet != null) return;
-            direction = (player.GetPosition() - transform.position).normalized;
-            rb.velocity = direction * speed;
-        }
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            if (collision.gameObject.tag == "player")
+            foreach (GameObject obj in objectsList)
             {
-                player.playerAttacked.Attacked((int)Damage);
+                if (!obj.gameObject.activeSelf)
+                {
+                    obj.gameObject.SetActive(true);
+                    break;
+                }
+
             }
         }
     }

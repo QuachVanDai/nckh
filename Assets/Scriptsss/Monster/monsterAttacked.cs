@@ -16,34 +16,40 @@ namespace QuachDai.NinjaSchool.Monsters
         public JunkSO JunkSO;
         public Monster monCurrent;
 
-        public Text[] textDamaged;
+        public Text[] damagedText;
         Player player => Player.Instance;
         private void Start()
         {
             playerAttack = player.playerAttack;
-            posStartText = textDamaged[0].rectTransform.anchoredPosition;
+            posStartText = damagedText[0].rectTransform.anchoredPosition;
         }
 
         public void Update()
         {
             posSelected.gameObject.SetActive(IsSelectMonter());
         }
-       public Vector3 posStartText;
-        public void TextMove()
+        public Vector3 posStartText;
+        Vector3 monsterScale;
+        public void TextMove(string _damage)
         {
-            for(int i=0; i<textDamaged.Length; i++)
+            for (int i = 0; i < damagedText.Length; i++)
             {
-                if (!textDamaged[i].gameObject.activeSelf)
+                if (!damagedText[i].gameObject.activeSelf)
                 {
-                    textDamaged[i].gameObject.SetActive(true);
-                    textDamaged[i].rectTransform.anchoredPosition = posStartText;
-                    textDamaged[i].rectTransform.localScale = Vector3.one;
-                    var t = textDamaged[i].rectTransform.DOAnchorPosY(textDamaged[i].rectTransform.localPosition.y + 50, 0.8f)
-               .OnComplete(() => { textDamaged[i].gameObject.SetActive(false); });
+                    damagedText[i].text = _damage;
+                    damagedText[i].rectTransform.anchoredPosition = posStartText;
+                    monsterScale = monCurrent.gameObject.transform.localScale;
+                    damagedText[i].rectTransform.localScale = monsterScale;
+                    damagedText[i].gameObject.SetActive(true);
+                    var t = damagedText[i].rectTransform.DOAnchorPosY(damagedText[i].rectTransform.localPosition.y + 50, 0.8f)
+               .OnComplete(() => 
+               { 
+                   damagedText[i].gameObject.SetActive(false);
+               });
                     return;
                 }
             }
-            
+
         }
         public bool IsSelectMonter()
         {
@@ -58,17 +64,17 @@ namespace QuachDai.NinjaSchool.Monsters
         {
             monCurrent.currHp -= damage;
             StartCoroutine(EffectAcctacked());
-            TextMove();
+            TextMove(damage.ToString());
             if (monCurrent.currHp < 0)
             {
                 monCurrent.UpdateHp(monCurrent.currHp, monCurrent.maxHp, monCurrent.nameMonster, monCurrent.level);
-                if (this.playerAttack.missionUi._mission.getMonster())
+                /*if (this.playerAttack.missionUi._mission.getMonster())
                 {
                     if (this.playerAttack.missionUi._mission.getMonster().ID == monCurrent.ID)
                     {
                         this.playerAttack.missionUi.GiaoNhiemVu();
                     }
-                }
+                }*/
                 //ItemDropSpawner.Instance.Drop(JunkSO.dropRateList, transform.position, Quaternion.identity);
 
                 // i.Die(transform.position,Quaternion.identity);

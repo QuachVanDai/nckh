@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1060151342613623976}
   - component: {fileID: 6181867549742221098}
   - component: {fileID: 3151923405647304264}
-  - component: {fileID: 4024989367655882586}
   m_Layer: 10
   m_Name: TextDamage (1)
   m_TagString: Untagged
@@ -80,18 +79,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 1000
---- !u!114 &4024989367655882586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 325728313345783198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4562a19f821eb449bb321bc8d8b49d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &589598159127723532
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,7 +393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 6
   nameMonster: "Qu\u1EF7 B\u0103ng"
-  level: 1
+  level: 20
   maxHp: 0
   currHp: 0
   minDamage: 0
@@ -433,7 +420,7 @@ MonoBehaviour:
   monsterController2D: {fileID: 5251533691544117370}
   JunkSO: {fileID: 0}
   monCurrent: {fileID: 6811678047099482818}
-  textDamaged:
+  damagedText:
   - {fileID: 5542330818012232310}
   - {fileID: 3151923405647304264}
   - {fileID: 4145023743752392668}
@@ -453,9 +440,10 @@ MonoBehaviour:
   target:
     serializedVersion: 2
     m_Bits: 128
-  monWeapons: {fileID: 6172721648724404090, guid: 0355c84687c99ac49a97f5867ee1de51,
-    type: 3}
   monCurrent: {fileID: 6811678047099482818}
+  objectPool: {fileID: 0}
+  keyPool: 3
+  objectsList: []
 --- !u!114 &8528529054873587120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -806,7 +794,6 @@ GameObject:
   - component: {fileID: 617740607103360975}
   - component: {fileID: 5146522066481785272}
   - component: {fileID: 5542330818012232310}
-  - component: {fileID: 2534776227871351925}
   m_Layer: 10
   m_Name: TextDamage
   m_TagString: Untagged
@@ -875,18 +862,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 1000
---- !u!114 &2534776227871351925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3393519535424745158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4562a19f821eb449bb321bc8d8b49d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3743288240190886371
 GameObject:
   m_ObjectHideFlags: 0
@@ -918,10 +893,10 @@ RectTransform:
   m_LocalScale: {x: 0.01296, y: 0.01296, z: 0.01296}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 4818951297264964807}
   - {fileID: 617740607103360975}
   - {fileID: 1060151342613623976}
   - {fileID: 3679844483162193520}
-  - {fileID: 4818951297264964807}
   m_Father: {fileID: 1797415237851381363}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1003,7 +978,6 @@ GameObject:
   - component: {fileID: 3679844483162193520}
   - component: {fileID: 7621433255767014160}
   - component: {fileID: 4145023743752392668}
-  - component: {fileID: 7066973105238142307}
   m_Layer: 10
   m_Name: TextDamage (2)
   m_TagString: Untagged
@@ -1072,18 +1046,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 1000
---- !u!114 &7066973105238142307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5221317868389243082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4562a19f821eb449bb321bc8d8b49d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8936989188144714424
 GameObject:
   m_ObjectHideFlags: 0

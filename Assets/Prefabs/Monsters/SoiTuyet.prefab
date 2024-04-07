@@ -131,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 7
   nameMonster: Snow wolf
-  level: 1
+  level: 20
   maxHp: 0
   currHp: 0
   minDamage: 0
@@ -155,9 +155,10 @@ MonoBehaviour:
   target:
     serializedVersion: 2
     m_Bits: 128
-  monWeapons: {fileID: 6172721648724404090, guid: 0355c84687c99ac49a97f5867ee1de51,
-    type: 3}
   monCurrent: {fileID: 7312424995707228538}
+  objectPool: {fileID: 0}
+  keyPool: 3
+  objectsList: []
 --- !u!114 &6296657990113798211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,7 +177,7 @@ MonoBehaviour:
   monsterController2D: {fileID: 7277217740951738884}
   JunkSO: {fileID: 0}
   monCurrent: {fileID: 7312424995707228538}
-  textDamaged:
+  damagedText:
   - {fileID: 4093636221825610902}
   - {fileID: 4293736133157598605}
   - {fileID: 8726519294706707462}

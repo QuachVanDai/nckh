@@ -39,6 +39,10 @@ namespace QuachDai.NinjaSchool.Monsters
             SystemUi.Instance.SetInfoMonsterText(infoText);
             SystemUi.Instance.SetActive(true);
         }
+        public Vector3 GetPosition()
+        {
+            return transform.position;
+        }
         public Monster GetMonster()
         {
             return this;

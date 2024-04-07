@@ -12,7 +12,7 @@ namespace QuachDai.NinjaSchool.ObjectPooling
         public GameObject prefab;
         public Holder holder;
     }
-    public class ObjectPool : MonoBehaviour
+    public class ObjectPool : Singleton<ObjectPool>
     {
         public StartupPool[] startupPools;
 
@@ -21,10 +21,12 @@ namespace QuachDai.NinjaSchool.ObjectPooling
         private GameObject objectClone;
         List<GameObject> objectsList = new List<GameObject>();
 
-        void Awake()
+        public override void Awake()
         {
+            base.Awake();
             foreach (var _startupPools in startupPools)
             {
+                objectsList = new List<GameObject>();
                 for (int i = 0; i < _startupPools.size; i++)
                 {
                     objectClone = Instantiate(_startupPools.prefab);
@@ -35,7 +37,6 @@ namespace QuachDai.NinjaSchool.ObjectPooling
                 }
                 pooledObjects.Add(_startupPools.keyOjectPool, objectsList);
             }
-            GetObjectList(KeyOjectPool.Snow);
         }
         public List<GameObject> GetObjectList(KeyOjectPool _key)
         {
@@ -50,6 +51,8 @@ public enum KeyOjectPool
 {
     none = 1,
     Snow = 2,
-    Bullet = 3,
-    Leaf = 4
+    BulletIce = 3,
+    BulletFire = 4,
+    BulletWind = 5,
+    Leaf = 6
 }

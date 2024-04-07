@@ -42,18 +42,7 @@ namespace QuachDai.NinjaSchool.Character
             }
         }
        
-        public void InCreaseDamage(ref float damage)
-        {
-            if (isIncreaseDamage)
-            {
-                if (player.GetLevel() >= 20)
-                    damage += skillParameters.getSkillLv15Parameters()[6];
-                else
-                {
-                    damage += skillParameters.getSkillLv15Parameters()[player.GetLevel() - 14];
-                }
-            }
-        }
+
         public void InCreaseHPMP()
         {
             float hp, mp;
