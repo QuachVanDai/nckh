@@ -62,10 +62,15 @@ namespace QuachDai.NinjaSchool.Monsters
         }
         public void Attacked(int damage)
         {
-            monCurrent.currHp -= damage;
+            if (monCurrent.currHp - damage > 0)
+                monCurrent.currHp -= damage;
+            else
+                monCurrent.currHp -= monCurrent.currHp;
+
+            if (this!=null)
             StartCoroutine(EffectAcctacked());
             TextMove(damage.ToString());
-            if (monCurrent.currHp < 0)
+            if (monCurrent.currHp <= 0)
             {
                 monCurrent.UpdateHp(monCurrent.currHp, monCurrent.maxHp, monCurrent.nameMonster, monCurrent.level);
                 /*if (this.playerAttack.missionUi._mission.getMonster())
@@ -78,7 +83,7 @@ namespace QuachDai.NinjaSchool.Monsters
                 //ItemDropSpawner.Instance.Drop(JunkSO.dropRateList, transform.position, Quaternion.identity);
 
                 // i.Die(transform.position,Quaternion.identity);
-                SystemUi.Instance.InfoMonster.gameObject.SetActive(false);
+                InforMonster.Instance.InfoMonster.gameObject.SetActive(false);
                 monsterController2D.PlayAnimation(monsterStatus.death);
                 Destroy(gameObject, 0.5f);
                 return;

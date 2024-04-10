@@ -1,6 +1,5 @@
 ﻿using DG.Tweening;
 using System.Collections;
-using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 namespace QuachDai.NinjaSchool.Character
@@ -23,7 +22,7 @@ namespace QuachDai.NinjaSchool.Character
                 //CharacterController2D.Instance.Animator.SetBool("isDeath",true);
                 Destroy(gameObject, 0.5f);
             }*/
-         //   Player.Instance.PlayerEffect.UpdateHp(-damage);
+            Player.Instance.SetHp(-damage);
         }
         IEnumerator aniAcctacked()
         {

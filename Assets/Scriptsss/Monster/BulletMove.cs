@@ -20,9 +20,16 @@ namespace QuachDai.NinjaSchool.Monsters
             if (collision.gameObject.tag == "player")
             {
                 player.playerAttacked.Attacked((int)Damage);
-                gameObject.SetActive(false);
+                SetActive(false);
             }
         }
-      
+        public void SetPosition(Vector3 _pos)
+        {
+            transform.position = _pos;
+        }
+        public void SetActive(bool _values)
+        {
+            gameObject.SetActive(_values);
+        }
     }
 }

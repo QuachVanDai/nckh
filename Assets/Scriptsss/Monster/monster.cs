@@ -1,6 +1,4 @@
 ﻿
-using QuachDai.NinjaSchool.Character;
-using QuachDai.NinjaSchool.Spawn;
 using UnityEngine;
 using UnityEngine.UI;
 namespace QuachDai.NinjaSchool.Monsters
@@ -16,7 +14,7 @@ namespace QuachDai.NinjaSchool.Monsters
         public int maxDamage;
         public Image hpBar;
         public RectTransform canvasUi;
-        
+        public SpriteRenderer spriteMonsterAttacked;
 
         public SetMonster SetMonster = new SetMonster();
 
@@ -36,8 +34,8 @@ namespace QuachDai.NinjaSchool.Monsters
         {
             hpBar.fillAmount = (float)CurrentHp / (float)MaxHp;
             infoText = " " + Name + "  " + "Lv" + Level + " " + CurrentHp.ToString() + "/" + MaxHp.ToString();
-            SystemUi.Instance.SetInfoMonsterText(infoText);
-            SystemUi.Instance.SetActive(true);
+            InforMonster.Instance.SetInfoMonsterText(infoText);
+            InforMonster.Instance.SetActive(true);
         }
         public Vector3 GetPosition()
         {
@@ -49,30 +47,30 @@ namespace QuachDai.NinjaSchool.Monsters
         }
         public int GetMinDamage()
         {
+            minDamage = SetMonster.getDameMonsterDictionary(level).Item1;
             return minDamage;
-        }
-        public void SetMaxDamage()
-        {
-            maxDamage = SetMonster.getDameMonsterDictionary(level).Item1;
-        }
-        public void SetMinDamage()
-        {
-            minDamage = SetMonster.getDameMonsterDictionary(level).Item2;
         }
         public int GetMaxDamage()
         {
+            maxDamage = SetMonster.getDameMonsterDictionary(level).Item2;
             return maxDamage;
+        }
+        public int GetDamage()
+        {
+            return Random.Range(GetMinDamage(), GetMaxDamage());
         }
     }
 }
 public enum MonsterID
 {
-    MaVuongLua = 1,
-    RongXanh = 2,
-    KhiNgo = 3,
-    RoiLua = 4,
-    Rua = 5,
-    QuyBang = 6,
-    SoiTuyet=7,
+    None = 0,
+    FireDemonKing = 1,
+    GreenDragon = 2,
+    GreenSnake = 3,
+    GreenToad = 4,
+    Monkey = 5,
+    IceDevil = 6,
+    SnowWolf = 7,
+
 
 }

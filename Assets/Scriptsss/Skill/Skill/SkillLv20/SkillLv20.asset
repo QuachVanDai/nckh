@@ -28,6 +28,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e36de5b993f340c4a9a501b334d77a6e, type: 3}
   - {fileID: 21300000, guid: 05a9f9558a60f264c829e31e15138f71, type: 3}
   - {fileID: 21300000, guid: 88be229564c259c45944c896743c6e07, type: 3}
+  framesPosMonster:
+  - {fileID: 21300000, guid: 6de2335b45df25a4897c8123a7daeece, type: 3}
+  - {fileID: 21300000, guid: eefc60588118c8049a5eada82be4c040, type: 3}
+  - {fileID: 21300000, guid: c82c2ade2dca0e44abe3483857968001, type: 3}
+  - {fileID: 21300000, guid: cb091ac55f201a4439a839e6cd301604, type: 3}
+  - {fileID: 0}
   mp: 55
   timeSkill: 0.3
   coefficient: 1.5

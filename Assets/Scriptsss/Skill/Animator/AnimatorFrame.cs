@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public static class AnimatorFrame 
@@ -10,12 +11,14 @@ public static class AnimatorFrame
         Action animTrigger = null, float _frameRate = frameRate)
     {
         int currentFrame = 0;
+        if (!renderer) yield break;
         renderer.sprite = sprites[currentFrame];
         if(sprites.Length > 1)
         {
             WaitForSeconds waitFrame = new WaitForSeconds(_frameRate);
             while (true)
             {
+                if (!renderer) break ;
                 yield return waitFrame;
                 renderer.sprite = sprites[currentFrame];
                 currentFrame++;

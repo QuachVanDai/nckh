@@ -1,4 +1,3 @@
-using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +15,7 @@ namespace QuachDai.NinjaSchool.ObjectPooling
     {
         public StartupPool[] startupPools;
 
-        [ShowInInspector] Dictionary<KeyOjectPool, List<GameObject>> pooledObjects = new Dictionary<KeyOjectPool, List<GameObject>>();
+        Dictionary<KeyOjectPool, List<GameObject>> pooledObjects = new Dictionary<KeyOjectPool, List<GameObject>>();
 
         private GameObject objectClone;
         List<GameObject> objectsList = new List<GameObject>();

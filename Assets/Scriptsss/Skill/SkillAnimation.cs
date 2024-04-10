@@ -7,6 +7,7 @@ public class SkillAnimation : MonoBehaviour
    [SerializeField] SpriteRenderer spriteStart;
    [SerializeField] SpriteRenderer skillFont;
    [SerializeField] SpriteRenderer spriteMove;
+   public SpriteRenderer spritePosMonster;
     public Vector2 positionStart;
     public Transform target;
     protected  void Awake()
@@ -19,6 +20,7 @@ public class SkillAnimation : MonoBehaviour
         StartCoroutine(AnimatorFrame.FrameGame(spriteStart, _frameSkill.framesStart, true, null, 0.05f));
         StartCoroutine(AnimatorFrame.FrameGame(skillFont, _frameSkill.framesFont, true, null, 0.05f));
         StartCoroutine(AnimatorFrame.FrameGame(spriteMove, _frameSkill.framesMove, true, null, 0.05f));
+        StartCoroutine(AnimatorFrame.FrameGame(spritePosMonster, _frameSkill.framesPosMonster, true, null, 0.05f));
         MoveSkill();
     }
     public void AnimationSkillLv5_15(FrameSkill _frameSkill)

@@ -42,6 +42,8 @@ namespace QuachDai.NinjaSchool.Character
             GetMaxMp();
             GetMp();
             GetHp();
+            SetHp(0);
+            SetMp(0);
         }
         public void IgnorePlayer()
         {
@@ -165,6 +167,10 @@ namespace QuachDai.NinjaSchool.Character
         {
             maxMp = setPlayer.getMPPlayerDictionary()[level];
             return maxMp;
+        }
+        public int GetDamage()
+        {
+            return Random.Range(GetMinDamage(), GetMaxDamage());
         }
         public int GetMinDamage()
         {

@@ -1,5 +1,6 @@
 ﻿
 using QuachDai.NinjaSchool.ObjectPooling;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -10,9 +11,10 @@ namespace QuachDai.NinjaSchool.Monsters
         private const float radiusAttack = 4f;
         [SerializeField] private LayerMask target;
         public Monster monCurrent;
-       ObjectPool objectPool=>ObjectPool.Instance;
+        ObjectPool objectPool => ObjectPool.Instance;
         [SerializeField] KeyOjectPool keyPool;
         [SerializeField] List<GameObject> objectsList;
+        [SerializeField] bool isShooting = true;
         private void Start()
         {
             objectsList = new List<GameObject>();
@@ -22,18 +24,28 @@ namespace QuachDai.NinjaSchool.Monsters
         {
             FindPlayer();
         }
+        [SerializeField] BulletMove bullet;
         void Shoot()
         {
             foreach (GameObject obj in objectsList)
             {
                 if (!obj.gameObject.activeSelf)
                 {
-                    obj.gameObject.SetActive(true);
+                    bullet = obj.GetComponent<BulletMove>();
+                    bullet.SetPosition(this.transform.position);
+                    bullet.Damage = monCurrent.GetDamage();
+                    bullet.SetActive(true);
                     break;
                 }
             }
-           // monWeapons.Damage = Random.Range(monCurrent.GetMinDamage(), monCurrent.GetMaxDamage());
-            CancelInvoke(nameof(Shoot));
+            StartCoroutine(_Shoot());
+            IEnumerator _Shoot()
+            {
+                isShooting = false;
+                yield return new WaitForSeconds(1.8f);
+                bullet = null;
+                isShooting = true;
+            }
         }
 
         RaycastHit2D[] hits;
@@ -45,10 +57,9 @@ namespace QuachDai.NinjaSchool.Monsters
                 // Kiểm tra xem đối tượng va chạm có phải là quái vật hay không
                 if (hit.collider.CompareTag("player"))
                 {
+                    if (isShooting && monCurrent.currHp < monCurrent.maxHp) 
                     Shoot();
-                    //  if (monWeapons == null && monCurrent.currHp < monCurrent.maxHp)
-                  //  Invoke(nameof(Shoot), 1.8f);
-                    // Debug.Log("Quái vật đã bị phát hiện!");
+                    //  if (monWeapons == null && )
                 }
             }
         }

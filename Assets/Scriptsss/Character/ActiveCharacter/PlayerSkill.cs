@@ -23,7 +23,7 @@ namespace QuachDai.NinjaSchool.Character
             isSkillLv15 = true;
             isIncreaseDamage = false;
         }
-        public void SkillAttack(int index)
+        public void SkillAttack(int index,Action _damaged, Action _addExp)
         {
             StartCoroutine(_SkillAttack());
             IEnumerator _SkillAttack()
@@ -35,6 +35,8 @@ namespace QuachDai.NinjaSchool.Character
                 yield return new WaitForSeconds(0.23f);
                 skillRecoveryTimes[index].isTime = true;
                 animatorSystem.SetBool(player.GetAnimator(), "IsAttack", false);
+                _damaged?.Invoke();
+                _addExp?.Invoke();
                 skillAnimation.AnimationSkill(frameSkill[index]);
                 yield return new WaitForSeconds(frameSkill[index].timeSkill);
                 isActtack = true;
@@ -61,7 +63,7 @@ namespace QuachDai.NinjaSchool.Character
         }
         public void SkillLevel5()
         {
-            if (useSkill.getIsUseSkill(1) == false) return;
+            if (!useSkill.getIsUseSkill(1)) return;
             ManaUseSkill();
             if (!isSkillLv5)
             {
@@ -69,8 +71,8 @@ namespace QuachDai.NinjaSchool.Character
                 return;
             }
             if (isSkillLv5)
-                StartCoroutine(UseSkillLv5());
-            IEnumerator UseSkillLv5()
+                StartCoroutine(_UseSkillLv5());
+            IEnumerator _UseSkillLv5()
             {
                 skillAnimation.AnimationSkillLv5_15(frameSkill[1]);
                 isSkillLv5 = false;
@@ -85,7 +87,7 @@ namespace QuachDai.NinjaSchool.Character
         }
         public void SkillLevel15()
         {
-            if (useSkill.getIsUseSkill(3) == false) return;
+            if (!useSkill.getIsUseSkill(3)) return;
             if (!isSkillLv15)
             {
                 textTemplate.SetText(TagScript.hoiChieu);
@@ -94,12 +96,9 @@ namespace QuachDai.NinjaSchool.Character
             ManaUseSkill();
 
             if (isSkillLv15)
-            {
-                Debug.Log("15");
-                StartCoroutine(UseSkillLv15());
+                StartCoroutine(_UseSkillLv15());
 
-            }
-            IEnumerator UseSkillLv15()
+            IEnumerator _UseSkillLv15()
             {
                 player.SetMp(frameSkill[3].mp * (-1));
                 skillAnimation.AnimationSkillLv5_15(frameSkill[3]);

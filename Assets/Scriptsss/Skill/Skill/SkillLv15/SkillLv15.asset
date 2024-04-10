@@ -20,17 +20,14 @@ MonoBehaviour:
   framesFont:
   - {fileID: 0}
   framesStart:
+  - {fileID: 0}
+  framesPosMonster:
   - {fileID: 21300000, guid: f494d1a8fbbe28d4cb1cfcc470430e24, type: 3}
   - {fileID: 21300000, guid: 00f62c4f22af5284aa62948f16064637, type: 3}
   - {fileID: 21300000, guid: 976d54d63dbd70147b618aaac430ca20, type: 3}
   - {fileID: 21300000, guid: 7a4ac4009acb31a429c9944b5700fa9d, type: 3}
   - {fileID: 21300000, guid: 8ac7872be2cb90f4d902d6bd92eb11ea, type: 3}
-  - {fileID: 21300000, guid: 00f62c4f22af5284aa62948f16064637, type: 3}
-  - {fileID: 21300000, guid: 976d54d63dbd70147b618aaac430ca20, type: 3}
-  - {fileID: 21300000, guid: 7a4ac4009acb31a429c9944b5700fa9d, type: 3}
-  - {fileID: 21300000, guid: 00f62c4f22af5284aa62948f16064637, type: 3}
-  - {fileID: 21300000, guid: 976d54d63dbd70147b618aaac430ca20, type: 3}
-  - {fileID: 21300000, guid: 7a4ac4009acb31a429c9944b5700fa9d, type: 3}
+  - {fileID: 0}
   mp: 40
   timeSkill: 1
   coefficient: 0

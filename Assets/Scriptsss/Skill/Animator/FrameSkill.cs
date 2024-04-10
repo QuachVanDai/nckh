@@ -9,6 +9,7 @@ public class FrameSkill : ScriptableObject
     public Sprite[] framesMove;
     public Sprite[] framesFont;
     public Sprite[] framesStart;
+    public Sprite[] framesPosMonster;
     public int mp;
     public float timeSkill;
     public float coefficient;
