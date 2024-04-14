@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &177376554379075779
 RectTransform:
   m_ObjectHideFlags: 0
@@ -213,43 +213,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2416140613027029177}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: useSkill, Assembly-CSharp
-        m_MethodName: SetCurrKeySkill
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: useSkill, Assembly-CSharp
-        m_MethodName: use
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: selectSkill, Assembly-CSharp
-        m_MethodName: selectUseSkill
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &539315579036036055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,8 +226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97586a86887efe541a6a8521dcf2c0c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FrameSkill: {fileID: 11400000, guid: 03655bbf946861e4595fc3260e2b3c16, type: 2}
-  Fill_time: {fileID: 2550067652203330605}
+  frameSkill: {fileID: 0}
+  fillTime: {fileID: 2550067652203330605}
   isTime: 0
 --- !u!114 &8146426400691552739
 MonoBehaviour:
@@ -277,8 +241,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5933ca4f164da048abbe54b655ab320, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IDSkill: 0
   selectSkillList: []
+  selectSkill: {fileID: 2480275057381278535}
+  describeSkill: {fileID: 0}
+  isCheckLevel: 0
+  isDescription: 0
+  frameSkill: {fileID: 0}
+  icon: {fileID: 4812211164957040297}
+  playerSkill: {fileID: 0}
+  skillRecoveryTime: {fileID: 539315579036036055}
 --- !u!1 &6647838232238242069
 GameObject:
   m_ObjectHideFlags: 0

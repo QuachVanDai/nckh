@@ -1,16 +1,17 @@
 ﻿
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
-public class DescribeSkill : MonoBehaviour
+namespace QuachDai.NinjaSchool.Skill
 {
-    [SerializeField] Text describeSkillText;
-   
-    public void Show(string title,string contend)
+    public class DescribeSkill : MonoBehaviour
     {
-        describeSkillText.text = title+"\n";
-        describeSkillText.text = contend;
+        [SerializeField] Text describeSkillText;
+
+        public void Show(string title, string contend)
+        {
+            describeSkillText.text = title + "\n";
+            describeSkillText.text = contend;
+        }
     }
     
 }

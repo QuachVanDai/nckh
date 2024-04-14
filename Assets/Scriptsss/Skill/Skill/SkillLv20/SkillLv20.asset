@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SkillLv20
   m_EditorClassIdentifier: 
   IDSkill: 5
+  icon: {fileID: 21300000, guid: 3bca611b0e3491d4cbceee4f7296792e, type: 3}
   skillName: "Chi\xEAu cao c\u1EA5p"
   level: 20
   framesMove:

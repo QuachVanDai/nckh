@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SkillLv5
   m_EditorClassIdentifier: 
   IDSkill: 2
+  icon: {fileID: 21300000, guid: 14376a93ca849124aa76335ceab7f5b7, type: 3}
   skillName: "Chi\xEAu h\u1ED3i ph\u1EE5c"
   level: 5
   framesMove:
@@ -28,6 +29,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 98c329fdd24b59742ae1ba13d82c31e4, type: 3}
   - {fileID: 21300000, guid: d78a1aaf737e71f47a3e8601037f8614, type: 3}
   - {fileID: 21300000, guid: b7907abbd5ea0e240a0c572ca439005b, type: 3}
+  framesPosMonster: []
   mp: 30
   timeSkill: 1
   coefficient: 0

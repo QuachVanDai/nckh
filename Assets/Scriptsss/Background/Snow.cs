@@ -19,10 +19,8 @@ namespace QuachDai.NinjaSchool.BackGround
             objectsList = objectPool.GetObjectList(keyPool);
             InvokeRepeating("SnowSpawm", 0, 0.1f);
         }
-        int i = 0;
         void SnowSpawm()
         {
-            i = 0;
             foreach (GameObject obj in objectsList)
             {
                 if (!obj.gameObject.activeSelf)

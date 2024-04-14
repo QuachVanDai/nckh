@@ -10,21 +10,12 @@ namespace QuachDai.NinjaSchool.Monsters
         [SerializeField] private MonsterController2D monsterController2D;
         [SerializeField] private bool facingRight = true;
         [Range(1f, 3f)]
-        [SerializeField] private float monSpeed = 1;
-        private float getTime;
-        private float heSO = 2;
         private float timeMove = 1;
         Vector3[] point;
         int currentWaypointIndex = 0;
-        private void Reset()
-        {
-            monsterController2D = GetComponent<MonsterController2D>();
-            heSO = 2;
-        }
 
         private void Start()
         {
-            getTime = Time.time;
             timeMove = Random.Range(2f, 5f);
             point = new Vector3[3];
             point[0].x = transform.position.x + 1;

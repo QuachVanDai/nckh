@@ -1,46 +1,54 @@
 ﻿using QuachDai.NinjaSchool.Character;
+using System.Buffers;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 namespace QuachDai.NinjaSchool.Skill
 {
     public class SkillButton : MonoBehaviour, IPointerDownHandler
     {
-        public IDSkill IDSkill;
         [SerializeField] SelectSkill[] selectSkillList;
+        [SerializeField] SelectSkill selectSkill;
         [SerializeField] DescribeSkill describeSkill;
         [SerializeField] bool isCheckLevel;
         [SerializeField] bool isDescription;
-        SkillManager skillManager => SkillManager.Instance;
-        public FrameSkill frameSkill;
-        int currentIndexSkill;
-        int lastIndexSkill;
+        [SerializeField] FrameSkill frameSkill;
+        [SerializeField] Image icon;
+
+        public PlayerSkill playerSkill;
+        public SkillRecoveryTime skillRecoveryTime;
         Player player => Player.Instance;
-        void Start()
+
+        private void Start()
         {
-            currentIndexSkill = (int)IDSkill - 1;
-            frameSkill = skillManager.GetFrameSkill(currentIndexSkill);
-            if (IDSkill == IDSkill.SkillLv1)
+            icon.sprite = frameSkill.icon;
+            
+            if (frameSkill.IDSkill == IDSkill.SkillLv1 && isCheckLevel)
             {
-                HideSelectSkill();
-                selectSkillList[0].SetActive(true);
-                if (describeSkill != null)
-                    describeSkill.Show(frameSkill.skillName, frameSkill.description);
+                playerSkill.SetFrameSkill(frameSkill);
+                playerSkill.SetSkillRecoveryTimes(skillRecoveryTime);
+                selectSkill.SetActive(true);
+
             }
+            if (frameSkill.level >= player.GetLevel())
+                frameSkill.isBlock = true;
+            else
+                frameSkill.isBlock = false;
+        }
+        public FrameSkill GetFrameSkill()
+        {
+            return frameSkill;
         }
         public void OnPointerDown(PointerEventData eventData)
         {
             if (isCheckLevel)
             {
                 if (player.GetLevel() >= frameSkill.level)
-                {
                     HideSelectSkill();
-                    selectSkillList[currentIndexSkill].SetActive(true);
-                }
             }
             else if (isDescription)
             {
                 HideSelectSkill();
-                selectSkillList[currentIndexSkill].SetActive(true);
                 if (describeSkill != null)
                     describeSkill.Show(frameSkill.skillName, frameSkill.description);
             }
@@ -50,6 +58,35 @@ namespace QuachDai.NinjaSchool.Skill
         {
             for (int i = 0; i < 5; i++)
                 selectSkillList[i].SetActive(false);
+            selectSkill.SetActive(true);
+        }
+        Button button;
+        public Button ThisButton
+        {
+            get
+            {
+                if (button == null)
+                {
+                    button = GetComponent<Button>();
+                }
+                return button;
+            }
+        }
+
+        private void OnEnable()
+        {
+            ThisButton.onClick.AddListener(OnClickListener);
+        }
+
+        private void OnDisable()
+        {
+            ThisButton.onClick.RemoveListener(OnClickListener);
+        }
+
+        private void OnClickListener()
+        {
+            playerSkill.SetFrameSkill(frameSkill);
+            playerSkill.SetSkillRecoveryTimes(skillRecoveryTime);
         }
     }
 }

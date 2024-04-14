@@ -1,7 +1,7 @@
 ﻿using DG.Tweening;
 using QuachDai.NinjaSchool.Mission;
 using QuachDai.NinjaSchool.Monsters;
-using Unity.VisualScripting;
+using QuachDai.NinjaSchool.Skill;
 using UnityEngine;
 using UnityEngine.UI;
 namespace QuachDai.NinjaSchool.Character
@@ -18,7 +18,6 @@ namespace QuachDai.NinjaSchool.Character
         private SetMonster setMonster = new SetMonster();
         Player player => Player.Instance;
         PlayerController2D playerController2D => PlayerController2D.Instance;
-        UseSkill useSkill => UseSkill.Instance;
         private void Start()
         {
             posStartText = expText[0].rectTransform.anchoredPosition;
@@ -26,7 +25,7 @@ namespace QuachDai.NinjaSchool.Character
         }
         private void Update()
         {
-            if (GameManager.Instance.IsPlaygame == false) return;
+          /*  if (GameManager.Instance.IsPlaygame == false) return;
             if (playerController2D.IsGround() == false) return;
             if (monster == null) return;
             distance = Vector2.Distance(transform.position, monster.GetPosition());
@@ -35,7 +34,7 @@ namespace QuachDai.NinjaSchool.Character
                 InforMonster.Instance.SetActive(false);
                 monster = null;
                 return;
-            }
+            }*/
 
             if (playerController2D.getInputSpace())
             {
@@ -47,22 +46,22 @@ namespace QuachDai.NinjaSchool.Character
                   }*/
 
                 // if player use skilllv5 or skilllv15  , player cannot attack.
-                if (useSkill.getCurrKeySkill() == 1)
+                /*if (useSkill.getCurrKeySkill() == 1)
                 {
                     TextTemplate.Instance.SetText(TagScript.useSkill);
                     return;
-                }
+                }*/
                 if (playerSkill.isActtack)
-                    PlayerAttackMonster(useSkill.getCurrKeySkill());
+                    PlayerAttackMonster();
             }
         }
 
         float damage;
-        public void PlayerAttackMonster(int number)
+        public void PlayerAttackMonster()
         {
             playerSkill.ManaUseSkill();
             damage = player.GetDamage() * playerSkill.GetCoefficient();
-            playerSkill.SkillAttack(number, Damgaed, AddExp);
+            playerSkill.SkillAttack(Damgaed, AddExp);
         }
         public void Damgaed()
         {
@@ -72,7 +71,8 @@ namespace QuachDai.NinjaSchool.Character
         double exp;
         public void AddExp()
         {
-            if (monster.currHp <= damage)
+            if (monster == null) return;
+                if (monster.currHp <= damage)
                 damage = monster.currHp;
             exp = (damage * setMonster.getExpMonsterDictionary(monster.level) * 100) /
                 setPlayer.getExpPlayerDictionary(player.GetLevel());

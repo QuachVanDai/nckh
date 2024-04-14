@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "Animations/Frame Skill")]
 public class FrameSkill : ScriptableObject
 {
     public IDSkill IDSkill;
+    public Sprite icon;
     public string skillName;
     public int level;
     public Sprite[] framesMove;

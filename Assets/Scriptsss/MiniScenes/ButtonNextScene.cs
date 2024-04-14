@@ -5,10 +5,10 @@ namespace QuachDai.NinjaSchool.Scenes
 {
     public class ButtonNextScene : MonoBehaviour
     {
-        public MiniSceneData screenActive;
-        public MiniSceneData screenDisActive;
+        public MiniSceneData sceneActive;
+        public MiniSceneData sceneDisActive;
         int index;
-        public void OnClick(int i)
+        public void OnClick(int i)  // nhấn nut button
         {
             index = i;
             Application.targetFrameRate = 60;
@@ -18,10 +18,11 @@ namespace QuachDai.NinjaSchool.Scenes
 
         public void LoadScene()
         {
-            if (SceneManager.GetSceneByName(screenDisActive.scene.name).isLoaded)
-                SceneManager.UnloadSceneAsync(screenDisActive.scene.name);
-            SceneManager.LoadScene(screenActive.scene.name, LoadSceneMode.Additive);
-            Player.Instance.SetPositon(screenActive.PosPlayer[index]);
+            if (SceneManager.GetSceneByName(sceneDisActive.scene.name).isLoaded)
+                SceneManager.UnloadSceneAsync(sceneDisActive.scene.name);
+
+            SceneManager.LoadScene(sceneActive.scene.name, LoadSceneMode.Additive);
+            Player.Instance.SetPositon(sceneActive.PosPlayer[index]);
         }
     }
 }

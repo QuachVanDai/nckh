@@ -3,7 +3,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using QuachDai.NinjaSchool.Character;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Usehp: MonoBehaviour
 {
