@@ -13,7 +13,7 @@ namespace QuachDai.NinjaSchool.Monsters
         public int minDamage;
         public int maxDamage;
         public Image hpBar;
-        public RectTransform canvasUi;
+     //   public RectTransform canvasUi;
         public SpriteRenderer spriteMonsterAttacked;
 
         public SetMonster SetMonster = new SetMonster();
@@ -28,7 +28,7 @@ namespace QuachDai.NinjaSchool.Monsters
             minDamage = SetMonster.getDameMonsterDictionary(level).Item1;
             maxDamage = SetMonster.getDameMonsterDictionary(level).Item2;
         }
-      
+
         string infoText;
         public void UpdateHp(float CurrentHp, float MaxHp, string Name, int Level)
         {
@@ -71,6 +71,13 @@ public enum MonsterID
     Monkey = 5,
     IceDevil = 6,
     SnowWolf = 7,
+    Pterosaurs = 8,
+    DevilHerbs = 9,
+    CarnivorousFlower = 10,
+    FireScorpion = 11,
+    FireBat = 12,
+
+
 
 
 }

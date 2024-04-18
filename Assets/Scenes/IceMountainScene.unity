@@ -2059,7 +2059,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &694831367
 Transform:
   m_ObjectHideFlags: 0
@@ -2199,7 +2199,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &789002396
 Transform:
   m_ObjectHideFlags: 0
@@ -4360,7 +4360,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1554805823}
-  - component: {fileID: 1554805824}
   m_Layer: 0
   m_Name: ItemDropSpawner
   m_TagString: Untagged
@@ -4385,19 +4384,6 @@ Transform:
   - {fileID: 1803351808}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1554805824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1554805822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c5b9541ba84fe445a745a01f4775de0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsDontDestroyOnLoad: 0
 --- !u!1001 &1556991180
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6495,7 +6481,7 @@ GameObject:
   - component: {fileID: 4568716658711862809}
   - component: {fileID: 5302228019669960320}
   m_Layer: 0
-  m_Name: BtnNextScene
+  m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7007,7 +6993,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &4805100305654501958
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9326,7 +9312,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &7545817442339716752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9517,8 +9503,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcfd0019e7a77a4439ef3343d313567c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneActive: {fileID: 0}
-  sceneDisActive: {fileID: 0}
+  sceneActive: {fileID: 11400000, guid: 4594ac5f8f92b79479a009c52e17fabb, type: 2}
+  sceneDisActive: {fileID: 11400000, guid: f6f110255a9b22b4cabfa6db0521c729, type: 2}
 --- !u!1 &8910704542614560532
 GameObject:
   m_ObjectHideFlags: 0
@@ -9569,8 +9555,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 264399820}
-  - {fileID: 1554805823}
   - {fileID: 7522548243549523780}
   - {fileID: 1671104757}
   - {fileID: 523218395}
   - {fileID: 694831367}
+  - {fileID: 1554805823}

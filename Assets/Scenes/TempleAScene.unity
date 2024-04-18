@@ -853,22 +853,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillAnimation: {fileID: 341599705}
-  frameSkill:
-  - {fileID: 11400000, guid: 03655bbf946861e4595fc3260e2b3c16, type: 2}
-  - {fileID: 11400000, guid: 8d608065d88cf774b81321b7785a7d7f, type: 2}
-  - {fileID: 11400000, guid: 4d68d2927121c0141a9bbbcc25794000, type: 2}
-  - {fileID: 11400000, guid: e80c4b0b91bf51842874c10ff8418fa0, type: 2}
-  - {fileID: 11400000, guid: 79205733a7c05d4469c5587c3f0e7148, type: 2}
-  skillRecoveryTimes:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  isActtack: 0
-  isSkillLv5: 0
-  isSkillLv15: 0
-  isIncreaseDamage: 0
+  frameSkill: {fileID: 0}
+  skillRecoveryTime: {fileID: 0}
+  duration: 0
+  strength: 0
+  vibrato: 10
+  randomness: 90
+  snapping: 0
+  fadeOut: 1
 --- !u!70 &118193209
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -13614,7 +13606,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "N\xFAi b\u0103ng"
+  m_Text: IceMountain
 --- !u!4 &1314878587529690397
 Transform:
   m_ObjectHideFlags: 0
@@ -13647,7 +13639,7 @@ GameObject:
   - component: {fileID: 2728297796550511882}
   - component: {fileID: 6958426792635989135}
   m_Layer: 0
-  m_Name: BtnNextMap
+  m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13724,8 +13716,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -61.77, y: -6.1}
-  m_SizeDelta: {x: 2, y: 1}
+  m_AnchoredPosition: {x: -61.51, y: -6.1}
+  m_SizeDelta: {x: 2.9, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2593704790119187018
 GameObject:
@@ -13802,8 +13794,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14.5, y: 4.9}
-  m_SizeDelta: {x: 2, y: 1}
+  m_AnchoredPosition: {x: 14.06, y: 4.9}
+  m_SizeDelta: {x: 3.46, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3093614881881526176
 MonoBehaviour:
@@ -23445,7 +23437,7 @@ MonoBehaviour:
   m_Sprite: {fileID: 21300000, guid: d80293fccd27b684381eb3bb149e1658, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
-  m_FillCenter: 1
+  m_FillCenter: 0
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
@@ -23539,7 +23531,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "L\xE0ng c\u1ED5"
+  m_Text: LegendaryVillage
 --- !u!4 &6802046429267297605
 Transform:
   m_ObjectHideFlags: 0
@@ -23624,8 +23616,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcfd0019e7a77a4439ef3343d313567c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenActive: {fileID: 11400000, guid: 23907dd8ea019934eb60590bd6b66c2e, type: 2}
-  screenDisActive: {fileID: 11400000, guid: 4594ac5f8f92b79479a009c52e17fabb, type: 2}
+  sceneActive: {fileID: 11400000, guid: 23907dd8ea019934eb60590bd6b66c2e, type: 2}
+  sceneDisActive: {fileID: 11400000, guid: 4594ac5f8f92b79479a009c52e17fabb, type: 2}
 --- !u!4 &6896264635567917829
 Transform:
   m_ObjectHideFlags: 0
@@ -24132,8 +24124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcfd0019e7a77a4439ef3343d313567c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenActive: {fileID: 11400000, guid: f6f110255a9b22b4cabfa6db0521c729, type: 2}
-  screenDisActive: {fileID: 11400000, guid: 4594ac5f8f92b79479a009c52e17fabb, type: 2}
+  sceneActive: {fileID: 11400000, guid: f6f110255a9b22b4cabfa6db0521c729, type: 2}
+  sceneDisActive: {fileID: 11400000, guid: 4594ac5f8f92b79479a009c52e17fabb, type: 2}
 --- !u!224 &8788901216533887611
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24150,7 +24142,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.64, y: 0}
+  m_AnchoredPosition: {x: -0.83, y: 0}
   m_SizeDelta: {x: 270.28, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1660057539 &9223372036854775807

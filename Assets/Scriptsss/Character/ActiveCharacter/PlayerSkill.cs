@@ -1,5 +1,5 @@
-﻿using QuachDai.NinjaSchool.Animations;
-using QuachDai.NinjaSchool.Skill;
+﻿using DG.Tweening;
+using QuachDai.NinjaSchool.Animations;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -11,7 +11,7 @@ namespace QuachDai.NinjaSchool.Character
         [SerializeField] FrameSkill frameSkill;
         [SerializeField] SkillRecoveryTime skillRecoveryTime;
         private SetSkillParameters skillParameters = new SetSkillParameters();
-        public bool isActtack, isSkillLv5, isSkillLv15, isIncreaseDamage;
+        bool isActtack, isSkillLv5;
         Player player => Player.Instance;
         TextTemplate textTemplate => TextTemplate.Instance;
         AnimatorSystem animatorSystem => AnimatorSystem.Instance;
@@ -19,8 +19,6 @@ namespace QuachDai.NinjaSchool.Character
         {
             isActtack = true;
             isSkillLv5 = true;
-            isSkillLv15 = true;
-            isIncreaseDamage = false;
         }
         public void SetFrameSkill(FrameSkill _frameSkill)
         {
@@ -29,6 +27,10 @@ namespace QuachDai.NinjaSchool.Character
         public void SetSkillRecoveryTimes(SkillRecoveryTime _skillRecoveryTime)
         {
             skillRecoveryTime = _skillRecoveryTime;
+        }
+        public bool IsActtack()
+        {
+            return isActtack && frameSkill.isActack;
         }
         public void SkillAttack(Action _damaged, Action _addExp)
         {
@@ -91,31 +93,7 @@ namespace QuachDai.NinjaSchool.Character
                 isSkillLv5 = true;
             }
         }
-        public void SkillLevel15()
-        {
-            if (!isSkillLv15)
-            {
-                textTemplate.SetText(TagScript.hoiChieu);
-                return;
-            }
-            ManaUseSkill();
-
-            if (isSkillLv15)
-                StartCoroutine(_UseSkillLv15());
-
-            IEnumerator _UseSkillLv15()
-            {
-                player.SetMp(frameSkill.mp * (-1));
-                skillAnimation.AnimationSkillLv5_15(frameSkill);
-                isSkillLv15 = false;
-                isIncreaseDamage = true;
-                skillRecoveryTime.isTime = true;
-                yield return new WaitForSeconds(frameSkill.timeSkill);
-                isSkillLv15 = true;
-                isIncreaseDamage = false;
-                skillRecoveryTime.isTime = false;
-            }
-        }
+       
         public void ManaUseSkill()
         {
             if (player.GetMp() < frameSkill.mp)
@@ -128,6 +106,18 @@ namespace QuachDai.NinjaSchool.Character
         public float GetCoefficient()
         {
             return frameSkill.coefficient;
+        }
+        public float duration;
+        public float strength;
+        public int vibrato = 10;
+        public float randomness = 90;
+        public bool snapping = false;
+        public bool fadeOut = true;
+        private Vector3 posStart;
+        bool isLoopShakePosition;
+        public void DOCameraShake()
+        {
+            Camera.main.transform.DOShakePosition(duration, strength, vibrato, randomness, snapping, fadeOut);
         }
     }
 }

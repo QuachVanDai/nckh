@@ -51,7 +51,7 @@ namespace QuachDai.NinjaSchool.Character
                     TextTemplate.Instance.SetText(TagScript.useSkill);
                     return;
                 }*/
-                if (playerSkill.isActtack)
+                if (playerSkill.IsActtack())
                     PlayerAttackMonster();
             }
         }

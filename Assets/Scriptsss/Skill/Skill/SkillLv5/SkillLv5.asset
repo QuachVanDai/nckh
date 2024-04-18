@@ -34,5 +34,6 @@ MonoBehaviour:
   timeSkill: 1
   coefficient: 0
   isBlock: 1
+  isActack: 0
   description: "Nh\u1EABn th\u1EADt t\xE2m ph\xE1p gi\xFAp b\u1EA3n th\xE2n t\u0103ng
     hp mp."

@@ -16,6 +16,7 @@ public class FrameSkill : ScriptableObject
     public float timeSkill;
     public float coefficient;
     public bool isBlock=false;
+    public bool isActack=false;
     public string description;
 }
 public enum IDSkill

@@ -41,7 +41,7 @@ namespace QuachDai.NinjaSchool.Monsters
                     monsterScale = monCurrent.gameObject.transform.localScale;
                     damagedText[i].rectTransform.localScale = monsterScale;
                     damagedText[i].gameObject.SetActive(true);
-                    var t = damagedText[i].rectTransform.DOAnchorPosY(damagedText[i].rectTransform.localPosition.y + 50, 0.8f)
+                    monsterController2D.tweenTextMove= damagedText[i].rectTransform.DOAnchorPosY(damagedText[i].rectTransform.localPosition.y + 50, 0.8f)
                .OnComplete(() => 
                { 
                    damagedText[i].gameObject.SetActive(false);
@@ -83,8 +83,8 @@ namespace QuachDai.NinjaSchool.Monsters
                 //ItemDropSpawner.Instance.Drop(JunkSO.dropRateList, transform.position, Quaternion.identity);
 
                 // i.Die(transform.position,Quaternion.identity);
-                InforMonster.Instance.InfoMonster.gameObject.SetActive(false);
-                monsterController2D.PlayAnimation(monsterStatus.death);
+                InforMonster.Instance.SetActive(false);
+                monsterController2D.PlayAnimation(Status.death);
                 Destroy(gameObject, 0.5f);
                 return;
             }

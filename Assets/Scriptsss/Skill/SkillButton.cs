@@ -1,6 +1,7 @@
 ﻿using QuachDai.NinjaSchool.Character;
-using System.Buffers;
 using UnityEngine;
+using DG.Tweening;
+
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 namespace QuachDai.NinjaSchool.Skill
@@ -22,7 +23,7 @@ namespace QuachDai.NinjaSchool.Skill
         private void Start()
         {
             icon.sprite = frameSkill.icon;
-            
+
             if (frameSkill.IDSkill == IDSkill.SkillLv1 && isCheckLevel)
             {
                 playerSkill.SetFrameSkill(frameSkill);
@@ -85,8 +86,13 @@ namespace QuachDai.NinjaSchool.Skill
 
         private void OnClickListener()
         {
-            playerSkill.SetFrameSkill(frameSkill);
-            playerSkill.SetSkillRecoveryTimes(skillRecoveryTime);
+            if (player.GetLevel() >= frameSkill.level)
+            {
+                playerSkill.SetFrameSkill(frameSkill);
+                playerSkill.SetSkillRecoveryTimes(skillRecoveryTime);
+                if (frameSkill.IDSkill == IDSkill.SkillLv5)
+                    playerSkill.SkillLevel5();
+            }
         }
     }
 }

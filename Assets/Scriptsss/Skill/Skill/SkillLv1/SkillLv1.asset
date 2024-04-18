@@ -40,7 +40,8 @@ MonoBehaviour:
   mp: 30
   timeSkill: 0.4
   coefficient: 1
-  isBlock: 0
+  isBlock: 1
+  isActack: 1
   description: "\u0110ao ph\xE1p nh\u1EADp m\xF4n d\xF9ng \u0111ao ch\xE9m m\u1EA1nh
     v\xE0o m\u1EE5c ti\xEAu g\xE2y s\xE1t th\u01B0\u01A1ng l\xEAn m\u1EE5c ti\xEAu
     \u0111\xF3."

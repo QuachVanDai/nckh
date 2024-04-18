@@ -19,6 +19,12 @@ MonoBehaviour:
   framesMove:
   - {fileID: 0}
   framesFont:
+  - {fileID: 21300000, guid: d403057e94f006946be37cb6ec8d31f1, type: 3}
+  - {fileID: 21300000, guid: 06f9ed8b86392bb4eaff6d528473bd50, type: 3}
+  - {fileID: 21300000, guid: 74b78e13577383d4d8240c815e2aa26a, type: 3}
+  - {fileID: 21300000, guid: 5649657b5a8081640a81182aeeeb0b81, type: 3}
+  - {fileID: 21300000, guid: 481be21e01013264c81b3d5fc6d0bf26, type: 3}
+  - {fileID: 21300000, guid: cac6f80ac133ccc49a7e06091b7aaec7, type: 3}
   - {fileID: 0}
   framesStart:
   - {fileID: 0}
@@ -30,8 +36,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8ac7872be2cb90f4d902d6bd92eb11ea, type: 3}
   - {fileID: 0}
   mp: 40
-  timeSkill: 1
-  coefficient: 0
-  isBlock: 1
+  timeSkill: 0.2
+  coefficient: 3
+  isBlock: 0
+  isActack: 1
   description: "Nh\u1EABn th\u1EADt t\xE2m ph\xE1p gi\xFAp b\u1EA3n th\xE2n t\u0103ng
     l\u01B0\u1EE3ng s\xE1t th\u01B0\u01A1ng v\xE0o k\u1EBB \u0111\u1ECBch."

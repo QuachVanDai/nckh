@@ -20,5 +20,5 @@ MonoBehaviour:
   - {x: -10, y: 3, z: 0}
   yMax: 1.2
   yMin: -6
-  xMax: 24.7
-  xMin: 0
+  xMax: 24.6
+  xMin: -0.6

@@ -5,7 +5,6 @@ namespace QuachDai.NinjaSchool.Scenes
 {
     public class LoadingPanel : Singleton<LoadingPanel>
     {
-        const float fakeLoadTime = 1;
         float currentFakeLoadTime;
         float progess = 0;
         private void Start()
@@ -16,14 +15,14 @@ namespace QuachDai.NinjaSchool.Scenes
         {
             gameObject.SetActive(values);
         }
-        public IEnumerator LoadingPopUp(Action _action)
+        public IEnumerator LoadingPopUp(Action _action,float _fakeLoadTime)
         {
             progess = 0;
-            currentFakeLoadTime = fakeLoadTime;
+            currentFakeLoadTime = _fakeLoadTime;
             while (progess <= 1)
             {
                 currentFakeLoadTime -= Time.deltaTime;
-                progess = 1 - (currentFakeLoadTime / fakeLoadTime);
+                progess = 1 - (currentFakeLoadTime / _fakeLoadTime);
                 LoadingSlider.Instance.SetProgress(progess);
                 yield return null;
             }

@@ -17937,7 +17937,7 @@ MonoBehaviour:
   IsDontDestroyOnLoad: 0
   isPlayGame: 1
   buttonNextScene: {fileID: 0}
-  scenes: SchoolScene
+  scenes: LegendaryVillageScene
   ingameDebug: {fileID: 0}
 --- !u!4 &1836051758
 Transform:
@@ -22091,7 +22091,7 @@ Transform:
   m_GameObject: {fileID: 2634296958585019992}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -24.54, y: 0, z: 0}
+  m_LocalPosition: {x: -0.6, y: 11.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -25277,12 +25277,12 @@ PrefabInstance:
     - target: {fileID: 4963159144188171591, guid: 26efe03736365d34c870433908b956fd,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4963159144188171591, guid: 26efe03736365d34c870433908b956fd,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8006939558072350897, guid: 26efe03736365d34c870433908b956fd,
         type: 3}
@@ -25377,17 +25377,17 @@ PrefabInstance:
     - target: {fileID: 8319058510165557946, guid: 26efe03736365d34c870433908b956fd,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8319058510165557946, guid: 26efe03736365d34c870433908b956fd,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8319058510165557946, guid: 26efe03736365d34c870433908b956fd,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8458734544985355589, guid: 26efe03736365d34c870433908b956fd,
         type: 3}
@@ -25397,7 +25397,7 @@ PrefabInstance:
     - target: {fileID: 8458734544985355589, guid: 26efe03736365d34c870433908b956fd,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8883980064795932146, guid: 26efe03736365d34c870433908b956fd,
         type: 3}
@@ -25808,10 +25808,12 @@ MonoBehaviour:
   skillAnimation: {fileID: 8206928474769982232}
   frameSkill: {fileID: 0}
   skillRecoveryTime: {fileID: 0}
-  isActtack: 0
-  isSkillLv5: 0
-  isSkillLv15: 0
-  isIncreaseDamage: 0
+  duration: 0
+  strength: 0
+  vibrato: 10
+  randomness: 90
+  snapping: 0
+  fadeOut: 1
 --- !u!4 &7516980323277537500
 Transform:
   m_ObjectHideFlags: 0

@@ -1,37 +1,42 @@
 
+using DG.Tweening;
 using UnityEngine;
-public enum monsterStatus { idle, move, attack, death }
+public enum Status { idle, move, attack, death }
 namespace QuachDai.NinjaSchool.Monsters
 {
     public class MonsterController2D : MonoBehaviour
     {
 
-        public monsterStatus monStatus;
+        public Status monStatus;
         [SerializeField] MonsterMove monsterMove;
         [SerializeField] private Animator animator;
+        public Tween tweenMonsterMove;
+        public Tween tweenTextMove;
         public void monsterIsDeath()
         {
 
         }
-        public void PlayAnimation(monsterStatus Status)
+        public void PlayAnimation(Status _status)
         {
             if (gameObject == null) return;
-            switch (Status)
+            switch (_status)
             {
-                case monsterStatus.idle:
-                    Status = monsterStatus.idle;
+                case Status.idle:
+                    _status = Status.idle;
                     animator.SetBool("isMove", false);
                     break;
-                case monsterStatus.move:
-                    Status = monsterStatus.move;
+                case Status.move:
+                    _status = Status.move;
                     animator.SetBool("isMove", true);
                     monsterMove.MonterMove();
                     break;
-                case monsterStatus.attack:
-                    Status = monsterStatus.attack;
+                case Status.attack:
+                    _status = Status.attack;
                     break;
-                case monsterStatus.death:
-                    Status = monsterStatus.death;
+                case Status.death:
+                    tweenMonsterMove.Kill();
+                    tweenTextMove.Kill();
+                    _status = Status.death;
                     animator.SetBool("isDeath", true);
                     break;
             }

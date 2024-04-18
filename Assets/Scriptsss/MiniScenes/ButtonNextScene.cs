@@ -13,15 +13,15 @@ namespace QuachDai.NinjaSchool.Scenes
             index = i;
             Application.targetFrameRate = 60;
             LoadingPanel.Instance.SetActive(true);
-            LoadingPanel.Instance.StartCoroutine(LoadingPanel.Instance.LoadingPopUp(LoadScene));
+            LoadingPanel.Instance.StartCoroutine(LoadingPanel.Instance.LoadingPopUp(LoadScene,1f));
         }
 
         public void LoadScene()
         {
-            if (SceneManager.GetSceneByName(sceneDisActive.scene.name).isLoaded)
-                SceneManager.UnloadSceneAsync(sceneDisActive.scene.name);
+            if (SceneManager.GetSceneByName(sceneDisActive.sceneName).isLoaded)
+                SceneManager.UnloadSceneAsync(sceneDisActive.sceneName);
 
-            SceneManager.LoadScene(sceneActive.scene.name, LoadSceneMode.Additive);
+            SceneManager.LoadScene(sceneActive.sceneName, LoadSceneMode.Additive);
             Player.Instance.SetPositon(sceneActive.PosPlayer[index]);
         }
     }

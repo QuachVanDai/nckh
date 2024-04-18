@@ -14,13 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/IceMountainScene.unity
     guid: dae560625ddaf594c93cf98d173f61e8
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/TempleAScene.unity
     guid: 448702b9f9a47454d8c7992811532132
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/LegendaryVillageScene.unity
     guid: 2d533cf1e1438214bad7d1917ea9cfcd
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MysteriousCaveScene.unity
     guid: ad43da7da8cd0624b9d6b69b33f346c0
   m_configObjects: {}

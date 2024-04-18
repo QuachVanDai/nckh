@@ -1,9 +1,10 @@
 ﻿
 using QuachDai.NinjaSchool.Character;
 using QuachDai.NinjaSchool.Scenes;
+using DG.Tweening;
 using Unity.Mathematics;
 using UnityEngine;
-namespace QuachDai.NinjaSchool.Camera
+namespace QuachDai.NinjaSchool.Cameras
 {
     public class CameraManager : MonoBehaviour
     {
@@ -30,6 +31,7 @@ namespace QuachDai.NinjaSchool.Camera
             _getY = math.min(miniSceneData.yMax, _y);
             transform.position = new Vector3(_getX, _getY, -10);
         }
+       
     }
 }
     /*private bool isDragging = false;
