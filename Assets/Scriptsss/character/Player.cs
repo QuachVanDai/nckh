@@ -38,12 +38,11 @@ namespace QuachDai.NinjaSchool.Character
             setPlayer = new SetPlayer();
             GetMaxDamage();
             GetMinDamage();
-            GetMaxHp();
-            GetMaxMp();
-            GetMp();
-            GetHp();
+            hp = GetMaxHp();
+            mp = GetMaxMp();
             SetHp(0);
             SetMp(0);
+            SetPercentExpText(0);
         }
         public void IgnorePlayer()
         {
@@ -91,6 +90,10 @@ namespace QuachDai.NinjaSchool.Character
         {
             return transform.position;
         }
+        public string GetNamePlayer()
+        {
+            return namePlayer;
+        }
         public void SetPositon(Vector3 _vector3)
         {
             transform.position = _vector3;
@@ -126,7 +129,7 @@ namespace QuachDai.NinjaSchool.Character
         public void IncreaseLevel()
         {
             level += 1;
-            if(level > 20)  level = 20; 
+            if (level > 20) level = 20;
         }
         public float GetPercentExp() { return percentExp; }
         public void SetPercentExp(float exp) { percentExp = exp; }
@@ -150,12 +153,10 @@ namespace QuachDai.NinjaSchool.Character
         }
         public float GetMp()
         {
-            mp = setPlayer.getMPPlayerDictionary()[level];
             return mp;
         }
         public float GetHp()
         {
-            hp = setPlayer.getHPPlayerDictionary()[level];
             return hp;
         }
         public float GetMaxHp()

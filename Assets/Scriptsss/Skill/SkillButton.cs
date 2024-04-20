@@ -1,18 +1,12 @@
 ﻿using QuachDai.NinjaSchool.Character;
 using UnityEngine;
-using DG.Tweening;
-
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 namespace QuachDai.NinjaSchool.Skill
 {
-    public class SkillButton : MonoBehaviour, IPointerDownHandler
+    public class SkillButton : MonoBehaviour
     {
         [SerializeField] SelectSkill[] selectSkillList;
         [SerializeField] SelectSkill selectSkill;
-        [SerializeField] DescribeSkill describeSkill;
-        [SerializeField] bool isCheckLevel;
-        [SerializeField] bool isDescription;
         [SerializeField] FrameSkill frameSkill;
         [SerializeField] Image icon;
 
@@ -24,7 +18,7 @@ namespace QuachDai.NinjaSchool.Skill
         {
             icon.sprite = frameSkill.icon;
 
-            if (frameSkill.IDSkill == IDSkill.SkillLv1 && isCheckLevel)
+            if (frameSkill.IDSkill == IDSkill.SkillLv1)
             {
                 playerSkill.SetFrameSkill(frameSkill);
                 playerSkill.SetSkillRecoveryTimes(skillRecoveryTime);
@@ -40,21 +34,6 @@ namespace QuachDai.NinjaSchool.Skill
         {
             return frameSkill;
         }
-        public void OnPointerDown(PointerEventData eventData)
-        {
-            if (isCheckLevel)
-            {
-                if (player.GetLevel() >= frameSkill.level)
-                    HideSelectSkill();
-            }
-            else if (isDescription)
-            {
-                HideSelectSkill();
-                if (describeSkill != null)
-                    describeSkill.Show(frameSkill.skillName, frameSkill.description);
-            }
-
-        }
         public void HideSelectSkill()
         {
             for (int i = 0; i < 5; i++)
@@ -67,27 +46,26 @@ namespace QuachDai.NinjaSchool.Skill
             get
             {
                 if (button == null)
-                {
                     button = GetComponent<Button>();
-                }
                 return button;
             }
         }
 
         private void OnEnable()
         {
-            ThisButton.onClick.AddListener(OnClickListener);
+            ThisButton.onClick.AddListener(ListenerMethod);
         }
 
         private void OnDisable()
         {
-            ThisButton.onClick.RemoveListener(OnClickListener);
+            ThisButton.onClick.RemoveListener(ListenerMethod);
         }
 
-        private void OnClickListener()
+        private void ListenerMethod()
         {
             if (player.GetLevel() >= frameSkill.level)
             {
+                HideSelectSkill();
                 playerSkill.SetFrameSkill(frameSkill);
                 playerSkill.SetSkillRecoveryTimes(skillRecoveryTime);
                 if (frameSkill.IDSkill == IDSkill.SkillLv5)
