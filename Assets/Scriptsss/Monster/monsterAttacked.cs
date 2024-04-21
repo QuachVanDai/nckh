@@ -1,5 +1,6 @@
 using DG.Tweening;
 using QuachDai.NinjaSchool.Character;
+using QuachDai.NinjaSchool.Mission;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -41,9 +42,9 @@ namespace QuachDai.NinjaSchool.Monsters
                     monsterScale = monCurrent.gameObject.transform.localScale;
                     damagedText[i].rectTransform.localScale = monsterScale;
                     damagedText[i].gameObject.SetActive(true);
-                    monsterController2D.tweenTextMove= damagedText[i].rectTransform.DOAnchorPosY(damagedText[i].rectTransform.localPosition.y + 50, 0.8f)
-               .OnComplete(() => 
-               { 
+                    monsterController2D.tweenTextMove = damagedText[i].rectTransform.DOAnchorPosY(damagedText[i].rectTransform.localPosition.y + 50, 0.8f)
+               .OnComplete(() =>
+               {
                    damagedText[i].gameObject.SetActive(false);
                });
                     return;
@@ -60,6 +61,8 @@ namespace QuachDai.NinjaSchool.Monsters
             playerAttack.FindMonster(monCurrent);
             monCurrent.UpdateHp(monCurrent.currHp, monCurrent.maxHp, monCurrent.nameMonster, monCurrent.level);
         }
+        MissionUi missionUi => MissionUi.Instance;
+
         public void Attacked(int damage)
         {
             if (monCurrent.currHp - damage > 0)
@@ -67,19 +70,15 @@ namespace QuachDai.NinjaSchool.Monsters
             else
                 monCurrent.currHp -= monCurrent.currHp;
 
-            if (this!=null)
-            StartCoroutine(EffectAcctacked());
+            if (this != null)
+                StartCoroutine(EffectAcctacked());
             TextMove(damage.ToString());
             if (monCurrent.currHp <= 0)
             {
                 monCurrent.UpdateHp(monCurrent.currHp, monCurrent.maxHp, monCurrent.nameMonster, monCurrent.level);
-                /*if (this.playerAttack.missionUi._mission.getMonster())
-                {
-                    if (this.playerAttack.missionUi._mission.getMonster().ID == monCurrent.ID)
-                    {
-                        this.playerAttack.missionUi.GiaoNhiemVu();
-                    }
-                }*/
+                if (missionUi.GetMonster())
+                    if (missionUi.GetIDMonster() == monCurrent.ID)
+                        missionUi.GiveTasks();
                 //ItemDropSpawner.Instance.Drop(JunkSO.dropRateList, transform.position, Quaternion.identity);
 
                 // i.Die(transform.position,Quaternion.identity);

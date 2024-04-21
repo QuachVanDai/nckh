@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using QuachDai.NinjaSchool.MainCanvas;
+using QuachDai.NinjaSchool.Mission;
+using UnityEngine;
 using UnityEngine.UI;
 namespace QuachDai.NinjaSchool.Character
 {
@@ -22,6 +24,7 @@ namespace QuachDai.NinjaSchool.Character
         [SerializeField] Text levelText;
         [SerializeField] Text percentExpText;
         [SerializeField] Text goldText;
+        [SerializeField] Text missionText;
         [SerializeField] GameObject damagedText;
         [SerializeField] RectTransform canvas;
         [SerializeField] Animator animatorPlayer;
@@ -76,15 +79,21 @@ namespace QuachDai.NinjaSchool.Character
                 gold += money.Xu;
             }
         }
-        public void TextGUI(int damage, Color color)
-        {
-            GameObject g = Instantiate(damagedText);
-            NumberTxt numberTxt = g.GetComponent<NumberTxt>();
-            numberTxt.TextMove(canvas, (int)damage, new Vector3(0, 1.2f, 0), 1, 0.5f, color);
-        }
         public Animator GetAnimator()
         {
             return animatorPlayer;
+        }
+        public InformationMissionPanel informationMissionPanel;
+        public void SetMissionText(string _quantityMonsterDestroyed, string _quantityMonsterDestroy, string _nameMonster)
+        {
+            if (_quantityMonsterDestroyed == "" && _quantityMonsterDestroy == "" && _nameMonster == "")
+                missionText.text = "No mission";
+            else
+                missionText.text = "Kill " + _nameMonster + " " + _quantityMonsterDestroyed + "/ " + _quantityMonsterDestroy ;
+        }
+        public string GetMissionText()
+        {
+            return missionText.text;
         }
         public Vector3 GetPosition()
         {
@@ -99,9 +108,9 @@ namespace QuachDai.NinjaSchool.Character
             transform.position = _vector3;
         }
 
-        public bool SetGold(int number)
+        public bool SetGold(int _number)
         {
-            gold += number;
+            gold += _number;
             if (gold <= 0)
             {
                 gold = 0;
@@ -114,13 +123,13 @@ namespace QuachDai.NinjaSchool.Character
 
 
 
-        public void SetLevelText(int level)
+        public void SetLevelText(int _level)
         {
-            levelText.text = level.ToString();
+            levelText.text = _level.ToString();
         }
-        public void SetPercentExpText(float exp)
+        public void SetPercentExpText(float _exp)
         {
-            percentExpText.text = exp.ToString("F2") + "%"; ;
+            percentExpText.text = _exp.ToString("F2") + "%"; ;
         }
         public int GetLevel()
         {
@@ -131,22 +140,28 @@ namespace QuachDai.NinjaSchool.Character
             level += 1;
             if (level > 20) level = 20;
         }
-        public float GetPercentExp() { return percentExp; }
-        public void SetPercentExp(float exp) { percentExp = exp; }
-        public void IncreasePercentExp(float exp)
+        public float GetPercentExp()
         {
-            percentExp += exp;
+            return percentExp;
         }
-        public void SetHp(float hp)
+        public void SetPercentExp(float _exp)
         {
-            this.hp += hp;
+            percentExp = _exp;
+        }
+        public void IncreasePercentExp(float _exp)
+        {
+            percentExp += _exp;
+        }
+        public void SetHp(float _hp)
+        {
+            this.hp += _hp;
             this.hp = this.hp >= maxHp ? maxHp : this.hp;
             fillBarHP.fillAmount = this.hp / maxHp;
             hpText.text = this.hp.ToString();
         }
-        public void SetMp(float mp)
+        public void SetMp(float _mp)
         {
-            this.mp += mp;
+            this.mp += _mp;
             this.mp = this.mp >= maxMp ? maxMp : this.mp;
             fillBarMP.fillAmount = this.mp / maxMp;
             mpText.text = this.mp.ToString();

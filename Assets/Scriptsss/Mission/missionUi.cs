@@ -1,42 +1,45 @@
-﻿
-using QuachDai.NinjaSchool.Monsters;
-using TMPro;
+﻿using QuachDai.NinjaSchool.Monsters;
 using UnityEngine;
 namespace QuachDai.NinjaSchool.Mission
 {
-    public class MissionUi : MonoBehaviour
+    public class MissionUi : Singleton<MissionUi>
     {
         public Mission _mission;
         public Monster[] Monsters;
-        public TextMeshProUGUI textMeshProUGUI;
 
-        // Start is called before the first frame update
         void Start()
         {
             _mission = new Mission();
             _mission.PrefabsMonster = Monsters;
         }
-        public void Update()
+        public EMissionState GetMissionState()
         {
-            if (!_mission.getMonster()) { textMeshProUGUI.text = "Chưa có nhiệm vụ"; return; }
-
-            textMeshProUGUI.text = "Hạ gục " + _mission.QuantityMonsterDestroyed + "/ " + _mission.QuantityMonsterDestroy + " " + _mission.getMonster().nameMonster;
+            return _mission.missionState;
         }
-        public void GiaoNhiemVu()
+        public Monster GetMonster()
         {
-            _mission.ThucHienNhiemVu();
+            return _mission.GetMonster();
+        }
+        public MonsterID GetIDMonster()
+        {
+            return _mission.GetMonster().ID;
+        }
+        public void GiveTasks()
+        {
+            _mission.CarryOutAMission();
         }
         public void AgreeMission()
         {
-            _mission.getChangeState().AgreeMission();
+            _mission.GetChangeMissionButton().AgreeMission();
         }
         public void CompleteMission()
         {
-            _mission.getChangeState().CompleteMission();
+            _mission.GetChangeMissionButton().CompleteMission();
+
         }
         public void CancelMission()
         {
-            _mission.getChangeState().CancelMission();
+            _mission.GetChangeMissionButton().CancelMission();
         }
     }
 }

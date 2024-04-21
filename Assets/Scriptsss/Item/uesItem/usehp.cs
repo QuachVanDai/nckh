@@ -1,29 +1,36 @@
 ﻿using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using QuachDai.NinjaSchool.Character;
-
-public class Usehp: MonoBehaviour
+using UnityEngine.EventSystems;
+public class UseHp : MonoBehaviour, IPointerClickHandler
 {
-    public Slot SlotFoodSO;
-    private HpSO HpSO;
-    public int Quanitity = 0;
-    public TextMeshProUGUI TxtQuanitity;
-    public bool IsUes;
-    public Image ImgFillTime;
-    private float _GetTime;
+    public Slot slotFoodSO;
+    private HpSO hpSO;
+    public int quanitity = 0;
+    public Text quanitityText;
+    public bool isUes;
+    public Image imageFull;
+    private float getTime;
     Player player => Player.Instance;
+    InventoryUpdate inventoryUpdate => InventoryUpdate.Instance;
     void Start()
     {
-        Quanitity = InventoryUpdate.Instance.UpdateHP(0);
-        TxtQuanitity.text = Quanitity.ToString();
-        IsUes = true;
+        quanitity = inventoryUpdate.UpdateHP(0);
+        quanitityText.text = quanitity.ToString();
+        isUes = true;
+    }
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        UseItemHp();
+        Debug.Log("using item Hp");
     }
     public void UseItemHp()
     {
-        if(IsUes) { StartCoroutine(SetTimeUse()); }
-        else { TextTemplate.Instance.SetText(TagScript.hoiChieu); }
+        if (isUes)
+            StartCoroutine(SetTimeUse());
+        else
+            TextTemplate.Instance.SetText(TagScript.hoiChieu);
     }
     public IEnumerator SetTimeUse()
     {
@@ -32,31 +39,34 @@ public class Usehp: MonoBehaviour
             TextTemplate.Instance.SetText(TagScript.fullHP);
             yield return new WaitForSeconds(0.5f);
         }
-        else if (Quanitity > 0)
+        else if (quanitity > 0)
         {
-            HpSO = (HpSO)SlotFoodSO.getItemSO();
-            _GetTime = Time.time;
-            IsUes = false;
-           // Player.Instance.PlayerEffect.UpdateHp(HpSO.hP);
-            Quanitity = InventoryUpdate.Instance.UpdateHP(-1);
-            TxtQuanitity.text = Quanitity.ToString();
-            yield return new WaitForSeconds(0.5f);
-            IsUes = true;
+            hpSO = (HpSO)slotFoodSO.getItemSO();
+            isUes = false;
+            player.SetHp(1f * hpSO.hP);
+            //quanitity = inventoryUpdate.UpdateHP(-1);
+            quanitityText.text = quanitity.ToString();
+            getTime = Time.time;
+            imageFull.fillAmount = 0;
+            while (imageFull.fillAmount <1)
+            {
+                imageFull.fillAmount = (Time.time - getTime) / 0.5f;
+                yield return null;
+            }
         }
-        else { TextTemplate.Instance.SetText(TagScript.notHp); }
+        else
+            TextTemplate.Instance.SetText(TagScript.notHp);
+        isUes = true;
+
     }
     // Update is called once per frame
     void Update()
     {
-       Quanitity = InventoryUpdate.Instance.UpdateHP(0);
-        TxtQuanitity.text = Quanitity.ToString();
-        if (Input.GetKeyUp(KeyCode.E))
-        {
+        quanitity = inventoryUpdate.UpdateHP(0);
+        quanitityText.text = quanitity.ToString();
+        if (Input.GetKeyUp(KeyCode.R))
             UseItemHp();
-        }
-        if(!IsUes)
-        {
-            ImgFillTime.fillAmount = (Time.time - _GetTime) / 0.5f;
-        }
     }
+
+
 }

@@ -1,10 +1,14 @@
-﻿namespace QuachDai.NinjaSchool.Mission
+﻿using QuachDai.NinjaSchool.Character;
+
+namespace QuachDai.NinjaSchool.Mission
 {
-    public class MissionPerform : IMissionState
+    public class MissionPerform : IMissionButton
     {
 
         public MissionPerform(Mission mission) : base(mission)
         {
+            base.mission.missionState = EMissionState.MissionPerform;
+            Player.Instance.SetMissionText(mission.QuantityMonsterDestroyed.ToString(), mission.QuantityMonsterDestroy.ToString(), mission.GetMonster().nameMonster);
         }
         public override bool CompleteMission()
         {
@@ -15,7 +19,7 @@
         public override bool CancelMission()
         {
             TextTemplate.Instance.SetText("Hủy nhiệm vụ thành công");
-            _mission.setChangeState(new MissionNot(_mission));
+            mission.SetChangeMissionButton(new MissionNot(mission));
             return false;
 
         }

@@ -1,17 +1,20 @@
 ﻿
+using QuachDai.NinjaSchool.Character;
 using UnityEngine;
 namespace QuachDai.NinjaSchool.Mission
 {
-    public class MissionNot : IMissionState
+    public class MissionNot : IMissionButton
     {
 
         public MissionNot(Mission mission) : base(mission)
         {
-            _mission.QuantityMonsterDestroy = 0;
-            _mission.QuantityMonsterDestroyed = 0;
-            _mission.IsHasMission = false;
-            _mission.IsCompleteMission = false;
-            _mission.MonsterID = -1;
+            base.mission.QuantityMonsterDestroy = 0;
+            base.mission.missionState = EMissionState.None;
+            base.mission.QuantityMonsterDestroyed = 0;
+            base.mission.IsHasMission = false;
+            base.mission.IsCompleteMission = false;
+            base.mission.MonsterID = -1;
+            Player.Instance.SetMissionText("", "", "");
         }
         public override bool CompleteMission()
         {
@@ -25,11 +28,11 @@ namespace QuachDai.NinjaSchool.Mission
         }
         public override bool AgreeMission()
         {
-            if (_mission.IsHasMission == false)
+            if (mission.IsHasMission == false)
             {
                 TextTemplate.Instance.SetText("Đã nhận nhiệm vụ");
-                _mission.SetUpMisson();
-                _mission.setChangeState(new MissionPerform(_mission));
+                mission.SetUpMisson();
+                mission.SetChangeMissionButton(new MissionPerform(mission));
                 return true;
             }
             else

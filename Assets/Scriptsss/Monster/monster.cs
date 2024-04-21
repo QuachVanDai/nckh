@@ -30,10 +30,10 @@ namespace QuachDai.NinjaSchool.Monsters
         }
 
         string infoText;
-        public void UpdateHp(float CurrentHp, float MaxHp, string Name, int Level)
+        public void UpdateHp(float _currentHp, float _maxHp, string _name, int _level)
         {
-            hpBar.fillAmount = (float)CurrentHp / (float)MaxHp;
-            infoText = " " + Name + "  " + "Lv" + Level + " " + CurrentHp.ToString() + "/" + MaxHp.ToString();
+            hpBar.fillAmount = (float)_currentHp / (float)_maxHp;
+            infoText = " " + _name + "  " + "Lv" + _level + " " + _currentHp.ToString() + "/" + _maxHp.ToString();
             InforMonster.Instance.SetInfoMonsterText(infoText);
             InforMonster.Instance.SetActive(true);
         }

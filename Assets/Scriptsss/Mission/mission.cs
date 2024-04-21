@@ -1,61 +1,44 @@
 
 
+using QuachDai.NinjaSchool.Character;
 using QuachDai.NinjaSchool.Monsters;
 using UnityEngine;
 namespace QuachDai.NinjaSchool.Mission
 {
     public class Mission
     {
-        private IMissionState _State;
-
+        private IMissionButton missionButton;
+        public EMissionState missionState;
         public bool IsHasMission = false;
         public bool IsCompleteMission = false;
         public Monster[] PrefabsMonster;
         public int MonsterID = -1;
         public int QuantityMonsterDestroy = 0, QuantityMonsterDestroyed = 0;
-
-        // private static mission _instance;
-        //  public static mission Instance {  get { return _instance; } }
-
         public Mission()
         {
-            setChangeState(new MissionNot(this));
+            SetChangeMissionButton(new MissionNot(this));
             QuantityMonsterDestroy = 0;
             QuantityMonsterDestroyed = 0;
             IsHasMission = false;
             IsCompleteMission = false;
             MonsterID = -1;
         }
-        public int getIndex()
-        {
-            for (int i = 0; i < PrefabsMonster.Length; i++)
-            {
-                if ((int)PrefabsMonster[i].ID == MonsterID)
-                {
-                    MonsterID = i;
-                    break;
-                }
-            }
-            return MonsterID;
-        }
-        public Monster getMonster()
-        {
-            if (MonsterID == -1) return null;
-            return PrefabsMonster[MonsterID];
-        }
 
-        public void ThucHienNhiemVu()
+
+        public void CarryOutAMission() // thuc hien nhiem vu
         {
             if (QuantityMonsterDestroyed + 1 > QuantityMonsterDestroy) return;
             QuantityMonsterDestroyed++;
+            Player.Instance.SetMissionText(QuantityMonsterDestroyed.ToString(), QuantityMonsterDestroy.ToString(), GetMonster().nameMonster);
+
             if (QuantityMonsterDestroy == QuantityMonsterDestroyed)
             {
                 IsCompleteMission = true;
-                setChangeState(new MissionComplete(this));
+                SetChangeMissionButton(new MissionComplete(this));
             }
         }
 
-        public void GiaoPhanThuong()
+        public void GiveTheReward() // trao phan thuong
         {
             int index = Random.Range(0, 3);
             switch (index)
@@ -79,17 +62,41 @@ namespace QuachDai.NinjaSchool.Mission
         {
             QuantityMonsterDestroy = Random.Range(5, 10);
             MonsterID = Random.Range(1, PrefabsMonster.Length);
-            getIndex();
+            GetIndex();
             IsHasMission = true;
         }
-
-        public void setChangeState(IMissionState State)
+        public int GetIndex()
         {
-            this._State = State;
+            for (int i = 0; i < PrefabsMonster.Length; i++)
+            {
+                if ((int)PrefabsMonster[i].ID == MonsterID)
+                {
+                    MonsterID = i;
+                    break;
+                }
+            }
+            return MonsterID;
         }
-        public IMissionState getChangeState()
+        public Monster GetMonster()
         {
-            return this._State;
+            if (MonsterID == -1)
+                return null;
+            return PrefabsMonster[MonsterID];
+        }
+
+        public void SetChangeMissionButton(IMissionButton _missionButton)
+        {
+            this.missionButton = _missionButton;
+        }
+        public IMissionButton GetChangeMissionButton()
+        {
+            return this.missionButton;
         }
     }
+}
+public enum EMissionState
+{
+    None = 0,
+    MissionPerform = 1,
+    MissionComplete = 2,
 }

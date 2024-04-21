@@ -20,6 +20,10 @@ namespace QuachDai.NinjaSchool.Character
             isActtack = true;
             isSkillLv5 = true;
         }
+        public IDSkill GetIDSkill()
+        {
+            return frameSkill.IDSkill;
+        }
         public void SetFrameSkill(FrameSkill _frameSkill)
         {
             frameSkill = _frameSkill;
@@ -37,7 +41,7 @@ namespace QuachDai.NinjaSchool.Character
             StartCoroutine(_SkillAttack());
             IEnumerator _SkillAttack()
             {
-               
+
                 animatorSystem.SetBool(player.GetAnimator(), "IsAttack", true);
                 isActtack = false;
                 player.SetMp(frameSkill.mp * (-1));
@@ -52,7 +56,7 @@ namespace QuachDai.NinjaSchool.Character
                 skillRecoveryTime.isTime = false;
             }
         }
-       
+
 
         public void InCreaseHPMP()
         {
@@ -93,7 +97,7 @@ namespace QuachDai.NinjaSchool.Character
                 isSkillLv5 = true;
             }
         }
-       
+
         public void ManaUseSkill()
         {
             if (player.GetMp() < frameSkill.mp)

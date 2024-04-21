@@ -10,7 +10,6 @@ namespace QuachDai.NinjaSchool.Character
     {
         [SerializeField] PlayerSkill playerSkill;
         public Monster monster;
-        public MissionUi missionUi;
         public Text[] expText;
 
         private float distance;
@@ -25,7 +24,7 @@ namespace QuachDai.NinjaSchool.Character
         }
         private void Update()
         {
-          /*  if (GameManager.Instance.IsPlaygame == false) return;
+            if (GameManager.Instance.IsPlaygame == false) return;
             if (playerController2D.IsGround() == false) return;
             if (monster == null) return;
             distance = Vector2.Distance(transform.position, monster.GetPosition());
@@ -34,23 +33,23 @@ namespace QuachDai.NinjaSchool.Character
                 InforMonster.Instance.SetActive(false);
                 monster = null;
                 return;
-            }*/
+            }
 
             if (playerController2D.getInputSpace())
             {
-                // 
-                /*  if (_Distance > 4)
-                  {
-                      TextTemplate.Instance.SetText(TagScript.khoangCach);
-                      return;
-                  }*/
 
-                // if player use skilllv5 or skilllv15  , player cannot attack.
-                /*if (useSkill.getCurrKeySkill() == 1)
+                if (distance > 4)
+                {
+                    TextTemplate.Instance.SetText(TagScript.khoangCach);
+                    return;
+                }
+
+                //if player use skilllv5 or skilllv15, player cannot attack.
+                if (playerSkill.GetIDSkill() == IDSkill.SkillLv5)
                 {
                     TextTemplate.Instance.SetText(TagScript.useSkill);
                     return;
-                }*/
+                }
                 if (playerSkill.IsActtack())
                     PlayerAttackMonster();
             }
@@ -72,7 +71,7 @@ namespace QuachDai.NinjaSchool.Character
         public void AddExp()
         {
             if (monster == null) return;
-                if (monster.currHp <= damage)
+            if (monster.currHp <= damage)
                 damage = monster.currHp;
             exp = (damage * setMonster.getExpMonsterDictionary(monster.level) * 100) /
                 setPlayer.getExpPlayerDictionary(player.GetLevel());
@@ -110,7 +109,7 @@ namespace QuachDai.NinjaSchool.Character
                 }
             }
 
-        
+
         }
         public SkillAnimation skillAnimation;
         public void FindMonster(Monster _monster)
