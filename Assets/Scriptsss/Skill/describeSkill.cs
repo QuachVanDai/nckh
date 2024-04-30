@@ -7,11 +7,14 @@ namespace QuachDai.NinjaSchool.Skill
     {
         [SerializeField] Text describeSkillText;
 
-        public void Show(string title, string contend)
+        public void Show(string title, string contend, int requiresLevel, int damage, int level)
         {
             describeSkillText.text = title + "\n";
-            describeSkillText.text = contend;
+            describeSkillText.text += contend + "\n";
+            describeSkillText.text += "RequiresLevel: " + requiresLevel + "\n";
+            describeSkillText.text += "Damage: " + damage + "\n";
+            describeSkillText.text += "Skill Level: " + level + "\n";
         }
     }
-    
+
 }

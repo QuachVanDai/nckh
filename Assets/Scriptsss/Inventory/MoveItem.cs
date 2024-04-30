@@ -42,7 +42,7 @@ public class MoveItem : Select, IDragHandler, IBeginDragHandler, IEndDragHandler
         {
             if (this.GetSlotItem(PosSlot).getItemSO() != null)
             {
-                if (this.GetSlotItem(PosSlot).getItemSO().ItemName == movingSlot.getItemSO().ItemName)
+                if (this.GetSlotItem(PosSlot).getItemSO().itemName == movingSlot.getItemSO().itemName)
                 {
 
                     movingSlot.UpdateQuantity(this.GetSlotItem(PosSlot).getQuantity());

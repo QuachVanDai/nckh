@@ -3,20 +3,23 @@ using UnityEngine;
 using UnityEngine.UI;
 using QuachDai.NinjaSchool.Character;
 using UnityEngine.EventSystems;
+using QuachDai.NinjaSchool.Sound;
 public class UseMp : MonoBehaviour, IPointerClickHandler
 {
     public Slot slotFoodSO;
     private MpSO mpSO;
-    public int quanitity = 0;
     public Text quanitityText;
     public bool isUes;
     public Image imageFull;
     private float getTime;
     Player player => Player.Instance;
     InventoryUpdate inventoryUpdate => InventoryUpdate.Instance;
+    SoundSystem soundSystem => SoundSystem.Instance;
+    ClipSystem clipSystem => ClipSystem.Instance;
+    public int quanitity => inventoryUpdate.UpdateMP(0);
+
     void Start()
     {
-        quanitity = inventoryUpdate.UpdateMP(0);
         quanitityText.text = quanitity.ToString();
         isUes = true;
     }
@@ -34,18 +37,18 @@ public class UseMp : MonoBehaviour, IPointerClickHandler
     }
     public IEnumerator SetTimeUse()
     {
-        if (player.GetHp() == player.GetMaxHp())
+        if (player.GetMp() == player.GetMaxMp())
         {
-            TextTemplate.Instance.SetText(TagScript.fullHP);
+            TextTemplate.Instance.SetText(TagScript.fullMP);
             yield return new WaitForSeconds(0.5f);
         }
         else if (quanitity > 0)
         {
+            soundSystem.PlayOneShotSound(clipSystem.useHpMpClip);
             mpSO = (MpSO)slotFoodSO.getItemSO();
             isUes = false;
-            player.SetHp(1f * mpSO.mP);
-            //quanitity = inventoryUpdate.UpdateHP(-1);
-            quanitityText.text = quanitity.ToString();
+            player.SetMp(1f * mpSO.mP);
+            inventoryUpdate.UpdateMP(-1);
             getTime = Time.time;
             imageFull.fillAmount = 0;
             while (imageFull.fillAmount < 1)
@@ -62,8 +65,6 @@ public class UseMp : MonoBehaviour, IPointerClickHandler
     // Update is called once per frame
     void Update()
     {
-       // quanitity = inventoryUpdate.UpdateMP(0);
-      //  quanitityText.text = quanitity.ToString();
         if (Input.GetKeyUp(KeyCode.T))
             UseItemMp();
     }

@@ -15,7 +15,8 @@ MonoBehaviour:
   IDSkill: 4
   icon: {fileID: 21300000, guid: d85c198be89f61c4c92394b8402132e2, type: 3}
   skillName: "Chi\xEAu t\u0103ng s\u1EE9c m\u1EA1nh"
-  level: 15
+  requiresLevel: 15
+  skillLevel: 0
   framesMove:
   - {fileID: 0}
   framesFont:
@@ -35,9 +36,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7a4ac4009acb31a429c9944b5700fa9d, type: 3}
   - {fileID: 21300000, guid: 8ac7872be2cb90f4d902d6bd92eb11ea, type: 3}
   - {fileID: 0}
-  mp: 40
-  timeSkill: 0.2
-  coefficient: 3
+  mp: 1000
+  timeSkill: 15
+  skillDamage: 2000
+  increasedHPMP: 0
+  coefficient: 1.2
   isBlock: 0
   isActack: 1
   description: "Nh\u1EABn th\u1EADt t\xE2m ph\xE1p gi\xFAp b\u1EA3n th\xE2n t\u0103ng

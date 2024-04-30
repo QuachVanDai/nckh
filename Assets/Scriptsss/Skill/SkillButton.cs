@@ -25,7 +25,7 @@ namespace QuachDai.NinjaSchool.Skill
                 selectSkill.SetActive(true);
 
             }
-            if (frameSkill.level >= player.GetLevel())
+            if (frameSkill.requiresLevel >= player.GetLevel())
                 frameSkill.isBlock = true;
             else
                 frameSkill.isBlock = false;
@@ -63,7 +63,7 @@ namespace QuachDai.NinjaSchool.Skill
 
         private void ListenerMethod()
         {
-            if (player.GetLevel() >= frameSkill.level)
+            if (player.GetLevel() >= frameSkill.requiresLevel)
             {
                 HideSelectSkill();
                 playerSkill.SetFrameSkill(frameSkill);

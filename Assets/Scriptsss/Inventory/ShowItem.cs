@@ -15,7 +15,7 @@ public class ShowItem : Select
     {
         try
         {
-            inforItemText.text = this.GetSlotItem().getItemSO().ItemName + "\n";
+            inforItemText.text = this.GetSlotItem().getItemSO().itemName + "\n";
             inforItemText.text += this.GetSlotItem().getItemSO().Description + "\n";
 
         }

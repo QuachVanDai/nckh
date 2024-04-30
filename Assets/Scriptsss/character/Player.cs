@@ -13,7 +13,7 @@ namespace QuachDai.NinjaSchool.Character
         [SerializeField] float maxMp;
         [SerializeField] float mp;
         [SerializeField] float percentExp;
-        [SerializeField] int gold;
+        [SerializeField] int xu;
         [SerializeField] int minDamage;
         [SerializeField] int maxDamage;
         [SerializeField] Image fillBarHP;
@@ -23,7 +23,7 @@ namespace QuachDai.NinjaSchool.Character
         [SerializeField] Text mpText;
         [SerializeField] Text levelText;
         [SerializeField] Text percentExpText;
-        [SerializeField] Text goldText;
+        [SerializeField] Text xuText;
         [SerializeField] Text missionText;
         [SerializeField] GameObject damagedText;
         [SerializeField] RectTransform canvas;
@@ -39,6 +39,7 @@ namespace QuachDai.NinjaSchool.Character
         protected void Init()
         {
             setPlayer = new SetPlayer();
+            GetLevelText();
             GetMaxDamage();
             GetMinDamage();
             hp = GetMaxHp();
@@ -47,38 +48,8 @@ namespace QuachDai.NinjaSchool.Character
             SetMp(0);
             SetPercentExpText(0);
         }
-        public void IgnorePlayer()
-        {
-            Physics2D.IgnoreLayerCollision(7, 10);
-        }
-        public void Update()
-        {
-            IgnorePlayer();
-        }
-        private void OnCollisionEnter2D(Collision2D collision)
-        {
-            if (collision.gameObject.tag == "potion")
-            {
-                PickUpItems pickUpItems = collision.gameObject.GetComponent<PickUpItems>();
-                try
-                {
-                    MpSO MpSO = (MpSO)pickUpItems.slot.getItemSO();
-                    InventoryUpdate.Instance.UpdateMP(pickUpItems.slot, 1);
-                }
-                catch
-                {
-                    HpSO HpSO = (HpSO)pickUpItems.slot.getItemSO();
-                    InventoryUpdate.Instance.UpdateHP(pickUpItems.slot, 1);
-                }
 
-            }
-            else if (collision.gameObject.tag == "money")
-            {
-                PickUpItems pickUpItems = collision.gameObject.GetComponent<PickUpItems>();
-                MoneySO money = (MoneySO)pickUpItems.slot.getItemSO();
-                gold += money.Xu;
-            }
-        }
+
         public Animator GetAnimator()
         {
             return animatorPlayer;
@@ -89,7 +60,7 @@ namespace QuachDai.NinjaSchool.Character
             if (_quantityMonsterDestroyed == "" && _quantityMonsterDestroy == "" && _nameMonster == "")
                 missionText.text = "No mission";
             else
-                missionText.text = "Kill " + _nameMonster + " " + _quantityMonsterDestroyed + "/ " + _quantityMonsterDestroy ;
+                missionText.text = "Kill " + _nameMonster + " " + _quantityMonsterDestroyed + "/ " + _quantityMonsterDestroy;
         }
         public string GetMissionText()
         {
@@ -108,24 +79,27 @@ namespace QuachDai.NinjaSchool.Character
             transform.position = _vector3;
         }
 
-        public bool SetGold(int _number)
+        public bool SetXu(int _number)
         {
-            gold += _number;
-            if (gold <= 0)
+            xu += _number;
+            if (xu <= 0)
             {
-                gold = 0;
-                goldText.text = 0 + "";
+                xu = 0;
+                xuText.text = 0 + "";
                 return false;
             }
-            goldText.text = gold.ToString();
+            xuText.text = xu.ToString();
             return true;
         }
 
-
-
-        public void SetLevelText(int _level)
+        public int GetXu()
         {
-            levelText.text = _level.ToString();
+            return xu;
+        }
+        string levelStr => level.ToString();
+        public void GetLevelText()
+        {
+            levelText.text = levelStr;
         }
         public void SetPercentExpText(float _exp)
         {
@@ -155,14 +129,14 @@ namespace QuachDai.NinjaSchool.Character
         public void SetHp(float _hp)
         {
             this.hp += _hp;
-            this.hp = this.hp >= maxHp ? maxHp : this.hp;
+            if (hp > maxHp) hp = maxHp;
             fillBarHP.fillAmount = this.hp / maxHp;
             hpText.text = this.hp.ToString();
         }
         public void SetMp(float _mp)
         {
             this.mp += _mp;
-            this.mp = this.mp >= maxMp ? maxMp : this.mp;
+            if (mp > maxMp) mp = maxMp;
             fillBarMP.fillAmount = this.mp / maxMp;
             mpText.text = this.mp.ToString();
         }
@@ -190,18 +164,15 @@ namespace QuachDai.NinjaSchool.Character
         }
         public int GetMinDamage()
         {
-            minDamage = setPlayer.getDamePlayerDictionary(level).Item2;
+            minDamage = setPlayer.getDamePlayerDictionary(level).Item1;
             return minDamage;
         }
         public int GetMaxDamage()
         {
-            maxDamage = setPlayer.getDamePlayerDictionary(level).Item1;
+            maxDamage = setPlayer.getDamePlayerDictionary(level).Item2;
             return maxDamage;
         }
-        public int GetGold()
-        {
-            return gold;
-        }
+
     }
 
 }

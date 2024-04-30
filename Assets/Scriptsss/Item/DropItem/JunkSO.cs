@@ -5,5 +5,5 @@ using UnityEngine;
 public class JunkSO: ScriptableObject
 {
     public string _name = "Cac loai item";
-    public List<DropRate> dropRateList;
+    public List<ItemSO> itemList;
 }

@@ -15,7 +15,8 @@ MonoBehaviour:
   IDSkill: 5
   icon: {fileID: 21300000, guid: 3bca611b0e3491d4cbceee4f7296792e, type: 3}
   skillName: "Chi\xEAu cao c\u1EA5p"
-  level: 20
+  requiresLevel: 20
+  skillLevel: 0
   framesMove:
   - {fileID: 21300000, guid: 503d37c4bcd7e98408e6c416a7967861, type: 3}
   - {fileID: 21300000, guid: e62d6553b968f2e4c81927aed41383bf, type: 3}
@@ -36,8 +37,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: cb091ac55f201a4439a839e6cd301604, type: 3}
   - {fileID: 0}
   mp: 55
-  timeSkill: 0.3
-  coefficient: 1.5
+  timeSkill: 0.5
+  skillDamage: 140
+  increasedHPMP: 0
+  coefficient: 0.9
   isBlock: 1
   isActack: 1
   description: "Chi\xEAu th\u1EE9c k\xEAu g\u1ECDi L\xF4i M\xE3 Phong V\xE2n t\u1EA5n

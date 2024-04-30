@@ -3,10 +3,12 @@ namespace QuachDai.NinjaSchool.Spawn
 {
     public class Spawner : Singleton<Spawner>
     {
-        public Transform Spawn(Transform prefabs, Vector3 v3, Quaternion rotation, Holder holder)
+        Transform newPrefab;
+        public Transform Spawn(Transform _prefabs, Vector3 _position, Quaternion _rotation, Holder _holder)
         {
-            Transform newPrefab = Instantiate(prefabs, v3, rotation);
-            newPrefab.transform.parent = holder.GetTranform();
+            newPrefab = Instantiate(_prefabs, _position, _rotation);
+            if (_holder != null)
+                newPrefab.transform.parent = _holder.GetTranform();
             return newPrefab;
         }
     }

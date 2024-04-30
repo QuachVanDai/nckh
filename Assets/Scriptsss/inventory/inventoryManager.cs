@@ -17,7 +17,7 @@ public class InventoryManager : MonoBehaviour
     }
     private void Update()
     {
-        TextGold.text = Player.Instance.GetGold().ToString();
+        TextGold.text = Player.Instance.GetXu().ToString();
     }
     public void RefreshUI()
     {

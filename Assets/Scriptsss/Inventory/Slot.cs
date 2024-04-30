@@ -6,29 +6,29 @@ using UnityEngine;
 public class Slot
 
 {
-    public ItemSO _item;
-    public int _quantity;
+    public ItemSO item;
+    public int quantity;
 
     public Slot()
     {
-        _item = null;
-        _quantity = 0;
+        item = null;
+        quantity = 0;
     }
     public Slot(Slot slot)
     {
-        this._item = slot.getItemSO();
-        this._quantity = slot.getQuantity();
+        this.item = slot.getItemSO();
+        this.quantity = slot.getQuantity();
     }
     public Slot (ItemSO item,int quantity)
     {
-        this._item = item;
-        this._quantity = quantity;
+        this.item = item;
+        this.quantity = quantity;
     }
-    public ItemSO getItemSO() { return _item; }
-    public int getQuantity() {  return _quantity; }
-    public void UpdateQuantity(int quantity) { _quantity += quantity; }
-    public void SubQuantity(int quantity) { _quantity -= quantity; }
-    public void addItemSO(ItemSO item, int quantity) { _item = item; _quantity = quantity; }
-    public void Clear() { _item = null; _quantity = 0; }
+    public ItemSO getItemSO() { return item; }
+    public int getQuantity() {  return quantity; }
+    public void UpdateQuantity(int quantity) { this.quantity += quantity; }
+    public void SubQuantity(int quantity) { this.quantity -= quantity; }
+    public void addItemSO(ItemSO item, int quantity) { this.item = item; this.quantity = quantity; }
+    public void Clear() { item = null; quantity = 0; }
 
 }

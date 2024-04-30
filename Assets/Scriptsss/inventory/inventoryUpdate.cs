@@ -1,52 +1,61 @@
 ﻿
-using TMPro;
+
+using UnityEngine;
 
 public class InventoryUpdate : Singleton<InventoryUpdate>
 {
     public InventoryManager InventoryManager;
+    public UseHp useHp;
+    public UseMp useMp;
     #region update
    
     public void UpdateHP(Slot slot, int number)
     {
         for (int i = 0; i < InventoryManager.getSlotItems().Count; i++)
         {
-            if (InventoryManager.getSlotItems()[i].getItemSO() && InventoryManager.getSlotItems()[i].getItemSO().ItemName == "HP")
+            if (InventoryManager.getSlotItems()[i].getItemSO() && InventoryManager.getSlotItems()[i].getItemSO().itemName == ItemName.Hp)
             {
                 InventoryManager.getSlotItems()[i].UpdateQuantity(number);
                 InventoryManager.RefreshUI();
+                useHp.quanitityText.text = InventoryManager.getSlotItems()[i].getQuantity().ToString();
                 return;
             }
         }
         AddItem(slot);
+        useHp.quanitityText.text = slot.getQuantity().ToString();
     }
     public void UpdateMP(Slot slot, int number)
     {
         for (int i = 0; i < InventoryManager.getSlotItems().Count; i++)
         {
             if (InventoryManager.getSlotItems()[i].getItemSO()
-                && InventoryManager.getSlotItems()[i].getItemSO().ItemName == "MP")
+                && InventoryManager.getSlotItems()[i].getItemSO().itemName == ItemName.Mp)
             {
                 InventoryManager.getSlotItems()[i].UpdateQuantity(number);
                 InventoryManager.RefreshUI();
+                useMp.quanitityText.text = InventoryManager.getSlotItems()[i].getQuantity().ToString();
                 return;
             }
         }
         AddItem(slot);
+        useMp.quanitityText.text = slot.getQuantity().ToString();
     }
+    int sum = 0;
+    bool flat = false;
+    PotionSO potion;
     public int UpdateHP(int number)
     {
-        int sumHP = 0;
-        bool flat = false;
-        PotionSO hp;
+        flat = false;
+        sum = 0;
         for (int i = 0; i < InventoryManager.getSlotItems().Count; i++)
         {
-            hp = (PotionSO)InventoryManager.getSlotItems()[i].getItemSO();
-            if (hp && hp.PotionType == PotionType.hp)
+            potion = (PotionSO)InventoryManager.getSlotItems()[i].getItemSO();
+            if (potion && potion.PotionType == PotionType.hp)
             {
                 if (!flat)
                 {
                     InventoryManager.getSlotItems()[i].UpdateQuantity(number);
-                    sumHP += InventoryManager.getSlotItems()[i].getQuantity();
+                    sum += InventoryManager.getSlotItems()[i].getQuantity();
                     if (InventoryManager.getSlotItems()[i].getQuantity() == 0)
                     {
                         RemoveItem(i);
@@ -55,28 +64,27 @@ public class InventoryUpdate : Singleton<InventoryUpdate>
                 }
                 else
                 {
-                    sumHP += InventoryManager.getSlotItems()[i].getQuantity();
+                    sum += InventoryManager.getSlotItems()[i].getQuantity();
                 }
             }
         }
         InventoryManager.RefreshUI();
-
-        return sumHP;
+        useHp.quanitityText.text = sum.ToString();
+        return sum;
     }
     public int UpdateMP(int number)
     {
-        int sumMP = 0;
-        bool flat = false;
-        PotionSO mp;
+        flat = false;
+        sum = 0;
         for (int i = 0; i < InventoryManager.getSlotItems().Count; i++)
         {
-            mp = (PotionSO)InventoryManager.getSlotItems()[i].getItemSO();
-            if (mp && mp.PotionType == PotionType.mp)
+            potion = (PotionSO)InventoryManager.getSlotItems()[i].getItemSO();
+            if (potion && potion.PotionType == PotionType.mp)
             {
                 if (!flat)
                 {
                     InventoryManager.getSlotItems()[i].UpdateQuantity(number);
-                    sumMP += InventoryManager.getSlotItems()[i].getQuantity();
+                    sum += InventoryManager.getSlotItems()[i].getQuantity();
                     if (InventoryManager.getSlotItems()[i].getQuantity() == 0)
                     {
                         RemoveItem(i);
@@ -85,27 +93,26 @@ public class InventoryUpdate : Singleton<InventoryUpdate>
                 }
                 else
                 {
-                    sumMP += InventoryManager.getSlotItems()[i].getQuantity();
+                    sum += InventoryManager.getSlotItems()[i].getQuantity();
                 }
             }
         }
         InventoryManager.RefreshUI();
-
-        return sumMP;
+        useMp.quanitityText.text = sum.ToString();
+        return sum;
     }
    
     public bool IsHaveFood()
     {
         PotionSO food;
+
         for (int i = 0; i < InventoryManager.getSlotItems().Count; i++)
         {
             food = (PotionSO)InventoryManager.getSlotItems()[i].getItemSO();
             try
             {
                 if (food.PotionType == PotionType.food)
-                {
                     return true;
-                }
             }
             catch
             {
@@ -181,7 +188,7 @@ public class InventoryUpdate : Singleton<InventoryUpdate>
             s = InventoryManager.getSlotItems()[i];
             try
             {
-                if (slot.getItemSO().ItemName == s.getItemSO().ItemName)
+                if (slot.getItemSO().itemName == s.getItemSO().itemName)
                 {
                     InventoryManager.getSlotItems()[i].Clear();
                     InventoryManager.RefreshUI();

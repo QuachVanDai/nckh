@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6134948059564423744}
   - component: {fileID: 729075714945274102}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Selected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 5586488134047315355}
   - component: {fileID: 5625028811340599483}
   - component: {fileID: 4878131632610410719}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: TextDamage (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 3311997390885894285}
   - component: {fileID: 7910615706879952335}
   - component: {fileID: 2520872889247639051}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: AniAttacked1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,7 +281,7 @@ GameObject:
   - component: {fileID: 3334650377045373110}
   - component: {fileID: 4793839793632134476}
   - component: {fileID: 3401525457851911409}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: TextDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 5329284797785498928}
   - component: {fileID: 214945673938939077}
   - component: {fileID: 9211704072989719459}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -436,7 +436,7 @@ GameObject:
   - component: {fileID: 7356032956525023554}
   - component: {fileID: 7469167130539532033}
   - component: {fileID: 5080608048861109257}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Full
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -513,7 +513,7 @@ GameObject:
   - component: {fileID: 7909182864279257516}
   - component: {fileID: 2627425452986211267}
   - component: {fileID: 3051729224021486281}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Canvas (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -624,7 +624,7 @@ GameObject:
   - component: {fileID: 6349301803354427673}
   - component: {fileID: 6100558024552876595}
   - component: {fileID: 3679315304595815015}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: FireScorpion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -743,6 +743,7 @@ MonoBehaviour:
   minDamage: 0
   maxDamage: 0
   hpBar: {fileID: 5080608048861109257}
+  placeOfAppearance: 5
   spriteMonsterAttacked: {fileID: 6894901447095151004}
   monsterAttack: {fileID: 4408647081955724851}
   monsterAttacked: {fileID: 2498861524169625380}
@@ -782,13 +783,14 @@ MonoBehaviour:
   posEffect: {fileID: 3311997390885894285}
   playerAttack: {fileID: 0}
   monsterController2D: {fileID: 6605104500005634012}
-  JunkSO: {fileID: 0}
   monCurrent: {fileID: 4162733413916596111}
   damagedText:
   - {fileID: 3401525457851911409}
   - {fileID: 6016196424656816112}
   - {fileID: 4878131632610410719}
   posStartText: {x: 0, y: 0, z: 0}
+  itemDrop: {fileID: 8819162830517900460, guid: e9a13a542c7b5314a947c4f4a67705d0,
+    type: 3}
 --- !u!114 &6605104500005634012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -902,7 +904,7 @@ GameObject:
   - component: {fileID: 1394609512265741032}
   - component: {fileID: 8412826464102031519}
   - component: {fileID: 6016196424656816112}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: TextDamage (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -979,7 +981,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5874447336503242401}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Ui
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1015,7 +1017,7 @@ GameObject:
   - component: {fileID: 2019921592133521248}
   - component: {fileID: 5677367172823543552}
   - component: {fileID: 5104311606487451241}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1089,7 +1091,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1287969835981050227}
   - component: {fileID: 6894901447095151004}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AniAttacked2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

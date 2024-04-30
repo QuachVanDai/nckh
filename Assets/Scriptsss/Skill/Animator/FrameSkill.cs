@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "Animations/Frame Skill")]
 public class FrameSkill : ScriptableObject
@@ -7,13 +6,16 @@ public class FrameSkill : ScriptableObject
     public IDSkill IDSkill;
     public Sprite icon;
     public string skillName;
-    public int level;
+    public int requiresLevel;
+    public int skillLevel;
     public Sprite[] framesMove;
     public Sprite[] framesFont;
     public Sprite[] framesStart;
     public Sprite[] framesPosMonster;
     public int mp;
     public float timeSkill;
+    public int skillDamage;
+    public int increasedHPMP;
     public float coefficient;
     public bool isBlock=false;
     public bool isActack=false;

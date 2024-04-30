@@ -15,7 +15,8 @@ MonoBehaviour:
   IDSkill: 1
   icon: {fileID: 21300000, guid: 08d793d7efc134149b92686a3562ac19, type: 3}
   skillName: "Chi\xEAu c\u01A1 b\u1EA3n"
-  level: 1
+  requiresLevel: 1
+  skillLevel: 0
   framesMove:
   - {fileID: 21300000, guid: 5f16ceb2a3c6056408112f8694ed679b, type: 3}
   - {fileID: 21300000, guid: 4568dfeec2b796042ac38f1637fe669e, type: 3}
@@ -32,15 +33,17 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9ae7a3db3b5632547bf5a5c208de16a5, type: 3}
   - {fileID: 21300000, guid: f40ae284ab14a5f4fa33647960d89d8d, type: 3}
   framesPosMonster:
-  - {fileID: 21300000, guid: 22ecc2af254bea742b537e23ac958f78, type: 3}
-  - {fileID: 21300000, guid: b739c00a50350b04b924893aafc43371, type: 3}
-  - {fileID: 21300000, guid: 257ebf3d26d946b4a8f9ade0aeb6b19a, type: 3}
-  - {fileID: 21300000, guid: d179d4a0b4e178047a95854b2d001432, type: 3}
+  - {fileID: 21300000, guid: 398f6d237a5983e4b87388ba7216ef1f, type: 3}
+  - {fileID: 21300000, guid: 5c4c6a4fa86dfb448919b1bc1571596f, type: 3}
+  - {fileID: 21300000, guid: 951dcb706cdb2e44784e9f7310747446, type: 3}
+  - {fileID: 21300000, guid: 49cb894be998c8644b59790616f54c6c, type: 3}
   - {fileID: 0}
   mp: 30
   timeSkill: 0.4
-  coefficient: 1
-  isBlock: 1
+  skillDamage: 50
+  increasedHPMP: 0
+  coefficient: 0.5
+  isBlock: 0
   isActack: 1
   description: "\u0110ao ph\xE1p nh\u1EADp m\xF4n d\xF9ng \u0111ao ch\xE9m m\u1EA1nh
     v\xE0o m\u1EE5c ti\xEAu g\xE2y s\xE1t th\u01B0\u01A1ng l\xEAn m\u1EE5c ti\xEAu

@@ -4,7 +4,6 @@ namespace QuachDai.NinjaSchool.Character
 {
     public class PlayerItem : MonoBehaviour
     {
-        private static PlayerItem _Instance;
 
         [SerializeField] private Head _CharacterHead;
         [SerializeField] private Body _CharacterBody;
@@ -17,12 +16,6 @@ namespace QuachDai.NinjaSchool.Character
         [SerializeField] PantSO PantSO;
         //  [SerializeField] useItem weaponSO;
 
-        public static PlayerItem Instance { get => _Instance; }
-
-        protected void Awake()
-        {
-            PlayerItem._Instance = this;
-        }
         public void setPant(PantSO pant)
         {
             PantSO = pant;
@@ -43,10 +36,8 @@ namespace QuachDai.NinjaSchool.Character
             _CharacterLeg = GetComponentInChildren<Leg>();
             characterWeapon = GetComponentInChildren<Weapon>();
         }
-
-        private void Update()
+        private void Reset()
         {
-            // Thay đổi Tóc
             if (AvatarSO != null)
             {
                 CharacterCustomization(_CharacterHead.headIdle, AvatarSO.GetSpriteIdle);
@@ -74,6 +65,37 @@ namespace QuachDai.NinjaSchool.Character
                 CharacterCustomization(_CharacterLeg.legAttack, PantSO.GetSpriteAttack);
                 CharacterCustomization(_CharacterLeg.legDown, PantSO.GetSpriteDown);
             }
+        }
+        private void Update()
+        {
+           /* // Thay đổi Tóc
+            if (AvatarSO != null)
+            {
+                CharacterCustomization(_CharacterHead.headIdle, AvatarSO.GetSpriteIdle);
+                CharacterCustomization(_CharacterHead.headRun, AvatarSO.GetSpriteRun);
+                CharacterCustomization(_CharacterHead.headAttack, AvatarSO.GetSpriteAttack);
+                CharacterCustomization(_CharacterHead.headDown, AvatarSO.GetSpriteDown);
+            }
+
+
+            //// Thay đổi Áo
+            if (ClothSO != null)
+            {
+                CharacterCustomization(_CharacterBody.bodyIdle, ClothSO.GetSpriteIdle);
+                CharacterCustomization(_CharacterBody.bodyRun, ClothSO.GetSpriteRun);
+                CharacterCustomization(_CharacterBody.bodyAttack, ClothSO.GetSpriteAttack);
+                CharacterCustomization(_CharacterBody.bodyDown, ClothSO.GetSpriteDown);
+            }
+
+            //// Thay đổi Quần
+
+            if (PantSO != null)
+            {
+                CharacterCustomization(_CharacterLeg.legIdle, PantSO.GetSpriteIdle);
+                CharacterCustomization(_CharacterLeg.legRun, PantSO.GetSpriteRun);
+                CharacterCustomization(_CharacterLeg.legAttack, PantSO.GetSpriteAttack);
+                CharacterCustomization(_CharacterLeg.legDown, PantSO.GetSpriteDown);
+            }*/
             /*if (weaponSO != null)
             {
                 CharacterCustomization(characterWeapon.weapon, weaponSO.GetSpriteDown);

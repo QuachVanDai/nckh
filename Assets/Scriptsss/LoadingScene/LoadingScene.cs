@@ -17,9 +17,7 @@ namespace QuachDai.NinjaSchool.Scenes
         public void SetActive()
         {
             foreach (var transition in transitionAnimator)
-            {
                 transition.gameObject.SetActive(true);
-            }
         }
     }
 }

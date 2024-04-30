@@ -1,19 +1,25 @@
-using QuachDai.NinjaSchool.Scenes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    [SerializeField]
-    private bool isPlayGame;
-    public bool IsPlaygame {  get { return isPlayGame; } set { isPlayGame = value; } }
-    public ButtonNextScene buttonNextScene;
+    public bool isPlayGame;
     public string scenes;
-    public GameObject ingameDebug;
     private void Start()
     {
+        isPlayGame = true;
         SceneManager.LoadScene(scenes, LoadSceneMode.Additive);
-      //  ingameDebug = buttonNextScene.LoadScene();
     }
 
+    public void OnEnable()
+    {
+        Physics2D.IgnoreLayerCollision(7, 8, true);
+        Physics2D.IgnoreLayerCollision(8, 8, true);
+
+    }
+    public void OnDisable()
+    {
+        Physics2D.IgnoreLayerCollision(7, 8, false);
+        Physics2D.IgnoreLayerCollision(8, 8, false);
+    }
 }

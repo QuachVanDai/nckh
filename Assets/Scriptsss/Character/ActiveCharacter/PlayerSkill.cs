@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using QuachDai.NinjaSchool.Animations;
+using QuachDai.NinjaSchool.Sound;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -15,6 +16,8 @@ namespace QuachDai.NinjaSchool.Character
         Player player => Player.Instance;
         TextTemplate textTemplate => TextTemplate.Instance;
         AnimatorSystem animatorSystem => AnimatorSystem.Instance;
+        SoundSystem soundSystem => SoundSystem.Instance;
+        ClipSystem clipSystem => ClipSystem.Instance;
         private void Start()
         {
             isActtack = true;
@@ -41,7 +44,8 @@ namespace QuachDai.NinjaSchool.Character
             StartCoroutine(_SkillAttack());
             IEnumerator _SkillAttack()
             {
-
+                soundSystem.PlayOneShotSound(clipSystem.skillClip[clipSystem.GetIndex()]);
+                ManaUseSkill();
                 animatorSystem.SetBool(player.GetAnimator(), "IsAttack", true);
                 isActtack = false;
                 player.SetMp(frameSkill.mp * (-1));
@@ -60,19 +64,11 @@ namespace QuachDai.NinjaSchool.Character
 
         public void InCreaseHPMP()
         {
-            float hp, mp;
-            if (player.GetLevel() >= 10)
-            {
-                hp = skillParameters.getSkillLv5Parameters()[6];
-                mp = skillParameters.getSkillLv5Parameters()[6];
-            }
-            else
-            {
-                hp = skillParameters.getSkillLv5Parameters()[player.GetLevel() - 4];
-                mp = skillParameters.getSkillLv5Parameters()[player.GetLevel() - 4];
-            }
-            player.SetHp(hp);
-            player.SetMp(mp);
+            float point;
+            point = frameSkill.increasedHPMP +
+                (frameSkill.skillDamage * Mathf.Pow(frameSkill.skillLevel, frameSkill.coefficient));
+            player.SetHp(point);
+            player.SetMp(point);
         }
         public void SkillLevel5()
         {
@@ -107,9 +103,10 @@ namespace QuachDai.NinjaSchool.Character
             }
 
         }
-        public float GetCoefficient()
+        public float GetSkillDamage()
         {
-            return frameSkill.coefficient;
+            return frameSkill.skillDamage +
+                (frameSkill.skillDamage * Mathf.Pow(frameSkill.skillLevel, frameSkill.coefficient));
         }
         public float duration;
         public float strength;

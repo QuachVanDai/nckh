@@ -41,7 +41,7 @@ namespace QuachDai.NinjaSchool.Item
             }
             if (isUse)
             {
-                // InventoryUpdate.Instance.RemoveItem(slotFoodSO);
+                InventoryUpdate.Instance.RemoveItem(slotFoodSO);
                 foodPanel.gameObject.SetActive(true);
                 StartCoroutine(SetTimeUse());
                 isUse = false;
@@ -69,7 +69,7 @@ namespace QuachDai.NinjaSchool.Item
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyUp(KeyCode.T))
+            if (Input.GetKeyUp(KeyCode.E))
                 UseItemFood();
         }
     }

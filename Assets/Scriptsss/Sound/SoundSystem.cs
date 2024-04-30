@@ -1,18 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-public class SoundSystem : MonoBehaviour
+using UnityEngine.UI;
+namespace QuachDai.NinjaSchool.Sound
 {
-    // Start is called before the first frame update
-    void Start()
+    public class SoundSystem : Singleton<SoundSystem>
     {
-        
-    }
+        public AudioSource musicAudioSource;
+        public AudioSource soundAudioSource;
+        public void PlayOneShotSound(AudioClip clip)
+        {
+            soundAudioSource.PlayOneShot(clip);
+        }
+        public void PlayOneShotSound(AudioClip clip, float valueVolume)
+        {
+            soundAudioSource.PlayOneShot(clip, valueVolume);
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public void PlaySound(AudioClip clip)
+        {
+            if (clip == null) return;
+            soundAudioSource.clip = clip;
+            soundAudioSource.loop = true;
+            soundAudioSource.Play();
+        }
+        public void StopSound()
+        {
+            soundAudioSource.loop = true;
+            soundAudioSource.Stop();
+        }
     }
 }

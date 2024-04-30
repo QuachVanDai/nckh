@@ -10,6 +10,7 @@ namespace QuachDai.NinjaSchool.Mission
         {
             base.mission.QuantityMonsterDestroy = 0;
             base.mission.missionState = EMissionState.None;
+            base.mission.placeOfAppearance = Scenes.MiniSceneId.None;
             base.mission.QuantityMonsterDestroyed = 0;
             base.mission.IsHasMission = false;
             base.mission.IsCompleteMission = false;
@@ -32,6 +33,7 @@ namespace QuachDai.NinjaSchool.Mission
             {
                 TextTemplate.Instance.SetText("Đã nhận nhiệm vụ");
                 mission.SetUpMisson();
+                base.mission.placeOfAppearance = mission.GetMonster().placeOfAppearance;
                 mission.SetChangeMissionButton(new MissionPerform(mission));
                 return true;
             }

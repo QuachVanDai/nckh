@@ -32,7 +32,7 @@ namespace QuachDai.NinjaSchool.MainCanvas
         private void ListenerMethod()
         {
             informationMissionPanel.SetNameMissionText(player.GetMissionText());
-            informationMissionPanel.SetNoteText("");
+            informationMissionPanel.SetNoteText(missionUi.GetPlaceOfAppearance().ToString());
             informationMissionPanel.SetStatusText(missionUi.GetMissionState().ToString());
         }
     }

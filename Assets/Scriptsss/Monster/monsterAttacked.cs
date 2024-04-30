@@ -1,7 +1,10 @@
 using DG.Tweening;
 using QuachDai.NinjaSchool.Character;
+using QuachDai.NinjaSchool.Item;
 using QuachDai.NinjaSchool.Mission;
+using QuachDai.NinjaSchool.Spawn;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 namespace QuachDai.NinjaSchool.Monsters
@@ -14,7 +17,6 @@ namespace QuachDai.NinjaSchool.Monsters
 
         public PlayerAttack playerAttack;
         public MonsterController2D monsterController2D;
-        public JunkSO JunkSO;
         public Monster monCurrent;
 
         public Text[] damagedText;
@@ -79,8 +81,7 @@ namespace QuachDai.NinjaSchool.Monsters
                 if (missionUi.GetMonster())
                     if (missionUi.GetIDMonster() == monCurrent.ID)
                         missionUi.GiveTasks();
-                //ItemDropSpawner.Instance.Drop(JunkSO.dropRateList, transform.position, Quaternion.identity);
-
+                DropItem();
                 // i.Die(transform.position,Quaternion.identity);
                 InforMonster.Instance.SetActive(false);
                 monsterController2D.PlayAnimation(Status.death);
@@ -89,7 +90,12 @@ namespace QuachDai.NinjaSchool.Monsters
             }
             monCurrent.UpdateHp(monCurrent.currHp, monCurrent.maxHp, monCurrent.nameMonster, monCurrent.level);
         }
-
+        Spawner spawner => Spawner.Instance;
+        public ItemDrop itemDrop;
+        public void DropItem()
+        {
+            spawner.Spawn(itemDrop.GetItems(), transform.position, Quaternion.identity, null);
+        }
         public IEnumerator EffectAcctacked()
         {
             posEffect.gameObject.SetActive(true);

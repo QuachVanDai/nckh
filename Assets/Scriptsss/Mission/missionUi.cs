@@ -1,4 +1,5 @@
 ﻿using QuachDai.NinjaSchool.Monsters;
+using QuachDai.NinjaSchool.Scenes;
 using UnityEngine;
 namespace QuachDai.NinjaSchool.Mission
 {
@@ -11,6 +12,10 @@ namespace QuachDai.NinjaSchool.Mission
         {
             _mission = new Mission();
             _mission.PrefabsMonster = Monsters;
+        }
+        public MiniSceneId GetPlaceOfAppearance()
+        {
+            return _mission.placeOfAppearance;
         }
         public EMissionState GetMissionState()
         {

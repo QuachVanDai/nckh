@@ -15,7 +15,8 @@ MonoBehaviour:
   IDSkill: 2
   icon: {fileID: 21300000, guid: 14376a93ca849124aa76335ceab7f5b7, type: 3}
   skillName: "Chi\xEAu h\u1ED3i ph\u1EE5c"
-  level: 5
+  requiresLevel: 5
+  skillLevel: 0
   framesMove:
   - {fileID: 0}
   framesFont:
@@ -32,8 +33,10 @@ MonoBehaviour:
   framesPosMonster: []
   mp: 30
   timeSkill: 1
-  coefficient: 0
-  isBlock: 1
+  skillDamage: 0
+  increasedHPMP: 50
+  coefficient: 1.2
+  isBlock: 0
   isActack: 0
   description: "Nh\u1EABn th\u1EADt t\xE2m ph\xE1p gi\xFAp b\u1EA3n th\xE2n t\u0103ng
     hp mp."

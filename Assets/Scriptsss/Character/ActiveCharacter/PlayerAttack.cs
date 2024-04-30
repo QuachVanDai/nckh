@@ -1,7 +1,5 @@
 ﻿using DG.Tweening;
-using QuachDai.NinjaSchool.Mission;
 using QuachDai.NinjaSchool.Monsters;
-using QuachDai.NinjaSchool.Skill;
 using UnityEngine;
 using UnityEngine.UI;
 namespace QuachDai.NinjaSchool.Character
@@ -24,11 +22,11 @@ namespace QuachDai.NinjaSchool.Character
         }
         private void Update()
         {
-            if (GameManager.Instance.IsPlaygame == false) return;
+            if (GameManager.Instance.isPlayGame == false) return;
             if (playerController2D.IsGround() == false) return;
             if (monster == null) return;
             distance = Vector2.Distance(transform.position, monster.GetPosition());
-            if (distance > 7)
+            if (distance > 6)
             {
                 InforMonster.Instance.SetActive(false);
                 monster = null;
@@ -38,7 +36,7 @@ namespace QuachDai.NinjaSchool.Character
             if (playerController2D.getInputSpace())
             {
 
-                if (distance > 4)
+                if (distance > 5)
                 {
                     TextTemplate.Instance.SetText(TagScript.khoangCach);
                     return;
@@ -58,8 +56,7 @@ namespace QuachDai.NinjaSchool.Character
         float damage;
         public void PlayerAttackMonster()
         {
-            playerSkill.ManaUseSkill();
-            damage = player.GetDamage() * playerSkill.GetCoefficient();
+            damage = player.GetDamage() + playerSkill.GetSkillDamage();
             playerSkill.SkillAttack(Damgaed, AddExp);
         }
         public void Damgaed()
@@ -83,7 +80,7 @@ namespace QuachDai.NinjaSchool.Character
                 else
                     player.SetPercentExp(0);
                 player.IncreaseLevel();
-                player.SetLevelText(player.GetLevel());
+                player.GetLevelText();
             }
             else
                 player.IncreasePercentExp((float)exp);

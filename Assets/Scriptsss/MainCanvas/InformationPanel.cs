@@ -16,7 +16,15 @@ namespace QuachDai.NinjaSchool.MainCanvas
         [SerializeField] Text iceSkillText;
 
         Player player => Player.Instance;
-        private void Start()
+        string namePlayer => player.GetNamePlayer();
+        string level => player.GetLevel().ToString();
+
+        string exp=> player.GetPercentExp().ToString();
+        string hp => player.GetHp() + "/" + player.GetMaxHp();
+        string mp => player.GetMp() + "/" + player.GetMaxMp();
+        string attackMin => player.GetMinDamage().ToString();
+        string attackMax => player.GetMaxDamage().ToString();
+        public void UpdateInformation()
         {
             GetNameText();
             GetLevelText();
@@ -30,46 +38,48 @@ namespace QuachDai.NinjaSchool.MainCanvas
         }
         public void GetNameText()
         {
-            nameText.text = "Name : " + player.GetNamePlayer();
+            nameText.text = "Name : " + namePlayer;
         }
 
         public void GetLevelText()
         {
-            levelText.text = "Level : " + player.GetLevel();
+            levelText.text = "Level : " + level;
         }
 
         public void GetExpText()
         {
-            expText.text = "Exp : " + player.GetPercentExp().ToString() + " %";
+            expText.text = "Exp : " + exp + " %";
         }
 
         public void GetHpText()
         {
-            hpText.text = "Hp : " + player.GetHp() + "/" + player.GetMaxHp();
+            hpText.text = "Hp : " + hp;
         }
         public void GetMpText()
         {
-            mpText.text = "Mp : " + player.GetMp() + "/" + player.GetMaxMp();
+            mpText.text = "Mp : " + mp;
         }
         public void GetAttackText()
         {
-            attackText.text = "Attack : " + player.GetMinDamage() + " - " + player.GetMaxDamage();
+            attackText.text = "Attack : " + attackMin + " - " + attackMax;
         }
+        int levelInt => player.GetLevel();
         public void GetWindSkillText()
         {
-            if (player.GetLevel() >= 1)
+
+            if (levelInt >= 1)
                 windSkillText.text = "WindSkill : Yes";
             else windSkillText.text = "WindSkill : No";
         }
         public void GetFireSkillText()
         {
-            if (player.GetLevel() >= 15)
+            if (levelInt >= 15)
                 fireSkillText.text = "FireSkill : Yes";
             else fireSkillText.text = "FireSkill : No";
         }
         public void GetIceSkillText()
         {
-            if (player.GetLevel() >= 20)
+            if (levelInt >= 20)
                 iceSkillText.text = "IceSkill : Yes";
             else iceSkillText.text = "IceSkill : No";
         }

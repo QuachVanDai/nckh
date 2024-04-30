@@ -1,4 +1,5 @@
 ﻿
+using QuachDai.NinjaSchool.Scenes;
 using UnityEngine;
 using UnityEngine.UI;
 namespace QuachDai.NinjaSchool.Monsters
@@ -13,6 +14,7 @@ namespace QuachDai.NinjaSchool.Monsters
         public int minDamage;
         public int maxDamage;
         public Image hpBar;
+        public MiniSceneId placeOfAppearance;
      //   public RectTransform canvasUi;
         public SpriteRenderer spriteMonsterAttacked;
 

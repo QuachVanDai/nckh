@@ -2,6 +2,7 @@
 
 using QuachDai.NinjaSchool.Character;
 using QuachDai.NinjaSchool.Monsters;
+using QuachDai.NinjaSchool.Scenes;
 using UnityEngine;
 namespace QuachDai.NinjaSchool.Mission
 {
@@ -9,6 +10,7 @@ namespace QuachDai.NinjaSchool.Mission
     {
         private IMissionButton missionButton;
         public EMissionState missionState;
+        public MiniSceneId placeOfAppearance;
         public bool IsHasMission = false;
         public bool IsCompleteMission = false;
         public Monster[] PrefabsMonster;

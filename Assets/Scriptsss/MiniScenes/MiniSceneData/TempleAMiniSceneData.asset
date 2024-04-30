@@ -22,3 +22,4 @@ MonoBehaviour:
   yMin: -4.8
   xMax: 3.6
   xMin: -50.6
+  music: {fileID: 8300000, guid: a8834b06592e6b74893c476b8149233c, type: 3}

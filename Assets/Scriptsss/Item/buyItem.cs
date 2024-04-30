@@ -8,7 +8,7 @@ public class BuyItem : MonoBehaviour
     Player player => Player.Instance;
     private void Start()
     {
-        SumMoney = player.GetGold();
+        SumMoney = player.GetXu();
     }
     public void ConfirmBuy()
     {
@@ -21,22 +21,22 @@ public class BuyItem : MonoBehaviour
         Cost = Slot.getItemSO().Cost;
         if (SumMoney < Cost) { TextTemplate.Instance.SetText(TagScript.notMoney); return;  }
       
-        if (Slot.getItemSO().ItemName == "HP" )
+        if (Slot.getItemSO().itemName == ItemName.Hp)
         {
             InventoryUpdate.Instance.UpdateHP(Slot, 1);
-            player.SetGold(-Cost);
+            player.SetXu(-Cost);
 
         }
-        else if (Slot.getItemSO().ItemName == "MP")
+        else if (Slot.getItemSO().itemName == ItemName.Mp)
         {
             InventoryUpdate.Instance.UpdateMP(Slot, 1);
-            player.SetGold(-Cost);
+            player.SetXu(-Cost);
         }
         else 
         {
             InventoryUpdate.Instance.AddItem(Slot);
-            player.SetGold(-Cost);
+            player.SetXu(-Cost);
         }
-        SumMoney = player.GetGold();
+        SumMoney = player.GetXu();
     }
 }

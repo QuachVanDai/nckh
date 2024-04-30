@@ -13,16 +13,7 @@ MonoBehaviour:
   m_Name: DropItemByMonster
   m_EditorClassIdentifier: 
   _name: ItemPosion
-  dropRateList:
-  - itemSO: {fileID: 11400000, guid: 9bbf73c1e54f7494a86ec14c3f9c4f5e, type: 2}
-    dropRate: 0
-    minDrop: 0
-    maxDrop: 0
-  - itemSO: {fileID: 11400000, guid: 45a8c7b5f7ba2e140be938b1155728cc, type: 2}
-    dropRate: 0
-    minDrop: 0
-    maxDrop: 0
-  - itemSO: {fileID: 11400000, guid: 6b7358edf294b024f96d7621c489735d, type: 2}
-    dropRate: 0
-    minDrop: 0
-    maxDrop: 0
+  itemList:
+  - {fileID: 11400000, guid: 9bbf73c1e54f7494a86ec14c3f9c4f5e, type: 2}
+  - {fileID: 11400000, guid: 45a8c7b5f7ba2e140be938b1155728cc, type: 2}
+  - {fileID: 11400000, guid: 6b7358edf294b024f96d7621c489735d, type: 2}

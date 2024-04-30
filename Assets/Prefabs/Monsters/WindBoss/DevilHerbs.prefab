@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8526609084514114285}
   - component: {fileID: 6138842164612072858}
   - component: {fileID: 3147103262865581140}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: TextDamage (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8914402806433071299}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Ui
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 666040806270399652}
   - component: {fileID: 2862041357213267786}
   - component: {fileID: 2769061292063191727}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Full
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 2297353631929573528}
   - component: {fileID: 1967160636380590434}
   - component: {fileID: 3665813080521665072}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: TextDamage (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8770005954066011241}
   - component: {fileID: 181747546973732961}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AniAttacked2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -363,7 +363,7 @@ GameObject:
   - component: {fileID: 6920701141193253665}
   - component: {fileID: 2791362889674124704}
   - component: {fileID: 8944899894964330561}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -438,7 +438,7 @@ GameObject:
   - component: {fileID: 5163434192626962838}
   - component: {fileID: 2192474587598734425}
   - component: {fileID: 7704152270528243457}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: TextDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -516,7 +516,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5644529939242819386}
   - component: {fileID: 541379564883100671}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Selected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -602,7 +602,7 @@ GameObject:
   - component: {fileID: 4998557832339785709}
   - component: {fileID: 1433604448825964456}
   - component: {fileID: 2762585612105299122}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -679,7 +679,7 @@ GameObject:
   - component: {fileID: 8410781933382653432}
   - component: {fileID: 7951415199584597186}
   - component: {fileID: 6640589004565391084}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Canvas (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -783,7 +783,7 @@ GameObject:
   - component: {fileID: 6381966376076023123}
   - component: {fileID: 2484566254923771239}
   - component: {fileID: 504410704073711202}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: AniAttacked1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -896,7 +896,7 @@ GameObject:
   - component: {fileID: 2531490399812934401}
   - component: {fileID: 2846096894357724217}
   - component: {fileID: 9137766546243150793}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: DevilHerbs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1015,6 +1015,7 @@ MonoBehaviour:
   minDamage: 0
   maxDamage: 0
   hpBar: {fileID: 2769061292063191727}
+  placeOfAppearance: 4
   spriteMonsterAttacked: {fileID: 181747546973732961}
   monsterAttack: {fileID: 4419556837256838162}
   monsterAttacked: {fileID: 8253831519840157627}
@@ -1054,13 +1055,14 @@ MonoBehaviour:
   posEffect: {fileID: 6381966376076023123}
   playerAttack: {fileID: 0}
   monsterController2D: {fileID: 5323798540562889874}
-  JunkSO: {fileID: 0}
   monCurrent: {fileID: 8543932350702303626}
   damagedText:
   - {fileID: 7704152270528243457}
   - {fileID: 3147103262865581140}
   - {fileID: 3665813080521665072}
   posStartText: {x: 0, y: 0, z: 0}
+  itemDrop: {fileID: 8819162830517900460, guid: e9a13a542c7b5314a947c4f4a67705d0,
+    type: 3}
 --- !u!114 &5323798540562889874
 MonoBehaviour:
   m_ObjectHideFlags: 0

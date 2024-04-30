@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using QuachDai.NinjaSchool.Character;
+using QuachDai.NinjaSchool.Sound;
 namespace QuachDai.NinjaSchool.Scenes
 {
     public class ButtonNextScene : MonoBehaviour
@@ -15,7 +16,7 @@ namespace QuachDai.NinjaSchool.Scenes
             LoadingPanel.Instance.SetActive(true);
             LoadingPanel.Instance.StartCoroutine(LoadingPanel.Instance.LoadingPopUp(LoadScene,1f));
         }
-
+        public AudioClip music => sceneActive.music;
         public void LoadScene()
         {
             if (SceneManager.GetSceneByName(sceneDisActive.sceneName).isLoaded)
@@ -23,6 +24,7 @@ namespace QuachDai.NinjaSchool.Scenes
 
             SceneManager.LoadScene(sceneActive.sceneName, LoadSceneMode.Additive);
             Player.Instance.SetPositon(sceneActive.PosPlayer[index]);
+            SoundSystem.Instance.PlaySound(music);
         }
     }
 }

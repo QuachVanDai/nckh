@@ -3,26 +3,18 @@ using TMPro;
 using UnityEngine;
 using DG.Tweening;
 
-public class TextTemplate : MonoBehaviour
+public class TextTemplate : Singleton<TextTemplate>
 
 {
-    private static TextTemplate instance;
     public TextMeshProUGUI textMeshPro;
     public bool Flat = true;
     public string txt;
     public GameObject panel;
-    public static TextTemplate Instance { get { return instance; } }
-
-    protected void Awake()
+    void Start()
     {
         panel.SetActive(true);
         panel.SetActive(false);
-        TextTemplate.instance = this;
-    }
-    void Start()
-    {
         Flat = true;
-        //  SetText("Your long text goes here...");
     }
 
     public void SetText(string text)
