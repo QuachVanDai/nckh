@@ -22,7 +22,7 @@ namespace QuachDai.NinjaSchool.Character
         }
         private void Update()
         {
-            if (GameManager.Instance.isPlayGame == false) return;
+            if (GameManager.Instance.IsPlayGame == false) return;
             if (playerController2D.IsGround() == false) return;
             if (monster == null) return;
             distance = Vector2.Distance(transform.position, monster.GetPosition());

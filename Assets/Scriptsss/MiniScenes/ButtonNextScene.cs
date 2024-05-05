@@ -21,9 +21,9 @@ namespace QuachDai.NinjaSchool.Scenes
         {
             if (SceneManager.GetSceneByName(sceneDisActive.sceneName).isLoaded)
                 SceneManager.UnloadSceneAsync(sceneDisActive.sceneName);
-
+            GameManager.Instance.SetMiniSceneData(sceneActive);
             SceneManager.LoadScene(sceneActive.sceneName, LoadSceneMode.Additive);
-            Player.Instance.SetPositon(sceneActive.PosPlayer[index]);
+            Player.Instance.SetPosition(sceneActive.PosPlayer[index]);
             SoundSystem.Instance.PlaySound(music);
         }
     }

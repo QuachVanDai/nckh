@@ -12,19 +12,5 @@ namespace QuachDai.NinjaSchool.Monsters
         [SerializeField] ObjectPool objectPool;
         [SerializeField] KeyOjectPool keyPool;
         [SerializeField] List<GameObject> objectsList;
-       
-     
-        void SnowSpawm()
-        {
-            foreach (GameObject obj in objectsList)
-            {
-                if (!obj.gameObject.activeSelf)
-                {
-                    obj.gameObject.SetActive(true);
-                    break;
-                }
-
-            }
-        }
     }
 }

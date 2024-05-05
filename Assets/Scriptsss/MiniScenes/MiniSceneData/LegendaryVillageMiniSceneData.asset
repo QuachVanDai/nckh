@@ -23,3 +23,4 @@ MonoBehaviour:
   xMax: 24.6
   xMin: -0.6
   music: {fileID: 8300000, guid: 2bb4b466087d9a346ad689958609d1d7, type: 3}
+  posPlayerFinal: {x: -7, y: 2, z: 0}

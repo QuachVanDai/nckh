@@ -22,7 +22,8 @@ namespace QuachDai.NinjaSchool.Monsters
         }
         private void Update()
         {
-            FindPlayer();
+            if (isShooting && monCurrent.currHp < monCurrent.maxHp)
+                FindPlayer();
         }
         [SerializeField] BulletMove bullet;
         void Shoot()
@@ -54,22 +55,17 @@ namespace QuachDai.NinjaSchool.Monsters
             hits = Physics2D.CircleCastAll(transform.position, radiusAttack, Vector2.zero, 0.0f, target);
             foreach (RaycastHit2D hit in hits)
             {
-                // Kiểm tra xem đối tượng va chạm có phải là quái vật hay không
                 if (hit.collider.CompareTag("player"))
-                {
-                    if (isShooting && monCurrent.currHp < monCurrent.maxHp) 
                     Shoot();
-                    //  if (monWeapons == null && )
-                }
             }
         }
-        void OnDrawGizmos()
-        {
-            // Đặt màu của gizmo
-            Gizmos.color = Color.yellow;
+        /*   void OnDrawGizmos()
+           {
+               // Đặt màu của gizmo
+               Gizmos.color = Color.yellow;
 
-            // Vẽ hình tròn tại vị trí của đối tượng với bán kính được thiết lập
-            Gizmos.DrawWireSphere(transform.position, radiusAttack);
-        }
+               // Vẽ hình tròn tại vị trí của đối tượng với bán kính được thiết lập
+               Gizmos.DrawWireSphere(transform.position, radiusAttack);
+           }*/
     }
 }

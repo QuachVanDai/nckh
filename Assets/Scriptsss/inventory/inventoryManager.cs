@@ -1,23 +1,24 @@
 ﻿
+using QuachDai.NinjaSchool.Character;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using QuachDai.NinjaSchool.Character;
 
 public class InventoryManager : MonoBehaviour
 {
-    
+
     [SerializeField] private List<Slot> SlotItems = new List<Slot>(15);
     [SerializeField] private GameObject[] SlotsGameObject;
-    public Text TextGold;
+    public Text xuText;
 
     public void Start()
     {
         RefreshUI();
+        SetXuText();
     }
-    private void Update()
+    public void SetXuText()
     {
-        TextGold.text = Player.Instance.GetXu().ToString();
+        xuText.text = Player.Instance.GetXu().ToString();
     }
     public void RefreshUI()
     {
@@ -47,5 +48,5 @@ public class InventoryManager : MonoBehaviour
 
     public GameObject[] getSlotGameObject() { return SlotsGameObject; }
     public List<Slot> getSlotItems() { return SlotItems; }
-    public void setSlotItem(Slot slot,int i) {  SlotItems[i]=slot; }
+    public void setSlotItem(Slot slot, int i) { SlotItems[i] = slot; }
 }

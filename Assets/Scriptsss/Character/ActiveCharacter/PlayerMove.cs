@@ -23,7 +23,7 @@ namespace QuachDai.NinjaSchool.Character
 
         private void Update()
         {
-            //if (GameManager.Instance.IsPlaygame == false) return;
+            if (GameManager.Instance.IsPlayGame == false) return;
 
             moveInput = playerController2D.getInputHorizontal();
             jumpInput = playerController2D.getInputVertical();

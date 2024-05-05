@@ -6,7 +6,6 @@ namespace QuachDai.NinjaSchool.MainCanvas
 {
     public class UpgradeButton : MonoBehaviour
     {
-       
         Button button;
         [SerializeField]
         Button ThisButton
@@ -27,8 +26,10 @@ namespace QuachDai.NinjaSchool.MainCanvas
         {
             ThisButton.onClick.RemoveListener(ListenerMethod);
         }
-        AudioClip clip => ClipSystem.Instance.buttonClip;
-
+        public void SetActive(bool _values)
+        {
+            gameObject.SetActive(_values);
+        }
         [SerializeField] SkillPanel skillPanel;
         private void ListenerMethod()
         {

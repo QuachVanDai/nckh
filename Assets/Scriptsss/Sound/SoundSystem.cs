@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 namespace QuachDai.NinjaSchool.Sound
 {
     public class SoundSystem : Singleton<SoundSystem>
@@ -18,9 +17,9 @@ namespace QuachDai.NinjaSchool.Sound
         public void PlaySound(AudioClip clip)
         {
             if (clip == null) return;
-            soundAudioSource.clip = clip;
-            soundAudioSource.loop = true;
-            soundAudioSource.Play();
+            musicAudioSource.clip = clip;
+            musicAudioSource.loop = true;
+            musicAudioSource.Play();
         }
         public void StopSound()
         {

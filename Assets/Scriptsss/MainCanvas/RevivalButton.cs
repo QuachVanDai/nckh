@@ -1,10 +1,11 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 namespace QuachDai.NinjaSchool.MainCanvas
 {
-    public class ContinueButton : MonoBehaviour
+    public class RevivalButton : MonoBehaviour
     {
-        [SerializeField] GameObject objectActive;
         Button button;
         [SerializeField]
         Button ThisButton
@@ -27,6 +28,7 @@ namespace QuachDai.NinjaSchool.MainCanvas
         }
         private void ListenerMethod()
         {
+            GameManager.Instance.IsPlayGame = true;
         }
     }
 }

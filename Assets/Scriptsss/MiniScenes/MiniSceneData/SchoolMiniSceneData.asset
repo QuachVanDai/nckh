@@ -16,10 +16,11 @@ MonoBehaviour:
   sceneName: SchoolScene
   scene: {fileID: 102900000, guid: e89e2df9ed9be814697bf79e2facfea4, type: 3}
   PosPlayer:
-  - {x: -10, y: 5, z: 0}
-  - {x: -65, y: 1, z: 0}
-  yMax: 6
-  yMin: -2.5
-  xMax: -19.2
-  xMin: -54.3
-  music: {fileID: 8300000, guid: b1e358b7170c3a641911da667000d593, type: 3}
+  - {x: -10, y: 5.4, z: 0}
+  - {x: -64.32, y: 0.76, z: 0}
+  yMax: 4.3
+  yMin: -1.2
+  xMax: -19.5
+  xMin: -54.7
+  music: {fileID: 8300000, guid: cc5e4bf9ef36c524e8d18d4999440502, type: 3}
+  posPlayerFinal: {x: -19.4, y: -1, z: 0}

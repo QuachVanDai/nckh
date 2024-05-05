@@ -1,4 +1,5 @@
-﻿using QuachDai.NinjaSchool.MainCanvas;
+﻿using QuachDai.NinjaSchool.Character;
+using QuachDai.NinjaSchool.MainCanvas;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -22,19 +23,28 @@ namespace QuachDai.NinjaSchool.Skill
         }
         public void Upgrade()
         {
-            if (frameSkill.skillLevel>=3)
+            if(frameSkill.requiresLevel>Player.Instance.GetLevel())
+                TextTemplate.Instance.SetText("Level is not enough to upgrade");
+            else if (frameSkill.skillLevel>=3)
+                TextTemplate.Instance.SetText("Maximum level reached");
+            else
             {
-                TextTemplate.Instance.SetText("Đã đạt cấp độ tối đa");
-                return;
+                frameSkill.skillLevel += 1;
+                Show();
             }
-            frameSkill.skillLevel += 1;
         }
         public void OnPointerDown(PointerEventData eventData)
         {
             upgradeButton.SetSkillPanel(this);
             HideSelectSkill();
+            Show();
+        }
+        public void Show()
+        {
+            upgradeButton.SetActive(true);
+            describeSkill.ResetPosition();
             float _skillDamage = frameSkill.skillDamage +
-                (frameSkill.skillDamage * Mathf.Pow( frameSkill.skillLevel,frameSkill.coefficient));
+                (frameSkill.skillDamage * Mathf.Pow(frameSkill.skillLevel, frameSkill.coefficient));
             describeSkill.Show(frameSkill.skillName,
                                 frameSkill.description,
                                 frameSkill.requiresLevel,

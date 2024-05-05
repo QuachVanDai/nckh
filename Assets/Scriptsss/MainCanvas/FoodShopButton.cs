@@ -1,10 +1,13 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 namespace QuachDai.NinjaSchool.MainCanvas
 {
-    public class ContinueButton : MonoBehaviour
+    public class FoodShopButton : MonoBehaviour
     {
-        [SerializeField] GameObject objectActive;
+        public GameObject foodShop;
+        public InventoryManager inventoryManager;
         Button button;
         [SerializeField]
         Button ThisButton
@@ -27,6 +30,9 @@ namespace QuachDai.NinjaSchool.MainCanvas
         }
         private void ListenerMethod()
         {
+            foodShop.SetActive(true);
+            GameManager.Instance.IsPlayGame = false;
+            inventoryManager.SetXuText();
         }
     }
 }

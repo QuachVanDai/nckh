@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d707295742d39c4da92c69e9ceb10c9, type: 3}
-  m_Name: TempleAMiniSceneData
+  m_Name: SceneCurrentMiniScene
   m_EditorClassIdentifier: 
-  Id: 2
-  sceneName: TempleAScene
-  scene: {fileID: 102900000, guid: 448702b9f9a47454d8c7992811532132, type: 3}
+  Id: 0
+  sceneName: IceMountainScene
+  scene: {fileID: 102900000, guid: dae560625ddaf594c93cf98d173f61e8, type: 3}
   PosPlayer:
-  - {x: 13, y: 6, z: 0}
-  - {x: -60, y: -5, z: 0}
-  yMax: 1.8
-  yMin: -4.8
-  xMax: 3.6
-  xMin: -50.6
-  music: {fileID: 8300000, guid: a8834b06592e6b74893c476b8149233c, type: 3}
-  posPlayerFinal: {x: -60, y: -5, z: 0}
+  - {x: -13, y: -2, z: 0}
+  - {x: 14, y: -5, z: 0}
+  yMax: 4.3
+  yMin: -1.7
+  xMax: 3.3
+  xMin: -3.3
+  music: {fileID: 8300000, guid: cc5e4bf9ef36c524e8d18d4999440502, type: 3}
+  posPlayerFinal: {x: 15.1907625, y: 3.292246, z: 0}

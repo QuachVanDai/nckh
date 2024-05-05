@@ -13,6 +13,7 @@ namespace QuachDai.NinjaSchool.Scenes
         public float xMax;
         public float xMin;
         public AudioClip music;
+        public Vector3 posPlayerFinal;
     }
 
     public enum MiniSceneId

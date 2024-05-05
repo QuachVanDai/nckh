@@ -74,7 +74,7 @@ namespace QuachDai.NinjaSchool.Character
         {
             return namePlayer;
         }
-        public void SetPositon(Vector3 _vector3)
+        public void SetPosition(Vector3 _vector3)
         {
             transform.position = _vector3;
         }
@@ -130,6 +130,7 @@ namespace QuachDai.NinjaSchool.Character
         {
             this.hp += _hp;
             if (hp > maxHp) hp = maxHp;
+            else if(hp<=0) hp = 0;
             fillBarHP.fillAmount = this.hp / maxHp;
             hpText.text = this.hp.ToString();
         }

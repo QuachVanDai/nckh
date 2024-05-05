@@ -1,7 +1,6 @@
 
 using DG.Tweening;
 using System.Collections;
-using System.Drawing;
 using UnityEngine;
 namespace QuachDai.NinjaSchool.Monsters
 {
@@ -46,7 +45,7 @@ namespace QuachDai.NinjaSchool.Monsters
             monsterController2D.tweenMonsterMove = transform.DOMove(point[currentWaypointIndex], timeMove).OnComplete(() =>
             {
                 monsterController2D.PlayAnimation(Status.idle);
-                    StartCoroutine(_MonterMove());
+                StartCoroutine(_MonterMove());
             });
             IEnumerator _MonterMove()
             {

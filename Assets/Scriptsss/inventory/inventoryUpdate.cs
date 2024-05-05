@@ -18,11 +18,13 @@ public class InventoryUpdate : Singleton<InventoryUpdate>
                 InventoryManager.getSlotItems()[i].UpdateQuantity(number);
                 InventoryManager.RefreshUI();
                 useHp.quanitityText.text = InventoryManager.getSlotItems()[i].getQuantity().ToString();
+                InventoryManager.SetXuText();
                 return;
             }
         }
         AddItem(slot);
         useHp.quanitityText.text = slot.getQuantity().ToString();
+        InventoryManager.SetXuText();
     }
     public void UpdateMP(Slot slot, int number)
     {
@@ -34,11 +36,14 @@ public class InventoryUpdate : Singleton<InventoryUpdate>
                 InventoryManager.getSlotItems()[i].UpdateQuantity(number);
                 InventoryManager.RefreshUI();
                 useMp.quanitityText.text = InventoryManager.getSlotItems()[i].getQuantity().ToString();
+                InventoryManager.SetXuText();
                 return;
             }
         }
         AddItem(slot);
         useMp.quanitityText.text = slot.getQuantity().ToString();
+        InventoryManager.SetXuText();
+
     }
     int sum = 0;
     bool flat = false;
@@ -130,7 +135,8 @@ public class InventoryUpdate : Singleton<InventoryUpdate>
             {
                 InventoryManager.getSlotItems()[i].addItemSO(slot.getItemSO(), 1);
                 InventoryManager.RefreshUI();
-                return ;
+                InventoryManager.SetXuText();
+                return;
             }
         }
     }
