@@ -29,6 +29,7 @@ namespace QuachDai.NinjaSchool.Item
         }
         public void OnPointerClick(PointerEventData eventData)
         {
+            if (GameManager.Instance.IsPlayGame == false) return;
             UseItemFood();
             Debug.Log("using item Food");
         }
@@ -39,7 +40,8 @@ namespace QuachDai.NinjaSchool.Item
                 TextTemplate.Instance.SetText(TagScript.notFood);
                 return;
             }
-            if (isUse)
+
+            if (isUse )
             {
                 InventoryUpdate.Instance.RemoveItem(slotFoodSO);
                 foodPanel.gameObject.SetActive(true);
@@ -58,8 +60,11 @@ namespace QuachDai.NinjaSchool.Item
                 timeUseText.text = (expiredTime / 60).ToString() + ":";
                 timeUseText.text += (expiredTime - ((expiredTime / 60) * 60)).ToString();
                 imgFullTime.fillAmount = (Time.time - getTime) / (expiredTime);
-                player.SetMp(foodSO.MP);
-                player.SetHp(foodSO.HP);
+                if (GameManager.Instance.IsPlayGame == true)
+                {
+                    player.SetMp(foodSO.MP);
+                    player.SetHp(foodSO.HP);
+                }
                 expiredTime--;
                 yield return new WaitForSeconds(1f);
             }

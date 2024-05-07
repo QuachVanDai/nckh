@@ -12,20 +12,20 @@ namespace QuachDai.NinjaSchool.Mission
         }
         public override bool CompleteMission()
         {
-            TextTemplate.Instance.SetText("Hãy hoàn thành nhiệm vụ");
+            TextTemplate.Instance.SetText("Please complete the mission");
             return false;
         }
 
         public override bool CancelMission()
         {
-            TextTemplate.Instance.SetText("Hủy nhiệm vụ thành công");
+            TextTemplate.Instance.SetText("Mission canceled successfully");
             mission.SetChangeMissionButton(new MissionNot(mission));
             return false;
 
         }
         public override bool AgreeMission()
         {
-            TextTemplate.Instance.SetText("Hãy hoàn thành nhiệm vụ");
+            TextTemplate.Instance.SetText("Please complete the mission");
             return true;
         }
     }

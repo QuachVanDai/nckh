@@ -1,7 +1,7 @@
 ﻿using QuachDai.NinjaSchool.Character;
 using QuachDai.NinjaSchool.Scenes;
 using QuachDai.NinjaSchool.Sound;
-using System.IO;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,6 +22,7 @@ public class GameManager : Singleton<GameManager>
     }
     public MiniSceneData sceneDefault;
     public MiniSceneData sceneCurrent;
+    public MiniSceneData[] miniSceneDatas;
     public AudioClip music;
 
     private void Start()
@@ -29,14 +30,29 @@ public class GameManager : Singleton<GameManager>
         isPlayGame = true;
         LoadSceneActive();
     }
+    string nameScene;
     void LoadSceneActive()
     {
-        if(sceneCurrent.Id == MiniSceneId.None)
-            SetMiniSceneData(sceneDefault);
+        nameScene = PlayerPrefs.GetString(TagScript.sceneCurrent);
+        for(int i = 0; i < miniSceneDatas.Length; i++)
+        {
+            if (miniSceneDatas[i].sceneName == nameScene)
+            {
+                sceneCurrent.SetMiniSceneData(miniSceneDatas[i]);
+                break;
+            }
+        }
+        if (sceneCurrent.Id == MiniSceneId.None)
+            sceneCurrent.SetMiniSceneData(sceneDefault);
         music = sceneCurrent.music;
         SceneManager.LoadScene(sceneCurrent.sceneName, LoadSceneMode.Additive);
         SoundSystem.Instance.PlaySound(music);
         Player.Instance.SetPosition(sceneCurrent.posPlayerFinal);
+    }
+    void OnApplicationQuit()
+    {
+        Player.Instance.SaveDataPlayer();
+        PlayerPrefs.Save();
     }
     public void OnEnable()
     {
@@ -48,19 +64,6 @@ public class GameManager : Singleton<GameManager>
     {
         Physics2D.IgnoreLayerCollision(7, 8, false);
         Physics2D.IgnoreLayerCollision(8, 8, false);
-    }
-    public void SetMiniSceneData(MiniSceneData _miniSceneData)
-    {
-        sceneCurrent.Id = _miniSceneData.Id;
-        sceneCurrent.sceneName = _miniSceneData.sceneName;
-        sceneCurrent.scene = _miniSceneData.scene;
-        sceneCurrent.yMax = _miniSceneData.yMax;
-        sceneCurrent.yMin = _miniSceneData.yMin;
-        sceneCurrent.xMin = _miniSceneData.xMin;
-        sceneCurrent.xMax = _miniSceneData.xMax;
-        sceneCurrent.music = _miniSceneData.music;
-        sceneCurrent.posPlayerFinal = _miniSceneData.posPlayerFinal;
-        sceneCurrent.PosPlayer = _miniSceneData.PosPlayer;
     }
 }
 // Vector3(-19.4025517,-1.70443642,0)

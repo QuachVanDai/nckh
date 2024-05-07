@@ -47,16 +47,24 @@ namespace QuachDai.NinjaSchool.Mission
             {
                 case 0:
                     InventoryUpdate.Instance.UpdateHP(10);
+                    TextTemplate.Instance.SetText("You receive Hp");
+
                     break;
 
                 case 1:
                     InventoryUpdate.Instance.UpdateMP(10);
+                    TextTemplate.Instance.SetText("You receive Mp");
+
                     break;
                 case 2:
                     InventoryUpdate.Instance.UpdateMP(10);
+                    TextTemplate.Instance.SetText("You receive Mp");
+
                     break;
                 case 3:
                     InventoryUpdate.Instance.UpdateHP(10);
+                    TextTemplate.Instance.SetText("You receive Hp");
+
                     break;
             }
         }

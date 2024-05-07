@@ -30,6 +30,7 @@ namespace QuachDai.NinjaSchool.Skill
             else
             {
                 frameSkill.skillLevel += 1;
+                frameSkill.SetFrameSkill(frameSkill);
                 Show();
             }
         }

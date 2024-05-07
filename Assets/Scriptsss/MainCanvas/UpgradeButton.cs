@@ -1,3 +1,4 @@
+using QuachDai.NinjaSchool.Character;
 using QuachDai.NinjaSchool.Skill;
 using QuachDai.NinjaSchool.Sound;
 using UnityEngine;
@@ -31,8 +32,15 @@ namespace QuachDai.NinjaSchool.MainCanvas
             gameObject.SetActive(_values);
         }
         [SerializeField] SkillPanel skillPanel;
+        Player player => Player.Instance;
         private void ListenerMethod()
         {
+            if (player.GetXu() < 1000)
+            {
+                TextTemplate.Instance.SetText(TagScript.notMoney+ " <1000");
+                return;
+            }
+            player.SetXu(-100);
             skillPanel.Upgrade();
         }
         public SkillPanel GetSkillPanel()

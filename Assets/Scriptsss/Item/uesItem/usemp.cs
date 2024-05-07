@@ -25,8 +25,8 @@ public class UseMp : MonoBehaviour, IPointerClickHandler
     }
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (GameManager.Instance.IsPlayGame == false) return;
         UseItemMp();
-        Debug.Log("using item Mp");
     }
     public void UseItemMp()
     {

@@ -25,6 +25,7 @@ public class UseHp : MonoBehaviour, IPointerClickHandler
     }
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (GameManager.Instance.IsPlayGame == false) return;
         UseItemHp();
         Debug.Log("using item Hp");
     }

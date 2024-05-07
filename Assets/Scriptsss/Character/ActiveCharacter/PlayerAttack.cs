@@ -72,7 +72,7 @@ namespace QuachDai.NinjaSchool.Character
                 damage = monster.currHp;
             exp = (damage * setMonster.getExpMonsterDictionary(monster.level) * 100) /
                 setPlayer.getExpPlayerDictionary(player.GetLevel());
-            TextMove(damage.ToString());
+            TextMove(exp.ToString());
             if (player.GetPercentExp() + exp >= 99.99f)
             {
                 if (player.GetLevel() == 20)

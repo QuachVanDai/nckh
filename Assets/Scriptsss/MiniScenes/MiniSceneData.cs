@@ -14,6 +14,19 @@ namespace QuachDai.NinjaSchool.Scenes
         public float xMin;
         public AudioClip music;
         public Vector3 posPlayerFinal;
+        public void SetMiniSceneData(MiniSceneData _miniSceneData)
+        {
+           Id = _miniSceneData.Id;
+           sceneName = _miniSceneData.sceneName;
+           scene = _miniSceneData.scene;
+           yMax = _miniSceneData.yMax;
+           yMin = _miniSceneData.yMin;
+           xMin = _miniSceneData.xMin;
+           xMax = _miniSceneData.xMax;
+           music = _miniSceneData.music;
+           posPlayerFinal = _miniSceneData.posPlayerFinal;
+           PosPlayer = _miniSceneData.PosPlayer;
+        }
     }
 
     public enum MiniSceneId

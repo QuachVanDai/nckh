@@ -16,7 +16,6 @@ namespace QuachDai.NinjaSchool.Mission
         {
             if (mission.IsCompleteMission == true)
             {
-                TextTemplate.Instance.SetText("Đây là phần thưởng");
                 mission.GiveTheReward();
                 mission.SetChangeMissionButton(new MissionNot(mission));
                 return true;
@@ -26,7 +25,7 @@ namespace QuachDai.NinjaSchool.Mission
 
         public override bool CancelMission()
         {
-            TextTemplate.Instance.SetText("Hủy nhiệm vụ thành công");
+            TextTemplate.Instance.SetText("Mission canceled successfully");
             mission.SetChangeMissionButton(new MissionNot(mission));
             return true;
         }
@@ -34,10 +33,10 @@ namespace QuachDai.NinjaSchool.Mission
         {
             if (mission.IsCompleteMission == true)
             {
-                TextTemplate.Instance.SetText("Hoàn thành nhiệm vụ để nhận thưởng");
+                TextTemplate.Instance.SetText("Complete tasks to receive rewards");
                 return true;
             }
-            TextTemplate.Instance.SetText("Hãy hoàn thành nhiệm vụ trước đó");
+            TextTemplate.Instance.SetText("Please complete the previous mission");
             return false;
         }
     }

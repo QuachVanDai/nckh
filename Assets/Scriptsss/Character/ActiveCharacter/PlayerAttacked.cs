@@ -21,13 +21,13 @@ namespace QuachDai.NinjaSchool.Character
         {
             TextMove(damage.ToString());
             StartCoroutine(aniAcctacked());
-            if (Player.Instance.GetHp() <= 0)
+            player.SetHp(-damage);
+            if (player.GetHp() <= 0 && GameManager.Instance.IsPlayGame == true)
             {
                 animatorSystem.SetBool(player.GetAnimator(), "IsDeath", true);
                 regenerativePanel.SetActive(true);
                 GameManager.Instance.IsPlayGame = false;
             }
-            else Player.Instance.SetHp(-damage);
         }
         IEnumerator aniAcctacked()
         {

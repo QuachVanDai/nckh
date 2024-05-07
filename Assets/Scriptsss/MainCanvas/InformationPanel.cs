@@ -19,7 +19,7 @@ namespace QuachDai.NinjaSchool.MainCanvas
         string namePlayer => player.GetNamePlayer();
         string level => player.GetLevel().ToString();
 
-        string exp=> player.GetPercentExp().ToString();
+        string exp => player.GetPercentExp().ToString("F2");
         string hp => player.GetHp() + "/" + player.GetMaxHp();
         string mp => player.GetMp() + "/" + player.GetMaxMp();
         string attackMin => player.GetMinDamage().ToString();

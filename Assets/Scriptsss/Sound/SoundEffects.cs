@@ -1,4 +1,3 @@
-using QuachDai.NinjaSchool.Sound;
 using UnityEngine;
 namespace QuachDai.NinjaSchool.Sound
 {
@@ -9,11 +8,12 @@ namespace QuachDai.NinjaSchool.Sound
         private void Start()
         {
             GetSaveSoundEffects();
-        }
+        } 
         private void OnDisable()
         {
             SaveSoundEffects();
         }
+
         void SaveSoundEffects()
         {
             Debug.Log(":: SaveSound");

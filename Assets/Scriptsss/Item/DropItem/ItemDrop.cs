@@ -40,7 +40,7 @@ namespace QuachDai.NinjaSchool.Item
             {
                 string _xu = "";
                 if (slotItem.item.itemName == ItemName.Hp)
-                    InventoryUpdate.Instance.UpdateMP(slotItem, 1);
+                    InventoryUpdate.Instance.UpdateHP(slotItem, 1);
                 else if (slotItem.item.itemName == ItemName.Mp)
                     InventoryUpdate.Instance.UpdateMP(slotItem, 1);
                 else if (slotItem.item.itemName == ItemName.Xu)
@@ -49,7 +49,7 @@ namespace QuachDai.NinjaSchool.Item
                     Player.Instance.SetXu(money.Xu);
                     _xu = money.Xu.ToString();
                 }
-                TextTemplate.Instance.SetText("Ban nhận được " + _xu + " " + slotItem.item.itemName.ToString());
+                TextTemplate.Instance.SetText("You receive " + _xu + " " + slotItem.item.itemName.ToString());
                 yield return new WaitForSeconds(0.2f);
                 Destroy(gameObject);
             }

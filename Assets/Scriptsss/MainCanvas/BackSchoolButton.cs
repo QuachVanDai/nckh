@@ -1,3 +1,4 @@
+using QuachDai.NinjaSchool.Animations;
 using QuachDai.NinjaSchool.Character;
 using QuachDai.NinjaSchool.Scenes;
 using QuachDai.NinjaSchool.Sound;
@@ -28,10 +29,14 @@ namespace QuachDai.NinjaSchool.MainCanvas
         {
             ThisButton.onClick.RemoveListener(ListenerMethod);
         }
+        [SerializeField] RegenerativePanel regenerativePanel;
+        AnimatorSystem animatorSystem => AnimatorSystem.Instance;
+        Player player => Player.Instance;
         private void ListenerMethod()
         {
             Application.targetFrameRate = 60;
             LoadingPanel.Instance.SetActive(true);
+            regenerativePanel.SetActive(false);
             LoadingPanel.Instance.StartCoroutine(LoadingPanel.Instance.LoadingPopUp(LoadScene, 1f));
         }
         public MiniSceneData sceneActive;
@@ -43,10 +48,14 @@ namespace QuachDai.NinjaSchool.MainCanvas
             if (SceneManager.GetSceneByName(sceneDisActive.sceneName).isLoaded)
                 SceneManager.UnloadSceneAsync(sceneDisActive.sceneName);
 
+            animatorSystem.SetBool(player.GetAnimator(), "IsDeath", false);
             SceneManager.LoadScene(sceneActive.sceneName, LoadSceneMode.Additive);
+
             Player.Instance.SetPosition(sceneActive.posPlayerFinal);
             SoundSystem.Instance.PlaySound(sceneActive.music);
             GameManager.Instance.IsPlayGame = true;
+            player.SetHp(player.GetMaxHp());
+            player.SetMp(player.GetMaxMp());
 
         }
     }

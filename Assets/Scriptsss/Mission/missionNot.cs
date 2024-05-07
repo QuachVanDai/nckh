@@ -19,19 +19,19 @@ namespace QuachDai.NinjaSchool.Mission
         }
         public override bool CompleteMission()
         {
-            TextTemplate.Instance.SetText("Chưa có nhiệm vụ");
+            TextTemplate.Instance.SetText("No missions yet");
             return false;
         }
         public override bool CancelMission()
         {
-            TextTemplate.Instance.SetText("Chưa có nhiệm vụ");
+            TextTemplate.Instance.SetText("No missions yet");
             return false;
         }
         public override bool AgreeMission()
         {
             if (mission.IsHasMission == false)
             {
-                TextTemplate.Instance.SetText("Đã nhận nhiệm vụ");
+                TextTemplate.Instance.SetText("Mission accepted");
                 mission.SetUpMisson();
                 base.mission.placeOfAppearance = mission.GetMonster().placeOfAppearance;
                 mission.SetChangeMissionButton(new MissionPerform(mission));
@@ -39,7 +39,7 @@ namespace QuachDai.NinjaSchool.Mission
             }
             else
             {
-                TextTemplate.Instance.SetText("Hãy hoàn thành nhiệm vụ trước đó");
+                TextTemplate.Instance.SetText("Please complete the previous mission");
                 return false;
             }
         }
