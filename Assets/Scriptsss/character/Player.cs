@@ -67,7 +67,18 @@ namespace QuachDai.NinjaSchool.Character
             SetXu(0);
             SetPercentExpText(percentExp);
             SetNamePlayer(namePlayer);
-
+            GetFasihon();
+        }
+        public void GetFasihon()
+        {
+            bool isOption = PlayerPrefs.GetInt(KeyShowOpion.ShowHalo.ToString()) == 1 ? true : false;
+            SetActiveHalo(isOption);
+            isOption = PlayerPrefs.GetInt(KeyShowOpion.ShowHalo.ToString()) == 1 ? true : false;
+            SetActiveLoGo(isOption);
+            isOption = PlayerPrefs.GetInt(KeyShowOpion.ShowHalo.ToString()) == 1 ? true : false;
+            SetActivePet(isOption);
+            isOption = PlayerPrefs.GetInt(KeyShowOpion.ShowHalo.ToString()) == 1 ? true : false;
+            SetActiveShadow(isOption);
         }
         public void SaveDataPlayer()
         {

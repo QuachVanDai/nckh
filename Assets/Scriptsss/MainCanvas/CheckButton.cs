@@ -30,6 +30,7 @@ namespace QuachDai.NinjaSchool.MainCanvas
                 checkMark.sprite = offOpion;
             GetActive(isOption);
         }
+
         private void OnEnable()
         {
             ThisButton.onClick.AddListener(ListenerMethod);
