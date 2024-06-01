@@ -12,18 +12,19 @@ namespace QuachDai.NinjaSchool.Animations
         {
             Fly();
         }
-        private void FixedUpdate()
+        public Tween tweenBirdMove;
+        private void OnDisable()
         {
-
+            tweenBirdMove.Kill();
         }
         void Fly()
         {
             Flip();
             timeDelay = Random.Range(0.5f, 1.5f);
-            transform.DOLocalMove(posEnd, 3f).SetEase(Ease.Linear).SetDelay(timeDelay).OnComplete(() =>
+            tweenBirdMove =  transform.DOLocalMove(posEnd, 3f).SetEase(Ease.Linear).SetDelay(timeDelay).OnComplete(() =>
             {
                 Flip();
-                transform.DOLocalMove(posStart, 3f).SetEase(Ease.Linear).OnComplete(() =>
+                tweenBirdMove = transform.DOLocalMove(posStart, 3f).SetEase(Ease.Linear).OnComplete(() =>
                 {
                     Fly();
                 }).SetDelay(timeDelay);

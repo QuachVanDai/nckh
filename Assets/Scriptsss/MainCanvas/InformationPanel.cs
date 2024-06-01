@@ -16,7 +16,7 @@ namespace QuachDai.NinjaSchool.MainCanvas
         [SerializeField] Text iceSkillText;
 
         Player player => Player.Instance;
-        string namePlayer => player.GetNamePlayer();
+        string namePlayer => player.GetNamePlayer().text;
         string level => player.GetLevel().ToString();
 
         string exp => player.GetPercentExp().ToString("F2");

@@ -7,10 +7,6 @@ namespace QuachDai.NinjaSchool.Scenes
     {
         float currentFakeLoadTime;
         float progess = 0;
-        private void Start()
-        {
-            SetActive(false);
-        }
         public void SetActive(bool values)
         {
             gameObject.SetActive(values);

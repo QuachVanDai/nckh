@@ -27,9 +27,8 @@ namespace QuachDai.NinjaSchool.MainCanvas
         }
         private void ListenerMethod()
         {
-            Player.Instance.SaveDataPlayer();
-            Debug.Log("Exiting game...");
-            Application.Quit();
+            Game.Quit();
+           
         }
     }
 }

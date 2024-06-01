@@ -15,6 +15,7 @@ public class SetUpIntance : MonoBehaviour
             {
                 intance.SetActive(true);
                 intance.SetActive(false);
+                Debug.Log("intance call");
             }
         }
         if(objectAppears.Count > 0)

@@ -24,9 +24,9 @@ namespace QuachDai.NinjaSchool.Monsters
         }
         public void setExpMonsterDictionary()
         {
-            for (int i = 1; i <= 20; i++)
+            for (int i = 1; i <= 100; i++)
             {
-                expMonster.Add(i, 1.32324f * Math.Pow(i, 0.8f));
+                expMonster.Add(i, 1.8f * Math.Pow(i, 0.8f));
             }
         }
 
@@ -36,9 +36,9 @@ namespace QuachDai.NinjaSchool.Monsters
         }
         public void setHPMonsterDictionary()
         {
-            for (int i = 1; i <= 20; i++)
+            for (int i = 1; i <= 100; i++)
             {
-                double v = Math.Round(500 * Math.Pow(i, 0.6f));
+                double v = Math.Round(600 * Math.Pow(i, 0.6f));
                 hPMonster.Add(i, (int)v);
             }
 
@@ -51,7 +51,7 @@ namespace QuachDai.NinjaSchool.Monsters
         public void setDameMonsterDictionary()
         {
             int min_d = 40, max_d = 50;
-            for (int i = 1; i <= 20; i++)
+            for (int i = 1; i <= 100; i++)
             {
                 dameMonster.Add(i, new Tuple<int, int>(min_d, max_d));
                 min_d += 20;

@@ -12,7 +12,11 @@ public class SkillRecoveryTime: MonoBehaviour
     public bool isTime;
     public void Update()
     {
-        if (!isTime) { getTime = Time.time; return; }
+        if (!isTime) 
+        {
+            getTime = Time.time; 
+            return; 
+        }
         fillTime.fillAmount = 1 -( (Time.time - getTime)/ frameSkill.timeSkill);
     }
     public void SetFrameSkill(FrameSkill _frameSkill)

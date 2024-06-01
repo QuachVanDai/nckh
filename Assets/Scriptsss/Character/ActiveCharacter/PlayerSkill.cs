@@ -11,7 +11,6 @@ namespace QuachDai.NinjaSchool.Character
         [SerializeField] SkillAnimation skillAnimation;
         [SerializeField] FrameSkill frameSkill;
         [SerializeField] SkillRecoveryTime skillRecoveryTime;
-        private SetSkillParameters skillParameters = new SetSkillParameters();
         bool isActtack, isSkillLv5;
         Player player => Player.Instance;
         TextTemplate textTemplate => TextTemplate.Instance;

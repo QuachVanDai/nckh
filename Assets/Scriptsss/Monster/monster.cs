@@ -70,7 +70,7 @@ public enum MonsterID
     GreenDragon = 2,
     GreenSnake = 3,
     GreenToad = 4,
-    Monkey = 5,
+    Monkey = 5, 
     IceDevil = 6,
     SnowWolf = 7,
     Pterosaurs = 8,
@@ -80,6 +80,7 @@ public enum MonsterID
     FireBat = 12,
 
 
-
+    FireUnicorn = 20,
+    IceGiant = 21
 
 }

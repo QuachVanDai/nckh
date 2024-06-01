@@ -6,15 +6,16 @@ namespace QuachDai.NinjaSchool.Monsters
 {
     public class MonsterController2D : MonoBehaviour
     {
-
         public Status monStatus;
         [SerializeField] MonsterMove monsterMove;
         [SerializeField] private Animator animator;
         public Tween tweenMonsterMove;
         public Tween tweenTextMove;
-        public void monsterIsDeath()
+       
+        private void OnDisable()
         {
-
+            tweenMonsterMove.Kill();
+            tweenTextMove.Kill();
         }
         public void PlayAnimation(Status _status)
         {

@@ -8,6 +8,7 @@ namespace QuachDai.NinjaSchool.Character
     {
         [SerializeField] string namePlayer;
         [SerializeField] int level;
+        [SerializeField] float expLevel;
         [SerializeField] float maxHp;
         [SerializeField] float hp;
         [SerializeField] float maxMp;
@@ -29,6 +30,10 @@ namespace QuachDai.NinjaSchool.Character
         [SerializeField] RectTransform canvas;
         [SerializeField] Animator animatorPlayer;
         [SerializeField] SetPlayer setPlayer;
+        [SerializeField] GameObject haLo;
+        [SerializeField] GameObject loGo;
+        [SerializeField] GameObject pet;
+        [SerializeField] GameObject shadow;
 
         public PlayerAttack playerAttack;
         public PlayerAttacked playerAttacked;
@@ -41,13 +46,14 @@ namespace QuachDai.NinjaSchool.Character
         {
             isFirstPlay = PlayerPrefs.GetInt(TagScript.firstPlay) == 0 ? false : true;
             setPlayer = new SetPlayer();
-
             if (!isFirstPlay)
                 SetXu(2000);
             else
                 xu = PlayerPrefs.GetInt(TagScript.xu);
             level = PlayerPrefs.GetInt(TagScript.level);
             level = level == 0 ? 1 : level;
+            expLevel = setPlayer.getExpPlayerDictionary(level);
+
             namePlayer = PlayerPrefs.GetString(TagScript.namePlayer);
             namePlayer = namePlayer == "" ? "ADMIN" : namePlayer;
             percentExp = PlayerPrefs.GetFloat(TagScript.percentExp);
@@ -68,7 +74,7 @@ namespace QuachDai.NinjaSchool.Character
             PlayerPrefs.SetInt(TagScript.firstPlay, 1);
             PlayerPrefs.SetInt(TagScript.level, level);
             PlayerPrefs.SetFloat(TagScript.percentExp, percentExp);
-            PlayerPrefs.SetString(TagScript.namePlayer, namePlayer);
+            PlayerPrefs.SetString(TagScript.namePlayer, nameText.text);
             PlayerPrefs.SetInt(TagScript.xu, xu);
         }
 
@@ -92,13 +98,30 @@ namespace QuachDai.NinjaSchool.Character
         {
             return transform.position;
         }
-        public string GetNamePlayer()
+
+        public void SetActiveHalo(bool _values)
         {
-            return namePlayer;
+            haLo.SetActive(_values);
+        }
+        public void SetActiveLoGo(bool _values)
+        {
+            loGo.SetActive(_values);
+        }
+        public void SetActivePet(bool _values)
+        {
+            pet.SetActive(_values);
+        }
+        public void SetActiveShadow(bool _values)
+        {
+            shadow.SetActive(_values);
+        }
+        public Text GetNamePlayer()
+        {
+            return nameText;
         }
         public void SetNamePlayer(string _namePlayer)
         {
-            namePlayer = _namePlayer;
+            nameText.text = _namePlayer;
         }
         public void SetPosition(Vector3 _vector3)
         {

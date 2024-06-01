@@ -8,7 +8,6 @@ namespace QuachDai.NinjaSchool.Character
         [SerializeField] private Head _CharacterHead;
         [SerializeField] private Body _CharacterBody;
         [SerializeField] private Leg _CharacterLeg;
-        [SerializeField] private Weapon characterWeapon;
 
         [Header("Thay đổi trang phục khi mặc trang bị")]
         [SerializeField] AvatarSO AvatarSO;
@@ -34,7 +33,6 @@ namespace QuachDai.NinjaSchool.Character
             _CharacterHead = GetComponentInChildren<Head>();
             _CharacterBody = GetComponentInChildren<Body>();
             _CharacterLeg = GetComponentInChildren<Leg>();
-            characterWeapon = GetComponentInChildren<Weapon>();
         }
         private void Reset()
         {

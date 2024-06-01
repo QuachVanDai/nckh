@@ -2,15 +2,13 @@ using TransitionsPlus;
 using UnityEngine;
 namespace QuachDai.NinjaSchool.Scenes
 {
-    public class LoadingScene : MonoBehaviour
+    public class LoadingScene : Singleton<LoadingScene>
     {
         [SerializeField] TransitionAnimator[] transitionAnimator;
-        private void Start()
+
+        public void Loading()
         {
-            Invoke("Loading", 0.1f);
-        }
-        void Loading()
-        {
+            gameObject.SetActive(true);
             LoadingPanel.Instance.SetActive(true);
             LoadingPanel.Instance.StartCoroutine(LoadingPanel.Instance.LoadingPopUp(SetActive, 2f));
         }
