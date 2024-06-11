@@ -207,7 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 12
   nameMonster: Fire Bat
-  level: 11
+  level: 10
   maxHp: 0
   currHp: 0
   minDamage: 0

@@ -400,7 +400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 1
   nameMonster: Fire Demon King
-  level: 12
+  level: 11
   maxHp: 0
   currHp: 0
   minDamage: 0

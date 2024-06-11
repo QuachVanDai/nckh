@@ -8,7 +8,7 @@ namespace QuachDai.NinjaSchool.Monsters
 {
     public class MonsterAttack : MonoBehaviour
     {
-        private const float radiusAttack = 4f;
+        [SerializeField] float radiusAttack = 4f;
         [SerializeField] private LayerMask target;
         public Monster monCurrent;
         ObjectPool objectPool => ObjectPool.Instance;

@@ -28,7 +28,6 @@ namespace QuachDai.NinjaSchool.MainCanvas
         private void ListenerMethod()
         {
             Game.Quit();
-           
         }
     }
 }

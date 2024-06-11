@@ -300,7 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 8
   nameMonster: Pterosaurs
-  level: 10
+  level: 9
   maxHp: 0
   currHp: 0
   minDamage: 0

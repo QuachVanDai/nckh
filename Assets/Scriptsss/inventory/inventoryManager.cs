@@ -1,6 +1,7 @@
 ﻿
 using QuachDai.NinjaSchool.Character;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,14 +9,65 @@ public class InventoryManager : MonoBehaviour
 {
 
     [SerializeField] private List<Slot> SlotItems = new List<Slot>(15);
+    [SerializeField] SlotData SlotData;
+    [SerializeField] SlotData firstSlotData;
     [SerializeField] private GameObject[] SlotsGameObject;
-    public Text xuText;
 
+    public Text xuText;
+    [SerializeField] bool isLoadData;
+
+    string filePath;
+    public void Awake()
+    {
+        filePath = Application.persistentDataPath + "/data.json";
+        if (isLoadData)
+            LoadData();
+    }
     public void Start()
     {
         RefreshUI();
         SetXuText();
     }
+    #region  Save Data
+    public void SetData(Slot slot, int i)
+    {
+        SlotData.listSlot[i] = new Slot(slot);
+        SaveData();
+    }
+    public void SaveData()
+    {
+        Debug.Log("Save Data Inventory");
+        string data = JsonUtility.ToJson(SlotData);
+        File.WriteAllText(filePath, data);
+    }
+    SlotData loadedData;
+    public void LoadData()
+    {
+        if (File.Exists(filePath))
+        {
+            string data;
+            loadedData = new SlotData();
+            if (PlayerPrefs.GetInt(TagScript.firstPlay) == 0)
+            {
+                Debug.Log("First Data");
+                loadedData = firstSlotData;
+            }
+            else
+            {
+                data = File.ReadAllText(filePath);
+                Debug.Log(data);
+                JsonUtility.FromJsonOverwrite(data, loadedData);
+            }
+           
+        }
+        for (int i = 0; i < SlotData.listSlot.Count; i++)
+        {
+            SlotItems[i] = new Slot(loadedData.listSlot[i]);
+            SlotData.listSlot[i] = new Slot(loadedData.listSlot[i]);
+        }
+        SaveData();
+    }
+    #endregion
     public void SetXuText()
     {
         xuText.text = Player.Instance.GetXu().ToString();

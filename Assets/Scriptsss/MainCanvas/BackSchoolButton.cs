@@ -47,6 +47,7 @@ namespace QuachDai.NinjaSchool.MainCanvas
             sceneDisActive = GameManager.Instance.sceneCurrent;
             if (SceneManager.GetSceneByName(sceneDisActive.sceneName).isLoaded)
                 SceneManager.UnloadSceneAsync(sceneDisActive.sceneName);
+            PlayerPrefs.SetString(TagScript.sceneCurrent, sceneActive.sceneName);
 
             animatorSystem.SetBool(player.GetAnimator(), "IsDeath", false);
             SceneManager.LoadScene(sceneActive.sceneName, LoadSceneMode.Additive);

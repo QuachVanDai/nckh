@@ -737,7 +737,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 11
   nameMonster: Fire Scorpion
-  level: 13
+  level: 12
   maxHp: 0
   currHp: 0
   minDamage: 0

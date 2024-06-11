@@ -6,7 +6,7 @@ namespace QuachDai.NinjaSchool.MainCanvas
     public class CheckButton : MonoBehaviour
     {
         Button button;
-        [SerializeField] KeyShowOpion keyShowOpion;
+        public KeyShowOpion keyShowOpion;
         [SerializeField] Image checkMark;
         [SerializeField] Sprite offOpion;
         [SerializeField] Sprite onOpion;
@@ -24,11 +24,11 @@ namespace QuachDai.NinjaSchool.MainCanvas
         private void Start()
         {
             isOption = PlayerPrefs.GetInt(keyShowOpion.ToString()) == 1 ? true : false;
+            Debug.Log("opnion = " + isOption);
             if (isOption)
                 checkMark.sprite = onOpion;
             else
                 checkMark.sprite = offOpion;
-            GetActive(isOption);
         }
 
         private void OnEnable()
@@ -40,7 +40,7 @@ namespace QuachDai.NinjaSchool.MainCanvas
         {
             ThisButton.onClick.RemoveListener(ListenerMethod);
         }
-        Player player => Player.Instance;
+        FashionPlayer FashionPlayer => FashionPlayer.Instance;
         private void ListenerMethod()
         {
             if (isOption)
@@ -48,34 +48,17 @@ namespace QuachDai.NinjaSchool.MainCanvas
                 PlayerPrefs.SetInt(keyShowOpion.ToString(), 0);
                 checkMark.sprite = offOpion;
                 isOption = !isOption;
-                GetActive(false);
+                FashionPlayer.SetActive(keyShowOpion);
             }
             else
             {
                 PlayerPrefs.SetInt(keyShowOpion.ToString(), 1);
                 checkMark.sprite = onOpion;
                 isOption = !isOption;
-                GetActive(true);
+                FashionPlayer.SetActive(keyShowOpion);
             }
         }
-        void GetActive(bool _value)
-        {
-            if (keyShowOpion == KeyShowOpion.ShowHalo)
-                player.SetActiveHalo(_value);
-            else if (keyShowOpion == KeyShowOpion.ShowLogo)
-                player.SetActiveLoGo(_value);
-            else if (keyShowOpion == KeyShowOpion.ShowPet)
-                player.SetActivePet(_value);
-            else if (keyShowOpion == KeyShowOpion.ShowShadow)
-                player.SetActiveShadow(_value);
-        }
+
     }
 }
-public enum KeyShowOpion
-{
-    None = 0,
-    ShowHalo = 1,
-    ShowLogo = 2,
-    ShowPet = 3,
-    ShowShadow = 4,
-}
+

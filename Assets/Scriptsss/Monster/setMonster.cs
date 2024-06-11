@@ -26,7 +26,10 @@ namespace QuachDai.NinjaSchool.Monsters
         {
             for (int i = 1; i <= 100; i++)
             {
-                expMonster.Add(i, 1.8f * Math.Pow(i, 0.8f));
+                if (i == 100)
+                    expMonster.Add(i, 0);
+                else
+                    expMonster.Add(i, 1.7f * Math.Pow(i, 0.8f));
             }
         }
 
@@ -38,7 +41,8 @@ namespace QuachDai.NinjaSchool.Monsters
         {
             for (int i = 1; i <= 100; i++)
             {
-                double v = Math.Round(600 * Math.Pow(i, 0.6f));
+                double v = Math.Round(620 * Math.Pow(i, 0.6f));
+                if(i==100) v = Math.Round(1000 * Math.Pow(i, 0.6f));
                 hPMonster.Add(i, (int)v);
             }
 

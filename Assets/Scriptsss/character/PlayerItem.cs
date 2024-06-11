@@ -1,4 +1,5 @@
 ﻿
+using System.IO;
 using UnityEngine;
 namespace QuachDai.NinjaSchool.Character
 {
@@ -13,29 +14,59 @@ namespace QuachDai.NinjaSchool.Character
         [SerializeField] AvatarSO AvatarSO;
         [SerializeField] ClothSO ClothSO;
         [SerializeField] PantSO PantSO;
-        //  [SerializeField] useItem weaponSO;
 
-        public void setPant(PantSO pant)
+        [SerializeField] DisguiseSO currDisguiseSO;
+        [SerializeField] DisguiseSO firstDisguiseSO;
+        string filePath;
+
+        public void Awake()
         {
-            PantSO = pant;
+            filePath = Application.persistentDataPath + "/DisguiseSO.json";
         }
-        public void setCloth(ClothSO cloth)
+        private void Start()
         {
-            ClothSO = cloth;
+            LoadData();
+            SetDisguise();
         }
-        public void setPant(AvatarSO avatar)
+        public void SaveData()
         {
-            AvatarSO = avatar;
+            Debug.Log("Save Data currDisguiseSO");
+            string data = JsonUtility.ToJson(currDisguiseSO);
+            File.WriteAllText(filePath, data);
         }
-        // Hàm tự động tìm các đối tượng, chỉ thực thi trong Editor
+        public void LoadData()
+        {
+            if (File.Exists(filePath))
+            {
+                string data;
+                currDisguiseSO = new DisguiseSO();
+                if (PlayerPrefs.GetInt(TagScript.firstPlay) == 0)
+                {
+                    Debug.Log("First Data");
+                    currDisguiseSO = firstDisguiseSO;
+                }
+                else
+                {
+                    Debug.Log("Second Data");
+                    data = File.ReadAllText(filePath);
+                    Debug.Log(data);
+                    JsonUtility.FromJsonOverwrite(data, currDisguiseSO);
+                }
+            }
+            SaveData();
+        }
         private void OnValidate()
         {
             _CharacterHead = GetComponentInChildren<Head>();
             _CharacterBody = GetComponentInChildren<Body>();
             _CharacterLeg = GetComponentInChildren<Leg>();
         }
-        private void Reset()
+        public void SetDisguise()
         {
+            AvatarSO = currDisguiseSO.disguiseSO.Head;
+            ClothSO = currDisguiseSO.disguiseSO.Body;
+            PantSO   = currDisguiseSO.disguiseSO.Leg;
+            // Thay đổi Tóc
             if (AvatarSO != null)
             {
                 CharacterCustomization(_CharacterHead.headIdle, AvatarSO.GetSpriteIdle);
@@ -43,8 +74,6 @@ namespace QuachDai.NinjaSchool.Character
                 CharacterCustomization(_CharacterHead.headAttack, AvatarSO.GetSpriteAttack);
                 CharacterCustomization(_CharacterHead.headDown, AvatarSO.GetSpriteDown);
             }
-
-
             //// Thay đổi Áo
             if (ClothSO != null)
             {
@@ -53,9 +82,7 @@ namespace QuachDai.NinjaSchool.Character
                 CharacterCustomization(_CharacterBody.bodyAttack, ClothSO.GetSpriteAttack);
                 CharacterCustomization(_CharacterBody.bodyDown, ClothSO.GetSpriteDown);
             }
-
             //// Thay đổi Quần
-
             if (PantSO != null)
             {
                 CharacterCustomization(_CharacterLeg.legIdle, PantSO.GetSpriteIdle);
@@ -64,42 +91,6 @@ namespace QuachDai.NinjaSchool.Character
                 CharacterCustomization(_CharacterLeg.legDown, PantSO.GetSpriteDown);
             }
         }
-        private void Update()
-        {
-           /* // Thay đổi Tóc
-            if (AvatarSO != null)
-            {
-                CharacterCustomization(_CharacterHead.headIdle, AvatarSO.GetSpriteIdle);
-                CharacterCustomization(_CharacterHead.headRun, AvatarSO.GetSpriteRun);
-                CharacterCustomization(_CharacterHead.headAttack, AvatarSO.GetSpriteAttack);
-                CharacterCustomization(_CharacterHead.headDown, AvatarSO.GetSpriteDown);
-            }
-
-
-            //// Thay đổi Áo
-            if (ClothSO != null)
-            {
-                CharacterCustomization(_CharacterBody.bodyIdle, ClothSO.GetSpriteIdle);
-                CharacterCustomization(_CharacterBody.bodyRun, ClothSO.GetSpriteRun);
-                CharacterCustomization(_CharacterBody.bodyAttack, ClothSO.GetSpriteAttack);
-                CharacterCustomization(_CharacterBody.bodyDown, ClothSO.GetSpriteDown);
-            }
-
-            //// Thay đổi Quần
-
-            if (PantSO != null)
-            {
-                CharacterCustomization(_CharacterLeg.legIdle, PantSO.GetSpriteIdle);
-                CharacterCustomization(_CharacterLeg.legRun, PantSO.GetSpriteRun);
-                CharacterCustomization(_CharacterLeg.legAttack, PantSO.GetSpriteAttack);
-                CharacterCustomization(_CharacterLeg.legDown, PantSO.GetSpriteDown);
-            }*/
-            /*if (weaponSO != null)
-            {
-                CharacterCustomization(characterWeapon.weapon, weaponSO.GetSpriteDown);
-            }*/
-        }
-
         // Hàm thay đổi trang phục
         private void CharacterCustomization(GameObject[] outfits, Sprite[] sprites)
         {

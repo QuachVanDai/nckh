@@ -1,6 +1,6 @@
 ﻿using QuachDai.NinjaSchool.Scenes;
+using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 namespace QuachDai.NinjaSchool.MainCanvas
 {
@@ -62,6 +62,10 @@ namespace QuachDai.NinjaSchool.MainCanvas
             PlayerPrefs.SetFloat(TagScript.volumeSound, 1);
             PlayerPrefs.SetFloat(TagScript.volumeMusic, 1);
             PlayerPrefs.SetString(TagScript.sceneCurrent,"SchoolScene");
+            foreach (KeyShowOpion option in Enum.GetValues(typeof(KeyShowOpion)))
+            {
+                PlayerPrefs.SetInt(option.ToString(), 0);
+            }
             LoadingScene.Instance.Loading();
         }
     }

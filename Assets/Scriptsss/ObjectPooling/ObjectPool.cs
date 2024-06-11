@@ -53,5 +53,6 @@ public enum KeyOjectPool
     BulletIce = 3,
     BulletFire = 4,
     BulletWind = 5,
+    BulletBossFire = 6,
     Leaf = 6
 }

@@ -12,9 +12,9 @@ namespace QuachDai.NinjaSchool.Scenes
         public void OnClick(int i)  // nhấn nut button
         {
             index = i;
-            Application.targetFrameRate = 60;
+            //  Application.targetFrameRate = 60;
             LoadingPanel.Instance.SetActive(true);
-            LoadingPanel.Instance.StartCoroutine(LoadingPanel.Instance.LoadingPopUp(LoadScene,1f));
+            LoadingPanel.Instance.StartCoroutine(LoadingPanel.Instance.LoadingPopUp(LoadScene, 1f));
         }
         public AudioClip music => sceneActive.music;
         public void LoadScene()
@@ -23,7 +23,7 @@ namespace QuachDai.NinjaSchool.Scenes
                 SceneManager.UnloadSceneAsync(sceneDisActive.sceneName);
 
             GameManager.Instance.sceneCurrent = sceneActive;
-           PlayerPrefs.SetString(TagScript.sceneCurrent, sceneActive.sceneName);
+            PlayerPrefs.SetString(TagScript.sceneCurrent, sceneActive.sceneName);
             SceneManager.LoadScene(sceneActive.sceneName, LoadSceneMode.Additive);
 
             Player.Instance.SetPosition(sceneActive.PosPlayer[index]);

@@ -1,7 +1,6 @@
 ﻿using QuachDai.NinjaSchool.Character;
 using QuachDai.NinjaSchool.Scenes;
 using QuachDai.NinjaSchool.Sound;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

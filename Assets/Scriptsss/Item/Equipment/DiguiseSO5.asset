@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21ce43cddfe8afb438a86dd987c6483c, type: 3}
+  m_Name: DiguiseSO5
+  m_EditorClassIdentifier: 
+  disguiseSO:
+    Head: {fileID: 11400000, guid: 058eb44457e749747a52091832c18e1d, type: 2}
+    Body: {fileID: 11400000, guid: 64e5f90506d4a4446ab1075dd4210d0b, type: 2}
+    Leg: {fileID: 11400000, guid: 73709e8d880456f4cb0a25c4406cf165, type: 2}

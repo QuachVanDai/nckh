@@ -19,6 +19,7 @@ public class InventoryUpdate : Singleton<InventoryUpdate>
                 InventoryManager.RefreshUI();
                 useHp.quanitityText.text = InventoryManager.getSlotItems()[i].getQuantity().ToString();
                 InventoryManager.SetXuText();
+                InventoryManager.SetData(InventoryManager.getSlotItems()[i],i);
                 return;
             }
         }
@@ -37,6 +38,7 @@ public class InventoryUpdate : Singleton<InventoryUpdate>
                 InventoryManager.RefreshUI();
                 useMp.quanitityText.text = InventoryManager.getSlotItems()[i].getQuantity().ToString();
                 InventoryManager.SetXuText();
+                InventoryManager.SetData(InventoryManager.getSlotItems()[i],i);
                 return;
             }
         }
@@ -71,6 +73,7 @@ public class InventoryUpdate : Singleton<InventoryUpdate>
                 {
                     sum += InventoryManager.getSlotItems()[i].getQuantity();
                 }
+                InventoryManager.SetData(InventoryManager.getSlotItems()[i], i);
             }
         }
         InventoryManager.RefreshUI();
@@ -93,6 +96,7 @@ public class InventoryUpdate : Singleton<InventoryUpdate>
                     if (InventoryManager.getSlotItems()[i].getQuantity() == 0)
                     {
                         RemoveItem(i);
+                        
                     }
                     flat = true;
                 }
@@ -100,6 +104,7 @@ public class InventoryUpdate : Singleton<InventoryUpdate>
                 {
                     sum += InventoryManager.getSlotItems()[i].getQuantity();
                 }
+                InventoryManager.SetData(InventoryManager.getSlotItems()[i], i);
             }
         }
         InventoryManager.RefreshUI();
@@ -136,6 +141,7 @@ public class InventoryUpdate : Singleton<InventoryUpdate>
                 InventoryManager.getSlotItems()[i].addItemSO(slot.getItemSO(), 1);
                 InventoryManager.RefreshUI();
                 InventoryManager.SetXuText();
+                InventoryManager.SetData(slot,i);
                 return;
             }
         }
@@ -175,6 +181,7 @@ public class InventoryUpdate : Singleton<InventoryUpdate>
             else
             {
                 InventoryManager.getSlotItems()[index].Clear();
+                InventoryManager.SetData(InventoryManager.getSlotItems()[index], index);
             }
             InventoryManager.RefreshUI();
             return true;
@@ -197,6 +204,7 @@ public class InventoryUpdate : Singleton<InventoryUpdate>
                 if (slot.getItemSO().itemName == s.getItemSO().itemName)
                 {
                     InventoryManager.getSlotItems()[i].Clear();
+                    InventoryManager.SetData(s, i);
                     InventoryManager.RefreshUI();
                     return true;
                 }
