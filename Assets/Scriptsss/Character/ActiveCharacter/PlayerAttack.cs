@@ -57,6 +57,8 @@ namespace QuachDai.NinjaSchool.Character
         public void PlayerAttackMonster()
         {
             damage = player.GetDamage() + playerSkill.GetSkillDamage();
+            Debug.Log(damage + " " + setMonster.getExpMonsterDictionary(monster.level) + " " +
+                   setPlayer.getExpPlayerDictionary(player.GetLevel()));
             playerSkill.SkillAttack(Damgaed, AddExp);
         }
         public void Damgaed()
@@ -69,7 +71,8 @@ namespace QuachDai.NinjaSchool.Character
         {
             if (monster == null) return;
             if (monster.currHp <= damage)
-               // damage = monster.currHp;
+                // damage = monster.currHp;
+               
             exp = (damage * setMonster.getExpMonsterDictionary(monster.level) * 100) /
                 setPlayer.getExpPlayerDictionary(player.GetLevel());
             TextMove(((int)exp).ToString());

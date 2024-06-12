@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IDSkill: 3
   icon: {fileID: 21300000, guid: f2604b94b198b22409cbbe6cb6d1b14b, type: 3}
-  skillName: "Chi\xEAu trung c\u1EA5p"
+  skillName: Ice-type skills
   requiresLevel: 10
   skillLevel: 0
   framesMove:
@@ -48,5 +48,4 @@ MonoBehaviour:
   coefficient: 0.7
   isBlock: 0
   isActack: 1
-  description: "Ph\xF3ng ra nh\u01B0ng tia l\xF4i \u0111i\u1EC7n gi\xE1ng nh\u1EEFng
-    \u0111\xF2n ch\xED m\u1EA1ng v\xE0o k\u1EBB \u0111\u1ECBch."
+  description: The skill calls on the powerful Ice Tiger to strongly attack the enemy.

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IDSkill: 2
   icon: {fileID: 21300000, guid: 14376a93ca849124aa76335ceab7f5b7, type: 3}
-  skillName: "Chi\xEAu h\u1ED3i ph\u1EE5c"
+  skillName: Support skills
   requiresLevel: 5
   skillLevel: 0
   framesMove:
@@ -39,5 +39,4 @@ MonoBehaviour:
   coefficient: 1.2
   isBlock: 0
   isActack: 0
-  description: "Nh\u1EABn th\u1EADt t\xE2m ph\xE1p gi\xFAp b\u1EA3n th\xE2n t\u0103ng
-    hp mp."
+  description: This skill helps you increase your Hp and MP for a period of time.

@@ -49,10 +49,11 @@ namespace QuachDai.NinjaSchool.Character
                 isActtack = false;
                 player.SetMp(frameSkill.mp * (-1));
                 skillRecoveryTime.isTime = true;
-                yield return new WaitForSeconds(0.23f);
-                animatorSystem.SetBool(player.GetAnimator(), "IsAttack", false);
                 _damaged?.Invoke();
                 _addExp?.Invoke();
+                yield return new WaitForSeconds(0.23f);
+                animatorSystem.SetBool(player.GetAnimator(), "IsAttack", false);
+                
                 skillAnimation.AnimationSkill(frameSkill);
                 yield return new WaitForSeconds(frameSkill.timeSkill-0.1f);
                 isActtack = true;
