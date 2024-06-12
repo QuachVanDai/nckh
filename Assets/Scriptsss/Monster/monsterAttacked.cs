@@ -17,11 +17,12 @@ namespace QuachDai.NinjaSchool.Monsters
         public PlayerAttack playerAttack;
         public MonsterController2D monsterController2D;
         public Monster monCurrent;
-
+        bool isDeath;
         public Text[] damagedText;
         Player player => Player.Instance;
         private void Start()
         {
+            isDeath = false ;
             playerAttack = player.playerAttack;
             posStartText = damagedText[0].rectTransform.anchoredPosition;
         }
@@ -71,11 +72,12 @@ namespace QuachDai.NinjaSchool.Monsters
             else
                 monCurrent.currHp -= monCurrent.currHp;
 
-            if (this != null)
+            if (this != null && monCurrent.currHp>0)
                 StartCoroutine(EffectAcctacked());
             TextMove(damage.ToString());
-            if (monCurrent.currHp <= 0)
+            if (monCurrent.currHp <= 0 && !isDeath)
             {
+                isDeath = true;
                 monCurrent.UpdateHp(monCurrent.currHp, monCurrent.maxHp, monCurrent.nameMonster, monCurrent.level);
                 if (missionUi.GetMonster())
                     if (missionUi.GetIDMonster() == monCurrent.ID)

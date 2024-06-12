@@ -48,7 +48,7 @@ namespace QuachDai.NinjaSchool.Character
                     TextTemplate.Instance.SetText(TagScript.useSkill);
                     return;
                 }
-                if (playerSkill.IsActtack())
+                if (playerSkill.IsActtack()&& monster.currHp>0)
                     PlayerAttackMonster();
             }
         }
@@ -69,10 +69,9 @@ namespace QuachDai.NinjaSchool.Character
         double exp;
         public void AddExp()
         {
-            if (monster == null) return;
+            if (monster == null || monster.currHp<=0) return;
             if (monster.currHp <= damage)
-                // damage = monster.currHp;
-               
+                 damage = monster.currHp;
             exp = (damage * setMonster.getExpMonsterDictionary(monster.level) * 100) /
                 setPlayer.getExpPlayerDictionary(player.GetLevel());
             TextMove(((int)exp).ToString());

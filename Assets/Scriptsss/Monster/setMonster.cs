@@ -42,7 +42,7 @@ namespace QuachDai.NinjaSchool.Monsters
             for (int i = 1; i <= 100; i++)
             {
                 double v = Math.Round(620 * Math.Pow(i, 0.6f));
-                if(i==100) v = Math.Round(1000 * Math.Pow(i, 0.6f));
+                if(i==100) v = Math.Round(5000 * Math.Pow(i, 0.6f));
                 hPMonster.Add(i, (int)v);
             }
 
