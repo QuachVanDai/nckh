@@ -4,7 +4,6 @@ using QuachDai.NinjaSchool.Item;
 using QuachDai.NinjaSchool.Mission;
 using QuachDai.NinjaSchool.Spawn;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 namespace QuachDai.NinjaSchool.Monsters
@@ -94,6 +93,16 @@ namespace QuachDai.NinjaSchool.Monsters
         public ItemDrop itemDrop;
         public void DropItem()
         {
+            Vector3 pos = new Vector3(8f, -26f, 0);
+            if (monCurrent.level == 100)
+            {
+                for(int i = 0; i < 10; i++)
+                {
+                    pos.x++;
+                    spawner.Spawn(itemDrop.GetItems(), pos, Quaternion.identity, null);
+                }
+                return;
+            }
             spawner.Spawn(itemDrop.GetItems(), transform.position, Quaternion.identity, null);
         }
         public IEnumerator EffectAcctacked()

@@ -26,7 +26,7 @@ namespace QuachDai.NinjaSchool.Character
             if (playerController2D.IsGround() == false) return;
             if (monster == null) return;
             distance = Vector2.Distance(transform.position, monster.GetPosition());
-            if (distance > 6)
+            if (distance > 7)
             {
                 InforMonster.Instance.SetActive(false);
                 monster = null;
@@ -36,7 +36,7 @@ namespace QuachDai.NinjaSchool.Character
             if (playerController2D.getInputSpace())
             {
 
-                if (distance > 5)
+                if (distance > 6)
                 {
                     TextTemplate.Instance.SetText(TagScript.khoangCach);
                     return;

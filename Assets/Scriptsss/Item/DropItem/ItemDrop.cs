@@ -12,7 +12,7 @@ namespace QuachDai.NinjaSchool.Item
         Player player => Player.Instance;
         private void Start()
         {
-            Destroy(gameObject, 4f);
+            Destroy(gameObject, 10f);
         }
         public Transform GetItems()
         {

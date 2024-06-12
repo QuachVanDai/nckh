@@ -14,10 +14,12 @@ public class SkillRecoveryTime: MonoBehaviour
     {
         if (!isTime) 
         {
+            frameSkill.isActack = true;
             getTime = Time.time; 
             return; 
         }
         fillTime.fillAmount = 1 -( (Time.time - getTime)/ frameSkill.timeSkill);
+        frameSkill.isActack = false;
     }
     public void SetFrameSkill(FrameSkill _frameSkill)
     {

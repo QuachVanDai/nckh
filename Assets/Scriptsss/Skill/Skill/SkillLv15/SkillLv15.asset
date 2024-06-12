@@ -16,7 +16,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: d85c198be89f61c4c92394b8402132e2, type: 3}
   skillName: "Chi\xEAu t\u0103ng s\u1EE9c m\u1EA1nh"
   requiresLevel: 15
-  skillLevel: 0
+  skillLevel: 3
   framesMove:
   - {fileID: 0}
   framesFont:
@@ -43,6 +43,6 @@ MonoBehaviour:
   upgradeFee: 1400
   coefficient: 1.2
   isBlock: 1
-  isActack: 1
+  isActack: 0
   description: "Nh\u1EABn th\u1EADt t\xE2m ph\xE1p gi\xFAp b\u1EA3n th\xE2n t\u0103ng
     l\u01B0\u1EE3ng s\xE1t th\u01B0\u01A1ng v\xE0o k\u1EBB \u0111\u1ECBch."

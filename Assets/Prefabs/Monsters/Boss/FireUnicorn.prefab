@@ -338,7 +338,8 @@ MonoBehaviour:
   - {fileID: 7031616487502530781}
   - {fileID: 8417331984713327304}
   posStartText: {x: 0, y: 0, z: 0}
-  itemDrop: {fileID: 0}
+  itemDrop: {fileID: 8819162830517900460, guid: e9a13a542c7b5314a947c4f4a67705d0,
+    type: 3}
 --- !u!114 &-5233689965989147554
 MonoBehaviour:
   m_ObjectHideFlags: 0

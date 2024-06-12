@@ -36,7 +36,7 @@ namespace QuachDai.NinjaSchool.Character
         }
         public bool IsActtack()
         {
-            return isActtack && frameSkill.isActack;
+            return frameSkill.isActack;
         }
         public void SkillAttack(Action _damaged, Action _addExp)
         {
@@ -48,13 +48,13 @@ namespace QuachDai.NinjaSchool.Character
                 animatorSystem.SetBool(player.GetAnimator(), "IsAttack", true);
                 isActtack = false;
                 player.SetMp(frameSkill.mp * (-1));
-                yield return new WaitForSeconds(0.23f);
                 skillRecoveryTime.isTime = true;
+                yield return new WaitForSeconds(0.23f);
                 animatorSystem.SetBool(player.GetAnimator(), "IsAttack", false);
                 _damaged?.Invoke();
                 _addExp?.Invoke();
                 skillAnimation.AnimationSkill(frameSkill);
-                yield return new WaitForSeconds(frameSkill.timeSkill);
+                yield return new WaitForSeconds(frameSkill.timeSkill-0.1f);
                 isActtack = true;
                 skillRecoveryTime.isTime = false;
             }
