@@ -32,6 +32,7 @@ namespace QuachDai.NinjaSchool.MainCanvas
         {
             string namePlayer = NamePlayerText.inputNamePlayer.text;
             int length = NamePlayerText.inputNamePlayer.text.Length;
+          
             if (length > 10 || length < 5)
             {
                 errorPanel.gameObject.SetActive(true);

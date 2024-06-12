@@ -40,8 +40,9 @@ MonoBehaviour:
   timeSkill: 15
   skillDamage: 2000
   increasedHPMP: 0
+  upgradeFee: 1400
   coefficient: 1.2
-  isBlock: 0
+  isBlock: 1
   isActack: 1
   description: "Nh\u1EABn th\u1EADt t\xE2m ph\xE1p gi\xFAp b\u1EA3n th\xE2n t\u0103ng
     l\u01B0\u1EE3ng s\xE1t th\u01B0\u01A1ng v\xE0o k\u1EBB \u0111\u1ECBch."

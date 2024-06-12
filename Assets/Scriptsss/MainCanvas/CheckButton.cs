@@ -24,7 +24,6 @@ namespace QuachDai.NinjaSchool.MainCanvas
         private void Start()
         {
             isOption = PlayerPrefs.GetInt(keyShowOpion.ToString()) == 1 ? true : false;
-            Debug.Log("opnion = " + isOption);
             if (isOption)
                 checkMark.sprite = onOpion;
             else

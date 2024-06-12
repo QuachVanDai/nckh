@@ -44,6 +44,7 @@ MonoBehaviour:
   timeSkill: 0.45
   skillDamage: 80
   increasedHPMP: 0
+  upgradeFee: 1000
   coefficient: 0.7
   isBlock: 0
   isActack: 1

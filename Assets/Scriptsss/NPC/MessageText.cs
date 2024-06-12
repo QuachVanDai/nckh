@@ -5,23 +5,30 @@ using UnityEngine.UI;
 public class MessageText : MonoBehaviour
 {
     [SerializeField] Text messageText;
+    [SerializeField] Tween tween;
     public void SetMessageText(string _message)
     {
         messageText.text = _message;
     }
-    public void SetActive(bool _values)
-    {
-        transform.gameObject.SetActive(_values);
-    }
+  
+    
     public void ShowMessage()
     {
-        SetActive(true);
+        gameObject.SetActive(true);
         transform.localScale = Vector3.zero;
-        transform.DOScale(Vector3.one/10,0.3f);
+        tween = transform.DOScale(Vector3.one/10,0.3f);
     }
     public void HideMessage()
     {
-        SetActive(false);
+        gameObject.SetActive(false);
         transform.localScale = Vector3.zero;
+    }
+    private void OnDisable()
+    {
+        if (tween != null)
+        {
+            Debug.Log(transform.name);
+            tween.Kill();
+        }
     }
 }

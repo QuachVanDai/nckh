@@ -7,8 +7,10 @@ public class Resident : MonoBehaviour
     [SerializeField] float timeMove;
     [SerializeField] Vector3 scale;
     [SerializeField] Vector3[] posTarget;
-    [SerializeField] int i;
+    int i;
     [SerializeField] Animator animator;
+    [SerializeField] Tween tween;
+    [SerializeField] Coroutine coroutine;
     private void Start()
     {
         scale = transform.localScale;
@@ -40,16 +42,22 @@ public class Resident : MonoBehaviour
     }
     public void Idle()
     {
-        StartCoroutine(_Idle());
+        coroutine = StartCoroutine(_Idle());
         IEnumerator _Idle()
         {
             yield return new WaitForSeconds(Random.Range(2, 5));
             CurrentStatus = StatusResident.Move;
         }
     }
+    private void OnDisable()
+    {
+        if (coroutine != null) StopCoroutine(coroutine);
+        CurrentStatus = StatusResident.None;
+        if (tween != null) tween.Kill();
+    }
     public void Move()
     {
-        transform.DOMove(posTarget[i], timeMove).OnComplete(() =>
+        tween = transform.DOMove(posTarget[i], timeMove).OnComplete(() =>
         {
             animator.SetBool("isSpeed", false);
             CurrentStatus = StatusResident.Idle;

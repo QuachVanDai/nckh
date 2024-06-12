@@ -35,12 +35,17 @@ namespace QuachDai.NinjaSchool.MainCanvas
         Player player => Player.Instance;
         private void ListenerMethod()
         {
-            if (player.GetXu() < 1000)
+            if (player.GetLevel() < skillPanel.GetRequiresLevel())
             {
-                TextTemplate.Instance.SetText(TagScript.notMoney+ " <1000");
+                TextTemplate.Instance.SetText("RequiresLevel: " + skillPanel.GetRequiresLevel());
                 return;
             }
-            player.SetXu(-100);
+            if (player.GetXu() < skillPanel.GetUpgradeFee())
+            {
+                TextTemplate.Instance.SetText(TagScript.notMoney+ " < " + skillPanel.GetUpgradeFee());
+                return;
+            }
+            player.SetXu(-skillPanel.GetUpgradeFee());
             skillPanel.Upgrade();
         }
         public SkillPanel GetSkillPanel()

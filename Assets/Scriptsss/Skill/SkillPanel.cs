@@ -21,11 +21,19 @@ namespace QuachDai.NinjaSchool.Skill
         {
             return frameSkill;
         }
+        public int GetUpgradeFee()
+        {
+            return frameSkill.upgradeFee;
+        }
+        public int GetRequiresLevel()
+        {
+            return frameSkill.requiresLevel;
+        }
         public void Upgrade()
         {
-            if(frameSkill.requiresLevel>Player.Instance.GetLevel())
+            if (frameSkill.requiresLevel > Player.Instance.GetLevel())
                 TextTemplate.Instance.SetText("Level is not enough to upgrade");
-            else if (frameSkill.skillLevel>=3)
+            else if (frameSkill.skillLevel >= 3)
                 TextTemplate.Instance.SetText("Maximum level reached");
             else
             {
@@ -50,7 +58,8 @@ namespace QuachDai.NinjaSchool.Skill
                                 frameSkill.description,
                                 frameSkill.requiresLevel,
                                 (int)_skillDamage,
-                                frameSkill.skillLevel);
+                                frameSkill.skillLevel,
+                                frameSkill.upgradeFee);
         }
         public void HideSelectSkill()
         {
@@ -58,7 +67,7 @@ namespace QuachDai.NinjaSchool.Skill
                 selectSkillList[i].SetActive(false);
             selectSkill.SetActive(true);
         }
-      
+
     }
 }
 /*

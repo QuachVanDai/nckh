@@ -5,12 +5,14 @@ namespace QuachDai.NinjaSchool.MainCanvas
 {
     public class AccessoryButton : MonoBehaviour
     {
+        [SerializeField] RectTransform panelSlot;
         [SerializeField] GameObject panelDisguise;
         [SerializeField] GameObject panelAccessory;
         [SerializeField] DisguiseButton disguiseButton;
         [SerializeField] float startTarget;
         [SerializeField] float endTarget;
         [SerializeField] RectTransform thisRectTransform=>GetComponent <RectTransform>();
+        [SerializeField] Tween tween;
 
         Button button;
         [SerializeField]
@@ -34,10 +36,12 @@ namespace QuachDai.NinjaSchool.MainCanvas
 
         private void OnDisable()
         {
+            if(tween != null) tween.Kill();
             ThisButton.onClick.RemoveListener(ListenerMethod);
         }
-        private void ListenerMethod()
+        public void ListenerMethod()
         {
+            panelSlot.anchoredPosition = new Vector3(0, -182, 0);
             panelAccessory.SetActive(true);
             panelDisguise.SetActive(false);
             Move(endTarget);
@@ -45,7 +49,7 @@ namespace QuachDai.NinjaSchool.MainCanvas
         }
         public void Move(float posTarget)
         {
-            thisRectTransform.DOAnchorPosX(posTarget, 0.2f);
+            tween = thisRectTransform.DOAnchorPosX(posTarget, 0.2f);
         }
     }
 }

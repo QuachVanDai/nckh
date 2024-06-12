@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df77746ea872a0a48928e51ff568e7ec, type: 3}
-  m_Name: NewListSlotData
+  m_Name: CurrSlotData
   m_EditorClassIdentifier: 
   listSlot:
-  - item: {fileID: 11400000, guid: 45a8c7b5f7ba2e140be938b1155728cc, type: 2}
-    quantity: 30
-  - item: {fileID: 11400000, guid: 9bbf73c1e54f7494a86ec14c3f9c4f5e, type: 2}
-    quantity: 30
-  - item: {fileID: 11400000, guid: b7bf063f3a365ed45bead951b3eda6b7, type: 2}
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
     quantity: 0
   - item: {fileID: 0}
     quantity: 0

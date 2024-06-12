@@ -9,6 +9,7 @@ public class GameMenu : MonoBehaviour
     }
     public void continueGame()
     {
+        if (PlayerPrefs.GetInt(TagScript.firstPlay) == 0) return;
         Game.Continue();
     }
  

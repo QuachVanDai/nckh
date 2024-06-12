@@ -12,13 +12,14 @@ namespace QuachDai.NinjaSchool.Skill
         {
             posStart = rectTransform.anchoredPosition;
         }
-        public void Show(string title, string contend, int requiresLevel, int damage, int level)
+        public void Show(string title, string contend, int requiresLevel, int damage, int level,int upgradeFee)
         {
             describeSkillText.text = title + "\n";
             describeSkillText.text += contend + "\n";
             describeSkillText.text += "RequiresLevel: " + requiresLevel + "\n";
             describeSkillText.text += "Damage: " + damage + "\n";
             describeSkillText.text += "Skill Level: " + level + "\n";
+            describeSkillText.text += "Upgrade Fee: " + upgradeFee + "\n";
         }
         public void ResetPosition()
         {

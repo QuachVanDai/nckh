@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21ce43cddfe8afb438a86dd987c6483c, type: 3}
-  m_Name: DiguiseSO5
+  m_Name: CurrDiguise
   m_EditorClassIdentifier: 
   disguiseSO:
     Head: {fileID: 11400000, guid: 058eb44457e749747a52091832c18e1d, type: 2}

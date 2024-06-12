@@ -16,10 +16,11 @@ public class UseMp : MonoBehaviour, IPointerClickHandler
     InventoryUpdate inventoryUpdate => InventoryUpdate.Instance;
     SoundSystem soundSystem => SoundSystem.Instance;
     ClipSystem clipSystem => ClipSystem.Instance;
-    public int quanitity => inventoryUpdate.UpdateMP(0);
+    public int quanitity;
 
     void Start()
     {
+        quanitity = inventoryUpdate.UpdateMP(0);
         quanitityText.text = quanitity.ToString();
         isUes = true;
     }

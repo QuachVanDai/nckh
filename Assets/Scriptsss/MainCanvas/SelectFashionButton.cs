@@ -4,8 +4,12 @@ namespace QuachDai.NinjaSchool.MainCanvas
 {
     public class SelectFashionButton : MonoBehaviour
     {
+        [SerializeField]
+        SelectFashionButton[] selectFashionButtons;
         [SerializeField] Image framSelect;
         [SerializeField] bool isOption;
+        [SerializeField] DisguiseSO disguiseSO;
+        [SerializeField] UseDisguiseButton useDisguise;
         Button button;
         [SerializeField]
         Button ThisButton
@@ -17,19 +21,39 @@ namespace QuachDai.NinjaSchool.MainCanvas
                 return button;
             }
         }
+        private void Start()
+        {
+            isOption = false;
+        }
         private void OnEnable()
         {
+            Debug.Log("On");
             ThisButton.onClick.AddListener(ListenerMethod);
         }
 
         private void OnDisable()
         {
+            framSelect.gameObject.SetActive(false);
+            isOption = false;
             ThisButton.onClick.RemoveListener(ListenerMethod);
         }
         private void ListenerMethod()
         {
-            framSelect.gameObject.SetActive(isOption);
             isOption = !isOption;
+            framSelect.gameObject.SetActive(isOption);
+            if(isOption )
+                 useDisguise.SetDisguise(disguiseSO);
+            else useDisguise.SetDisguise(null);
+            foreach (var button in selectFashionButtons)
+            {
+                button.DisActive();
+            }
+        }
+
+        public void DisActive()
+        {
+            framSelect.gameObject.SetActive(false);
+            isOption = false;
         }
     }
 }

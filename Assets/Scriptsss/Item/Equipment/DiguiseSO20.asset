@@ -16,3 +16,4 @@ MonoBehaviour:
     Head: {fileID: 11400000, guid: 058eb44457e749747a52091832c18e1d, type: 2}
     Body: {fileID: 11400000, guid: cae5981a14019de4281dce01cd263ca6, type: 2}
     Leg: {fileID: 11400000, guid: 9949863c0959bdc46b2d071e90f67b8c, type: 2}
+  Level: 10

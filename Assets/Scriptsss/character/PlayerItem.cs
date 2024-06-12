@@ -3,7 +3,7 @@ using System.IO;
 using UnityEngine;
 namespace QuachDai.NinjaSchool.Character
 {
-    public class PlayerItem : MonoBehaviour
+    public class PlayerItem : Singleton<PlayerItem>
     {
 
         [SerializeField] private Head _CharacterHead;
@@ -19,8 +19,9 @@ namespace QuachDai.NinjaSchool.Character
         [SerializeField] DisguiseSO firstDisguiseSO;
         string filePath;
 
-        public void Awake()
+        public override void Awake()
         {
+            base.Awake();
             filePath = Application.persistentDataPath + "/DisguiseSO.json";
         }
         private void Start()
@@ -34,12 +35,15 @@ namespace QuachDai.NinjaSchool.Character
             string data = JsonUtility.ToJson(currDisguiseSO);
             File.WriteAllText(filePath, data);
         }
+        public void SetData(DisguiseSO _disguiseSO)
+        {
+            currDisguiseSO = _disguiseSO;
+        }
         public void LoadData()
         {
             if (File.Exists(filePath))
             {
                 string data;
-                currDisguiseSO = new DisguiseSO();
                 if (PlayerPrefs.GetInt(TagScript.firstPlay) == 0)
                 {
                     Debug.Log("First Data");

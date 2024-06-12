@@ -6,6 +6,7 @@ using UnityEngine;
 public class DisguiseSO : ScriptableObject
 {
     public Disguise disguiseSO;
+    public int Level;
 
 }
 [Serializable]

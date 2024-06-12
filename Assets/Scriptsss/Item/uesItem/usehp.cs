@@ -15,11 +15,12 @@ public class UseHp : MonoBehaviour, IPointerClickHandler
     Player player => Player.Instance;
     SoundSystem soundSystem => SoundSystem.Instance;
     ClipSystem clipSystem => ClipSystem.Instance;
-    public int quanitity => inventoryUpdate.UpdateHP(0);
+    public int quanitity;
 
     InventoryUpdate inventoryUpdate => InventoryUpdate.Instance;
     void Start()
     {
+        quanitity = inventoryUpdate.UpdateHP(0);
         quanitityText.text = quanitity.ToString();
         isUes = true;
     }

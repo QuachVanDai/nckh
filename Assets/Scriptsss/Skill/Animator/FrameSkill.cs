@@ -16,6 +16,7 @@ public class FrameSkill : ScriptableObject
     public float timeSkill;
     public int skillDamage;
     public int increasedHPMP;
+    public int upgradeFee;
     public float coefficient;
     public bool isBlock=false;
     public bool isActack=false;

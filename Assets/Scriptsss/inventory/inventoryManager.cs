@@ -9,8 +9,9 @@ public class InventoryManager : MonoBehaviour
 {
 
     [SerializeField] private List<Slot> SlotItems = new List<Slot>(15);
-    [SerializeField] SlotData SlotData;
+    [SerializeField] SlotData currSlotData;
     [SerializeField] SlotData firstSlotData;
+    [SerializeField]  SlotData loadedData;
     [SerializeField] private GameObject[] SlotsGameObject;
 
     public Text xuText;
@@ -31,22 +32,21 @@ public class InventoryManager : MonoBehaviour
     #region  Save Data
     public void SetData(Slot slot, int i)
     {
-        SlotData.listSlot[i] = new Slot(slot);
+        currSlotData.listSlot[i] = new Slot(slot);
         SaveData();
     }
     public void SaveData()
     {
         Debug.Log("Save Data Inventory");
-        string data = JsonUtility.ToJson(SlotData);
+        string data = JsonUtility.ToJson(currSlotData);
         File.WriteAllText(filePath, data);
     }
-    SlotData loadedData;
     public void LoadData()
     {
         if (File.Exists(filePath))
         {
             string data;
-            loadedData = new SlotData();
+
             if (PlayerPrefs.GetInt(TagScript.firstPlay) == 0)
             {
                 Debug.Log("First Data");
@@ -60,10 +60,10 @@ public class InventoryManager : MonoBehaviour
             }
            
         }
-        for (int i = 0; i < SlotData.listSlot.Count; i++)
+        for (int i = 0; i < currSlotData.listSlot.Count; i++)
         {
             SlotItems[i] = new Slot(loadedData.listSlot[i]);
-            SlotData.listSlot[i] = new Slot(loadedData.listSlot[i]);
+            currSlotData.listSlot[i] = new Slot(loadedData.listSlot[i]);
         }
         SaveData();
     }
