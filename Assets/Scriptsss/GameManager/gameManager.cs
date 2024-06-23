@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : Singleton<GameManager>
 {
 
-    bool isPlayGame;
+    [SerializeField]bool isPlayGame;
     public bool IsPlayGame
     {
         get
@@ -56,12 +56,14 @@ public class GameManager : Singleton<GameManager>
     public void OnEnable()
     {
         Physics2D.IgnoreLayerCollision(7, 8, true);
+        Physics2D.IgnoreLayerCollision(7, 11, true);
         Physics2D.IgnoreLayerCollision(8, 8, true);
 
     }
     public void OnDisable()
     {
         Physics2D.IgnoreLayerCollision(7, 8, false);
+        Physics2D.IgnoreLayerCollision(7, 11, false);
         Physics2D.IgnoreLayerCollision(8, 8, false);
     }
 }

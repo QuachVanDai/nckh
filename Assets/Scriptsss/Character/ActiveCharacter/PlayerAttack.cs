@@ -24,35 +24,37 @@ namespace QuachDai.NinjaSchool.Character
         {
             if (GameManager.Instance.IsPlayGame == false) return;
             if (playerController2D.IsGround() == false) return;
-            if (monster == null) return;
-            distance = Vector2.Distance(transform.position, monster.GetPosition());
-            if (distance > 7)
+            if (monster != null)
             {
-                InforMonster.Instance.SetActive(false);
-                monster = null;
-                return;
-            }
-
-            if (playerController2D.getInputSpace())
-            {
-
-                if (distance > 6)
+                distance = Vector2.Distance(transform.position, monster.GetPosition());
+                if (distance > 7)
                 {
-                    TextTemplate.Instance.SetText(TagScript.khoangCach);
+                    InforMonster.Instance.SetActive(false);
+                    monster = null;
                     return;
                 }
 
-                //if player use skilllv5 or skilllv15, player cannot attack.
-                if (playerSkill.GetIDSkill() == IDSkill.SkillLv5)
+                if (playerController2D.getInputSpace())
                 {
-                    TextTemplate.Instance.SetText(TagScript.useSkill);
-                    return;
+
+                    if (distance > 6)
+                    {
+                        TextTemplate.Instance.SetText(TagScript.khoangCach);
+                        return;
+                    }
+
+                    //if player use skilllv5 or skilllv15, player cannot attack.
+                    if (playerSkill.GetIDSkill() == IDSkill.SkillLv5)
+                    {
+                        TextTemplate.Instance.SetText(TagScript.useSkill);
+                        return;
+                    }
+                    if (playerSkill.IsActtack() && monster.currHp > 0)
+                        PlayerAttackMonster();
                 }
-                if (playerSkill.IsActtack()&& monster.currHp>0)
-                    PlayerAttackMonster();
             }
         }
-
+    
         float damage;
         public void PlayerAttackMonster()
         {
@@ -116,7 +118,6 @@ namespace QuachDai.NinjaSchool.Character
             monster = _monster.GetComponent<Monster>();
             skillAnimation.spritePosMonster = monster.spriteMonsterAttacked;
         }
-
         void OnDrawGizmos()
         {
             if (monster == null) return;

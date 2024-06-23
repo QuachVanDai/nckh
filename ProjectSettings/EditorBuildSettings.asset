@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MysteriousCaveScene.unity
     guid: ad43da7da8cd0624b9d6b69b33f346c0
+  - enabled: 1
+    path: Assets/Scenes/CompetitionStationScene.unity
+    guid: 3972e8a39c9214347b3142390e9425cc
   m_configObjects: {}

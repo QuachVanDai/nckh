@@ -24,7 +24,7 @@ namespace QuachDai.NinjaSchool.MainCanvas
         {
             ThisButton.onClick.RemoveListener(ListenerMethod);
         }
-        private void ListenerMethod()
+        public void ListenerMethod()
         {
             GameManager.Instance.IsPlayGame = true;
         }

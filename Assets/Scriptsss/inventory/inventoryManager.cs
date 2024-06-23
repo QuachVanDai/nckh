@@ -11,7 +11,7 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private List<Slot> SlotItems = new List<Slot>(15);
     [SerializeField] SlotData currSlotData;
     [SerializeField] SlotData firstSlotData;
-    [SerializeField]  SlotData loadedData;
+    [SerializeField] SlotData loadedData;
     [SerializeField] private GameObject[] SlotsGameObject;
 
     public Text xuText;
@@ -58,7 +58,7 @@ public class InventoryManager : MonoBehaviour
                 Debug.Log(data);
                 JsonUtility.FromJsonOverwrite(data, loadedData);
             }
-           
+
         }
         for (int i = 0; i < currSlotData.listSlot.Count; i++)
         {

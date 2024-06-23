@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d707295742d39c4da92c69e9ceb10c9, type: 3}
+  m_Name: CompetitionStationMiniSceneData
+  m_EditorClassIdentifier: 
+  Id: 0
+  sceneName: CompetitionStationScene
+  scene: {fileID: 102900000, guid: 3972e8a39c9214347b3142390e9425cc, type: 3}
+  PosPlayer:
+  - {x: -17, y: 0, z: 0}
+  - {x: -17, y: 0, z: 0}
+  yMax: 0
+  yMin: 0
+  xMax: 17
+  xMin: 17
+  music: {fileID: 8300000, guid: a8834b06592e6b74893c476b8149233c, type: 3}
+  posPlayerFinal: {x: 17, y: 0, z: 0}

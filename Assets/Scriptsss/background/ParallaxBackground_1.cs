@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class ParallaxBackground_1 : MonoBehaviour
 {
-   
+
     public GameObject prefabsLayers;
     public Transform parentTranform;
-    [Range(-5,5)]
+    [Range(-5, 5)]
     public float LayerSpeed;
     private GameObject Layer;
     private List<GameObject> lstLayers;
@@ -14,17 +14,17 @@ public class ParallaxBackground_1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-            lstLayers = new List<GameObject>();
-        if(LayerSpeed > 0)
+        lstLayers = new List<GameObject>();
+        if (LayerSpeed > 0)
         {
             flat = -1;
         }
-            for (int i = 0; i < 3; i++)
-            {
-                Layer = Instantiate(prefabsLayers, new Vector3(36 * i * flat, 0, 0), Quaternion.identity);
-                Layer.transform.parent = parentTranform;
-                lstLayers.Add(Layer);
-            }
+        for (int i = 0; i < 3; i++)
+        {
+            Layer = Instantiate(prefabsLayers, new Vector3(36 * i * flat, 0, 0), Quaternion.identity);
+            Layer.transform.parent = parentTranform;
+            lstLayers.Add(Layer);
+        }
     }
 
     // Update is called once per frame
@@ -38,7 +38,7 @@ public class ParallaxBackground_1 : MonoBehaviour
             Layer.transform.parent = parentTranform;
             lstLayers.Add(Layer);
         }
-         if (lstLayers[0].transform.position.x >= 72 && LayerSpeed > 0)
+        if (lstLayers[0].transform.position.x >= 72 && LayerSpeed > 0)
         {
             Destroy(lstLayers[0]);
             lstLayers.RemoveAt(0);

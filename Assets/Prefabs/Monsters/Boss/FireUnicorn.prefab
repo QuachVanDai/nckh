@@ -285,7 +285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 20
   nameMonster: FireUnicorn
-  level: 100
+  level: 1
   maxHp: 0
   currHp: 0
   minDamage: 0
