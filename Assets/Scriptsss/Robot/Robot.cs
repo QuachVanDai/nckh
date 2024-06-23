@@ -6,7 +6,8 @@ public class Robot : MonoBehaviour
     [SerializeField] Text nameNinja;
     [SerializeField] float hp;
     [SerializeField] float maxHp;
-    [SerializeField] float damage;
+    [SerializeField] float minDamage;
+    [SerializeField] float maxDamage;
     [SerializeField] Image fillBarHP;
     [SerializeField] bool isDeath;
     public bool IsDeath { get { return isDeath; } set { isDeath = value; } }
@@ -19,7 +20,7 @@ public class Robot : MonoBehaviour
     }
     public float GetDamage()
     {
-        return damage;
+        return Random.Range(minDamage,maxDamage);
     }
     public float GetHp()
     {
