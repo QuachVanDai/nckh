@@ -13,16 +13,5 @@ public class ClothSO : EquipmentSO
     public Sprite[] bodyRun;
     public Sprite[] bodyAttack;
     public Sprite[] bodyDown;
-    public override void Update()
-    {
-        base.Update();
-
-        this.equipmentType = EquipmentType.Cloth;
-        this.Description = "Giúp giảm sát thương tấn công từ quái vật.";
-
-        this.SetSpriteIdle(bodyIdle);
-        this.SetSpriteRun(bodyRun);
-        this.SetSpriteAttack(bodyAttack);
-        this.SetSpriteDown(bodyDown);
-    }
+ 
 }

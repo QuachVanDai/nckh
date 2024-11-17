@@ -1,20 +1,33 @@
 ﻿
+using JetBrains.Annotations;
 using QuachDai.NinjaSchool.Character;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InventoryManager : MonoBehaviour
+public abstract class InventoryManager : MonoBehaviour
 {
-
-    [SerializeField] private List<Slot> SlotItems = new List<Slot>(15);
+    [SerializeField] Transform Inventory;
+    [SerializeField] List<ItemSlot> itemSlots;
     [SerializeField] SlotData currSlotData;
     [SerializeField] SlotData firstSlotData;
     [SerializeField] SlotData loadedData;
-    [SerializeField] private GameObject[] SlotsGameObject;
+    [SerializeField] Slot[] Slots;
+
+    [SerializeField] Text InforItem;
+    private ItemSlot itemClick;
 
     public Text xuText;
+
+    #region Set Get
+    public ItemSlot ItemClick { get { return itemClick; } set { itemClick = value; } }
+    public List<ItemSlot> ItemSlots { get { return itemSlots; }}
+    #endregion
+    #region index 
+    int i = 0;
+    public int SizeInventory => Inventory.childCount;
+    #endregion
     [SerializeField] bool isLoadData;
 
     string filePath;
@@ -24,15 +37,25 @@ public class InventoryManager : MonoBehaviour
         if (isLoadData)
             LoadData();
     }
-    public void Start()
+    private void OnEnable()
     {
-        RefreshUI();
-        SetXuText();
+        Init();
+        Refresh();
+    }
+    
+    private void Init()
+    {
+        Slots = new Slot[SizeInventory];
+        int i = 0;
+        foreach (Transform t in Inventory)
+        {
+            Slots[i++] = t.GetComponent<Slot>();
+        }
     }
     #region  Save Data
-    public void SetData(Slot slot, int i)
+    public void SetData(ItemSlot slot, int i)
     {
-        currSlotData.listSlot[i] = new Slot(slot);
+        currSlotData.listSlot[i] = new ItemSlot(slot);
         SaveData();
     }
     public void SaveData()
@@ -62,8 +85,8 @@ public class InventoryManager : MonoBehaviour
         }
         for (int i = 0; i < currSlotData.listSlot.Count; i++)
         {
-            SlotItems[i] = new Slot(loadedData.listSlot[i]);
-            currSlotData.listSlot[i] = new Slot(loadedData.listSlot[i]);
+            itemSlots[i] = new ItemSlot(loadedData.listSlot[i]);
+            currSlotData.listSlot[i] = new ItemSlot(loadedData.listSlot[i]);
         }
         SaveData();
     }
@@ -72,33 +95,44 @@ public class InventoryManager : MonoBehaviour
     {
         xuText.text = Player.Instance.GetXu().ToString();
     }
-    public void RefreshUI()
+    #region UPDATE ITEMS
+    public void SetInforItem(ItemSlot _item)
     {
-        for (int i = 0; i < SlotsGameObject.Length; i++)
+        try
+        {
+            InforItem.text = _item.GetItemSO().Name + "\n";
+            InforItem.text += _item.GetItemSO().Description + "\n";
+
+        }
+        catch
+        {
+            InforItem.text = "Chọn vật phẩm";
+        }
+    }
+    public void Refresh()
+    {
+        for (int i = 0; i < SizeInventory; i++)
         {
             try
             {
-                SlotsGameObject[i].transform.GetChild(1).GetComponent<Image>().enabled = true;
-                SlotsGameObject[i].transform.GetChild(1).GetComponent<Image>().sprite = SlotItems[i].getItemSO().Icon;
-                if (SlotItems[i].getItemSO().IsStackable)
-                {
-                    SlotsGameObject[i].transform.GetChild(1).GetChild(0).GetComponent<Text>().text = SlotItems[i].getQuantity().ToString();
-                }
-                else
-                {
-                    SlotsGameObject[i].transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "";
-                }
+                Slots[i].SetSlot(itemSlots[i]);
+
             }
             catch
             {
-                SlotsGameObject[i].transform.GetChild(1).GetComponent<Image>().sprite = null;
-                SlotsGameObject[i].transform.GetChild(1).GetComponent<Image>().enabled = false;
-                SlotsGameObject[i].transform.GetChild(1).GetChild(0).GetComponent<Text>().text = "";
+                Slots[i].SetSlot(null);
             }
         }
     }
 
-    public GameObject[] getSlotGameObject() { return SlotsGameObject; }
-    public List<Slot> getSlotItems() { return SlotItems; }
-    public void setSlotItem(Slot slot, int i) { SlotItems[i] = slot; }
+   
+   
+
+    #endregion
+
+
+
+    public Slot[] getSlotGameObject() { return Slots; }
+    public List<ItemSlot> getSlotItems() { return itemSlots; }
+    public void SetSlotItem(ItemSlot slot, int i) { itemSlots[i] = slot; }
 }

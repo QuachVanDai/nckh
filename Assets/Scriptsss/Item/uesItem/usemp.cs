@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using QuachDai.NinjaSchool.Sound;
 public class UseMp : MonoBehaviour, IPointerClickHandler
 {
-    public Slot slotFoodSO;
+    public ItemSlot slotFoodSO;
     private MpSO mpSO;
     public Text quanitityText;
     public bool isUes;
@@ -46,7 +46,7 @@ public class UseMp : MonoBehaviour, IPointerClickHandler
         else if (quanitity > 0)
         {
             soundSystem.PlayOneShotSound(clipSystem.useHpMpClip);
-            mpSO = (MpSO)slotFoodSO.getItemSO();
+            mpSO = (MpSO)slotFoodSO.GetItemSO();
             isUes = false;
             player.SetMp(1f * mpSO.mP);
             inventoryUpdate.UpdateMP(-1);

@@ -6,13 +6,8 @@ public class PotionSO : ItemSO
 {
     public PotionType PotionType;
     public int Level;
-    public int Buy;
     public int Price;
-    public override void Update()
-    {
-        base.Update();
-        this.ItemType = ItemType.Potion;
-    }
+
     private int _hP;
     public int HP
     {

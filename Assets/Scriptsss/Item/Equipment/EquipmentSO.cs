@@ -13,12 +13,7 @@ public class EquipmentSO : ItemSO
     public int Buy;
     public int Price;
 
-    public override void Update()
-    {
-        base.Update();
-
-        this.ItemType = ItemType.Equipment;
-    }
+    
     private Sprite[] spriteIdle;
     public Sprite[] GetSpriteIdle
     {

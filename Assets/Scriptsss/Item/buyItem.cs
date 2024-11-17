@@ -2,7 +2,7 @@
 using UnityEngine;
 public class BuyItem : MonoBehaviour
 {
-    public Slot Slot;
+    public ItemSlot Slot;
     public int Cost;
     public InventoryManager InventoryManager;
 
@@ -12,13 +12,13 @@ public class BuyItem : MonoBehaviour
 
     public void ConfirmBuy()
     {
-        if (Slot == null || Slot.getItemSO() == null)
+        if (Slot == null || Slot.GetItemSO() == null)
             return;
         else if (InventoryUpdate.Instance.IsHaveBox() == false)
             TextTemplate.Instance.SetText(TagScript.fullBox);
         else
         {
-            Cost = Slot.getItemSO().Cost;
+           // Cost = Slot.getItemSO().Cost;
             if (SumMoney < Cost)
             {
                 TextTemplate.Instance.SetText(TagScript.notMoney);
@@ -26,9 +26,9 @@ public class BuyItem : MonoBehaviour
             }
             player.SetXu(-Cost);
             InventoryManager.SetXuText();
-            if (Slot.getItemSO().itemName == ItemName.Hp)
+            if (Slot.GetItemSO().Name == ItemName.Hp)
                 InventoryUpdate.Instance.UpdateHP(Slot, 1);
-            else if (Slot.getItemSO().itemName == ItemName.Mp)
+            else if (Slot.GetItemSO().Name == ItemName.Mp)
                 InventoryUpdate.Instance.UpdateMP(Slot, 1);
             else
                 InventoryUpdate.Instance.AddItem(Slot);

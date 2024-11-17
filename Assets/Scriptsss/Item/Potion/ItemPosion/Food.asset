@@ -12,16 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34c5f48ba1aabf448a2c31eb7bc4158, type: 3}
   m_Name: Food
   m_EditorClassIdentifier: 
-  itemName: 4
+  Name: 4
   ItemType: 1
   Icon: {fileID: 21300000, guid: 05504ecd8f461d341ab1dff5d8d694f1, type: 3}
   IsStackable: 0
-  Cost: 20
   Description: "D\xF9ng \u0111\u1EC3 t\u0103ng l\u01B0\u1EE3ng hp v\xE0 mp cho b\u1EA3n
     th\xE2n"
   PotionType: 2
   Level: 1
-  Buy: 10
-  Price: 2
-  hP: 30
-  mP: 30
+  Price: 10
+  Hp: 200
+  Mp: 200

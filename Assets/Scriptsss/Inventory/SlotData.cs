@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class SlotData : ScriptableObject
 {
-    public List<Slot> listSlot;
+    public List<ItemSlot> listSlot;
 }

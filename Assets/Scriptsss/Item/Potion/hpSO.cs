@@ -7,12 +7,4 @@ public class HpSO : PotionSO
     [Space]
     [Header("Uses")]
     public int hP;
-    public override void Update()
-    {
-        base.Update();
-        this.PotionType = PotionType.hp;
-        this.Description = "Dùng để tăng lượng hp cho bản thân";
-        this.HP = hP;
-    }
-    
 }

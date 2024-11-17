@@ -8,7 +8,7 @@ namespace QuachDai.NinjaSchool.Item
     {
         public JunkSO junkSO;
         public SpriteRenderer spriteRenderer;
-        public Slot slotItem;
+        public ItemSlot slotItem;
         Player player => Player.Instance;
         private void Start()
         {
@@ -17,8 +17,8 @@ namespace QuachDai.NinjaSchool.Item
         public Transform GetItems()
         {
             int index = Random.Range(0, junkSO.itemList.Count);
-            slotItem.item = junkSO.itemList[index];
-            spriteRenderer.sprite = slotItem.item.Icon;
+            slotItem.Item = junkSO.itemList[index];
+            spriteRenderer.sprite = slotItem.Item.Icon;
             return transform;
         }
 
@@ -39,17 +39,17 @@ namespace QuachDai.NinjaSchool.Item
             IEnumerator PickUpItems()
             {
                 string _xu = "";
-                if (slotItem.item.itemName == ItemName.Hp)
+                if (slotItem.Item.Name == ItemName.Hp)
                     InventoryUpdate.Instance.UpdateHP(slotItem, 1);
-                else if (slotItem.item.itemName == ItemName.Mp)
+                else if (slotItem.Item.Name == ItemName.Mp)
                     InventoryUpdate.Instance.UpdateMP(slotItem, 1);
-                else if (slotItem.item.itemName == ItemName.Xu)
+                else if (slotItem.Item.Name == ItemName.Xu)
                 {
-                    MoneySO money = (MoneySO)slotItem.item.getItemSO();
+                    MoneySO money = (MoneySO)slotItem.Item.getItemSO();
                     Player.Instance.SetXu(money.Xu);
                     _xu = money.Xu.ToString();
                 }
-                TextTemplate.Instance.SetText("You receive " + _xu + " " + slotItem.item.itemName.ToString());
+                TextTemplate.Instance.SetText("You receive " + _xu + " " + slotItem.Item.Name.ToString());
                 yield return new WaitForSeconds(0.2f);
                 Destroy(gameObject);
             }

@@ -6,11 +6,7 @@ public class MoneySO : ItemSO
 {
     public MoneyType MoneyType;
 
-    public override void Update()
-    {
-        base.Update();
-        this.ItemType = ItemType.Money;
-    }
+  
     private int _xu;
     public int Xu
     {

@@ -9,61 +9,62 @@ public class InventoryUpdate : Singleton<InventoryUpdate>
     public UseMp useMp;
     #region update
    
-    public void UpdateHP(Slot slot, int number)
+    public void UpdateHP(ItemSlot slot, int number)
     {
         for (int i = 0; i < InventoryManager.getSlotItems().Count; i++)
         {
-            if (InventoryManager.getSlotItems()[i].getItemSO() && InventoryManager.getSlotItems()[i].getItemSO().itemName == ItemName.Hp)
+            if (InventoryManager.getSlotItems()[i].GetItemSO() && InventoryManager.getSlotItems()[i].GetItemSO().Name == ItemName.Hp)
             {
                 InventoryManager.getSlotItems()[i].UpdateQuantity(number);
-                InventoryManager.RefreshUI();
-                useHp.quanitityText.text = InventoryManager.getSlotItems()[i].getQuantity().ToString();
+                InventoryManager.Refresh();
+                useHp.quanitityText.text = InventoryManager.getSlotItems()[i].GetQuantity().ToString();
                 InventoryManager.SetXuText();
                 InventoryManager.SetData(InventoryManager.getSlotItems()[i],i);
                 return;
             }
         }
         AddItem(slot);
-        useHp.quanitityText.text = slot.getQuantity().ToString();
+        useHp.quanitityText.text = slot.GetQuantity().ToString();
         InventoryManager.SetXuText();
     }
-    public void UpdateMP(Slot slot, int number)
+    public void UpdateMP(ItemSlot slot, int number)
     {
         for (int i = 0; i < InventoryManager.getSlotItems().Count; i++)
         {
-            if (InventoryManager.getSlotItems()[i].getItemSO()
-                && InventoryManager.getSlotItems()[i].getItemSO().itemName == ItemName.Mp)
+            if (InventoryManager.getSlotItems()[i].GetItemSO()
+                && InventoryManager.getSlotItems()[i].GetItemSO().Name == ItemName.Mp)
             {
                 InventoryManager.getSlotItems()[i].UpdateQuantity(number);
-                InventoryManager.RefreshUI();
-                useMp.quanitityText.text = InventoryManager.getSlotItems()[i].getQuantity().ToString();
+                InventoryManager.Refresh();
+                useMp.quanitityText.text = InventoryManager.getSlotItems()[i].GetQuantity().ToString();
                 InventoryManager.SetXuText();
                 InventoryManager.SetData(InventoryManager.getSlotItems()[i],i);
                 return;
             }
         }
         AddItem(slot);
-        useMp.quanitityText.text = slot.getQuantity().ToString();
+        useMp.quanitityText.text = slot.GetQuantity().ToString();
         InventoryManager.SetXuText();
 
     }
     int sum = 0;
     bool flat = false;
     PotionSO potion;
+  
     public int UpdateHP(int number)
     {
         flat = false;
         sum = 0;
         for (int i = 0; i < InventoryManager.getSlotItems().Count; i++)
         {
-            potion = (PotionSO)InventoryManager.getSlotItems()[i].getItemSO();
+            potion = (PotionSO)InventoryManager.getSlotItems()[i].GetItemSO();
             if (potion && potion.PotionType == PotionType.hp)
             {
                 if (!flat)
                 {
                     InventoryManager.getSlotItems()[i].UpdateQuantity(number);
-                    sum += InventoryManager.getSlotItems()[i].getQuantity();
-                    if (InventoryManager.getSlotItems()[i].getQuantity() == 0)
+                    sum += InventoryManager.getSlotItems()[i].GetQuantity();
+                    if (InventoryManager.getSlotItems()[i].GetQuantity() == 0)
                     {
                         RemoveItem(i);
                     }
@@ -71,12 +72,12 @@ public class InventoryUpdate : Singleton<InventoryUpdate>
                 }
                 else
                 {
-                    sum += InventoryManager.getSlotItems()[i].getQuantity();
+                    sum += InventoryManager.getSlotItems()[i].GetQuantity();
                 }
                 InventoryManager.SetData(InventoryManager.getSlotItems()[i], i);
             }
         }
-        InventoryManager.RefreshUI();
+        InventoryManager.Refresh();
         useHp.quanitityText.text = sum.ToString();
         return sum;
     }
@@ -86,14 +87,14 @@ public class InventoryUpdate : Singleton<InventoryUpdate>
         sum = 0;
         for (int i = 0; i < InventoryManager.getSlotItems().Count; i++)
         {
-            potion = (PotionSO)InventoryManager.getSlotItems()[i].getItemSO();
+            potion = (PotionSO)InventoryManager.getSlotItems()[i].GetItemSO();
             if (potion && potion.PotionType == PotionType.mp)
             {
                 if (!flat)
                 {
                     InventoryManager.getSlotItems()[i].UpdateQuantity(number);
-                    sum += InventoryManager.getSlotItems()[i].getQuantity();
-                    if (InventoryManager.getSlotItems()[i].getQuantity() == 0)
+                    sum += InventoryManager.getSlotItems()[i].GetQuantity();
+                    if (InventoryManager.getSlotItems()[i].GetQuantity() == 0)
                     {
                         RemoveItem(i);
                         
@@ -102,12 +103,12 @@ public class InventoryUpdate : Singleton<InventoryUpdate>
                 }
                 else
                 {
-                    sum += InventoryManager.getSlotItems()[i].getQuantity();
+                    sum += InventoryManager.getSlotItems()[i].GetQuantity();
                 }
                 InventoryManager.SetData(InventoryManager.getSlotItems()[i], i);
             }
         }
-        InventoryManager.RefreshUI();
+        InventoryManager.Refresh();
         useMp.quanitityText.text = sum.ToString();
         return sum;
     }
@@ -118,7 +119,7 @@ public class InventoryUpdate : Singleton<InventoryUpdate>
 
         for (int i = 0; i < InventoryManager.getSlotItems().Count; i++)
         {
-            food = (PotionSO)InventoryManager.getSlotItems()[i].getItemSO();
+            food = (PotionSO)InventoryManager.getSlotItems()[i].GetItemSO();
             try
             {
                 if (food.PotionType == PotionType.food)
@@ -132,14 +133,14 @@ public class InventoryUpdate : Singleton<InventoryUpdate>
         }
         return false;
     }
-    public void AddItem(Slot slot)
+    public void AddItem(ItemSlot slot)
     {
         for (int i = 0; i < InventoryManager.getSlotItems().Count; i++)
         {
-             if (InventoryManager.getSlotItems()[i].getItemSO() == null)
+             if (InventoryManager.getSlotItems()[i].GetItemSO() == null)
             {
-                InventoryManager.getSlotItems()[i].addItemSO(slot.getItemSO(), 1);
-                InventoryManager.RefreshUI();
+                InventoryManager.getSlotItems()[i].AddItemSO(slot.GetItemSO(), 1);
+                InventoryManager.Refresh();
                 InventoryManager.SetXuText();
                 InventoryManager.SetData(slot,i);
                 return;
@@ -150,7 +151,7 @@ public class InventoryUpdate : Singleton<InventoryUpdate>
     {
         for (int i = 0; i < InventoryManager.getSlotItems().Count; i++)
         {
-            if (InventoryManager.getSlotItems()[i].getItemSO() == null)
+            if (InventoryManager.getSlotItems()[i].GetItemSO() == null)
             {
                 return true;
             }
@@ -160,20 +161,20 @@ public class InventoryUpdate : Singleton<InventoryUpdate>
  
     public bool RemoveItem(int index)
     {
-        Slot slot = InventoryManager.getSlotItems()[index];
-        PotionSO potion = (PotionSO)slot.getItemSO();
+        ItemSlot slot = InventoryManager.getSlotItems()[index];
+        PotionSO potion = (PotionSO)slot.GetItemSO();
         try
         {
             if (potion.PotionType == PotionType.hp)
             {
-                if (slot.getQuantity() == 0)
+                if (slot.GetQuantity() == 0)
                     InventoryManager.getSlotItems()[index].Clear();
                 else
                     UpdateHP(-1);
             }
             else if (potion.PotionType == PotionType.mp)
             {
-                if (slot.getQuantity() == 0)
+                if (slot.GetQuantity() == 0)
                     InventoryManager.getSlotItems()[index].Clear();
                 else
                     UpdateMP(-1);
@@ -183,7 +184,7 @@ public class InventoryUpdate : Singleton<InventoryUpdate>
                 InventoryManager.getSlotItems()[index].Clear();
                 InventoryManager.SetData(InventoryManager.getSlotItems()[index], index);
             }
-            InventoryManager.RefreshUI();
+            InventoryManager.Refresh();
             return true;
         }
         catch
@@ -193,19 +194,19 @@ public class InventoryUpdate : Singleton<InventoryUpdate>
         }
 
     }
-    public bool RemoveItem(Slot slot)
+    public bool RemoveItem(ItemSlot slot)
     {
-        Slot s;
+        ItemSlot s;
         for (int i = 0; i < InventoryManager.getSlotItems().Count; i++)
         {
             s = InventoryManager.getSlotItems()[i];
             try
             {
-                if (slot.getItemSO().itemName == s.getItemSO().itemName)
+                if (slot.GetItemSO().Name == s.GetItemSO().Name)
                 {
                     InventoryManager.getSlotItems()[i].Clear();
                     InventoryManager.SetData(s, i);
-                    InventoryManager.RefreshUI();
+                    InventoryManager.Refresh();
                     return true;
                 }
             }

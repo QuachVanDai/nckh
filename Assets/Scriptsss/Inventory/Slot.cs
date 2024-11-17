@@ -1,34 +1,43 @@
-
-using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-[Serializable]
-public class Slot
-
+public class Slot : MonoBehaviour, IPointerClickHandler
 {
-    public ItemSO item;
-    public int quantity;
+    public InventoryManager InventoryManager;
+    public ItemSlot slot;
+    public Image Icon;
+    public Text TxtQuantity;
 
-    public Slot()
+    public void OnPointerClick(PointerEventData eventData)
     {
-        item = null;
-        quantity = 0;
+        Debug.Log($"Dai: Click Slot");
+        InventoryManager.SetInforItem(slot);
+        InventoryManager.ItemClick = slot;
     }
-    public Slot(Slot slot)
-    {
-        this.item = slot.getItemSO();
-        this.quantity = slot.getQuantity();
-    }
-    public Slot (ItemSO item,int quantity)
-    {
-        this.item = item;
-        this.quantity = quantity;
-    }
-    public ItemSO getItemSO() { return item; }
-    public int getQuantity() {  return quantity; }
-    public void UpdateQuantity(int quantity) { this.quantity += quantity; }
-    public void SubQuantity(int quantity) { this.quantity -= quantity; }
-    public void addItemSO(ItemSO item, int quantity) { this.item = item; this.quantity = quantity; }
-    public void Clear() { item = null; quantity = 0; }
 
+    public void SetSlot(ItemSlot _slot)
+    {
+        slot = _slot;
+        if (_slot == null)
+        {
+            Icon.sprite = null;
+            Icon.color = new Color(1,1,1,0);
+            TxtQuantity.text = "";
+        }
+        else
+        {
+            Icon.sprite = _slot.Item.Icon;
+            Icon.color = new Color(1, 1, 1, 1);
+            Icon.enabled = true;
+            if (_slot.GetItemSO().IsStackable)
+            {
+                TxtQuantity.text = _slot.Quantity.ToString();
+            }
+            else
+            {
+                TxtQuantity.text = "";
+            }
+        }
+    }
 }

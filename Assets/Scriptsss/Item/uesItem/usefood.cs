@@ -8,7 +8,7 @@ namespace QuachDai.NinjaSchool.Item
     public class UseFood : MonoBehaviour, IPointerClickHandler
     {
         // Start is called before the first frame update
-        [SerializeField] Slot slotFoodSO;
+        [SerializeField] ItemSlot slotFoodSO;
         [SerializeField] Text timeUseText;
         [SerializeField] bool isUse;
         [SerializeField] Image imgFullTime;
@@ -51,7 +51,7 @@ namespace QuachDai.NinjaSchool.Item
         }
         public IEnumerator SetTimeUse()
         {
-            foodSO = (FoodSO)slotFoodSO.getItemSO();
+            foodSO = (FoodSO)slotFoodSO.GetItemSO();
             expiredTime = maxExpiredTime;
             imgFullTime.fillAmount = 0;
             getTime = Time.time;
@@ -63,7 +63,7 @@ namespace QuachDai.NinjaSchool.Item
                 if (GameManager.Instance.IsPlayGame == true)
                 {
                     player.SetMp(foodSO.MP);
-                    player.SetHp(foodSO.HP);
+                    player.SetHp(foodSO.Hp);
                 }
                 expiredTime--;
                 yield return new WaitForSeconds(1f);
